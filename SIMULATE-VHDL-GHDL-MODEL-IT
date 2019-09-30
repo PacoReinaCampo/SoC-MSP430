@@ -1,0 +1,44 @@
+ghdl -i rtl/vhdl/pkg/MSP430_PACK.vhd
+ghdl -i rtl/vhdl/core/MSP430_CORE.vhd
+ghdl -i rtl/vhdl/core/fuse/omsp_and_gate.vhd
+ghdl -i rtl/vhdl/core/fuse/omsp_clock_gate.vhd
+ghdl -i rtl/vhdl/core/fuse/omsp_clock_mux.vhd
+ghdl -i rtl/vhdl/core/fuse/omsp_scan_mux.vhd
+ghdl -i rtl/vhdl/core/fuse/omsp_sync_cell.vhd
+ghdl -i rtl/vhdl/core/fuse/omsp_sync_reset.vhd
+ghdl -i rtl/vhdl/core/fuse/omsp_wakeup_cell.vhd
+ghdl -i rtl/vhdl/core/main/BCM.vhd
+ghdl -i rtl/vhdl/core/main/DBG.vhd
+ghdl -i rtl/vhdl/core/main/EXECUTION.vhd
+ghdl -i rtl/vhdl/core/main/FRONTEND.vhd
+ghdl -i rtl/vhdl/core/main/GPIO.vhd
+ghdl -i rtl/vhdl/core/main/MEMORY.vhd
+ghdl -i rtl/vhdl/core/main/MULTIPLIER.vhd
+ghdl -i rtl/vhdl/core/main/SFR.vhd
+ghdl -i rtl/vhdl/core/main/T_WATCHDOG.vhd
+ghdl -i rtl/vhdl/core/main/TEMPLATE_08.vhd
+ghdl -i rtl/vhdl/core/main/TEMPLATE_16.vhd
+ghdl -i rtl/vhdl/core/main/UART.vhd
+ghdl -i rtl/vhdl/core/omsp/omsp_alu.vhd
+ghdl -i rtl/vhdl/core/omsp/omsp_dbg_hwbrk.vhd
+ghdl -i rtl/vhdl/core/omsp/omsp_dbg_i2c.vhd
+ghdl -i rtl/vhdl/core/omsp/omsp_dbg_uart.vhd
+ghdl -i rtl/vhdl/core/omsp/omsp_interrupt.vhd
+ghdl -i rtl/vhdl/core/omsp/omsp_register_file.vhd
+ghdl -i rtl/vhdl/core/omsp/omsp_state_machine.vhd
+ghdl -i rtl/vhdl/memory/DATA_MEMORY_DISTRIBUTED_QUADPORT.vhd
+ghdl -i rtl/vhdl/memory/DATA_MEMORY_DISTRIBUTED_SINGLEPORT.vhd
+ghdl -i rtl/vhdl/memory/DATA_MEMORY_SHARED_QUADPORT.vhd
+ghdl -i rtl/vhdl/memory/DATA_MEMORY_SHARED_SINGLEPORT.vhd
+ghdl -i rtl/vhdl/memory/INSTRUCTION_MEMORY_DISTRIBUTED_QUADPORT.vhd
+ghdl -i rtl/vhdl/memory/INSTRUCTION_MEMORY_DISTRIBUTED_SINGLEPORT.vhd
+ghdl -i rtl/vhdl/memory/INSTRUCTION_MEMORY_SHARED_QUADPORT.vhd
+ghdl -i rtl/vhdl/memory/INSTRUCTION_MEMORY_SHARED_SINGLEPORT.vhd
+ghdl -i rtl/vhdl/pu/MSP430_PU.vhd
+ghdl -i rtl/vhdl/soc/io_cell.vhd
+
+ghdl -i rtl/vhdl/soc/MSP430_SOC.vhd
+
+ghdl -m MSP430_SOC
+
+ghdl -r MSP430_SOC --ieee-asserts=disable-at-0 --disp-tree=inst > MSP430_SOC.tree

@@ -1,0 +1,6 @@
+rm -rf sim/vhdl/regression/bin/work
+
+rm -rf work-obj93.cf
+
+rm -rf MSP430_SOC.tree
+rm -rf MSP430_TESTBENCH.tree

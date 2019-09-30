@@ -1,0 +1,48 @@
+# vsim -c -do "run.do" work.MSP430_TESTBENCH 
+# Start time: 04:54:57 on Sep 20,2019
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.msp430_pack(body)
+# Loading work.msp430_testbench(rtl)
+# Loading work.msp430_model(msp430_model_arq)
+# Loading work.omsp_sync_reset(omsp_sync_reset_arq)
+# Loading work.msp430_pu(msp430_pu_arq)
+# Loading work.msp430_core(msp430_core_arq)
+# Loading work.frontend(frontend_arq)
+# Loading work.omsp_state_machine(control_b1_arq)
+# Loading work.omsp_interrupt(control_b2_arq)
+# Loading work.omsp_clock_gate(omsp_clock_gate_arq)
+# Loading work.memory(memory_arq)
+# Loading work.execution(execution_arq)
+# Loading work.omsp_register_file(omsp_register_file_arq)
+# Loading work.omsp_alu(omsp_alu_arq)
+# Loading work.dbg(dbg_arq)
+# Loading work.omsp_dbg_hwbrk(omsp_dbg_hwbrk_arq)
+# Loading work.omsp_dbg_i2c(omsp_dbg_i2c_arq)
+# Loading work.omsp_sync_cell(omsp_sync_cell_arq)
+# Loading work.bcm(bcm_arq)
+# Loading work.omsp_scan_mux(omsp_scan_mux_arq)
+# Loading work.omsp_clock_mux(omsp_clock_mux_arq)
+# Loading work.multiplier(multiplier_arq)
+# Loading work.sfr(sfr_arq)
+# Loading work.omsp_wakeup_cell(omsp_wakeup_cell_arq)
+# Loading work.t_watchdog(t_watchdog_arq)
+# Loading work.omsp_and_gate(omsp_and_gate_arq)
+# Loading work.gpio(gpio_arq)
+# Loading work.uart(uart_arq)
+# Loading work.instruction_memory_distributed_singleport(instruction_memory_distributed_singleport_arq)
+# Loading work.instruction_memory_distributed_quadport(instruction_memory_distributed_quadport_arq)
+# Loading work.data_memory_shared_quadport(data_memory_shared_quadport_arq)
+# Loading work.data_memory_shared_singleport(data_memory_shared_singleport_arq)
+# Loading work.data_memory_distributed_singleport(data_memory_distributed_singleport_arq)
+# Loading work.data_memory_distributed_quadport(data_memory_distributed_quadport_arq)
+# Loading work.instruction_memory_shared_quadport(instruction_memory_shared_quadport_arq)
+# Loading work.instruction_memory_shared_singleport(instruction_memory_shared_singleport_arq)
+# Loading work.io_cell(io_cell_arq)
+# ** Warning: Design size of 66421 statements exceeds ModelSim-Intel FPGA Starter Edition recommended capacity.
+# Expect performance to be adversely affected.
+# do run.do
+# End time: 04:54:57 on Sep 20,2019, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 1
