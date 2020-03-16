@@ -1,18 +1,8 @@
-# PU-MSP430 WIKI
+# SoC-MSP430 WIKI
 
-A Processing Unit (PU) is an electronic system within a computer that carries out instructions of a program by performing the basic arithmetic, logic, controlling, and I/O operations specified by instructions. Instruction-level parallelism is a measure of how many instructions in a computer can be executed simultaneously. The PU is contained on a Single Metal Oxide Semiconductor (MOS) Integrated Circuit (IC).
+A System on Chip (SoC) is an integrated circuit that integrates components of a computer system (PU, RAM, GPIO, etc). As they are integrated on a single substrate, SoCs consume much less power and take up much less area than multi-chip designs with equivalent functionality. SoCs are common in the mobile computing, embedded systems and the Internet of Things.
 
-    SoC
-  ╔══════════════════════════════════════════════════════════════════════════════╗
-  ║  MISD                                   SIMD                                 ║
-  ║╔═════════════════════════════════════╗╔═════════════════════════════════════╗║
-  ║║    [IM0]   [IM1]   [IM2]   [IM3]    ║║    [DM4]   [DM5]   [DM6]   [DM7]    ║║
-  ║║      |       |       |       |      ║║      |       |       |       |      ║║
-  ║║ ===[PU0]===[PU1]===[PU2]===[PU3]=== ║║ ===[PU4]===[PU5]===[PU6]===[PU7]=== ║║
-  ║║                  |                  ║║                  |                  ║║
-  ║║    [            DM0            ]    ║║    [            IM0            ]    ║║
-  ║╚═════════════════════════════════════╝╚═════════════════════════════════════╝║
-  ╚══════════════════════════════════════════════════════════════════════════════╝
+The MSP430 implementation has a 16 bit Microarchitecture, 3 stages data pipeline and an Instruction Set Architecture based on Reduced Instruction Set Computer. Compatible with Wishbone Bus. Only For Researching.
 
 
 ## BASIC SYSTEM CONFIGURATION
@@ -184,79 +174,3 @@ A Processing Unit (PU) is an electronic system within a computer that carries ou
 |                                                    | DBG_UART_CNTB       | std_ulogic_vector | to_unsigned(DBG_UART_CNT, DBG_UART_XFER_CNT_W)
 |Debug interface input synchronizer                  | SYNC_DBG_UART_RXD   | std_ulogic        | 1
 |MULTIPLIER CONFIGURATION                            | MPY_16X16           | std_ulogic        | 1
-
-
-## Count Lines of Code
-
-|Language | files | blank | comment |  code
-|---------|-------| ----- | ------- | -----
-|VHDL     |    41 |  2302 |    3064 | 12046
-
-
-## Hardware Description Language
-
-pu
-├── bench
-│   ├── tests
-│   │   └── regression
-│   │       ├── c-jump_jc.s43
-│   │       ├── ...
-│   │       └── sfr.s43
-│   └── vhdl
-│       ├── MSP430_MODEL.vhd
-│       └── MSP430_TESTBENCH.vhd
-├── doc
-│   └── PU-MSP430.txt
-├── rtl
-│   └── vhdl
-│       ├── core
-│       │   ├── fuse
-│       │   │   ├── omsp_and_gate.vhd
-│       │   │   ├── omsp_clock_gate.vhd
-│       │   │   ├── omsp_clock_mux.vhd
-│       │   │   ├── omsp_scan_mux.vhd
-│       │   │   ├── omsp_sync_cell.vhd
-│       │   │   ├── omsp_sync_reset.vhd
-│       │   │   └── omsp_wakeup_cell.vhd
-│       │   ├── main
-│       │   │   ├── BCM.vhd
-│       │   │   ├── DBG.vhd
-│       │   │   ├── EXECUTION.vhd
-│       │   │   ├── FRONTEND.vhd
-│       │   │   ├── GPIO.vhd
-│       │   │   ├── MEMORY.vhd
-│       │   │   ├── MULTIPLIER.vhd
-│       │   │   ├── SFR.vhd
-│       │   │   ├── TEMPLATE_08.vhd
-│       │   │   ├── TEMPLATE_16.vhd
-│       │   │   ├── T_WATCHDOG.vhd
-│       │   │   └── UART.vhd
-│       │   ├── MSP430_CORE.vhd
-│       │   └── omsp
-│       │       ├── omsp_alu.vhd
-│       │       ├── omsp_dbg_hwbrk.vhd
-│       │       ├── omsp_dbg_i2c.vhd
-│       │       ├── omsp_dbg_uart.vhd
-│       │       ├── omsp_interrupt.vhd
-│       │       ├── omsp_register_file.vhd
-│       │       └── omsp_state_machine.vhd
-│       ├── memory
-│       │   ├── DATA_MEMORY_DISTRIBUTED_QUADPORT.vhd
-│       │   ├── DATA_MEMORY_DISTRIBUTED_SINGLEPORT.vhd
-│       │   ├── DATA_MEMORY_SHARED_QUADPORT.vhd
-│       │   ├── DATA_MEMORY_SHARED_SINGLEPORT.vhd
-│       │   ├── INSTRUCTION_MEMORY_DISTRIBUTED_QUADPORT.vhd
-│       │   ├── INSTRUCTION_MEMORY_DISTRIBUTED_SINGLEPORT.vhd
-│       │   ├── INSTRUCTION_MEMORY_SHARED_QUADPORT.vhd
-│       │   └── INSTRUCTION_MEMORY_SHARED_SINGLEPORT.vhd
-│       ├── pkg
-│       │   └── MSP430_PACK.vhd
-│       └── pu
-│           ├── io_cell.vhd
-│           └── MSP430_PU.vhd
-├── README.md
-├── CLEAN-IT
-├── SIMULATE-VHDL-GHDL-IT
-├── SIMULATE-VHDL-GHDL-MODEL-IT
-├── SIMULATE-VHDL-MS-IT
-└── UPLOAD-IT
