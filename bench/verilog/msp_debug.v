@@ -31,9 +31,9 @@
 //              - Olivier Girard,    olgirard@gmail.com
 //
 //----------------------------------------------------------------------------
-// $Rev: 134 $
+// $Rev: 136 $
 // $LastChangedBy: olivier.girard $
-// $LastChangedDate: 2012-03-22 21:31:06 +0100 (Thu, 22 Mar 2012) $
+// $LastChangedDate: 2012-03-22 22:14:16 +0100 (Thu, 22 Mar 2012) $
 //----------------------------------------------------------------------------
 `ifdef OMSP_NO_INCLUDE
 `else
@@ -52,8 +52,7 @@ module msp_debug (
     inst_short,                    // Currently executed instruction (short version)
 
 // INPUTs
-    mclk,                          // Main system clock
-    puc_rst                        // Main system reset
+    core_select                    // Core selection
 );
 
 // OUTPUTs
@@ -68,8 +67,7 @@ output  [8*32-1:0] inst_short;     // Currently executed instruction (short vers
 
 // INPUTs
 //============
-input              mclk;           // Main system clock
-input              puc_rst;        // Main system reset
+input              core_select;    // Core selection
 
 
 //=============================================================================
@@ -103,7 +101,7 @@ function [64*8-1:0] myFormat;
      
      for ( i=0; i < 32; i=i+1)                      // Copy string1
        myFormat[8*(j+i) +: 8] = string1[8*i +: 8];
-`endif     
+`endif    
   end
 endfunction
 
@@ -112,16 +110,52 @@ endfunction
 // 2) CONNECTIONS TO MSP430 CORE INTERNALS
 //=============================================================================
 
-wire  [2:0] i_state_bin = tb_openMSP430.i_state_bin;
-wire  [3:0] e_state_bin = tb_openMSP430.e_state_bin;
+//-------------------------
+// CPU 0
+//-------------------------
+wire  [2:0] omsp0_i_state_bin = tb_openMSP430.omsp0_i_state_bin;
+wire  [3:0] omsp0_e_state_bin = tb_openMSP430.omsp0_e_state_bin;
 
-wire        decode      = tb_openMSP430.decode;
-wire [15:0] ir          = tb_openMSP430.ir;
-wire        irq_detect  = tb_openMSP430.irq_detect;
-wire  [3:0] irq_num     = tb_openMSP430.irq_num;
-wire [15:0] pc          = tb_openMSP430.pc;
+wire        omsp0_decode      = tb_openMSP430.omsp0_decode;
+wire [15:0] omsp0_ir          = tb_openMSP430.omsp0_ir;
+wire        omsp0_irq_detect  = tb_openMSP430.omsp0_irq_detect;
+wire  [3:0] omsp0_irq_num     = tb_openMSP430.omsp0_irq_num;
+wire [15:0] omsp0_pc          = tb_openMSP430.omsp0_pc;
 
+wire        omsp0_mclk        = tb_openMSP430.omsp0_mclk;
+wire        omsp0_puc_rst     = tb_openMSP430.omsp0_puc_rst;
    
+//-------------------------
+// CPU 1
+//-------------------------
+wire  [2:0] omsp1_i_state_bin = tb_openMSP430.omsp1_i_state_bin;
+wire  [3:0] omsp1_e_state_bin = tb_openMSP430.omsp1_e_state_bin;
+
+wire        omsp1_decode      = tb_openMSP430.omsp1_decode;
+wire [15:0] omsp1_ir          = tb_openMSP430.omsp1_ir;
+wire        omsp1_irq_detect  = tb_openMSP430.omsp1_irq_detect;
+wire  [3:0] omsp1_irq_num     = tb_openMSP430.omsp1_irq_num;
+wire [15:0] omsp1_pc          = tb_openMSP430.omsp1_pc;
+
+wire        omsp1_mclk        = tb_openMSP430.omsp1_mclk;
+wire        omsp1_puc_rst     = tb_openMSP430.omsp1_puc_rst;
+   
+//-------------------------
+// CPU Selection
+//-------------------------
+wire  [2:0] i_state_bin = core_select ? omsp1_i_state_bin : omsp0_i_state_bin;
+wire  [3:0] e_state_bin = core_select ? omsp1_e_state_bin : omsp0_e_state_bin;
+
+wire        decode      = core_select ? omsp1_decode      : omsp0_decode;
+wire [15:0] ir          = core_select ? omsp1_ir          : omsp0_ir;
+wire        irq_detect  = core_select ? omsp1_irq_detect  : omsp0_irq_detect;
+wire  [3:0] irq_num     = core_select ? omsp1_irq_num     : omsp0_irq_num;
+wire [15:0] pc          = core_select ? omsp1_pc          : omsp0_pc;
+
+wire        mclk        = core_select ? omsp1_mclk        : omsp0_mclk;
+wire        puc_rst     = core_select ? omsp1_puc_rst     : omsp0_puc_rst;
+   
+
 //=============================================================================
 // 3) GENERATE DEBUG SIGNALS
 //=============================================================================
@@ -444,3 +478,4 @@ always @(posedge mclk or posedge puc_rst)
 
 
 endmodule // msp_debug
+
