@@ -1,1 +1,0 @@
-../../../bench/verilog/regression/leds.v

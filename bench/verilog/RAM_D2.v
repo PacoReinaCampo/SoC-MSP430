@@ -53,31 +53,31 @@ module RAM_D2 (
   doutb
 );
 
-input clka;
-input ena;
-input [1 : 0] wea;
-input [`DMEM_MSB - 1 : 0] addra;
-input [15 : 0] dina;
-output [15 : 0] douta;
-input clkb;
-input enb;
-input [1 : 0] web;
-input [`DMEM_MSB - 1 : 0] addrb;
-input [15 : 0] dinb;
-output [15 : 0] doutb;
+  input clka;
+  input ena;
+  input [1 : 0] wea;
+  input [`DMEM_MSB - 1 : 0] addra;
+  input [15 : 0] dina;
+  output [15 : 0] douta;
+  input clkb;
+  input enb;
+  input [1 : 0] web;
+  input [`DMEM_MSB - 1 : 0] addrb;
+  input [15 : 0] dinb;
+  output [15 : 0] doutb;
 
 
-//============
-// RAM
-//============
+  //============
+  // RAM
+  //============
 
-RAM_DP #(.ADDR_MSB(`DMEM_MSB - 1), .MEM_SIZE(`DMEM_SIZE)) RAM_DP_inst (
+  RAM_DP #(.ADDR_MSB(`DMEM_MSB - 1), .MEM_SIZE(`DMEM_SIZE)) RAM_DP_inst (
 
-// OUTPUTs
+    // OUTPUTs
     .ram_douta     ( douta),      // RAM data output (Port A)
     .ram_doutb     ( doutb),      // RAM data output (Port B)
 
-// INPUTs
+    // INPUTs
     .ram_addra     ( addra),      // RAM address (Port A)
     .ram_cena      (~ena),        // RAM chip enable (low active) (Port A)
     .ram_clka      ( clka),       // RAM clock (Port A)
@@ -88,7 +88,7 @@ RAM_DP #(.ADDR_MSB(`DMEM_MSB - 1), .MEM_SIZE(`DMEM_SIZE)) RAM_DP_inst (
     .ram_clkb      ( clkb),       // RAM clock (Port B)
     .ram_dinb      ( dinb),       // RAM data input (Port B)
     .ram_wenb      (~web)         // RAM write enable (low active) (Port B)
-);
+  );
 
 
 endmodule // RAM_D2

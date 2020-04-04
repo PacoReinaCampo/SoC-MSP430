@@ -43,37 +43,37 @@
 
 module  io_cell (
 
-// INOUTs
-    pad,                       // I/O Pad
-		 
-// OUTPUTs
-    data_in,                   // Input value
+  // INOUTs
+  pad,                       // I/O Pad
 
-// INPUTs
-    data_out_en,               // Output enable
-    data_out                   // Output value
+  // OUTPUTs
+  data_in,                   // Input value
+
+  // INPUTs
+  data_out_en,               // Output enable
+  data_out                   // Output value
 );
 
-// INOUTs
-//=========
-inout          pad;            // I/O Pad
+  // INOUTs
+  //=========
+  inout          pad;            // I/O Pad
 
-// OUTPUTs
-//=========
-output         data_in;        // Input value
+  // OUTPUTs
+  //=========
+  output         data_in;        // Input value
 
-// INPUTs
-//=========
-input          data_out_en;    // Output enable
-input          data_out;       // Output value
+  // INPUTs
+  //=========
+  input          data_out_en;    // Output enable
+  input          data_out;       // Output value
 
 
-//=============================================================================
-// 1)  I/O CELL
-//=============================================================================
+  //=============================================================================
+  // 1)  I/O CELL
+  //=============================================================================
 
-assign  data_in  =  pad;
-assign  pad      =  data_out_en ? data_out : 1'bz;
+  assign  data_in  =  pad;
+  assign  pad      =  data_out_en ? data_out : 1'bz;
 
 
 endmodule // io_cell

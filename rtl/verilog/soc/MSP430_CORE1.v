@@ -38,207 +38,207 @@
 
 module MSP430_CORE1 (
 
-// CPU registers
-    r0,
-    r1,
-    r2,
-    r3,
-    r4,
-    r5,
-    r6,
-    r7,
-    r8,
-    r9,
-    r10,
-    r11,
-    r12,
-    r13,
-    r14,
-    r15,
+  // CPU registers
+  r0,
+  r1,
+  r2,
+  r3,
+  r4,
+  r5,
+  r6,
+  r7,
+  r8,
+  r9,
+  r10,
+  r11,
+  r12,
+  r13,
+  r14,
+  r15,
 
-// Debug interface
-    dbg_en,
-    dbg_clk,
-    dbg_rst,
+  // Debug interface
+  dbg_en,
+  dbg_clk,
+  dbg_rst,
 
-// Interrupt detection
-    irq_detect,
-    nmi_pnd,
+  // Interrupt detection
+  irq_detect,
+  nmi_pnd,
 
-    i_state,
-    e_state,
-    decode,
-    ir,
-    irq_num,
-    pc,
+  i_state,
+  e_state,
+  decode,
+  ir,
+  irq_num,
+  pc,
 
-// CPU internals
-    mclk,
-    puc_rst,
+  // CPU internals
+  mclk,
+  puc_rst,
 
-// Clock & Reset
-    dco_clk,                               // Fast oscillator (fast clock)
-    reset_n,                               // Reset Pin (low active, asynchronous and non-glitchy)
+  // Clock & Reset
+  dco_clk,                               // Fast oscillator (fast clock)
+  reset_n,                               // Reset Pin (low active, asynchronous and non-glitchy)
 
-// Serial Debug Interface (I2C)
-    dbg_i2c_addr,                          // Debug interface: I2C Address
-    dbg_i2c_broadcast,                     // Debug interface: I2C Broadcast Address (for multicore systems)
-    dbg_i2c_scl,                           // Debug interface: I2C SCL
-    dbg_i2c_sda_in,                        // Debug interface: I2C SDA IN
-    dbg_i2c_sda_out,                       // Debug interface: I2C SDA OUT
+  // Serial Debug Interface (I2C)
+  dbg_i2c_addr,                          // Debug interface: I2C Address
+  dbg_i2c_broadcast,                     // Debug interface: I2C Broadcast Address (for multicore systems)
+  dbg_i2c_scl,                           // Debug interface: I2C SCL
+  dbg_i2c_sda_in,                        // Debug interface: I2C SDA IN
+  dbg_i2c_sda_out,                       // Debug interface: I2C SDA OUT
 
-// Data Memory
-    dmem_addr,                             // Data Memory address
-    dmem_cen,                              // Data Memory chip enable (low active)
-    dmem_din,                              // Data Memory data input
-    dmem_wen,                              // Data Memory write enable (low active)
-    dmem_dout,                             // Data Memory data output
+  // Data Memory
+  dmem_addr,                             // Data Memory address
+  dmem_cen,                              // Data Memory chip enable (low active)
+  dmem_din,                              // Data Memory data input
+  dmem_wen,                              // Data Memory write enable (low active)
+  dmem_dout,                             // Data Memory data output
 
-// Program Memory
-    pmem_addr,                             // Program Memory address
-    pmem_cen,                              // Program Memory chip enable (low active)
-    pmem_din,                              // Program Memory data input (optional)
-    pmem_wen,                              // Program Memory write enable (low active) (optional)
-    pmem_dout,                             // Program Memory data output
+  // Program Memory
+  pmem_addr,                             // Program Memory address
+  pmem_cen,                              // Program Memory chip enable (low active)
+  pmem_din,                              // Program Memory data input (optional)
+  pmem_wen,                              // Program Memory write enable (low active) (optional)
+  pmem_dout,                             // Program Memory data output
 
-// Switches & LEDs
-    switch,                                // Input switches
-    led                                    // LEDs
+  // Switches & LEDs
+  switch,                                // Input switches
+  led                                    // LEDs
 );
 
-// CPU registers
-output        [15:0] r0;
-output        [15:0] r1;
-output        [15:0] r2;
-output        [15:0] r3;
-output        [15:0] r4;
-output        [15:0] r5;
-output        [15:0] r6;
-output        [15:0] r7;
-output        [15:0] r8;
-output        [15:0] r9;
-output        [15:0] r10;
-output        [15:0] r11;
-output        [15:0] r12;
-output        [15:0] r13;
-output        [15:0] r14;
-output        [15:0] r15;
+  // CPU registers
+  output        [15:0] r0;
+  output        [15:0] r1;
+  output        [15:0] r2;
+  output        [15:0] r3;
+  output        [15:0] r4;
+  output        [15:0] r5;
+  output        [15:0] r6;
+  output        [15:0] r7;
+  output        [15:0] r8;
+  output        [15:0] r9;
+  output        [15:0] r10;
+  output        [15:0] r11;
+  output        [15:0] r12;
+  output        [15:0] r13;
+  output        [15:0] r14;
+  output        [15:0] r15;
 
-// Debug interface
-output               dbg_en;
-output               dbg_clk;
-output               dbg_rst;
+  // Debug interface
+  output               dbg_en;
+  output               dbg_clk;
+  output               dbg_rst;
 
-// Interrupt detection
-output               irq_detect;
-output               nmi_pnd;
+  // Interrupt detection
+  output               irq_detect;
+  output               nmi_pnd;
 
-output         [2:0] i_state;
-output         [3:0] e_state;
-output               decode;
-output        [15:0] ir;
-output         [5:0] irq_num;
-output        [15:0] pc;
+  output         [2:0] i_state;
+  output         [3:0] e_state;
+  output               decode;
+  output        [15:0] ir;
+  output         [5:0] irq_num;
+  output        [15:0] pc;
 
-// CPU internals
-output               mclk;
-output               puc_rst;
+  // CPU internals
+  output               mclk;
+  output               puc_rst;
 
-// Clock & Reset
-input                dco_clk;              // Fast oscillator (fast clock)
-input                reset_n;              // Reset Pin (low active, asynchronous and non-glitchy)
+  // Clock & Reset
+  input                dco_clk;              // Fast oscillator (fast clock)
+  input                reset_n;              // Reset Pin (low active, asynchronous and non-glitchy)
 
-// Serial Debug Interface (I2C)
-input          [6:0] dbg_i2c_addr;         // Debug interface: I2C Address
-input          [6:0] dbg_i2c_broadcast;    // Debug interface: I2C Broadcast Address (for multicore systems)
-input                dbg_i2c_scl;          // Debug interface: I2C SCL
-input                dbg_i2c_sda_in;       // Debug interface: I2C SDA IN
-output               dbg_i2c_sda_out;      // Debug interface: I2C SDA OUT
+  // Serial Debug Interface (I2C)
+  input          [6:0] dbg_i2c_addr;         // Debug interface: I2C Address
+  input          [6:0] dbg_i2c_broadcast;    // Debug interface: I2C Broadcast Address (for multicore systems)
+  input                dbg_i2c_scl;          // Debug interface: I2C SCL
+  input                dbg_i2c_sda_in;       // Debug interface: I2C SDA IN
+  output               dbg_i2c_sda_out;      // Debug interface: I2C SDA OUT
 
-// Data Memory
-input         [15:0] dmem_dout;            // Data Memory data output
-output [`DMEM_MSB:0] dmem_addr;            // Data Memory address
-output               dmem_cen;             // Data Memory chip enable (low active)
-output        [15:0] dmem_din;             // Data Memory data input
-output         [1:0] dmem_wen;             // Data Memory write enable (low active)
+  // Data Memory
+  input         [15:0] dmem_dout;            // Data Memory data output
+  output [`DMEM_MSB:0] dmem_addr;            // Data Memory address
+  output               dmem_cen;             // Data Memory chip enable (low active)
+  output        [15:0] dmem_din;             // Data Memory data input
+  output         [1:0] dmem_wen;             // Data Memory write enable (low active)
 
-// Program Memory
-input         [15:0] pmem_dout;            // Program Memory data output
-output [`PMEM_MSB:0] pmem_addr;            // Program Memory address
-output               pmem_cen;             // Program Memory chip enable (low active)
-output        [15:0] pmem_din;             // Program Memory data input (optional)
-output         [1:0] pmem_wen;             // Program Memory write enable (low active) (optional)
+  // Program Memory
+  input         [15:0] pmem_dout;            // Program Memory data output
+  output [`PMEM_MSB:0] pmem_addr;            // Program Memory address
+  output               pmem_cen;             // Program Memory chip enable (low active)
+  output        [15:0] pmem_din;             // Program Memory data input (optional)
+  output         [1:0] pmem_wen;             // Program Memory write enable (low active) (optional)
 
-// LEDs
-input          [3:0] switch;               // Input switches
-output         [1:0] led;                  // LEDs
-
-   
-//=============================================================================
-// 1)  INTERNAL WIRES/REGISTERS/PARAMETERS DECLARATION
-//=============================================================================
-
-// Clock & Reset
-wire               mclk;
-wire               aclk_en;
-wire               smclk_en;
-wire               puc_rst;
-
-// Debug interface
-wire               dbg_freeze;
-
-// Data memory
-wire [`DMEM_MSB:0] dmem_addr;
-wire               dmem_cen;
-wire        [15:0] dmem_din;
-wire         [1:0] dmem_wen;
-wire        [15:0] dmem_dout;
-
-// Program memory
-wire [`PMEM_MSB:0] pmem_addr;
-wire               pmem_cen;
-wire        [15:0] pmem_din;
-wire         [1:0] pmem_wen;
-wire        [15:0] pmem_dout;
-
-// Peripheral bus
-wire        [13:0] per_addr;
-wire        [15:0] per_din;
-wire         [1:0] per_we;
-wire               per_en;
-wire        [15:0] per_dout;
-
-// Interrupts
-wire        [13:0] irq_acc;
-wire   	    [13:0] irq_bus;
-wire   	           nmi;
-
-// GPIO
-wire               irq_port1;
-wire               irq_port2;
-wire         [7:0] p1_din;
-wire         [7:0] p1_dout;
-wire         [7:0] p1_dout_en;
-wire         [7:0] p1_sel;
-wire         [7:0] p2_din;
-wire         [7:0] p2_dout;
-wire         [7:0] p2_dout_en;
-wire         [7:0] p2_sel;
-wire        [15:0] per_dout_gpio;
-
-// Timer A
-wire        [15:0] per_dout_tA;
+  // LEDs
+  input          [3:0] switch;               // Input switches
+  output         [1:0] led;                  // LEDs
 
 
+  //=============================================================================
+  // 1)  INTERNAL WIRES/REGISTERS/PARAMETERS DECLARATION
+  //=============================================================================
 
-//=============================================================================
-// 2)  OPENMSP430 CORE
-//=============================================================================
+  // Clock & Reset
+  wire               mclk;
+  wire               aclk_en;
+  wire               smclk_en;
+  wire               puc_rst;
 
-   MSP430_CORE #(.INST_NR (1),
-                 .TOTAL_NR(1)) MSP430_CORE_0 (
+  // Debug interface
+  wire               dbg_freeze;
 
-// OUTPUTs
+  // Data memory
+  wire [`DMEM_MSB:0] dmem_addr;
+  wire               dmem_cen;
+  wire        [15:0] dmem_din;
+  wire         [1:0] dmem_wen;
+  wire        [15:0] dmem_dout;
+
+  // Program memory
+  wire [`PMEM_MSB:0] pmem_addr;
+  wire               pmem_cen;
+  wire        [15:0] pmem_din;
+  wire         [1:0] pmem_wen;
+  wire        [15:0] pmem_dout;
+
+  // Peripheral bus
+  wire        [13:0] per_addr;
+  wire        [15:0] per_din;
+  wire         [1:0] per_we;
+  wire               per_en;
+  wire        [15:0] per_dout;
+
+  // Interrupts
+  wire        [13:0] irq_acc;
+  wire   	    [13:0] irq_bus;
+  wire   	           nmi;
+
+  // GPIO
+  wire               irq_port1;
+  wire               irq_port2;
+  wire         [7:0] p1_din;
+  wire         [7:0] p1_dout;
+  wire         [7:0] p1_dout_en;
+  wire         [7:0] p1_sel;
+  wire         [7:0] p2_din;
+  wire         [7:0] p2_dout;
+  wire         [7:0] p2_dout_en;
+  wire         [7:0] p2_sel;
+  wire        [15:0] per_dout_gpio;
+
+  // Timer A
+  wire        [15:0] per_dout_tA;
+
+
+
+  //=============================================================================
+  // 2)  OPENMSP430 CORE
+  //=============================================================================
+
+  MSP430_CORE #(.INST_NR (1),
+                .TOTAL_NR(1)) MSP430_CORE_0 (
+
+    // OUTPUTs
     .r0                (r0),
     .r1                (r1),
     .r2                (r2),
@@ -297,7 +297,7 @@ wire        [15:0] per_dout_tA;
     .smclk             (),                   // ASIC ONLY: SMCLK
     .smclk_en          (smclk_en),           // FPGA ONLY: SMCLK enable
 
-// INPUTs
+    // INPUTs
     .cpu_en            (1'b1),               // Enable CPU code execution (asynchronous and non-glitchy)
     .dbg_en            (dbg_en),             // Debug interface enable (asynchronous and non-glitchy)
     .dbg_i2c_addr      (dbg_i2c_addr),       // Debug interface: I2C Address
@@ -316,22 +316,22 @@ wire        [15:0] per_dout_tA;
     .scan_enable       (1'b0),               // ASIC ONLY: Scan enable (active during scan shifting)
     .scan_mode         (1'b0),               // ASIC ONLY: Scan mode
     .wkup              (1'b0)                // ASIC ONLY: System Wake-up (asynchronous and non-glitchy)
-);
+  );
 
-assign  dbg_en      = 1'b1;
+  assign  dbg_en      = 1'b1;
 
 
-//=============================================================================
-// 3)  OPENMSP430 PERIPHERALS
-//=============================================================================
+  //=============================================================================
+  // 3)  OPENMSP430 PERIPHERALS
+  //=============================================================================
 
-//
-// Digital I/O
-//-------------------------------
+  //
+  // Digital I/O
+  //-------------------------------
 
-GPIO GPIO_0 (
+  GPIO GPIO_0 (
 
-// OUTPUTs
+    // OUTPUTs
     .irq_port1    (irq_port1),             // Port 1 interrupt
     .irq_port2    (irq_port2),             // Port 2 interrupt
     .p1_dout      (p1_dout),               // Port 1 data output
@@ -355,8 +355,8 @@ GPIO GPIO_0 (
     .per_dout     (per_dout_gpio),         // Peripheral data output
     .p1dir        (),
     .p1ifg        (),
-			     
-// INPUTs
+
+    // INPUTs
     .mclk         (mclk),                  // Main system clock
     .p1_din       (p1_din),                // Port 1 data input
     .p2_din       (p2_din),                // Port 2 data input
@@ -369,23 +369,23 @@ GPIO GPIO_0 (
     .per_en       (per_en),                // Peripheral enable (high active)
     .per_we       (per_we),                // Peripheral write enable (high active)
     .puc_rst      (puc_rst)                // Main system reset
-);
+  );
 
-// Assign LEDs
-assign  led         = p2_dout[1:0] & p2_dout_en[1:0];
+  // Assign LEDs
+  assign  led         = p2_dout[1:0] & p2_dout_en[1:0];
 
-// Assign Switches
-assign  p1_din[7:4] = 4'h0;
-assign  p1_din[3:0] = switch;
+  // Assign Switches
+  assign  p1_din[7:4] = 4'h0;
+  assign  p1_din[3:0] = switch;
 
 
-//
-// Timer A
-//----------------------------------------------
+  //
+  // Timer A
+  //----------------------------------------------
 
-T_A T_A_0 (
+  T_A T_A_0 (
 
-// OUTPUTs
+    // OUTPUTs
     .irq_ta0      (irq_ta0),               // Timer A interrupt: TACCR0
     .irq_ta1      (irq_ta1),               // Timer A interrupt: TAIV, TACCR1, TACCR2
     .per_dout     (per_dout_tA),           // Peripheral data output
@@ -398,7 +398,7 @@ T_A T_A_0 (
     .tar          (),
     .taccr0       (),
 
-// INPUTs
+    // INPUTs
     .aclk_en      (aclk_en),               // ACLK enable (from CPU)
     .dbg_freeze   (dbg_freeze),            // Freeze Timer A counter
     .inclk        (1'b0),                  // INCLK external timer clock (SLOW)
@@ -417,35 +417,35 @@ T_A T_A_0 (
     .ta_cci2a     (1'b0),                  // Timer A capture 2 input A
     .ta_cci2b     (1'b0),                  // Timer A capture 2 input B
     .taclk        (1'b0)                   // TACLK external timer clock (SLOW)
-);
+  );
 
 
-//
-// Combine peripheral data buses
-//-------------------------------
+  //
+  // Combine peripheral data buses
+  //-------------------------------
 
-assign per_dout = per_dout_gpio  |
-                  per_dout_tA;
+  assign per_dout = per_dout_gpio  |
+    per_dout_tA;
 
-//
-// Assign interrupts
-//-------------------------------
+  //
+  // Assign interrupts
+  //-------------------------------
 
-assign nmi      =   1'b0;
-assign irq_bus  =  {1'b0,         // Vector 13  (0xFFFA)
-                    1'b0,         // Vector 12  (0xFFF8)
-                    1'b0,         // Vector 11  (0xFFF6)
-                    1'b0,         // Vector 10  (0xFFF4) - Watchdog -
-                    1'b0,         // Vector  9  (0xFFF2) - Reserved (Timer-A 0 from system 0)
-                    1'b0,         // Vector  8  (0xFFF0) - Reserved (Timer-A 1 from system 0)
-                    1'b0,         // Vector  7  (0xFFEE) - Reserved (UART RX from system 0)
-                    1'b0,         // Vector  6  (0xFFEC) - Reserved (UART TX from system 0)
-                    irq_ta0,      // Vector  5  (0xFFEA)
-                    irq_ta1,      // Vector  4  (0xFFE8)
-                    1'b0,         // Vector  3  (0xFFE6) - Reserved (Port 2 from system 0)
-                    1'b0,         // Vector  2  (0xFFE4) - Reserved (Port 1 from system 0)
-                    irq_port2,    // Vector  1  (0xFFE2)
-                    irq_port1};   // Vector  0  (0xFFE0)
+  assign nmi      =   1'b0;
+  assign irq_bus  =  {1'b0,         // Vector 13  (0xFFFA)
+                      1'b0,         // Vector 12  (0xFFF8)
+                      1'b0,         // Vector 11  (0xFFF6)
+                      1'b0,         // Vector 10  (0xFFF4) - Watchdog -
+                      1'b0,         // Vector  9  (0xFFF2) - Reserved (Timer-A 0 from system 0)
+                      1'b0,         // Vector  8  (0xFFF0) - Reserved (Timer-A 1 from system 0)
+                      1'b0,         // Vector  7  (0xFFEE) - Reserved (UART RX from system 0)
+                      1'b0,         // Vector  6  (0xFFEC) - Reserved (UART TX from system 0)
+                      irq_ta0,      // Vector  5  (0xFFEA)
+                      irq_ta1,      // Vector  4  (0xFFE8)
+                      1'b0,         // Vector  3  (0xFFE6) - Reserved (Port 2 from system 0)
+                      1'b0,         // Vector  2  (0xFFE4) - Reserved (Port 1 from system 0)
+                      irq_port2,    // Vector  1  (0xFFE2)
+                      irq_port1};   // Vector  0  (0xFFE0)
 
 
 endmodule // MSP430_CORE1

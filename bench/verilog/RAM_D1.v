@@ -47,29 +47,29 @@ module RAM_D1 (
   douta
 );
 
-input clka;
-input ena;
-input [1 : 0] wea;
-input [`DMEM_MSB - 1 : 0] addra;
-input [15 : 0] dina;
-output [15 : 0] douta;
+  input clka;
+  input ena;
+  input [1 : 0] wea;
+  input [`DMEM_MSB - 1 : 0] addra;
+  input [15 : 0] dina;
+  output [15 : 0] douta;
 
-//============
-// RAM
-//============
+  //============
+  // RAM
+  //============
 
-RAM_SP #(.ADDR_MSB(`DMEM_MSB - 1), .MEM_SIZE(`DMEM_SIZE)) RAM_SP_inst (
+  RAM_SP #(.ADDR_MSB(`DMEM_MSB - 1), .MEM_SIZE(`DMEM_SIZE)) RAM_SP_inst (
 
-// OUTPUTs
+    // OUTPUTs
     .ram_dout     ( douta),      // RAM data output
 
-// INPUTs
+    // INPUTs
     .ram_addr     ( addra),      // RAM address
     .ram_cen      (~ena),        // RAM chip enable (low active)
     .ram_clk      ( clka),       // RAM clock
     .ram_din      ( dina),       // RAM data input
     .ram_wen      (~wea)         // RAM write enable (low active)
-);
+  );
 
 
 endmodule // RAM_D1
