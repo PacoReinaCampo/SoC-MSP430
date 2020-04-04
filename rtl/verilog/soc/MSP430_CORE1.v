@@ -137,7 +137,7 @@ module MSP430_CORE1 (
   output         [3:0] e_state;
   output               decode;
   output        [15:0] ir;
-  output         [5:0] irq_num;
+  output        [ 5:0] irq_num;
   output        [15:0] pc;
 
   // CPU internals
@@ -160,14 +160,14 @@ module MSP430_CORE1 (
   output [`DMEM_MSB:0] dmem_addr;            // Data Memory address
   output               dmem_cen;             // Data Memory chip enable (low active)
   output        [15:0] dmem_din;             // Data Memory data input
-  output         [1:0] dmem_wen;             // Data Memory write enable (low active)
+  output        [ 1:0] dmem_wen;             // Data Memory write enable (low active)
 
   // Program Memory
   input         [15:0] pmem_dout;            // Program Memory data output
   output [`PMEM_MSB:0] pmem_addr;            // Program Memory address
   output               pmem_cen;             // Program Memory chip enable (low active)
   output        [15:0] pmem_din;             // Program Memory data input (optional)
-  output         [1:0] pmem_wen;             // Program Memory write enable (low active) (optional)
+  output        [ 1:0] pmem_wen;             // Program Memory write enable (low active) (optional)
 
   // LEDs
   input          [3:0] switch;               // Input switches
@@ -191,52 +191,53 @@ module MSP430_CORE1 (
   wire [`DMEM_MSB:0] dmem_addr;
   wire               dmem_cen;
   wire        [15:0] dmem_din;
-  wire         [1:0] dmem_wen;
+  wire        [ 1:0] dmem_wen;
   wire        [15:0] dmem_dout;
 
   // Program memory
   wire [`PMEM_MSB:0] pmem_addr;
   wire               pmem_cen;
   wire        [15:0] pmem_din;
-  wire         [1:0] pmem_wen;
+  wire        [ 1:0] pmem_wen;
   wire        [15:0] pmem_dout;
 
   // Peripheral bus
   wire        [13:0] per_addr;
   wire        [15:0] per_din;
-  wire         [1:0] per_we;
+  wire        [ 1:0] per_we;
   wire               per_en;
   wire        [15:0] per_dout;
 
   // Interrupts
   wire        [13:0] irq_acc;
-  wire   	    [13:0] irq_bus;
-  wire   	           nmi;
+  wire        [13:0] irq_bus;
+  wire               nmi;
 
   // GPIO
   wire               irq_port1;
   wire               irq_port2;
-  wire         [7:0] p1_din;
-  wire         [7:0] p1_dout;
-  wire         [7:0] p1_dout_en;
-  wire         [7:0] p1_sel;
-  wire         [7:0] p2_din;
-  wire         [7:0] p2_dout;
-  wire         [7:0] p2_dout_en;
-  wire         [7:0] p2_sel;
+  wire        [ 7:0] p1_din;
+  wire        [ 7:0] p1_dout;
+  wire        [ 7:0] p1_dout_en;
+  wire        [ 7:0] p1_sel;
+  wire        [ 7:0] p2_din;
+  wire        [ 7:0] p2_dout;
+  wire        [ 7:0] p2_dout_en;
+  wire        [ 7:0] p2_sel;
   wire        [15:0] per_dout_gpio;
 
   // Timer A
   wire        [15:0] per_dout_tA;
 
-
-
   //=============================================================================
   // 2)  OPENMSP430 CORE
   //=============================================================================
 
-  MSP430_CORE #(.INST_NR (1),
-                .TOTAL_NR(1)) MSP430_CORE_0 (
+  MSP430_CORE #(
+    .INST_NR  (1),
+    .TOTAL_NR (1)
+  )
+  MSP430_CORE_0 (
 
     // OUTPUTs
     .r0                (r0),
@@ -320,7 +321,6 @@ module MSP430_CORE1 (
 
   assign  dbg_en      = 1'b1;
 
-
   //=============================================================================
   // 3)  OPENMSP430 PERIPHERALS
   //=============================================================================
@@ -378,7 +378,6 @@ module MSP430_CORE1 (
   assign  p1_din[7:4] = 4'h0;
   assign  p1_din[3:0] = switch;
 
-
   //
   // Timer A
   //----------------------------------------------
@@ -419,13 +418,11 @@ module MSP430_CORE1 (
     .taclk        (1'b0)                   // TACLK external timer clock (SLOW)
   );
 
-
   //
   // Combine peripheral data buses
   //-------------------------------
 
-  assign per_dout = per_dout_gpio  |
-    per_dout_tA;
+  assign per_dout = per_dout_gpio | per_dout_tA;
 
   //
   // Assign interrupts
@@ -446,6 +443,4 @@ module MSP430_CORE1 (
                       1'b0,         // Vector  2  (0xFFE4) - Reserved (Port 1 from system 0)
                       irq_port2,    // Vector  1  (0xFFE2)
                       irq_port1};   // Vector  0  (0xFFE0)
-
-
 endmodule // MSP430_CORE1

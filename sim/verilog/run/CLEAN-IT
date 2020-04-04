@@ -14,3 +14,11 @@ rm -rf transcript
 rm -rf tb_openMSP430.vcd
 rm -rf log
 rm -rf work
+
+rm -rf fuse.log
+rm -rf fuse.xmsgs
+rm -rf fuseRelaunch.cmd
+rm -rf isim.exe
+rm -rf isim.log
+rm -rf isim.wdb
+rm -rf isim

@@ -221,11 +221,11 @@ module DUALCORE_430 (
   output               omsp0_irq_detect;
   output               omsp0_nmi_pnd;
 
-  output         [2:0] omsp0_i_state;
-  output         [3:0] omsp0_e_state;
+  output        [ 2:0] omsp0_i_state;
+  output        [ 3:0] omsp0_e_state;
   output               omsp0_decode;
   output        [15:0] omsp0_ir;
-  output         [5:0] omsp0_irq_num;
+  output        [ 5:0] omsp0_irq_num;
   output        [15:0] omsp0_pc;
 
   // CPU internals
@@ -260,11 +260,11 @@ module DUALCORE_430 (
   output               omsp1_irq_detect;
   output               omsp1_nmi_pnd;
 
-  output         [2:0] omsp1_i_state;
-  output         [3:0] omsp1_e_state;
+  output        [ 2:0] omsp1_i_state;
+  output        [ 3:0] omsp1_e_state;
   output               omsp1_decode;
   output        [15:0] omsp1_ir;
-  output         [5:0] omsp1_irq_num;
+  output        [ 5:0] omsp1_irq_num;
   output        [15:0] omsp1_pc;
 
   // CPU internals
@@ -276,7 +276,7 @@ module DUALCORE_430 (
   output               omsp0_dmem_cen_sp;
   output               omsp0_dmem_cen_dp;
   output        [15:0] omsp0_dmem_din;
-  output         [1:0] omsp0_dmem_wen;
+  output        [ 1:0] omsp0_dmem_wen;
   input         [15:0] omsp0_dmem_dout_sp;
   input         [15:0] omsp0_dmem_dout_dp;
 
@@ -284,7 +284,7 @@ module DUALCORE_430 (
   output               omsp1_dmem_cen_sp;
   output               omsp1_dmem_cen_dp;
   output        [15:0] omsp1_dmem_din;
-  output         [1:0] omsp1_dmem_wen;
+  output        [ 1:0] omsp1_dmem_wen;
   input         [15:0] omsp1_dmem_dout_sp;
   input         [15:0] omsp1_dmem_dout_dp;
 
@@ -292,13 +292,13 @@ module DUALCORE_430 (
   output [`PMEM_MSB:0] omsp0_pmem_addr;
   output               omsp0_pmem_cen;
   output        [15:0] omsp0_pmem_din;
-  output         [1:0] omsp0_pmem_wen;
+  output        [ 1:0] omsp0_pmem_wen;
   input         [15:0] omsp0_pmem_dout;
 
   output [`PMEM_MSB:0] omsp1_pmem_addr;
   output               omsp1_pmem_cen;
   output        [15:0] omsp1_pmem_din;
-  output         [1:0] omsp1_pmem_wen;
+  output        [ 1:0] omsp1_pmem_wen;
   input         [15:0] omsp1_pmem_dout;
 
   output               dco_clk;
@@ -348,7 +348,6 @@ module DUALCORE_430 (
   inout    PMOD1_P3;
   input    PMOD1_P4;
 
-
   //=============================================================================
   // 1)  INTERNAL WIRES/REGISTERS/PARAMETERS DECLARATION
   //=============================================================================
@@ -363,7 +362,7 @@ module DUALCORE_430 (
 
   // Debug interface
   wire               omsp_dbg_i2c_scl;
-  wire            omsp_dbg_i2c_sda_in;
+  wire               omsp_dbg_i2c_sda_in;
   wire               omsp_dbg_i2c_sda_out;
   wire               omsp0_dbg_i2c_sda_out;
   wire               omsp1_dbg_i2c_sda_out;
@@ -374,7 +373,7 @@ module DUALCORE_430 (
   wire               omsp0_dmem_cen_sp;
   wire               omsp0_dmem_cen_dp;
   wire        [15:0] omsp0_dmem_din;
-  wire         [1:0] omsp0_dmem_wen;
+  wire        [ 1:0] omsp0_dmem_wen;
   wire        [15:0] omsp0_dmem_dout;
   wire        [15:0] omsp0_dmem_dout_sp;
   wire        [15:0] omsp0_dmem_dout_dp;
@@ -385,7 +384,7 @@ module DUALCORE_430 (
   wire               omsp1_dmem_cen_sp;
   wire               omsp1_dmem_cen_dp;
   wire        [15:0] omsp1_dmem_din;
-  wire         [1:0] omsp1_dmem_wen;
+  wire        [ 1:0] omsp1_dmem_wen;
   wire        [15:0] omsp1_dmem_dout;
   wire        [15:0] omsp1_dmem_dout_sp;
   wire        [15:0] omsp1_dmem_dout_dp;
@@ -395,13 +394,13 @@ module DUALCORE_430 (
   wire [`PMEM_MSB:0] omsp0_pmem_addr;
   wire               omsp0_pmem_cen;
   wire        [15:0] omsp0_pmem_din;
-  wire         [1:0] omsp0_pmem_wen;
+  wire        [ 1:0] omsp0_pmem_wen;
   wire        [15:0] omsp0_pmem_dout;
 
   wire [`PMEM_MSB:0] omsp1_pmem_addr;
   wire               omsp1_pmem_cen;
   wire        [15:0] omsp1_pmem_din;
-  wire         [1:0] omsp1_pmem_wen;
+  wire        [ 1:0] omsp1_pmem_wen;
   wire        [15:0] omsp1_pmem_dout;
 
   // UART
@@ -409,10 +408,9 @@ module DUALCORE_430 (
   wire               omsp0_uart_txd;
 
   // LEDs & Switches
-  wire         [3:0] omsp_switch;
-  wire         [1:0] omsp0_led;
-  wire         [1:0] omsp1_led;
-
+  wire        [ 3:0] omsp_switch;
+  wire        [ 1:0] omsp0_led;
+  wire        [ 1:0] omsp1_led;
 
   //=============================================================================
   // 2)  RESET GENERATION & FPGA STARTUP
@@ -427,8 +425,11 @@ module DUALCORE_430 (
 
   // Top level reset generation
   wire dco_rst;
-  omsp_sync_reset sync_reset_dco (.rst_s (dco_rst), .clk(dco_clk), .rst_a(!reset_n));
-
+  omsp_sync_reset sync_reset_dco (
+    .rst_s (dco_rst),
+    .clk   (dco_clk),
+    .rst_a (!reset_n)
+  );
 
   //=============================================================================
   // 3)  CLOCK GENERATION
@@ -437,7 +438,6 @@ module DUALCORE_430 (
   // Input buffers
   //------------------------
   assign dco_clk = USER_CLOCK;
-
 
   //=============================================================================
   // 4)  OPENMSP430 SYSTEM 0
@@ -517,7 +517,6 @@ module DUALCORE_430 (
     .led               (omsp0_led)                    // LEDs
   );
 
-
   //=============================================================================
   // 5)  OPENMSP430 SYSTEM 1
   //=============================================================================
@@ -592,7 +591,6 @@ module DUALCORE_430 (
     .led               (omsp1_led)                    // LEDs
   );
 
-
   //=============================================================================
   // 6)  PROGRAM AND DATA MEMORIES
   //=============================================================================
@@ -602,21 +600,22 @@ module DUALCORE_430 (
   assign omsp0_dmem_cen_dp = ~omsp0_dmem_addr[`DMEM_MSB] | omsp0_dmem_cen;
   assign omsp0_dmem_dout   =  omsp0_dmem_dout_sel ? omsp0_dmem_dout_sp : omsp0_dmem_dout_dp;
 
-  always @ (posedge dco_clk or posedge dco_rst)
+  always @ (posedge dco_clk or posedge dco_rst) begin
     if (dco_rst)                  omsp0_dmem_dout_sel <=  1'b1;
-  else if (~omsp0_dmem_cen_sp)  omsp0_dmem_dout_sel <=  1'b1;
-  else if (~omsp0_dmem_cen_dp)  omsp0_dmem_dout_sel <=  1'b0;
+    else if (~omsp0_dmem_cen_sp)  omsp0_dmem_dout_sel <=  1'b1;
+    else if (~omsp0_dmem_cen_dp)  omsp0_dmem_dout_sel <=  1'b0;
+  end
 
   // Memory muxing (CPU 1)
   assign omsp1_dmem_cen_sp =  omsp1_dmem_addr[`DMEM_MSB] | omsp1_dmem_cen;
   assign omsp1_dmem_cen_dp = ~omsp1_dmem_addr[`DMEM_MSB] | omsp1_dmem_cen;
   assign omsp1_dmem_dout   =  omsp1_dmem_dout_sel ? omsp1_dmem_dout_sp : omsp1_dmem_dout_dp;
 
-  always @ (posedge dco_clk or posedge dco_rst)
+  always @ (posedge dco_clk or posedge dco_rst) begin
     if (dco_rst)                  omsp1_dmem_dout_sel <=  1'b1;
-  else if (~omsp1_dmem_cen_sp)  omsp1_dmem_dout_sel <=  1'b1;
-  else if (~omsp1_dmem_cen_dp)  omsp1_dmem_dout_sel <=  1'b0;
-
+    else if (~omsp1_dmem_cen_sp)  omsp1_dmem_dout_sel <=  1'b1;
+    else if (~omsp1_dmem_cen_dp)  omsp1_dmem_dout_sel <=  1'b0;
+  end
 
   //=============================================================================
   // 7)  I/O CELLS
@@ -649,12 +648,15 @@ module DUALCORE_430 (
   //     https://www.digilentinc.com/PMODs
   //----------------------------------------------
 
-  assign omsp_dbg_i2c_sda_out = omsp0_dbg_i2c_sda_out & 
-    omsp1_dbg_i2c_sda_out;
+  assign omsp_dbg_i2c_sda_out = omsp0_dbg_i2c_sda_out & omsp1_dbg_i2c_sda_out;
 
   // Connector J5
-  io_cell PMOD_P3_PIN (.data_out_en(omsp_dbg_i2c_sda_out), .data_in(omsp_dbg_i2c_sda_in), .data_out(1'b0), .pad(PMOD1_P3));
+  io_cell PMOD_P3_PIN (
+    .data_out_en (omsp_dbg_i2c_sda_out),
+    .data_in     (omsp_dbg_i2c_sda_in),
+    .data_out    (1'b0),
+    .pad         (PMOD1_P3)
+  );
 
   assign omsp_dbg_i2c_scl = PMOD1_P4;
-
 endmodule // DUALCORE_430

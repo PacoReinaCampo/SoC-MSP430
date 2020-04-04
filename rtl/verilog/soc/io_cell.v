@@ -67,13 +67,10 @@ module  io_cell (
   input          data_out_en;    // Output enable
   input          data_out;       // Output value
 
-
   //=============================================================================
   // 1)  I/O CELL
   //=============================================================================
 
   assign  data_in  =  pad;
   assign  pad      =  data_out_en ? data_out : 1'bz;
-
-
 endmodule // io_cell
