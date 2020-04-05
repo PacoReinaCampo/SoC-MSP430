@@ -34,7 +34,7 @@
 //----------------------------------------------------------------------------
 `include "openMSP430_defines.v"
 
-module DUALCORE_430 (
+module MSP430_SoC (
 
   //CORE 0
   // CPU registers
@@ -659,4 +659,4 @@ module DUALCORE_430 (
   );
 
   assign omsp_dbg_i2c_scl = PMOD1_P4;
-endmodule // DUALCORE_430
+endmodule // MSP430_SoC

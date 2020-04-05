@@ -265,7 +265,7 @@ module tb_openMSP430;
   // openMSP430 FPGA Instance
   //----------------------------------
 
-  DUALCORE_430 dut (
+  MSP430_SoC dut (
 
     // CORE 0
     // CPU registers
