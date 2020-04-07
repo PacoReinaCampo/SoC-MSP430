@@ -1,5 +1,0 @@
-rm -rf sim/vhdl/regression/bin/work
-
-rm -rf work-obj93.cf
-
-rm -rf *.tree
