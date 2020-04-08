@@ -45,8 +45,6 @@
 // Testbench related
 //=============================================================================
 
-+incdir+../../../bench/verilog/
-
 ../../../bench/verilog/RAM_D1.v
 ../../../bench/verilog/RAM_D2.v
 ../../../bench/verilog/RAM_P2.v
@@ -61,9 +59,6 @@
 // SoC-MSP430
 //=============================================================================
 
-../../../rtl/verilog/soc/MSP430_CORE0.v
-../../../rtl/verilog/soc/MSP430_CORE1.v
-../../../rtl/verilog/soc/MSP430_SoC.v
 ../../../rtl/verilog/soc/io_cell.v
 
 //=============================================================================

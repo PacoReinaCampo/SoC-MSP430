@@ -39,64 +39,12 @@
  *   Francisco Javier Reina Campo <frareicam@gmail.com>
  */
 
-+incdir+../../../rtl/verilog/pkg/
-
-//=============================================================================
-// Testbench related
-//=============================================================================
-
-+incdir+../../../bench/verilog/
-
-../../../bench/verilog/RAM_D1.v
-../../../bench/verilog/RAM_D2.v
-../../../bench/verilog/RAM_P2.v
-../../../bench/verilog/glbl.v
-../../../bench/verilog/msp_debug.v
-../../../bench/verilog/RAM_DP.v
-../../../bench/verilog/RAM_SP.v
-../../../bench/verilog/tb_openMSP430.v
-
+../../../rtl/vhdl/pkg/MSP430_PACK.vhd
 
 //=============================================================================
 // SoC-MSP430
 //=============================================================================
 
-../../../rtl/verilog/soc/MSP430_CORE0.v
-../../../rtl/verilog/soc/MSP430_CORE1.v
-../../../rtl/verilog/soc/MSP430_SoC.v
-../../../rtl/verilog/soc/io_cell.v
-
-//=============================================================================
-// PU-MSP430
-//=============================================================================
-
-../../../pu/rtl/verilog/core/MSP430_CORE.v
-
-../../../pu/rtl/verilog/core/main/BCM.v
-../../../pu/rtl/verilog/core/main/DBG.v
-../../../pu/rtl/verilog/core/main/EXECUTION.v
-../../../pu/rtl/verilog/core/main/FRONTEND.v
-../../../pu/rtl/verilog/core/main/GPIO.v
-../../../pu/rtl/verilog/core/main/MEMORY.v
-../../../pu/rtl/verilog/core/main/MULTIPLIER.v
-../../../pu/rtl/verilog/core/main/SFR.v
-../../../pu/rtl/verilog/core/main/T_A.v
-../../../pu/rtl/verilog/core/main/T_WATCHDOG.v
-../../../pu/rtl/verilog/core/main/TEMPLATE_08.v
-../../../pu/rtl/verilog/core/main/TEMPLATE_16.v
-../../../pu/rtl/verilog/core/main/UART.v
-
-../../../pu/rtl/verilog/core/fuse/omsp_and_gate.v
-../../../pu/rtl/verilog/core/fuse/omsp_clock_gate.v
-../../../pu/rtl/verilog/core/fuse/omsp_clock_mux.v
-../../../pu/rtl/verilog/core/fuse/omsp_scan_mux.v
-../../../pu/rtl/verilog/core/fuse/omsp_sync_cell.v
-../../../pu/rtl/verilog/core/fuse/omsp_sync_reset.v
-../../../pu/rtl/verilog/core/fuse/omsp_wakeup_cell.v
-
-../../../pu/rtl/verilog/core/omsp/omsp_alu.v
-../../../pu/rtl/verilog/core/omsp/omsp_dbg_hwbrk.v
-../../../pu/rtl/verilog/core/omsp/omsp_dbg_i2c.v
-../../../pu/rtl/verilog/core/omsp/omsp_dbg_uart.v
-../../../pu/rtl/verilog/core/omsp/omsp_register_file.v
-
+../../../rtl/vhdl/soc/MSP430_CORE0.vhd
+../../../rtl/vhdl/soc/MSP430_CORE1.vhd
+../../../rtl/vhdl/soc/MSP430_SoC.vhd

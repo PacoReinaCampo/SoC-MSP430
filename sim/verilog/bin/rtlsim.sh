@@ -38,7 +38,7 @@
 ###############################################################################
 #                            Parameter Check                                  #
 ###############################################################################
-EXPECTED_ARGS=3
+EXPECTED_ARGS=5
 if [ $# -ne $EXPECTED_ARGS ]; then
   echo "ERROR    : wrong number of arguments"
   echo "USAGE    : rtlsim.sh <verilog stimulus file> <memory file> <submit file>"
@@ -113,7 +113,8 @@ else
        # Modelsim
        if [ -d work ]; then  vdel -all; fi
        vlib work
-       exec vlog -sv +acc=prn -f $3 $vargs -R -c -do "run -all" ;;
+       vcom -2008 -f $5
+       exec vlog -sv +acc=prn -f $4 $vargs -R -c -do "run -all" ;;
     isim )
        # Xilinx simulator
        rm -rf fuse* isim*
