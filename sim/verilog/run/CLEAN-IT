@@ -22,3 +22,5 @@ rm -rf isim.exe
 rm -rf isim.log
 rm -rf isim.wdb
 rm -rf isim
+
+rm -rf simv

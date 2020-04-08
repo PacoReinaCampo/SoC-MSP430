@@ -94,4 +94,3 @@
 ../../../pu/rtl/verilog/core/omsp/omsp_dbg_i2c.v
 ../../../pu/rtl/verilog/core/omsp/omsp_dbg_uart.v
 ../../../pu/rtl/verilog/core/omsp/omsp_register_file.v
-
