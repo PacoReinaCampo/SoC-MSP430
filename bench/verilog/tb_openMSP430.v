@@ -68,31 +68,30 @@ module tb_openMSP430;
   wire              UART_TXD;
 
   // I2C
-  wire 	          PMOD1_P3;
+  wire 	            PMOD1_P3;
   reg               PMOD1_P4;
 
   // Core debug signals
   wire   [8*32-1:0] omsp0_i_state;
   wire   [8*32-1:0] omsp0_e_state;
-  wire       [31:0] omsp0_inst_cycle;
+  wire   [    31:0] omsp0_inst_cycle;
   wire   [8*32-1:0] omsp0_inst_full;
-  wire       [31:0] omsp0_inst_number;
-  wire       [15:0] omsp0_inst_pc;
+  wire   [    31:0] omsp0_inst_number;
+  wire   [    15:0] omsp0_inst_pc;
   wire   [8*32-1:0] omsp0_inst_short;
 
   wire   [8*32-1:0] omsp1_i_state;
   wire   [8*32-1:0] omsp1_e_state;
-  wire       [31:0] omsp1_inst_cycle;
+  wire   [    31:0] omsp1_inst_cycle;
   wire   [8*32-1:0] omsp1_inst_full;
-  wire       [31:0] omsp1_inst_number;
-  wire       [15:0] omsp1_inst_pc;
+  wire   [    31:0] omsp1_inst_number;
+  wire   [    15:0] omsp1_inst_pc;
   wire   [8*32-1:0] omsp1_inst_short;
 
   // Testbench variables
   integer           i;
   integer           error;
   reg               stimulus_done;
-
 
   // CORE 0
   // CPU registers
@@ -133,7 +132,6 @@ module tb_openMSP430;
   wire              omsp0_mclk;
   wire              omsp0_puc_rst;
 
-
   // CORE 1
   // CPU registers
   wire       [15:0] omsp1_r0;
@@ -158,7 +156,6 @@ module tb_openMSP430;
   wire              omsp1_dbg_clk;
   wire              omsp1_dbg_rst;
 
-
   // Interrupt detection
   wire              omsp1_irq_detect;
   wire              omsp1_nmi_detect;
@@ -173,7 +170,6 @@ module tb_openMSP430;
   // CPU internals
   wire              omsp1_mclk;
   wire              omsp1_puc_rst;
-
 
   // Data memory
   wire [`DMEM_MSB:0] omsp0_dmem_addr;
@@ -227,10 +223,9 @@ module tb_openMSP430;
     #10 $readmemh("./pmem.mem", pmem);
 
     // Update Xilinx memory banks
-    for (i=0; i<8192; i=i+1)
-      begin
-        RAM_P2_shared.RAM_DP_inst.mem[i] = pmem[i];
-      end
+    for (i=0; i<8192; i=i+1) begin
+      RAM_P2_shared.RAM_DP_inst.mem[i] = pmem[i];
+    end
   end
 
   //
@@ -423,7 +418,6 @@ module tb_openMSP430;
     .PMOD1_P4        (PMOD1_P4)     // Serial Debug Interface RX
   );
 
-
   // DATA MEMORIES
   // Data Memory (CPU 0)
   RAM_D1 RAM_D1_omsp0 (
@@ -477,7 +471,6 @@ module tb_openMSP430;
     .dinb           ( omsp1_pmem_din),
     .doutb          ( omsp1_pmem_dout)
   );
-
 
   // Debug utility signals
   //----------------------------------------
@@ -560,7 +553,6 @@ module tb_openMSP430;
     $finish;
   end
 
-
   //
   // Tasks Definition
   //------------------------------
@@ -572,6 +564,4 @@ module tb_openMSP430;
       error = error+1;
     end
   endtask
-
-
 endmodule

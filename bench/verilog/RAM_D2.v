@@ -28,7 +28,7 @@
 //                      Scalable RAM model
 //
 // *Author(s):
-//              - Olivier Girard,    olgirard@gmail.com
+//             -Olivier Girard,    olgirard@gmail.com
 //
 //----------------------------------------------------------------------------
 // $Rev: 103 $
@@ -39,40 +39,30 @@
 `include "openMSP430_defines.v"
 
 module RAM_D2 (
-  clka,
-  ena,
-  wea,
-  addra,
-  dina,
-  douta,
-  clkb,
-  enb,
-  web,
-  addrb,
-  dinb,
-  doutb
+  input                  clka,
+  input                  ena,
+  input  [          1:0] wea,
+  input  [`DMEM_MSB-1:0] addra,
+  input  [         15:0] dina,
+  output [         15:0] douta,
+
+  input                  clkb,
+  input                  enb,
+  input  [          1:0] web,
+  input  [`DMEM_MSB-1:0] addrb,
+  input  [         15:0] dinb,
+  output [         15:0] doutb
 );
-
-  input clka;
-  input ena;
-  input [1 : 0] wea;
-  input [`DMEM_MSB - 1 : 0] addra;
-  input [15 : 0] dina;
-  output [15 : 0] douta;
-  input clkb;
-  input enb;
-  input [1 : 0] web;
-  input [`DMEM_MSB - 1 : 0] addrb;
-  input [15 : 0] dinb;
-  output [15 : 0] doutb;
-
 
   //============
   // RAM
   //============
 
-  RAM_DP #(.ADDR_MSB(`DMEM_MSB - 1), .MEM_SIZE(`DMEM_SIZE)) RAM_DP_inst (
-
+  RAM_DP #(
+    .ADDR_MSB (`DMEM_MSB-1),
+    .MEM_SIZE (`DMEM_SIZE)
+  )
+  RAM_DP_inst (
     // OUTPUTs
     .ram_douta     ( douta),      // RAM data output (Port A)
     .ram_doutb     ( doutb),      // RAM data output (Port B)
@@ -89,7 +79,4 @@ module RAM_D2 (
     .ram_dinb      ( dinb),       // RAM data input (Port B)
     .ram_wenb      (~web)         // RAM write enable (low active) (Port B)
   );
-
-
 endmodule // RAM_D2
-

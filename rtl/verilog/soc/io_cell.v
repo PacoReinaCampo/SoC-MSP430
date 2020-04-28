@@ -42,30 +42,16 @@
 //----------------------------------------------------------------------------
 
 module  io_cell (
-
   // INOUTs
-  pad,                       // I/O Pad
+  inout          pad,            // I/O Pad
 
   // OUTPUTs
-  data_in,                   // Input value
+  output         data_in,        // Input value
 
   // INPUTs
-  data_out_en,               // Output enable
-  data_out                   // Output value
+  input          data_out_en,    // Output enable
+  input          data_out        // Output value
 );
-
-  // INOUTs
-  //=========
-  inout          pad;            // I/O Pad
-
-  // OUTPUTs
-  //=========
-  output         data_in;        // Input value
-
-  // INPUTs
-  //=========
-  input          data_out_en;    // Output enable
-  input          data_out;       // Output value
 
   //=============================================================================
   // 1)  I/O CELL

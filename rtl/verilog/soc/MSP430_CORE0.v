@@ -37,177 +37,88 @@
 `include "openMSP430_defines.v"
 
 module MSP430_CORE0 (
-
   // CPU registers
-  r0,
-  r1,
-  r2,
-  r3,
-  r4,
-  r5,
-  r6,
-  r7,
-  r8,
-  r9,
-  r10,
-  r11,
-  r12,
-  r13,
-  r14,
-  r15,
+  output        [15:0] r0,
+  output        [15:0] r1,
+  output        [15:0] r2,
+  output        [15:0] r3,
+  output        [15:0] r4,
+  output        [15:0] r5,
+  output        [15:0] r6,
+  output        [15:0] r7,
+  output        [15:0] r8,
+  output        [15:0] r9,
+  output        [15:0] r10,
+  output        [15:0] r11,
+  output        [15:0] r12,
+  output        [15:0] r13,
+  output        [15:0] r14,
+  output        [15:0] r15,
 
   // Debug interface
-  dbg_en,
-  dbg_clk,
-  dbg_rst,
+  output               dbg_en,
+  output               dbg_clk,
+  output               dbg_rst,
 
   // Interrupt detection
-  irq_detect,
-  nmi_pnd,
+  output               irq_detect,
+  output               nmi_pnd,
 
-  i_state,
-  e_state,
-  decode,
-  ir,
-  irq_num,
-  pc,
+  output         [2:0] i_state,
+  output         [3:0] e_state,
+  output               decode,
+  output        [15:0] ir,
+  output        [ 5:0] irq_num,
+  output        [15:0] pc,
 
   // CPU internals
-  mclk,
-  puc_rst,
+  output               mclk,
+  output               puc_rst,
 
   // Clock & Reset
-  dco_clk,                               // Fast oscillator (fast clock)
-  reset_n,                               // Reset Pin (low active, asynchronous and non-glitchy)
+  input                dco_clk,              // Fast oscillator (fast clock)
+  input                reset_n,              // Reset Pin (low active, asynchronous and non-glitchy)
 
   // Serial Debug Interface (I2C)
-  dbg_i2c_addr,                          // Debug interface: I2C Address
-  dbg_i2c_broadcast,                     // Debug interface: I2C Broadcast Address (for multicore systems)
-  dbg_i2c_scl,                           // Debug interface: I2C SCL
-  dbg_i2c_sda_in,                        // Debug interface: I2C SDA IN
-  dbg_i2c_sda_out,                       // Debug interface: I2C SDA OUT
+  input          [6:0] dbg_i2c_addr,         // Debug interface: I2C Address
+  input          [6:0] dbg_i2c_broadcast,    // Debug interface: I2C Broadcast Address (for multicore systems)
+  input                dbg_i2c_scl,          // Debug interface: I2C SCL
+  input                dbg_i2c_sda_in,       // Debug interface: I2C SDA IN
+  output               dbg_i2c_sda_out,      // Debug interface: I2C SDA OUT
 
   // Data Memory
-  dmem_addr,                             // Data Memory address
-  dmem_cen,                              // Data Memory chip enable (low active)
-  dmem_din,                              // Data Memory data input
-  dmem_wen,                              // Data Memory write enable (low active)
-  dmem_dout,                             // Data Memory data output
+  input         [15:0] dmem_dout,            // Data Memory data output
+  output [`DMEM_MSB:0] dmem_addr,            // Data Memory address
+  output               dmem_cen,             // Data Memory chip enable (low active)
+  output        [15:0] dmem_din,             // Data Memory data input
+  output        [ 1:0] dmem_wen,             // Data Memory write enable (low active)
 
   // Program Memory
-  pmem_addr,                             // Program Memory address
-  pmem_cen,                              // Program Memory chip enable (low active)
-  pmem_din,                              // Program Memory data input (optional)
-  pmem_wen,                              // Program Memory write enable (low active) (optional)
-  pmem_dout,                             // Program Memory data output
+  input         [15:0] pmem_dout,            // Program Memory data output
+  output [`PMEM_MSB:0] pmem_addr,            // Program Memory address
+  output               pmem_cen,             // Program Memory chip enable (low active)
+  output        [15:0] pmem_din,             // Program Memory data input (optional)
+  output        [ 1:0] pmem_wen,             // Program Memory write enable (low active) (optional)
 
   // UART
-  uart_rxd,                              // UART Data Receive (RXD)
-  uart_txd,                              // UART Data Transmit (TXD)
+  input                uart_rxd,             // UART Data Receive (RXD)
+  output               uart_txd,             // UART Data Transmit (TXD)
 
   // Switches & LEDs
-  switch,                                // Input switches
-  led                                    // LEDs
+  input          [3:0] switch,               // Input switches
+  output         [1:0] led                   // LEDs
 );
-
-  // CPU registers
-  output        [15:0] r0;
-  output        [15:0] r1;
-  output        [15:0] r2;
-  output        [15:0] r3;
-  output        [15:0] r4;
-  output        [15:0] r5;
-  output        [15:0] r6;
-  output        [15:0] r7;
-  output        [15:0] r8;
-  output        [15:0] r9;
-  output        [15:0] r10;
-  output        [15:0] r11;
-  output        [15:0] r12;
-  output        [15:0] r13;
-  output        [15:0] r14;
-  output        [15:0] r15;
-
-  // Debug interface
-  output               dbg_en;
-  output               dbg_clk;
-  output               dbg_rst;
-
-  // Interrupt detection
-  output               irq_detect;
-  output               nmi_pnd;
-
-  output         [2:0] i_state;
-  output         [3:0] e_state;
-  output               decode;
-  output        [15:0] ir;
-  output        [ 5:0] irq_num;
-  output        [15:0] pc;
-
-  // CPU internals
-  output               mclk;
-  output               puc_rst;
-
-  // Clock & Reset
-  input                dco_clk;              // Fast oscillator (fast clock)
-  input                reset_n;              // Reset Pin (low active, asynchronous and non-glitchy)
-
-  // Serial Debug Interface (I2C)
-  input          [6:0] dbg_i2c_addr;         // Debug interface: I2C Address
-  input          [6:0] dbg_i2c_broadcast;    // Debug interface: I2C Broadcast Address (for multicore systems)
-  input                dbg_i2c_scl;          // Debug interface: I2C SCL
-  input                dbg_i2c_sda_in;       // Debug interface: I2C SDA IN
-  output               dbg_i2c_sda_out;      // Debug interface: I2C SDA OUT
-
-  // Data Memory
-  input         [15:0] dmem_dout;            // Data Memory data output
-  output [`DMEM_MSB:0] dmem_addr;            // Data Memory address
-  output               dmem_cen;             // Data Memory chip enable (low active)
-  output        [15:0] dmem_din;             // Data Memory data input
-  output        [ 1:0] dmem_wen;             // Data Memory write enable (low active)
-
-  // Program Memory
-  input         [15:0] pmem_dout;            // Program Memory data output
-  output [`PMEM_MSB:0] pmem_addr;            // Program Memory address
-  output               pmem_cen;             // Program Memory chip enable (low active)
-  output        [15:0] pmem_din;             // Program Memory data input (optional)
-  output        [ 1:0] pmem_wen;             // Program Memory write enable (low active) (optional)
-
-  // UART
-  input                uart_rxd;             // UART Data Receive (RXD)
-  output               uart_txd;             // UART Data Transmit (TXD)
-
-  // Switches & LEDs
-  input          [3:0] switch;               // Input switches
-  output         [1:0] led;                  // LEDs
-
 
   //=============================================================================
   // 1)  INTERNAL WIRES/REGISTERS/PARAMETERS DECLARATION
   //=============================================================================
 
   // Clock & Reset
-  wire               mclk;
   wire               aclk_en;
   wire               smclk_en;
-  wire               puc_rst;
 
   // Debug interface
   wire               dbg_freeze;
-
-  // Data memory
-  wire [`DMEM_MSB:0] dmem_addr;
-  wire               dmem_cen;
-  wire        [15:0] dmem_din;
-  wire        [ 1:0] dmem_wen;
-  wire        [15:0] dmem_dout;
-
-  // Program memory
-  wire [`PMEM_MSB:0] pmem_addr;
-  wire               pmem_cen;
-  wire        [15:0] pmem_din;
-  wire         [1:0] pmem_wen;
-  wire        [15:0] pmem_dout;
 
   // Peripheral bus
   wire        [13:0] per_addr;
@@ -249,7 +160,6 @@ module MSP430_CORE0 (
     .TOTAL_NR (1)
   )
   MSP430_CORE_0 (
-
     // OUTPUTs
     .r0                (r0),
     .r1                (r1),
@@ -341,7 +251,6 @@ module MSP430_CORE0 (
   //-------------------------------
 
   GPIO GPIO_0 (
-
     // OUTPUTs
     .irq_port1    (irq_port1),             // Port 1 interrupt
     .irq_port2    (irq_port2),             // Port 2 interrupt
@@ -394,7 +303,6 @@ module MSP430_CORE0 (
   //----------------------------------------------
 
   T_A T_A_0 (
-
     // OUTPUTs
     .irq_ta0      (irq_ta0),               // Timer A interrupt: TACCR0
     .irq_ta1      (irq_ta1),               // Timer A interrupt: TAIV, TACCR1, TACCR2
@@ -434,7 +342,6 @@ module MSP430_CORE0 (
   //----------------------------------------------
 
   UART UART_0 (
-
     // OUTPUTs
     .irq_uart_rx  (irq_uart_rx),           // UART receive interrupt
     .irq_uart_tx  (irq_uart_tx),           // UART transmit interrupt

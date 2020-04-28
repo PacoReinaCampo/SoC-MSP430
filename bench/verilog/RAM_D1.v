@@ -39,27 +39,23 @@
 `include "openMSP430_defines.v"
 
 module RAM_D1 (
-  clka,
-  ena,
-  wea,
-  addra,
-  dina,
-  douta
+  input                  clka,
+  input                  ena,
+  input  [          1:0] wea,
+  input  [`DMEM_MSB-1:0] addra,
+  input  [         15:0] dina,
+  output [         15:0] douta
 );
-
-  input clka;
-  input ena;
-  input [1 : 0] wea;
-  input [`DMEM_MSB - 1 : 0] addra;
-  input [15 : 0] dina;
-  output [15 : 0] douta;
 
   //============
   // RAM
   //============
 
-  RAM_SP #(.ADDR_MSB(`DMEM_MSB - 1), .MEM_SIZE(`DMEM_SIZE)) RAM_SP_inst (
-
+  RAM_SP #(
+    .ADDR_MSB (`DMEM_MSB-1),
+    .MEM_SIZE (`DMEM_SIZE)
+  )
+  RAM_SP_inst (
     // OUTPUTs
     .ram_dout     ( douta),      // RAM data output
 
@@ -70,7 +66,4 @@ module RAM_D1 (
     .ram_din      ( dina),       // RAM data input
     .ram_wen      (~wea)         // RAM write enable (low active)
   );
-
-
 endmodule // RAM_D1
-
