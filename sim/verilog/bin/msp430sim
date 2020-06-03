@@ -63,14 +63,14 @@ fi
 ###############################################################################
 softdir=../../../software/$1;
 elffile=../../../software/$1/$1.elf;
-verfile=../../../bench/verilog/regression/$1.v;
+verfile=../../../bench/verilog/regression/$1.sv;
 submitfile=../src/submit.f;
 submit_verilog=../src/submit_verilog.f;
 submit_vhdl=../src/submit_vhdl.f;
 if [ $OMSP_SIMULATOR == "isim" ]; then
     submitfile=../src/submit.prj;
 fi
-incfile=../../../rtl/verilog/pkg/openMSP430_defines.v;
+incfile=../../../rtl/verilog/pkg/msp430_defines.sv;
 
 if [ ! -e $softdir ]; then
     echo "Software directory doesn't exist: $softdir"
@@ -95,7 +95,7 @@ rm -rf *.vpd
 rm -rf *.trn
 rm -rf *.dsn
 rm -rf pmem.*
-rm -rf stimulus.v
+rm -rf stimulus.sv
 
 
 ###############################################################################
@@ -115,10 +115,10 @@ cd ../../sim/verilog/run/
 if [ `uname -o` = "Cygwin" ]
 then
     cp $elffile pmem.elf
-    cp $verfile stimulus.v
+    cp $verfile stimulus.sv
 else
     ln -s $elffile pmem.elf
-    ln -s $verfile stimulus.v
+    ln -s $verfile stimulus.sv
 fi
 
 # Make local copy of the openMSP403 configuration file
@@ -148,4 +148,4 @@ echo "Convert IHEX file to Verilog MEMH format..."
 
 # Start verilog simulation
 echo "Start Verilog simulation..."
-../bin/rtlsim.sh    stimulus.v pmem.mem $submitfile $submit_verilog $submit_vhdl
+../bin/rtlsim.sh    stimulus.sv pmem.mem $submitfile $submit_verilog $submit_vhdl

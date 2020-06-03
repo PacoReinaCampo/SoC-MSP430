@@ -22,7 +22,7 @@
 //
 //----------------------------------------------------------------------------
 // 
-// *File Name: ram.v
+// *File Name: ram_p2.sv
 // 
 // *Module Description:
 //                      Scalable RAM model
@@ -36,9 +36,9 @@
 // $LastChangedDate: 2011-03-05 15:44:48 +0100 (Sat, 05 Mar 2011) $
 //----------------------------------------------------------------------------
 
-`include "openMSP430_defines.v"
+`include "msp430_defines.sv"
 
-module RAM_P2 (
+module ram_p2 (
   input                clka,
   input                ena,
   input  [        1:0] wea,
@@ -58,11 +58,11 @@ module RAM_P2 (
   // RAM
   //============
 
-  RAM_DP #(
+  ram_dp #(
     .ADDR_MSB(`PMEM_MSB),
     .MEM_SIZE(`PMEM_SIZE)
   )
-  RAM_DP_inst (
+  dp (
     // OUTPUTs
     .ram_douta     ( douta),      // RAM data output (Port A)
     .ram_doutb     ( doutb),      // RAM data output (Port B)
@@ -79,5 +79,5 @@ module RAM_P2 (
     .ram_dinb      ( dinb),       // RAM data input (Port B)
     .ram_wenb      (~web)         // RAM write enable (low active) (Port B)
   );
-endmodule // RAM_P2
+endmodule // ram_p2
 

@@ -22,7 +22,7 @@
 //
 //----------------------------------------------------------------------------
 // 
-// *File Name: ram.v
+// *File Name: ram_dp.sv
 // 
 // *Module Description:
 //                      Scalable Dual-Port RAM model
@@ -36,7 +36,7 @@
 // $LastChangedDate: 2011-03-05 15:44:48 +0100 (Sat, 05 Mar 2011) $
 //----------------------------------------------------------------------------
 
-module RAM_DP #(
+module ram_dp #(
   parameter ADDR_MSB   =  6,         // MSB of the address bus
   parameter MEM_SIZE   =  256        // Memory size in bytes
 )
@@ -90,4 +90,4 @@ module RAM_DP #(
   end
 
   assign ram_doutb = mem[ram_addrb_reg];
-endmodule // RAM_DP
+endmodule // ram_dp

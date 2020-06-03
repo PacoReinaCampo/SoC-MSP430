@@ -34,9 +34,9 @@
 //              - Olivier Girard,    olgirard@gmail.com
 //
 //----------------------------------------------------------------------------
-`include "openMSP430_defines.v"
+`include "msp430_defines.sv"
 
-module MSP430_CORE1 (
+module msp430_core1 (
   // CPU registers
   output        [15:0] r0,
   output        [15:0] r1,
@@ -148,11 +148,11 @@ module MSP430_CORE1 (
   // 2)  OPENMSP430 CORE
   //=============================================================================
 
-  MSP430_CORE #(
+  msp430_pu #(
     .INST_NR  (1),
     .TOTAL_NR (1)
   )
-  MSP430_CORE_0 (
+  msp430_pu_0 (
 
     // OUTPUTs
     .r0                (r0),
@@ -244,7 +244,7 @@ module MSP430_CORE1 (
   // Digital I/O
   //-------------------------------
 
-  GPIO GPIO_0 (
+  msp430_gpio gpio_0 (
 
     // OUTPUTs
     .irq_port1    (irq_port1),             // Port 1 interrupt
@@ -297,7 +297,7 @@ module MSP430_CORE1 (
   // Timer A
   //----------------------------------------------
 
-  T_A T_A_0 (
+  msp430_ta ta_0 (
 
     // OUTPUTs
     .irq_ta0      (irq_ta0),               // Timer A interrupt: TACCR0
@@ -358,4 +358,4 @@ module MSP430_CORE1 (
                       1'b0,         // Vector  2  (0xFFE4) - Reserved (Port 1 from system 0)
                       irq_port2,    // Vector  1  (0xFFE2)
                       irq_port1};   // Vector  0  (0xFFE0)
-endmodule // MSP430_CORE1
+endmodule // msp430_core1

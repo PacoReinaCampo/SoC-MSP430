@@ -32,9 +32,9 @@
 //              - Olivier Girard,    olgirard@gmail.com
 //
 //----------------------------------------------------------------------------
-`include "openMSP430_defines.v"
+`include "msp430_defines.sv"
 
-module MSP430_SoC (
+module msp430_soc (
   //CORE 0
   // CPU registers
   output        [15:0] omsp0_r0,
@@ -238,7 +238,7 @@ module MSP430_SoC (
 
   // Top level reset generation
   wire dco_rst;
-  omsp_sync_reset sync_reset_dco (
+  msp430_sync_reset sync_reset_dco (
     .rst_s (dco_rst),
     .clk   (dco_clk),
     .rst_a (!reset_n)
@@ -256,7 +256,7 @@ module MSP430_SoC (
   // 4)  OPENMSP430 SYSTEM 0
   //=============================================================================
 
-  MSP430_CORE0 MSP430_CORE0_0 (
+  msp430_core0 msp430_core0_0 (
 
     // CPU registers
     .r0                (omsp0_r0),
@@ -334,7 +334,7 @@ module MSP430_SoC (
   // 5)  OPENMSP430 SYSTEM 1
   //=============================================================================
 
-  MSP430_CORE1 MSP430_CORE1_0 (
+  msp430_core1 msp430_core1_0 (
 
     // CPU registers
     .r0                (omsp1_r0),
@@ -464,7 +464,7 @@ module MSP430_SoC (
   assign omsp_dbg_i2c_sda_out = omsp0_dbg_i2c_sda_out & omsp1_dbg_i2c_sda_out;
 
   // Connector J5
-  io_cell PMOD_P3_PIN (
+  msp430_io_cell PMOD_P3_PIN (
     .data_out_en (omsp_dbg_i2c_sda_out),
     .data_in     (omsp_dbg_i2c_sda_in),
     .data_out    (1'b0),
@@ -472,4 +472,4 @@ module MSP430_SoC (
   );
 
   assign omsp_dbg_i2c_scl = PMOD1_P4;
-endmodule // MSP430_SoC
+endmodule // msp430_soc

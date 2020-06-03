@@ -22,10 +22,10 @@
 //
 //----------------------------------------------------------------------------
 // 
-// *File Name: ram.v
+// *File Name: ram_d1.v
 // 
 // *Module Description:
-//                      Scalable Single-Port RAM model
+//                      Scalable RAM model
 //
 // *Author(s):
 //              - Olivier Girard,    olgirard@gmail.com
@@ -36,38 +36,34 @@
 // $LastChangedDate: 2011-03-05 15:44:48 +0100 (Sat, 05 Mar 2011) $
 //----------------------------------------------------------------------------
 
-module RAM_SP #(
-  parameter ADDR_MSB = 6,         // MSB of the address bus
-  parameter MEM_SIZE = 256        // Memory size in bytes
-)
-  (
-  // OUTPUTs
-  output [      15:0] ram_dout,       // RAM data output
+`include "msp430_defines.sv"
 
-  // INPUTs
-  input  [ADDR_MSB:0] ram_addr,       // RAM address
-  input               ram_cen,        // RAM chip enable (low active)
-  input               ram_clk,        // RAM clock
-  input  [      15:0] ram_din,        // RAM data input
-  input  [       1:0] ram_wen         // RAM write enable (low active)
+module ram_d1 (
+  input                  clka,
+  input                  ena,
+  input  [          1:0] wea,
+  input  [`DMEM_MSB-1:0] addra,
+  input  [         15:0] dina,
+  output [         15:0] douta
 );
 
+  //============
   // RAM
   //============
 
-  reg   [      15:0] mem [0:(MEM_SIZE/2)-1];
-  reg   [ADDR_MSB:0] ram_addr_reg;
+  ram_sp #(
+    .ADDR_MSB (`DMEM_MSB-1),
+    .MEM_SIZE (`DMEM_SIZE)
+  )
+  sp (
+    // OUTPUTs
+    .ram_dout     ( douta),      // RAM data output
 
-  wire  [      15:0] mem_val = mem[ram_addr];
-
-  always @(posedge ram_clk) begin
-    if (~ram_cen && (ram_addr<(MEM_SIZE/2))) begin
-      if      (ram_wen==2'b00) mem[ram_addr] <= ram_din;
-      else if (ram_wen==2'b01) mem[ram_addr] <= {ram_din[15:8], mem_val[7:0]};
-      else if (ram_wen==2'b10) mem[ram_addr] <= {mem_val[15:8], ram_din[7:0]};
-      ram_addr_reg <= ram_addr;
-    end
-  end
-
-  assign ram_dout = mem[ram_addr_reg];
-endmodule // RAM_SP
+    // INPUTs
+    .ram_addr     ( addra),      // RAM address
+    .ram_cen      (~ena),        // RAM chip enable (low active)
+    .ram_clk      ( clka),       // RAM clock
+    .ram_din      ( dina),       // RAM data input
+    .ram_wen      (~wea)         // RAM write enable (low active)
+  );
+endmodule // ram_d1

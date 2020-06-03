@@ -44,45 +44,33 @@ use IEEE.STD_LOGIC_1164 .all;
 use IEEE.NUMERIC_STD .all;
 use WORK.MSP430_PACK .all;
 
-entity RAM_D2 is
+entity ram_d1 is
   port (
     clka  : in  std_logic;
     ena   : in  std_logic;
     wea   : in  std_logic_vector(1 downto 0);
     addra : in  std_logic_vector(DMEM_MSB-1 downto 0);
     dina  : in  std_logic_vector(15 downto 0);
-    douta : out std_logic_vector(15 downto 0);
-    clkb  : in  std_logic;
-    enb   : in  std_logic;
-    web   : in  std_logic_vector(1 downto 0);
-    addrb : in  std_logic_vector(DMEM_MSB-1 downto 0);
-    dinb  : in  std_logic_vector(15 downto 0);
-    doutb : out std_logic_vector(15 downto 0));
-end RAM_D2;
+    douta : out std_logic_vector(15 downto 0));
+end ram_d1;
 
-architecture RTL of RAM_D2 is
+architecture rtl of ram_d1 is
 begin
   --============
   -- RAM
   --============
-  RAM_DP_inst : RAM_DP
+  dp : ram_dp
     generic map (
-      ADDR_MSB => DMEM_MSB - 1,
+      ADDR_MSB => DMEM_MSB,
       MEM_SIZE => DMEM_SIZE)
     port map (
       -- OUTPUTs
-      ram_douta => douta,  -- RAM data output (Port A)
-      ram_doutb => doutb,  -- RAM data output (Port B)
+      ram_dout => douta,                -- RAM data output
 
       -- INPUTs
-      ram_addra => addra,     -- RAM address (Port A)
-      ram_cena  => not ena,   -- RAM chip enable (low active) (Port A)
-      ram_clka  => clka,      -- RAM clock (Port A)
-      ram_dina  => dina,      -- RAM data input (Port A)
-      ram_wena  => not wea,   -- RAM write enable (low active) (Port A)
-      ram_addrb => addrb,     -- RAM address (Port B)
-      ram_cenb  => not enb,   -- RAM chip enable (low active) (Port B)
-      ram_clkb  => clkb,      -- RAM clock (Port B)
-      ram_dinb  => dinb,      -- RAM data input (Port B)
-      ram_wenb  => not web);  -- RAM write enable (low active) (Port B)  
-end RTL;
+      ram_addr => addra,                -- RAM address
+      ram_cen  => not ena,              -- RAM chip enable (low active)
+      ram_clk  => clka,                 -- RAM clock
+      ram_din  => dina,                 -- RAM data input
+      ram_wen  => not wea);             -- RAM write enable (low active)
+end rtl;

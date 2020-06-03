@@ -22,7 +22,7 @@
 //
 //----------------------------------------------------------------------------
 // 
-// *File Name: tb_openMSP430.v
+// *File Name: msp430_testbench.sv
 // 
 // *Module Description:
 //                      openMSP430 FPGA testbench
@@ -35,13 +35,13 @@
 // $LastChangedBy: olivier.girard $
 // $LastChangedDate: 2011-05-20 22:39:02 +0200 (Fri, 20 May 2011) $
 //----------------------------------------------------------------------------
-`include "timescale.v"
+`include "timescale.sv"
 `ifdef OMSP_NO_INCLUDE
 `else
-`include "openMSP430_defines.v"
+`include "msp430_defines.sv"
 `endif
 
-module tb_openMSP430;
+module msp430_testbench;
 
   //
   // Wire & Register definition
@@ -208,11 +208,11 @@ module tb_openMSP430;
   //------------------------------
 
   // CPU & Memory registers
-  `include "registers_omsp0.v"
-  `include "registers_omsp1.v"
+  `include "registers_omsp0.sv"
+  `include "registers_omsp1.sv"
 
   // Verilog stimulus
-  `include "stimulus.v"
+  `include "stimulus.sv"
 
   //
   // Initialize Program Memory
@@ -224,7 +224,7 @@ module tb_openMSP430;
 
     // Update Xilinx memory banks
     for (i=0; i<8192; i=i+1) begin
-      RAM_P2_shared.RAM_DP_inst.mem[i] = pmem[i];
+      ram_p2_shared.dp.mem[i] = pmem[i];
     end
   end
 
@@ -260,7 +260,7 @@ module tb_openMSP430;
   // openMSP430 FPGA Instance
   //----------------------------------
 
-  MSP430_SoC dut (
+  msp430_soc dut (
 
     // CORE 0
     // CPU registers
@@ -420,7 +420,7 @@ module tb_openMSP430;
 
   // DATA MEMORIES
   // Data Memory (CPU 0)
-  RAM_D1 RAM_D1_omsp0 (
+  ram_d1 ram_d1_omsp0 (
     .clka           ( dco_clk),
     .ena            (~omsp0_dmem_cen_sp),
     .wea            (~omsp0_dmem_wen),
@@ -430,7 +430,7 @@ module tb_openMSP430;
   );
 
   // Data Memory (CPU 1)
-  RAM_D1 RAM_D1_omsp1 (
+  ram_d1 ram_d1_omsp1 (
     .clka           ( dco_clk),
     .ena            (~omsp1_dmem_cen_sp),
     .wea            (~omsp1_dmem_wen),
@@ -440,7 +440,7 @@ module tb_openMSP430;
   );
 
   // Shared Data Memory (CPU 0 - CPU 1)
-  RAM_D2 RAM_D2_shared (
+  ram_d2 ram_d2_shared (
     .clka           ( dco_clk),
     .ena            (~omsp0_dmem_cen_dp),
     .wea            (~omsp0_dmem_wen),
@@ -457,7 +457,7 @@ module tb_openMSP430;
 
   // PROGRAM MEMORIES
   // Shared Program Memory (CPU 0 - CPU 1)
-  RAM_P2 RAM_P2_shared (
+  ram_p2 ram_p2_shared (
     .clka           ( dco_clk),
     .ena            (~omsp0_pmem_cen),
     .wea            (~omsp0_pmem_wen),
@@ -474,7 +474,7 @@ module tb_openMSP430;
 
   // Debug utility signals
   //----------------------------------------
-  msp_debug msp_debug_omsp0 (
+  msp430_debug debug_omsp0 (
 
     // OUTPUTs
     .e_state      (omsp0_e_state),       // Execution state
@@ -489,7 +489,7 @@ module tb_openMSP430;
     .core_select  (1'b0)                 // Core selection
   );
 
-  msp_debug msp_debug_omsp1 (
+  msp430_debug debug_omsp1 (
 
     // OUTPUTs
     .e_state      (omsp1_e_state),       // Execution state
@@ -509,15 +509,15 @@ module tb_openMSP430;
   //----------------------------------------
   initial begin
     `ifdef VPD_FILE
-    $vcdplusfile("tb_openMSP430.vpd");
+    $vcdplusfile("msp430_testbench.vpd");
     $vcdpluson();
     `else
     `ifdef TRN_FILE
-    $recordfile ("tb_openMSP430.trn");
+    $recordfile ("msp430_testbench.trn");
     $recordvars;
     `else
-    $dumpfile("tb_openMSP430.vcd");
-    $dumpvars(0, tb_openMSP430);
+    $dumpfile("msp430_testbench.vcd");
+    $dumpvars(0, msp430_testbench);
     `endif
     `endif
   end

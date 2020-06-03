@@ -41,7 +41,7 @@
 // $LastChangedDate: 2011-03-05 15:44:48 +0100 (Sat, 05 Mar 2011) $
 //----------------------------------------------------------------------------
 
-module  io_cell (
+module  msp430_io_cell (
   // INOUTs
   inout          pad,            // I/O Pad
 

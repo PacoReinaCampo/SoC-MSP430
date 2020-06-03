@@ -39,12 +39,12 @@
 --   Francisco Javier Reina Campo <frareicam@gmail.com>
 --
 
-library IEEE;
-use IEEE.STD_LOGIC_1164 .all;
-use IEEE.NUMERIC_STD .all;
-use WORK.MSP430_PACK .all;
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use work.msp430_pkg.all;
 
-entity MSP430_CORE1 is
+entity msp430_core0 is
   port (
     -- CPU registers
     r0  : out std_logic_vector(15 downto 0);
@@ -109,13 +109,17 @@ entity MSP430_CORE1 is
     pmem_din  : out std_logic_vector(15 downto 0);        -- Program Memory data input (optional)
     pmem_wen  : out std_logic_vector(1 downto 0);         -- Program Memory write enable (low active) (optional)
 
-    -- LEDs
+    -- UART
+    uart_rxd : in  std_logic;           -- UART Data Receive (RXD)
+    uart_txd : out std_logic;           -- UART Data Transmit (TXD)
+
+    -- Switches & LEDs
     switch : in  std_logic_vector(3 downto 0);   -- Input switches
     led    : out std_logic_vector(1 downto 0));  -- LEDs
-end MSP430_CORE1;
+end msp430_core0;
 
-architecture RTL of MSP430_CORE1 is
-component MSP430_CORE
+architecture rtl of msp430_core0 is
+component msp430_pu
   port (
     --FRONTEND - SCAN
     scan_enable : in std_logic;
@@ -212,9 +216,9 @@ component MSP430_CORE
     dco_clk     : in  std_logic;
     lfxt_clk    : in  std_logic;
     wkup        : in  std_logic);
-end component MSP430_CORE;
+end component msp430_pu;
 
-component GPIO
+component msp430_gpio
   port (
     p1_dout : out std_logic_vector (7 downto 0);
     p2_dout : out std_logic_vector (7 downto 0);
@@ -257,9 +261,9 @@ component GPIO
     per_we   : in  std_logic_vector (1 downto 0);
     per_addr : in  std_logic_vector (13 downto 0);
     per_din  : in  std_logic_vector (15 downto 0));
-end component GPIO;
+end component msp430_gpio;
 
-component T_A
+component msp430_ta
   port (
     ta_out0 : out std_logic;
     ta_out1 : out std_logic;
@@ -297,9 +301,9 @@ component T_A
     per_we   : in std_logic_vector (1 downto 0);
     per_addr : in std_logic_vector (13 downto 0);
     per_din  : in std_logic_vector (15 downto 0));
-end component T_A;
+end component msp430_ta;
 
-component UART
+component msp430_uart
   port (
     uart_txd : out std_logic;
     uart_rxd : in  std_logic;
@@ -315,7 +319,7 @@ component UART
     per_we   : in  std_logic_vector (1 downto 0);
     per_addr : in  std_logic_vector (13 downto 0);
     per_din  : in  std_logic_vector (15 downto 0));
-end component UART;
+end component msp430_uart;
 
   --=============================================================================
   -- 1)  INTERNAL WIRES/REGISTERS/PARAMETERS DECLARATION
@@ -360,13 +364,18 @@ end component UART;
   signal irq_ta1     : std_logic;
   signal per_dout_tA : std_logic_vector(15 downto 0);
 
+  -- Hardware UART
+  signal irq_uart_rx   : std_logic;
+  signal irq_uart_tx   : std_logic;
+  signal per_dout_uart : std_logic_vector(15 downto 0);
+
 begin
   --=============================================================================
   -- 2)  OPENMSP430 CORE
   --=============================================================================
-  MSP430_CORE_0 : MSP430_CORE
+  msp430_pu_0 : msp430_pu
     generic map (
-      INST_NR  => 1,
+      INST_NR  => 0,
       TOTAL_NR => 1)
     port map (
       -- OUTPUTs
@@ -455,7 +464,7 @@ begin
   --=============================================================================
 
   -- Digital I/O
-  GPIO_0 : GPIO
+  gpio_0 : msp430_gpio
     port map (
       -- OUTPUTs
       irq_port1  => irq_port1,          -- Port 1 interrupt
@@ -504,7 +513,7 @@ begin
   p1_din(3 downto 0) <= switch;
 
   -- Timer A
-  T_A_0 : T_A
+  ta_0 : msp430_ta
     port map (
       -- OUTPUTs
       irq_ta0    => irq_ta0,            -- Timer A interrupt: TACCR0
@@ -539,8 +548,27 @@ begin
       ta_cci2b    => '0',               -- Timer A capture 2 input B
       taclk       => '0');              -- TACLK external timer clock (SLOW)
 
+  -- Hardware UART
+  uart_0 : msp430_uart
+    port map (
+      -- OUTPUTs
+      irq_uart_rx => irq_uart_rx,       -- UART receive interrupt
+      irq_uart_tx => irq_uart_tx,       -- UART transmit interrupt
+      per_dout    => per_dout_uart,     -- Peripheral data output
+      uart_txd    => uart_txd,          -- UART Data Transmit (TXD)
+
+      -- INPUTs
+      mclk     => mclk_omsp,            -- Main system clock
+      per_addr => per_addr,             -- Peripheral address
+      per_din  => per_din,              -- Peripheral data input
+      per_en   => per_en,               -- Peripheral enable (high active)
+      per_we   => per_we,               -- Peripheral write enable (high active)
+      puc_rst  => puc_rst_omsp,         -- Main system reset
+      smclk_en => smclk_en,             -- SMCLK enable (from CPU)
+      uart_rxd => uart_rxd);            -- UART Data Receive (RXD)
+
   -- Combine peripheral data buses
-  per_dout <= per_dout_gpio or per_dout_tA;
+  per_dout <= per_dout_gpio or per_dout_uart or per_dout_tA;
 
   -- Assign interrupts
   nmi <= '0';
@@ -548,17 +576,17 @@ begin
               '0' &                     -- Vector 12  (0xFFF8)
               '0' &                     -- Vector 11  (0xFFF6)
               '0' &                     -- Vector 10  (0xFFF4) - Watchdog -
-              '0' &                     -- Vector  9  (0xFFF2) - Reserved (Timer-A 0 from system 0)
-              '0' &                     -- Vector  8  (0xFFF0) - Reserved (Timer-A 1 from system 0)
-              '0' &                     -- Vector  7  (0xFFEE) - Reserved (UART RX from system 0)
-              '0' &                     -- Vector  6  (0xFFEC) - Reserved (UART TX from system 0)
-              irq_ta0 &                 -- Vector  5  (0xFFEA)
-              irq_ta1 &                 -- Vector  4  (0xFFE8)
-              '0' &                     -- Vector  3  (0xFFE6) - Reserved (Port 2 from system 0)
-              '0' &                     -- Vector  2  (0xFFE4) - Reserved (Port 1 from system 0)
-              irq_port2 &               -- Vector  1  (0xFFE2)
-              irq_port1);               -- Vector  0  (0xFFE0)
+              irq_ta0 &                 -- Vector  9  (0xFFF2)
+              irq_ta1 &                 -- Vector  8  (0xFFF0)
+              irq_uart_rx &             -- Vector  7  (0xFFEE)
+              irq_uart_tx &             -- Vector  6  (0xFFEC)
+              '0' &                     -- Vector  5  (0xFFEA) - Reserved (Timer-A 0 from system 1)
+              '0' &                     -- Vector  4  (0xFFE8) - Reserved (Timer-A 1 from system 1)
+              irq_port2 &               -- Vector  3  (0xFFE6)
+              irq_port1 &               -- Vector  2  (0xFFE4)
+              '0' &                     -- Vector  1  (0xFFE2) - Reserved (Port 2 from system 1)
+              '0');                     -- Vector  0  (0xFFE0) - Reserved (Port 1 from system 1)
 
   mclk    <= mclk_omsp;
   puc_rst <= puc_rst_omsp;
-end RTL;
+end rtl;

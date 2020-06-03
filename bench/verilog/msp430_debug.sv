@@ -22,7 +22,7 @@
 //
 //----------------------------------------------------------------------------
 // 
-// *File Name: msp_debug.v
+// *File Name: msp430_debug.v
 // 
 // *Module Description:
 //                      MSP430 core debug utility signals
@@ -37,10 +37,10 @@
 //----------------------------------------------------------------------------
 `ifdef OMSP_NO_INCLUDE
 `else
-`include "openMSP430_defines.v"
+`include "msp430_defines.sv"
 `endif
 
-module msp_debug (
+module msp430_debug (
   // OUTPUTs
   output reg [8*32-1:0] e_state,        // Execution state
   output reg [8*32-1:0] i_state,        // Instruction fetch state
@@ -95,32 +95,32 @@ module msp_debug (
   //-------------------------
   // CPU 0
   //-------------------------
-  wire  [2:0] omsp0_i_state_bin = tb_openMSP430.omsp0_i_state_bin;
-  wire  [3:0] omsp0_e_state_bin = tb_openMSP430.omsp0_e_state_bin;
+  wire  [2:0] omsp0_i_state_bin = msp430_testbench.omsp0_i_state_bin;
+  wire  [3:0] omsp0_e_state_bin = msp430_testbench.omsp0_e_state_bin;
 
-  wire        omsp0_decode      = tb_openMSP430.omsp0_decode;
-  wire [15:0] omsp0_ir          = tb_openMSP430.omsp0_ir;
-  wire        omsp0_irq_detect  = tb_openMSP430.omsp0_irq_detect;
-  wire  [3:0] omsp0_irq_num     = tb_openMSP430.omsp0_irq_num;
-  wire [15:0] omsp0_pc          = tb_openMSP430.omsp0_pc;
+  wire        omsp0_decode      = msp430_testbench.omsp0_decode;
+  wire [15:0] omsp0_ir          = msp430_testbench.omsp0_ir;
+  wire        omsp0_irq_detect  = msp430_testbench.omsp0_irq_detect;
+  wire  [3:0] omsp0_irq_num     = msp430_testbench.omsp0_irq_num;
+  wire [15:0] omsp0_pc          = msp430_testbench.omsp0_pc;
 
-  wire        omsp0_mclk        = tb_openMSP430.omsp0_mclk;
-  wire        omsp0_puc_rst     = tb_openMSP430.omsp0_puc_rst;
+  wire        omsp0_mclk        = msp430_testbench.omsp0_mclk;
+  wire        omsp0_puc_rst     = msp430_testbench.omsp0_puc_rst;
 
   //-------------------------
   // CPU 1
   //-------------------------
-  wire  [2:0] omsp1_i_state_bin = tb_openMSP430.omsp1_i_state_bin;
-  wire  [3:0] omsp1_e_state_bin = tb_openMSP430.omsp1_e_state_bin;
+  wire  [2:0] omsp1_i_state_bin = msp430_testbench.omsp1_i_state_bin;
+  wire  [3:0] omsp1_e_state_bin = msp430_testbench.omsp1_e_state_bin;
 
-  wire        omsp1_decode      = tb_openMSP430.omsp1_decode;
-  wire [15:0] omsp1_ir          = tb_openMSP430.omsp1_ir;
-  wire        omsp1_irq_detect  = tb_openMSP430.omsp1_irq_detect;
-  wire  [3:0] omsp1_irq_num     = tb_openMSP430.omsp1_irq_num;
-  wire [15:0] omsp1_pc          = tb_openMSP430.omsp1_pc;
+  wire        omsp1_decode      = msp430_testbench.omsp1_decode;
+  wire [15:0] omsp1_ir          = msp430_testbench.omsp1_ir;
+  wire        omsp1_irq_detect  = msp430_testbench.omsp1_irq_detect;
+  wire  [3:0] omsp1_irq_num     = msp430_testbench.omsp1_irq_num;
+  wire [15:0] omsp1_pc          = msp430_testbench.omsp1_pc;
 
-  wire        omsp1_mclk        = tb_openMSP430.omsp1_mclk;
-  wire        omsp1_puc_rst     = tb_openMSP430.omsp1_puc_rst;
+  wire        omsp1_mclk        = msp430_testbench.omsp1_mclk;
+  wire        omsp1_puc_rst     = msp430_testbench.omsp1_puc_rst;
 
   //-------------------------
   // CPU Selection
@@ -448,4 +448,4 @@ module msp_debug (
     if (puc_rst)     inst_pc  <=  16'h0000;
     else if (decode) inst_pc  <=  pc;
   end
-endmodule // msp_debug
+endmodule // msp430_debug

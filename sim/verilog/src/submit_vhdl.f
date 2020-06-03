@@ -39,12 +39,12 @@
  *   Francisco Javier Reina Campo <frareicam@gmail.com>
  */
 
-../../../rtl/vhdl/pkg/MSP430_PACK.vhd
+../../../rtl/vhdl/pkg/msp430_pkg.vhd
 
 //=============================================================================
 // SoC-MSP430
 //=============================================================================
 
-../../../rtl/vhdl/soc/MSP430_CORE0.vhd
-../../../rtl/vhdl/soc/MSP430_CORE1.vhd
-../../../rtl/vhdl/soc/MSP430_SoC.vhd
+../../../rtl/vhdl/soc/msp430_core0.vhd
+../../../rtl/vhdl/soc/msp430_core1.vhd
+../../../rtl/vhdl/soc/msp430_soc.vhd

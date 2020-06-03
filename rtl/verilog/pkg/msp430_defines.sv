@@ -40,7 +40,7 @@
 //`define OMSP_NO_INCLUDE
 `ifdef OMSP_NO_INCLUDE
 `else
-`include "openMSP430_undefines.v"
+`include "msp430_undefines.sv"
 `endif
 
 //============================================================================

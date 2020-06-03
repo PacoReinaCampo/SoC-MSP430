@@ -39,12 +39,12 @@
 --   Francisco Javier Reina Campo <frareicam@gmail.com>
 --
 
-library IEEE;
-use IEEE.STD_LOGIC_1164 .all;
-use IEEE.NUMERIC_STD .all;
-use WORK.MSP430_PACK .all;
+library ieee;
+use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
+use work.msp430_pkg.all;
 
-entity MSP430_SoC is
+entity msp430_soc is
   port (
     --CORE 0
     -- CPU registers
@@ -200,10 +200,10 @@ entity MSP430_SoC is
     -- Connector J5
     PMOD1_P3 : inout std_logic;
     PMOD1_P4 : in    std_logic);
-end MSP430_SoC;
+end msp430_soc;
 
-architecture RTL of MSP430_SoC is
-  component MSP430_CORE0
+architecture rtl of msp430_soc is
+  component msp430_core0
     port (
       -- CPU registers
       r0  : out std_logic_vector(15 downto 0);
@@ -275,9 +275,9 @@ architecture RTL of MSP430_SoC is
       -- Switches & LEDs
       switch : in  std_logic_vector(3 downto 0);   -- Input switches
       led    : out std_logic_vector(1 downto 0));  -- LEDs
-  end component MSP430_CORE0;
+  end component msp430_core0;
 
-  component MSP430_CORE1
+  component msp430_core1
     port (
       -- CPU registers
       r0  : out std_logic_vector(15 downto 0);
@@ -345,15 +345,15 @@ architecture RTL of MSP430_SoC is
       -- LEDs
       switch : in  std_logic_vector(3 downto 0);   -- Input switches
       led    : out std_logic_vector(1 downto 0));  -- LEDs
-  end component MSP430_CORE1;
+  end component msp430_core1;
 
-  component io_cell
+  component msp430_io_cell
     port (
       pad         : inout std_logic;
       data_in     : out   std_logic;
       data_out    : in    std_logic;
       data_out_en : in    std_logic);
-  end component io_cell;
+  end component msp430_io_cell;
 
   --=============================================================================
   -- 1)  INTERNAL WIRES/REGISTERS/PARAMETERS DECLARATION
@@ -406,7 +406,7 @@ begin
   -- Release the reset only, if the DCM is locked
   reset_n <= reset_pin_n;
 
-  sync_reset_dco : omsp_sync_reset
+  sync_reset_dco : msp430_sync_reset
     port map (
       rst_s => dco_rst,
       clk   => dco_clk_omsp,
@@ -423,7 +423,7 @@ begin
   -- 4)  OPENMSP430 SYSTEM 0
   --=============================================================================
 
-  MSP430_CORE0_0 : MSP430_CORE0
+  msp430_core0_0 : msp430_core0
     port map (
       -- CPU registers
       r0  => omsp0_r0,
@@ -499,7 +499,7 @@ begin
   --=============================================================================
   -- 5)  OPENMSP430 SYSTEM 1
   --=============================================================================
-  MSP430_CORE1_0 : MSP430_CORE1
+  msp430_core1_0 : msp430_core1
     port map (
       -- CPU registers
       r0  => omsp1_r0,
@@ -642,7 +642,7 @@ begin
   omsp_dbg_i2c_sda_out <= omsp0_dbg_i2c_sda_out and omsp1_dbg_i2c_sda_out;
 
   -- Connector J5
-  PMOD_P3_PIN : io_cell
+  PMOD_P3_PIN : msp430_io_cell
     port map (
       data_out_en => omsp_dbg_i2c_sda_out,
       data_in     => omsp_dbg_i2c_sda_in,
@@ -651,4 +651,4 @@ begin
 
   omsp_dbg_i2c_scl <= PMOD1_P4;
   dco_clk          <= dco_clk_omsp;
-end RTL;
+end rtl;
