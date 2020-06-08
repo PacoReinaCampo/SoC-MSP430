@@ -3,6 +3,4 @@
 
 #include "omsp_system.h"
 
-
-
 #endif // MAIN_H

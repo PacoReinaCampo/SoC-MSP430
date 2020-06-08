@@ -41,9 +41,9 @@ Verilog Hardware Description Language Simulator
 git clone https://github.com/steveicarus/iverilog
 
 cd iverilog
+sh autoconf.sh
 ./configure
 make
-sh autoconf.sh
 sudo make install
 ```
 

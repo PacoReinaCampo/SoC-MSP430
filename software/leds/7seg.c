@@ -1,43 +1,45 @@
-/*
-*********************************************************************************************************
-*
-* Multiplexed LED Display Driver
-*
-* (c) Copyright 2004, modified by John Leung
-* Reference: Jean J. Labrosse, Embedded Systems Building Blocks
-* All Rights Reserved
-*
-* Filename : LED.C
-* Programmer : John Leung
-* Remarks : Modified for SaiWanHo project
-* Date : 19th Nov 2004
-* Hardware : PCB 11OCT2004.001
-*********************************************************************************************************
-* DESCRIPTION
-*
-* This module provides an interface to a multiplexed "8 segments x N digits" LED matrix.
-*
-* To use this driver:
-*
-* 1) You must define (LED.H):
-*
-* DISP_N_DIG The total number of segments to display, inc. dp status
-* DISP_N_SS The total number of seven-segment digits (modules)
-* DISP_PORT1_DIG The address of the DIGITS output port
-* DISP_PORT_SEG The address of the SEGMENTS output port
-* first_dig_msk The first digit mask for selecting the most significant digit
-*
-* 2) You must allocate a hardware timer which will interrupt the CPU at a rate of at least:
-*
-* DISP_N_DIG * 60 (Hz)
-*
-* The timer interrupt must vector to DispMuxISR (defined in LED_IA.ASM). You MUST write the
-* code to clear the interrupt source. The interrupt source must be cleared either in DispMuxISR
-* or in DispMuxHandler().
-*
-* 3) Adapt DispInitPort(), DispOutSeg() and DispOutDig() for your environment.
-*********************************************************************************************************
-*/
+////////////////////////////////////////////////////////////////////////////////
+//                                            __ _      _     _               //
+//                                           / _(_)    | |   | |              //
+//                __ _ _   _  ___  ___ _ __ | |_ _  ___| | __| |              //
+//               / _` | | | |/ _ \/ _ \ '_ \|  _| |/ _ \ |/ _` |              //
+//              | (_| | |_| |  __/  __/ | | | | | |  __/ | (_| |              //
+//               \__, |\__,_|\___|\___|_| |_|_| |_|\___|_|\__,_|              //
+//                  | |                                                       //
+//                  |_|                                                       //
+//                                                                            //
+//                                                                            //
+//              MSP430 CPU                                                    //
+//              Seven Segments                                                //
+//              Software                                                      //
+//                                                                            //
+////////////////////////////////////////////////////////////////////////////////
+
+/* Copyright (c) 2015-2016 by the author(s)
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in
+ * all copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+ * THE SOFTWARE.
+ *
+ * =============================================================================
+ * Author(s):
+ *   Francisco Javier Reina Campo <frareicam@gmail.com>
+ */
+
 #include "7seg.h"
 
 /*
