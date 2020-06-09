@@ -79,6 +79,7 @@
 ../../../pu/rtl/vhdl/core/main/msp430_memory.vhd
 ../../../pu/rtl/vhdl/core/main/msp430_multiplier.vhd
 ../../../pu/rtl/vhdl/core/main/msp430_sfr.vhd
+../../../pu/rtl/vhdl/core/main/msp430_ta.vhd
 ../../../pu/rtl/vhdl/core/main/msp430_watchdog.vhd
 ../../../pu/rtl/vhdl/core/main/msp430_template08.vhd
 ../../../pu/rtl/vhdl/core/main/msp430_template16.vhd
