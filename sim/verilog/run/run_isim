@@ -14,7 +14,7 @@ export OMSP_NODUMP
 #                   - verilog   : Verilog-XL
 #                   - ncverilog : NC-Verilog
 #                   - vcs       : VCS
-#                   - vsim      : Modelsim
+#                   - msim      : Modelsim
 #                   - isim      : Xilinx simulator
 OMSP_SIMULATOR=isim
 export OMSP_SIMULATOR

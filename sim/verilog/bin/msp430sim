@@ -51,7 +51,7 @@ if [ $# -ne $EXPECTED_ARGS ]; then
   echo "                  - verilog   : Verilog-XL"
   echo "                  - ncverilog : NC-Verilog"
   echo "                  - vcs       : VCS"
-  echo "                  - vsim      : Modelsim"
+  echo "                  - msim      : Modelsim"
   echo "                  - isim      : Xilinx simulator"
   echo ""
   exit 1
