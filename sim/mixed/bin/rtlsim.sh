@@ -3,7 +3,7 @@
 ###############################################################################
 #                            Parameter Check                                  #
 ###############################################################################
-EXPECTED_ARGS=3
+EXPECTED_ARGS=5
 if [ $# -ne $EXPECTED_ARGS ]; then
   echo "ERROR    : wrong number of arguments"
   echo "USAGE    : rtlsim.sh <verilog stimulus file> <memory file> <submit file>"
@@ -29,6 +29,10 @@ if [ ! -e $3 ]; then
     echo "Verilog submit file $3 doesn't exist"
     exit 1
 fi
+if [ ! -e $4 ]; then
+    echo "VHDL submit file $4 doesn't exist"
+    exit 1
+fi
 
 
 ###############################################################################
@@ -42,9 +46,9 @@ if [ "${OMSP_SIMULATOR:-iverilog}" = iverilog ]; then
     NODUMP=${OMSP_NODUMP-0}
     if [ $NODUMP -eq 1 ]
       then
-        iverilog -o simv -c $3 -D NODUMP
+        iverilog -o simv -c $5 -D NODUMP
       else
-        iverilog -o simv -c $3
+        iverilog -o simv -c $5
     fi
     
     if [ `uname -o` = "Cygwin" ]
@@ -78,16 +82,17 @@ else
        # Modelsim
        if [ -d work ]; then  vdel -all; fi
        vlib work
+       vcom -2008 -f $4
        exec vlog -sv +acc=prn -f $3 $vargs -R -c -do "run -all" ;;
     isim )
        # Xilinx simulator
        rm -rf fuse* isim*
-       fuse msp430_testbench glbl -mt off -v 1 -prj $3 -o isim.exe -i ../../../rtl/verilog/pkg/
+       fuse msp430_testbench glbl -mt off -v 1 -prj $5 -o isim.exe -i ../../../rtl/verilog/pkg/
        echo "run all" > isim.tcl
        ./isim.exe -tclbatch isim.tcl
        exit
    esac
    
-   echo "Running: $OMSP_SIMULATOR -f $3 $vargs"
-   exec $OMSP_SIMULATOR -f $3 $vargs
+   echo "Running: $OMSP_SIMULATOR -f $5 $vargs"
+   exec $OMSP_SIMULATOR -f $5 $vargs
 fi

@@ -1,0 +1,22 @@
+#!/bin/bash
+export XILINX=/opt/Xilinx/14.7/ISE_DS/ISE
+export PLATFORM=lin64
+export PATH=$PATH:${XILINX}/bin/${PLATFORM}
+export LD_LIBRARY_PATH=${XILINX}/lib/${PLATFORM}
+
+# Enable/Disable waveform dumping
+OMSP_NODUMP=0
+export OMSP_NODUMP
+
+# Choose simulator:
+#                   - iverilog  : Icarus Verilog  (default)
+#                   - cver      : CVer
+#                   - verilog   : Verilog-XL
+#                   - ncverilog : NC-Verilog
+#                   - vcs       : VCS
+#                   - msim      : Modelsim
+#                   - isim      : Xilinx simulator
+OMSP_SIMULATOR=isim
+export OMSP_SIMULATOR
+
+../bin/msp430sim leds

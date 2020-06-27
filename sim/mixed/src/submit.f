@@ -99,3 +99,4 @@
 ../../../pu/rtl/verilog/core/main/msp430_uart.sv
 
 ../../../pu/rtl/verilog/pu/msp430_pu.sv
+
