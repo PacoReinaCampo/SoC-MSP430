@@ -42,24 +42,26 @@
  */
 
 interface dutintf;
-  logic mclk;
-  logic puc_rst;
-  logic [7:0] per_addr;
-  logic per_we;
-  logic per_en;
+  logic        mclk;
+  logic        mrst;
+  logic [ 7:0] per_addr;
+  logic        per_we;
+  logic        per_en;
   logic [31:0] per_dout;
   logic [31:0] per_din;
 endinterface
 
 module bb_slave(dutintf dif);
   logic [31:0] mem [256];
-  logic [1:0] bb_st;
+  logic [ 1:0] bb_st;
+
   const logic [1:0] SETUP = 0;
   const logic [1:0] W_ENABLE = 1;
   const logic [1:0] R_ENABLE = 2;
+
   // SETUP -> ENABLE
-  always @(negedge dif.puc_rst or posedge dif.mclk) begin
-    if (dif.puc_rst == 0) begin
+  always @(negedge dif.mrst or posedge dif.mclk) begin
+    if (dif.mrst == 0) begin
       bb_st <= 0;
       dif.per_dout <= 0;
     end

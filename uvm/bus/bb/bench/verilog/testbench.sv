@@ -63,9 +63,9 @@ module testbench;
   bb_slave dut(.dif(intf));
 
   initial begin
-    intf.mmclk = 0;
+    intf.mclk = 0;
     forever 
-      #5 intf.mmclk = ~intf.mmclk;
+      #5 intf.mclk = ~intf.mclk;
   end
 
   initial begin

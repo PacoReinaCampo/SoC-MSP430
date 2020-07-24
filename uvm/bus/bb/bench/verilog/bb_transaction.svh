@@ -43,15 +43,15 @@
 
 class bb_transaction extends uvm_sequence_item;
   `uvm_object_utils(bb_transaction)
-  rand bit [7:0]per_addr;
-  rand bit per_we;
-  rand bit [31:0] per_din;
+  rand bit [ 7:0] per_addr;
+  rand bit        per_we;
+  rand bit        per_en;
   rand bit [31:0] per_dout;
-  rand bit psel;
-  rand bit per_en;
-  constraint c1{per_addr[1:0] ==2'b00;};
+  rand bit [31:0] per_din;
+
+  constraint c1{per_addr[1:0] == 2'b00;};
+
   //constraint c2{$countones(per_din) inside {15,25,16,21};};
-  constraint c3 {psel == 1'b1;};
 
   function new(string name = "");
     super.new(name);
