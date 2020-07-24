@@ -11,7 +11,7 @@
 //                                                                            //
 //              MPSoC-RISCV CPU                                               //
 //              General Purpose Input Output Bridge                           //
-//              AMBA4 AXI-Lite Bus Interface                                  //
+//              Blackbone Bus Interface                                       //
 //              Universal Verification Methodology                            //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
@@ -41,41 +41,30 @@
  *   Paco Reina Campo <pacoreinacampo@queenfield.tech>
  */
 
-`uvm_analysis_imp_decl(_expdata)
-`uvm_analysis_imp_decl(_actdata)
+class bb_agent extends uvm_agent;
+  `uvm_component_utils(bb_agent)
 
-class axi4_scoreboard extends uvm_scoreboard;
-  `uvm_component_utils(axi4_scoreboard)
-
-  uvm_analysis_imp_expdata#(axi4_transaction, axi4_scoreboard) mon_export;
-  uvm_analysis_imp_actdata#(axi4_transaction, axi4_scoreboard) sb_export;
+   bb_monitor monitor;
+   bb_driver driver;
+   uvm_sequencer#(bb_transaction) sequencer;
 
   function new(string name, uvm_component parent);
     super.new(name, parent);
-    mon_export = new("mon_export", this);
-    sb_export = new("sb_export", this);
   endfunction
 
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
+    if(get_is_active == UVM_ACTIVE) begin
+      driver = bb_driver::type_id::create("driver",this);
+      sequencer = uvm_sequencer#(bb_transaction)::type_id::create("sequencer", this);
+    end
+    monitor = bb_monitor::type_id::create("monitor",this);
   endfunction
 
-  axi4_transaction exp_queue[$];
-
-  function void write_actdata(input axi4_transaction tr);
-    axi4_transaction expdata;
-    if(exp_queue.size()) begin
-      expdata =exp_queue.pop_front();
-      if(tr.compare(expdata))begin
-        `uvm_info("",$sformatf("MATCHED"),UVM_LOW)
-      end
-      else begin
-        `uvm_info("",$sformatf("MISMATCHED"),UVM_LOW)
-      end
+  function void connect_phase(uvm_phase phase);
+    super.build_phase(phase);
+    if(get_is_active == UVM_ACTIVE) begin
+      driver.seq_item_port.connect(sequencer.seq_item_export);
     end
   endfunction
-
-  function void write_expdata(input axi4_transaction tr);
-    exp_queue.push_back(tr);
-  endfunction              
 endclass

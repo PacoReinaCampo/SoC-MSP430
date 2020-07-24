@@ -11,7 +11,7 @@
 //                                                                            //
 //              MPSoC-RISCV CPU                                               //
 //              General Purpose Input Output Bridge                           //
-//              AMBA4 AXI-Lite Bus Interface                                  //
+//              Blackbone Bus Interface                                       //
 //              Universal Verification Methodology                            //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
@@ -41,41 +41,39 @@
  *   Paco Reina Campo <pacoreinacampo@queenfield.tech>
  */
 
-`uvm_analysis_imp_decl(_expdata)
-`uvm_analysis_imp_decl(_actdata)
+class bb_driver extends uvm_driver#(bb_transaction);
+  `uvm_component_utils(bb_driver)
 
-class axi4_scoreboard extends uvm_scoreboard;
-  `uvm_component_utils(axi4_scoreboard)
+  virtual dutintf vintf;
 
-  uvm_analysis_imp_expdata#(axi4_transaction, axi4_scoreboard) mon_export;
-  uvm_analysis_imp_actdata#(axi4_transaction, axi4_scoreboard) sb_export;
-
+  bb_transaction bb_trans;
   function new(string name, uvm_component parent);
     super.new(name, parent);
-    mon_export = new("mon_export", this);
-    sb_export = new("sb_export", this);
+    bb_trans = new();
   endfunction
 
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-  endfunction
-
-  axi4_transaction exp_queue[$];
-
-  function void write_actdata(input axi4_transaction tr);
-    axi4_transaction expdata;
-    if(exp_queue.size()) begin
-      expdata =exp_queue.pop_front();
-      if(tr.compare(expdata))begin
-        `uvm_info("",$sformatf("MATCHED"),UVM_LOW)
-      end
-      else begin
-        `uvm_info("",$sformatf("MISMATCHED"),UVM_LOW)
-      end
+    if(!uvm_config_db#(virtual dutintf)::get(this, "*", "vintf", vintf)) begin
+      `uvm_error("","driver virtual interface failed")
     end
   endfunction
 
-  function void write_expdata(input axi4_transaction tr);
-    exp_queue.push_back(tr);
-  endfunction              
+  virtual task run_phase(uvm_phase phase);
+    super.run_phase(phase);
+    vintf.rst_n = 0;
+    #5;
+    @(posedge vintf.mmclk);
+    vintf.rst_n = 1;
+    forever begin
+    seq_item_port.get_next_item(req);
+    vintf.per_addr = req.per_addr;
+    vintf.per_we = req.per_we;
+    vintf.per_din = req.per_din;
+    vintf.per_en = req.per_en;
+    //`uvm_info("",$sformatf("per_addr is %x, per_din is %x, per_en is %x, per_we is %x", vintf.per_addr, vintf.per_din, vintf.per_en, vintf.per_we), UVM_LOW)
+    @(posedge vintf.mmclk);
+    seq_item_port.item_done();
+    end
+  endtask
 endclass

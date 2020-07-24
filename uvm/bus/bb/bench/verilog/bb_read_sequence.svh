@@ -11,7 +11,7 @@
 //                                                                            //
 //              MPSoC-RISCV CPU                                               //
 //              General Purpose Input Output Bridge                           //
-//              AMBA4 AXI-Lite Bus Interface                                  //
+//              Blackbone Bus Interface                                       //
 //              Universal Verification Methodology                            //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
@@ -41,41 +41,21 @@
  *   Paco Reina Campo <pacoreinacampo@queenfield.tech>
  */
 
-`uvm_analysis_imp_decl(_expdata)
-`uvm_analysis_imp_decl(_actdata)
+class bb_read_sequence extends uvm_sequence#(bb_transaction);
+  `uvm_object_utils(bb_read_sequence)
 
-class axi4_scoreboard extends uvm_scoreboard;
-  `uvm_component_utils(axi4_scoreboard)
-
-  uvm_analysis_imp_expdata#(axi4_transaction, axi4_scoreboard) mon_export;
-  uvm_analysis_imp_actdata#(axi4_transaction, axi4_scoreboard) sb_export;
-
-  function new(string name, uvm_component parent);
-    super.new(name, parent);
-    mon_export = new("mon_export", this);
-    sb_export = new("sb_export", this);
+  function new(string name = "");
+    super.new(name);
   endfunction
 
-  function void build_phase(uvm_phase phase);
-    super.build_phase(phase);
-  endfunction
-
-  axi4_transaction exp_queue[$];
-
-  function void write_actdata(input axi4_transaction tr);
-    axi4_transaction expdata;
-    if(exp_queue.size()) begin
-      expdata =exp_queue.pop_front();
-      if(tr.compare(expdata))begin
-        `uvm_info("",$sformatf("MATCHED"),UVM_LOW)
-      end
-      else begin
-        `uvm_info("",$sformatf("MISMATCHED"),UVM_LOW)
-      end
+  task body();
+    begin
+      `uvm_do_with(req,{req.per_we == 1'b0; req.per_en == 1'b0;})
+      `uvm_do_with(req,{req.per_we == 1'b0; req.per_en == 1'b1; req.per_addr == 8'h00;})
+      `uvm_do_with(req,{req.per_we == 1'b0; req.per_en == 1'b0;})
+      `uvm_do_with(req,{req.per_we == 1'b0; req.per_en == 1'b1; req.per_addr == 8'h04;})
+      `uvm_do_with(req,{req.per_we == 1'b0; req.per_en == 1'b0;})
+      `uvm_do_with(req,{req.per_we == 1'b0; req.per_en == 1'b1; req.per_addr == 8'h08;})
     end
-  endfunction
-
-  function void write_expdata(input axi4_transaction tr);
-    exp_queue.push_back(tr);
-  endfunction              
+  endtask
 endclass

@@ -11,7 +11,7 @@
 //                                                                            //
 //              MPSoC-RISCV CPU                                               //
 //              General Purpose Input Output Bridge                           //
-//              AMBA4 AXI-Lite Bus Interface                                  //
+//              Blackbone Bus Interface                                       //
 //              Universal Verification Methodology                            //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
@@ -41,41 +41,27 @@
  *   Paco Reina Campo <pacoreinacampo@queenfield.tech>
  */
 
-`uvm_analysis_imp_decl(_expdata)
-`uvm_analysis_imp_decl(_actdata)
+class bb_env extends uvm_env;
+  `uvm_component_utils(bb_env)
 
-class axi4_scoreboard extends uvm_scoreboard;
-  `uvm_component_utils(axi4_scoreboard)
-
-  uvm_analysis_imp_expdata#(axi4_transaction, axi4_scoreboard) mon_export;
-  uvm_analysis_imp_actdata#(axi4_transaction, axi4_scoreboard) sb_export;
+  bb_agent agent;
+  bb_scoreboard scoreboard;
+  bb_bus_monitor bus_monitor;
 
   function new(string name, uvm_component parent);
     super.new(name, parent);
-    mon_export = new("mon_export", this);
-    sb_export = new("sb_export", this);
   endfunction
 
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
+    agent = bb_agent::type_id::create("agent",this);
+    scoreboard = bb_scoreboard::type_id::create("scoreboard",this);
+    bus_monitor = bb_bus_monitor::type_id::create("bus_monitor", this);
   endfunction
 
-  axi4_transaction exp_queue[$];
-
-  function void write_actdata(input axi4_transaction tr);
-    axi4_transaction expdata;
-    if(exp_queue.size()) begin
-      expdata =exp_queue.pop_front();
-      if(tr.compare(expdata))begin
-        `uvm_info("",$sformatf("MATCHED"),UVM_LOW)
-      end
-      else begin
-        `uvm_info("",$sformatf("MISMATCHED"),UVM_LOW)
-      end
-    end
+  function void connect_phase(uvm_phase phase);
+    super.connect_phase(phase);
+    agent.monitor.mon_port.connect(scoreboard.mon_export);
+    bus_monitor.bus_mon_port.connect(scoreboard.sb_export);
   endfunction
-
-  function void write_expdata(input axi4_transaction tr);
-    exp_queue.push_back(tr);
-  endfunction              
 endclass

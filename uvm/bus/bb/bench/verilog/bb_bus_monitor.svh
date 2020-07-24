@@ -11,7 +11,7 @@
 //                                                                            //
 //              MPSoC-RISCV CPU                                               //
 //              General Purpose Input Output Bridge                           //
-//              AMBA4 AXI-Lite Bus Interface                                  //
+//              Blackbone Bus Interface                                       //
 //              Universal Verification Methodology                            //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
@@ -41,41 +41,37 @@
  *   Paco Reina Campo <pacoreinacampo@queenfield.tech>
  */
 
-`uvm_analysis_imp_decl(_expdata)
-`uvm_analysis_imp_decl(_actdata)
+class bb_bus_monitor extends uvm_monitor;
+  `uvm_component_utils(bb_bus_monitor)
 
-class axi4_scoreboard extends uvm_scoreboard;
-  `uvm_component_utils(axi4_scoreboard)
+   virtual dutintf vintf;
 
-  uvm_analysis_imp_expdata#(axi4_transaction, axi4_scoreboard) mon_export;
-  uvm_analysis_imp_actdata#(axi4_transaction, axi4_scoreboard) sb_export;
+   bb_transaction bb_trans;
+
+  uvm_analysis_port#(bb_transaction) bus_mon_port;
 
   function new(string name, uvm_component parent);
-    super.new(name, parent);
-    mon_export = new("mon_export", this);
-    sb_export = new("sb_export", this);
+    super.new(name,parent);
+    bb_trans = new();
+    bus_mon_port=new("bus_mon_port",this);
   endfunction
 
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-  endfunction
-
-  axi4_transaction exp_queue[$];
-
-  function void write_actdata(input axi4_transaction tr);
-    axi4_transaction expdata;
-    if(exp_queue.size()) begin
-      expdata =exp_queue.pop_front();
-      if(tr.compare(expdata))begin
-        `uvm_info("",$sformatf("MATCHED"),UVM_LOW)
-      end
-      else begin
-        `uvm_info("",$sformatf("MISMATCHED"),UVM_LOW)
-      end
+    if(!uvm_config_db#(virtual dutintf)::get(this, "*", "vintf", vintf))begin
+      `uvm_error("","bus monitor interface failed")
     end
   endfunction
 
-  function void write_expdata(input axi4_transaction tr);
-    exp_queue.push_back(tr);
-  endfunction              
+  virtual task run_phase(uvm_phase phase);
+    super.run_phase(phase);
+    forever begin
+    @(posedge vintf.mmclk);
+    bb_trans.per_addr = vintf.per_addr;
+    bb_trans.per_din = vintf.per_din;
+    bb_trans.per_dout = vintf.per_dout;
+    bus_mon_port.write(bb_trans);
+    `uvm_info("",$sformatf("Bus MOnitor Paddr %x, per_din %x, per_dout %x", vintf.per_addr, vintf.per_din, vintf.per_dout), UVM_LOW)
+    end
+  endtask
 endclass

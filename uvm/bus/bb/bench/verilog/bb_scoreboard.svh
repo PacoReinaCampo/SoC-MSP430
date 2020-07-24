@@ -11,7 +11,7 @@
 //                                                                            //
 //              MPSoC-RISCV CPU                                               //
 //              General Purpose Input Output Bridge                           //
-//              AMBA4 AXI-Lite Bus Interface                                  //
+//              Blackbone Bus Interface                                       //
 //              Universal Verification Methodology                            //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
@@ -44,11 +44,11 @@
 `uvm_analysis_imp_decl(_expdata)
 `uvm_analysis_imp_decl(_actdata)
 
-class axi4_scoreboard extends uvm_scoreboard;
-  `uvm_component_utils(axi4_scoreboard)
+class bb_scoreboard extends uvm_scoreboard;
+  `uvm_component_utils(bb_scoreboard)
 
-  uvm_analysis_imp_expdata#(axi4_transaction, axi4_scoreboard) mon_export;
-  uvm_analysis_imp_actdata#(axi4_transaction, axi4_scoreboard) sb_export;
+  uvm_analysis_imp_expdata#(bb_transaction, bb_scoreboard) mon_export;
+  uvm_analysis_imp_actdata#(bb_transaction, bb_scoreboard) sb_export;
 
   function new(string name, uvm_component parent);
     super.new(name, parent);
@@ -60,10 +60,10 @@ class axi4_scoreboard extends uvm_scoreboard;
     super.build_phase(phase);
   endfunction
 
-  axi4_transaction exp_queue[$];
+  bb_transaction exp_queue[$];
 
-  function void write_actdata(input axi4_transaction tr);
-    axi4_transaction expdata;
+  function void write_actdata(input bb_transaction tr);
+    bb_transaction expdata;
     if(exp_queue.size()) begin
       expdata =exp_queue.pop_front();
       if(tr.compare(expdata))begin
@@ -75,7 +75,7 @@ class axi4_scoreboard extends uvm_scoreboard;
     end
   endfunction
 
-  function void write_expdata(input axi4_transaction tr);
+  function void write_expdata(input bb_transaction tr);
     exp_queue.push_back(tr);
   endfunction              
 endclass
