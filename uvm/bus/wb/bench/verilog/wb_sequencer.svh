@@ -9,14 +9,14 @@
 //                  |_|                                                       //
 //                                                                            //
 //                                                                            //
-//              MPSoC-RISCV CPU                                               //
+//              MPSoC-RISCV / OR1K / MSP430 CPU                               //
 //              General Purpose Input Output Bridge                           //
-//              AMBA3 AHB-Lite Bus Interface                                  //
+//              Wishbone Bus Interface                                        //
 //              Universal Verification Methodology                            //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 
-/* Copyright (c) 2018-2019 by the author(s)
+/* Copyright (c) 2020-2021 by the author(s)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -41,37 +41,14 @@
  *   Paco Reina Campo <pacoreinacampo@queenfield.tech>
  */
 
-class ahb3_bus_monitor extends uvm_monitor;
-  `uvm_component_utils(ahb3_bus_monitor)
+class wb_sequencer extends uvm_sequencer#(wb_transaction);
+  `uvm_component_utils(wb_sequencer)
 
-   virtual dutintf vintf;
-
-   ahb3_transaction ahb3_trans;
-
-  uvm_analysis_port#(ahb3_transaction) bus_mon_port;
-
-  function new(string name, uvm_component parent);
+  function new ( string name, uvm_component parent);
     super.new(name,parent);
-    ahb3_trans = new();
-    bus_mon_port=new("bus_mon_port",this);
   endfunction
 
-  function void build_phase(uvm_phase phase);
+  function void build_phase (uvm_phase phase);
     super.build_phase(phase);
-    if(!uvm_config_db#(virtual dutintf)::get(this, "*", "vintf", vintf))begin
-      `uvm_error("","bus monitor interface failed")
-    end
   endfunction
-
-  virtual task run_phase(uvm_phase phase);
-    super.run_phase(phase);
-    forever begin
-    @(posedge vintf.hclk);
-    ahb3_trans.haddr = vintf.haddr;
-    ahb3_trans.hwdata = vintf.hwdata;
-    ahb3_trans.hrdata = vintf.hrdata;
-    bus_mon_port.write(ahb3_trans);
-    `uvm_info("",$sformatf("Bus MOnitor Paddr %x, hwdata %x, hrdata %x", vintf.haddr, vintf.hwdata, vintf.hrdata), UVM_LOW)
-    end
-  endtask
 endclass

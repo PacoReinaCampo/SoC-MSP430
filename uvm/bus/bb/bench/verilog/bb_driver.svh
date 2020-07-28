@@ -9,14 +9,14 @@
 //                  |_|                                                       //
 //                                                                            //
 //                                                                            //
-//              MPSoC-RISCV CPU                                               //
+//              MPSoC-RISCV / OR1K / MSP430 CPU                               //
 //              General Purpose Input Output Bridge                           //
 //              Blackbone Bus Interface                                       //
 //              Universal Verification Methodology                            //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 
-/* Copyright (c) 2018-2019 by the author(s)
+/* Copyright (c) 2020-2021 by the author(s)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -44,36 +44,58 @@
 class bb_driver extends uvm_driver#(bb_transaction);
   `uvm_component_utils(bb_driver)
 
-  virtual dutintf vintf;
-
-  bb_transaction bb_trans;
+  virtual dut_if vif;
+  
   function new(string name, uvm_component parent);
-    super.new(name, parent);
-    bb_trans = new();
+    super.new(name,parent);
   endfunction
-
+  
   function void build_phase(uvm_phase phase);
     super.build_phase(phase);
-    if(!uvm_config_db#(virtual dutintf)::get(this, "*", "vintf", vintf)) begin
-      `uvm_error("","driver virtual interface failed")
+    if(!uvm_config_db#(virtual dut_if)::get(this,"","vif",vif)) begin
+      `uvm_error("build_phase","driver virtual interface failed")
     end
   endfunction
-
+  
   virtual task run_phase(uvm_phase phase);
     super.run_phase(phase);
-    vintf.rst_n = 0;
-    #5;
-    @(posedge vintf.mmclk);
-    vintf.rst_n = 1;
+
+    this.vif.master_cb.per_en <= 0;
+
     forever begin
-    seq_item_port.get_next_item(req);
-    vintf.per_addr = req.per_addr;
-    vintf.per_we = req.per_we;
-    vintf.per_din = req.per_din;
-    vintf.per_en = req.per_en;
-    //`uvm_info("",$sformatf("per_addr is %x, per_din is %x, per_en is %x, per_we is %x", vintf.per_addr, vintf.per_din, vintf.per_en, vintf.per_we), UVM_LOW)
-    @(posedge vintf.mmclk);
-    seq_item_port.item_done();
+      bb_transaction tr;
+      @ (this.vif.master_cb);
+      //First get an item from sequencer
+      seq_item_port.get_next_item(tr);
+      @ (this.vif.master_cb);
+      uvm_report_info("BB_DRIVER ", $psprintf("Got Transaction %s",tr.convert2string()));
+      //Decode the BB Command and call either the read/write function
+      case (tr.per_we)
+        bb_transaction::READ:  drive_read(tr.addr, tr.data);  
+        bb_transaction::WRITE: drive_write(tr.addr, tr.data);
+      endcase
+      //Handshake DONE back to sequencer
+      seq_item_port.item_done();
     end
+  endtask
+
+  virtual protected task drive_read(input bit [31:0] addr, output logic [31:0] data);
+    this.vif.master_cb.per_addr <= addr;
+    this.vif.master_cb.per_we <= 0;
+    @ (this.vif.master_cb);
+    this.vif.master_cb.per_en <= 1;
+    @ (this.vif.master_cb);
+    data = this.vif.master_cb.per_din;
+    this.vif.master_cb.per_en <= 0;
+  endtask
+
+  virtual protected task drive_write(input bit [31:0] addr, input bit [31:0] data);
+    this.vif.master_cb.per_addr <= addr;
+    this.vif.master_cb.per_dout <= data;
+    this.vif.master_cb.per_we   <= 1;
+    @ (this.vif.master_cb);
+    this.vif.master_cb.per_en   <= 1;
+    @ (this.vif.master_cb);
+    this.vif.master_cb.per_en   <= 0;
   endtask
 endclass

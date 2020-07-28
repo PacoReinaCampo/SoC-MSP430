@@ -9,14 +9,14 @@
 //                  |_|                                                       //
 //                                                                            //
 //                                                                            //
-//              MPSoC-RISCV CPU                                               //
+//              MPSoC-RISCV / OR1K / MSP430 CPU                               //
 //              General Purpose Input Output Bridge                           //
-//              Blackbone Bus Interface                                       //
+//              AMBA3 AHB-Lite Bus Interface                                  //
 //              Universal Verification Methodology                            //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 
-/* Copyright (c) 2018-2019 by the author(s)
+/* Copyright (c) 2020-2021 by the author(s)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -41,21 +41,14 @@
  *   Paco Reina Campo <pacoreinacampo@queenfield.tech>
  */
 
-class bb_write_sequence extends uvm_sequence#(bb_transaction);  
-  `uvm_object_utils(bb_write_sequence)
+class ahb3_sequencer extends uvm_sequencer#(ahb3_transaction);
+  `uvm_component_utils(ahb3_sequencer)
 
-  function new(string name = "");
-    super.new(name);
+  function new ( string name, uvm_component parent);
+    super.new(name,parent);
   endfunction
 
-  task body();
-    begin
-      `uvm_do_with(req,{req.per_en == 1'b0;req.per_we == 1'b1;})
-      `uvm_do_with(req,{req.per_addr == 8'h00;req.per_din == 32'hffffeeee;req.per_en == 1'b1;req.per_we == 1'b1;})
-      `uvm_do_with(req,{req.per_en == 1'b0;req.per_we == 1'b1;})
-      `uvm_do_with(req,{req.per_addr == 8'h04;req.per_din == 32'hffff1111;req.per_en == 1'b1;req.per_we == 1'b1;})
-      `uvm_do_with(req,{req.per_en == 1'b0;req.per_we == 1'b1;})
-      `uvm_do_with(req,{req.per_addr == 8'h08;req.per_din == 32'hffff2222;req.per_en == 1'b1;req.per_we == 1'b1;})
-    end
-  endtask
+  function void build_phase (uvm_phase phase);
+    super.build_phase(phase);
+  endfunction
 endclass

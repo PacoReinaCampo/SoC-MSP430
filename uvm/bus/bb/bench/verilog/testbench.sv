@@ -9,14 +9,14 @@
 //                  |_|                                                       //
 //                                                                            //
 //                                                                            //
-//              MPSoC-RISCV CPU                                               //
+//              MPSoC-RISCV / OR1K / MSP430 CPU                               //
 //              General Purpose Input Output Bridge                           //
 //              Blackbone Bus Interface                                       //
 //              Universal Verification Methodology                            //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 
-/* Copyright (c) 2018-2019 by the author(s)
+/* Copyright (c) 2020-2021 by the author(s)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -41,39 +41,58 @@
  *   Paco Reina Campo <pacoreinacampo@queenfield.tech>
  */
 
+//Include UVM files
 `include "uvm_macros.svh"
 `include "uvm_pkg.sv"
-
 import uvm_pkg::*;
 
+//Include common files
 `include "bb_transaction.svh"
 `include "bb_sequence.svh"
-`include "bb_monitor.svh"
+`include "bb_sequencer.svh"
 `include "bb_driver.svh"
+`include "bb_monitor.svh"
 `include "bb_agent.svh"
-`include "bb_bus_monitor.svh"  
 `include "bb_scoreboard.svh"
+`include "bb_subscriber.svh"
 `include "bb_env.svh"
 `include "bb_test.svh"
 
-module testbench;
+module test;
+  logic        mclk;
+  logic        mrst;
+  logic [31:0] per_addr;
+  logic        per_en;
+  logic        per_we;
+  logic [31:0] per_dout;
+  logic [31:0] per_din;
 
-  dutintf intf();
+  dut_if bb_if();
 
-  bb_slave dut(.dif(intf));
+  bb_slave dut(.dif(bb_if));
 
   initial begin
-    intf.mclk = 0;
-    forever 
-      #5 intf.mclk = ~intf.mclk;
+    bb_if.mclk=0;
+  end
+
+  //Generate a clock
+  always begin
+    #10 bb_if.mclk = ~bb_if.mclk;
   end
 
   initial begin
-    uvm_config_db#(virtual dutintf)::set(null,"*","vintf", intf);
+    bb_if.mrst=0;
+    repeat (1) @(posedge bb_if.mclk);
+    bb_if.mrst=1;
+  end
+
+  initial begin
+    uvm_config_db#(virtual dut_if)::set( null, "uvm_test_top", "vif", bb_if);
     run_test("bb_test");
   end
 
   initial begin
-     $dumpvars(0, top);
+    $dumpfile("dump.vcd");
+    $dumpvars;
   end
 endmodule

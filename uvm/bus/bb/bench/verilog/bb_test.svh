@@ -9,14 +9,14 @@
 //                  |_|                                                       //
 //                                                                            //
 //                                                                            //
-//              MPSoC-RISCV CPU                                               //
+//              MPSoC-RISCV / OR1K / MSP430 CPU                               //
 //              General Purpose Input Output Bridge                           //
 //              Blackbone Bus Interface                                       //
 //              Universal Verification Methodology                            //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 
-/* Copyright (c) 2018-2019 by the author(s)
+/* Copyright (c) 2020-2021 by the author(s)
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
@@ -42,27 +42,35 @@
  */
 
 class bb_test extends uvm_test;
-  `uvm_component_utils(bb_test)
-  
+  //Register with factory
+  `uvm_component_utils(bb_test);
+
   bb_env env;
-  
-  function new(string name, uvm_component parent);
-    super.new(name,parent);
+  virtual dut_if vif;
+
+  function new(string name = "bb_test", uvm_component parent = null);
+    super.new(name, parent);
   endfunction
-  
+
+  //Build phase - Construct the env class using factory
+  //Get the virtual interface handle from Test and then set it config db for the env component
   function void build_phase(uvm_phase phase);
-    super.build_phase(phase);
-    env = bb_env::type_id::create("env",this);
+    env = bb_env::type_id::create("env", this);
+
+    if (!uvm_config_db#(virtual dut_if)::get(this, "", "vif", vif)) begin
+      `uvm_fatal("build_phase", "No virtual interface specified for this test instance")
+    end 
+    uvm_config_db#(virtual dut_if)::set( this, "env", "vif", vif);
   endfunction
-  
-  task run_phase(uvm_phase phase);
-    phase.raise_objection(this);
-    begin
-     bb_sequence seq;
-     seq = bb_sequence::type_id::create("seq", this);
-      `uvm_info("",$sformatf("Inside test"),UVM_LOW)
-      seq.start(env.agent.sequencer);
-    end
-    phase.drop_objection(this);
+
+  //Run phase - Create an bb_sequence and start it on the bb_sequencer
+  task run_phase( uvm_phase phase );
+    bb_sequence bb_seq;
+    bb_seq = bb_sequence::type_id::create("bb_seq");
+    phase.raise_objection( this, "Starting bb_base_seqin main phase" );
+    $display("%t Starting sequence bb_seq run_phase",$time);
+    bb_seq.start(env.agt.sqr);
+    #100ns;
+    phase.drop_objection( this , "Finished bb_seq in main phase" );
   endtask
 endclass
