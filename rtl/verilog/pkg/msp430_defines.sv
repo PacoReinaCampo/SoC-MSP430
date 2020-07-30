@@ -697,11 +697,11 @@
 `define SUB    4
 `define CMP    5
 `define DADD   6
-`define BIT    7
+`define BITC   7
 `define BIC    8
 `define BIS    9
-`define XOR   10
-`define AND   11
+`define XORX  10
+`define ANDX  11
 
 // Addressing modes
 `define DIR      0
