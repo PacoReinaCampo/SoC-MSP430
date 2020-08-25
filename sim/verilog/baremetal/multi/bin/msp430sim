@@ -27,14 +27,14 @@ fi
 ###############################################################################
 #                     Check if the required files exist                       #
 ###############################################################################
-softdir=../../../../software/baremetal/$1;
-elffile=../../../../software/baremetal/$1/$1.elf;
-verfile=../../../../bench/verilog/regression/$1.sv;
+softdir=../../../../../software/baremetal/$1;
+elffile=../../../../../software/baremetal/$1/$1.elf;
+verfile=../../../../../bench/verilog/regression/$1.sv;
 submit=../src/submit.f;
 if [ $OMSP_SIMULATOR == "isim" ]; then
     submit=../src/submit.prj;
 fi
-incfile=../../../../rtl/verilog/pkg/msp430_defines.sv;
+incfile=../../../../../rtl/verilog/pkg/msp430_defines.sv;
 
 if [ ! -e $softdir ]; then
     echo "Software directory doesn't exist: $softdir"
@@ -73,7 +73,7 @@ echo " ======================================================="
 cd $softdir
 make clean
 make
-cd ../../../sim/verilog/baremetal/run/
+cd ../../../sim/verilog/baremetal/multi/run/
 
 # Create links
 if [ `uname -o` = "Cygwin" ]
