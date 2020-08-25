@@ -36,66 +36,53 @@
  *
  * =============================================================================
  * Author(s):
- *   Francisco Javier Reina Campo <frareicam@gmail.com>
+ *   Paco Reina Campo <pacoreinacampo@queenfield.tech>
  */
 
-+incdir+../../../rtl/verilog/pkg/
-
-//=============================================================================
-// Testbench related
-//=============================================================================
-
-+incdir+../../../bench/verilog/
-
-../../../bench/verilog/ram_d1.sv
-../../../bench/verilog/ram_d2.sv
-../../../bench/verilog/ram_dp.sv
-../../../bench/verilog/ram_p2.sv
-../../../bench/verilog/ram_sp.sv
-../../../bench/verilog/glbl.sv
-../../../bench/verilog/msp430_debug.sv
-../../../bench/verilog/msp430_testbench.sv
-
+../../../../rtl/vhdl/pkg/msp430_pkg.vhd
 
 //=============================================================================
 // SoC-MSP430
 //=============================================================================
 
-../../../rtl/verilog/soc/msp430_core0.sv
-../../../rtl/verilog/soc/msp430_core1.sv
-../../../rtl/verilog/soc/msp430_soc.sv
-../../../rtl/verilog/soc/msp430_io_cell.sv
+../../../../rtl/vhdl/soc/msp430_core0.vhd
+../../../../rtl/vhdl/soc/msp430_core1.vhd
+../../../../rtl/vhdl/soc/msp430_soc.vhd
+../../../../rtl/vhdl/soc/msp430_io_cell.vhd
+
 
 //=============================================================================
 // PU-MSP430
 //=============================================================================
 
-../../../pu/rtl/verilog/core/fuse/msp430_and_gate.sv
-../../../pu/rtl/verilog/core/fuse/msp430_clock_gate.sv
-../../../pu/rtl/verilog/core/fuse/msp430_clock_mux.sv
-../../../pu/rtl/verilog/core/fuse/msp430_scan_mux.sv
-../../../pu/rtl/verilog/core/fuse/msp430_sync_cell.sv
-../../../pu/rtl/verilog/core/fuse/msp430_sync_reset.sv
-../../../pu/rtl/verilog/core/fuse/msp430_wakeup_cell.sv
+../../../../pu/rtl/vhdl/core/fuse/msp430_and_gate.vhd
+../../../../pu/rtl/vhdl/core/fuse/msp430_clock_gate.vhd
+../../../../pu/rtl/vhdl/core/fuse/msp430_clock_mux.vhd
+../../../../pu/rtl/vhdl/core/fuse/msp430_scan_mux.vhd
+../../../../pu/rtl/vhdl/core/fuse/msp430_sync_cell.vhd
+../../../../pu/rtl/vhdl/core/fuse/msp430_sync_reset.vhd
+../../../../pu/rtl/vhdl/core/fuse/msp430_wakeup_cell.vhd
 
-../../../pu/rtl/verilog/core/omsp/msp430_alu.sv
-../../../pu/rtl/verilog/core/omsp/msp430_dbg_hwbrk.sv
-../../../pu/rtl/verilog/core/omsp/msp430_dbg_i2c.sv
-../../../pu/rtl/verilog/core/omsp/msp430_dbg_uart.sv
-../../../pu/rtl/verilog/core/omsp/msp430_register_file.sv
+../../../../pu/rtl/vhdl/core/omsp/msp430_alu.vhd
+../../../../pu/rtl/vhdl/core/omsp/msp430_dbg_hwbrk.vhd
+../../../../pu/rtl/vhdl/core/omsp/msp430_dbg_i2c.vhd
+../../../../pu/rtl/vhdl/core/omsp/msp430_dbg_uart.vhd
+../../../../pu/rtl/vhdl/core/omsp/msp430_interrupt.vhd
+../../../../pu/rtl/vhdl/core/omsp/msp430_register_file.vhd
+../../../../pu/rtl/vhdl/core/omsp/msp430_state_machine.vhd
 
-../../../pu/rtl/verilog/core/main/msp430_bcm.sv
-../../../pu/rtl/verilog/core/main/msp430_dbg.sv
-../../../pu/rtl/verilog/core/main/msp430_execution.sv
-../../../pu/rtl/verilog/core/main/msp430_frontend.sv
-../../../pu/rtl/verilog/core/main/msp430_gpio.sv
-../../../pu/rtl/verilog/core/main/msp430_memory.sv
-../../../pu/rtl/verilog/core/main/msp430_multiplier.sv
-../../../pu/rtl/verilog/core/main/msp430_sfr.sv
-../../../pu/rtl/verilog/core/main/msp430_ta.sv
-../../../pu/rtl/verilog/core/main/msp430_watchdog.sv
-../../../pu/rtl/verilog/core/main/msp430_template08.sv
-../../../pu/rtl/verilog/core/main/msp430_template16.sv
-../../../pu/rtl/verilog/core/main/msp430_uart.sv
+../../../../pu/rtl/vhdl/core/main/msp430_bcm.vhd
+../../../../pu/rtl/vhdl/core/main/msp430_dbg.vhd
+../../../../pu/rtl/vhdl/core/main/msp430_execution.vhd
+../../../../pu/rtl/vhdl/core/main/msp430_frontend.vhd
+../../../../pu/rtl/vhdl/core/main/msp430_gpio.vhd
+../../../../pu/rtl/vhdl/core/main/msp430_memory.vhd
+../../../../pu/rtl/vhdl/core/main/msp430_multiplier.vhd
+../../../../pu/rtl/vhdl/core/main/msp430_sfr.vhd
+../../../../pu/rtl/vhdl/core/main/msp430_ta.vhd
+../../../../pu/rtl/vhdl/core/main/msp430_watchdog.vhd
+../../../../pu/rtl/vhdl/core/main/msp430_template08.vhd
+../../../../pu/rtl/vhdl/core/main/msp430_template16.vhd
+../../../../pu/rtl/vhdl/core/main/msp430_uart.vhd
 
-../../../pu/rtl/verilog/pu/msp430_pu.sv
+../../../../pu/rtl/vhdl/pu/msp430_pu.vhd

@@ -27,16 +27,14 @@ fi
 ###############################################################################
 #                     Check if the required files exist                       #
 ###############################################################################
-softdir=../../../software/$1;
-elffile=../../../software/$1/$1.elf;
-verfile=../../../bench/verilog/regression/$1.sv;
-submit_verilog=../src/submit_verilog.f;
-submit_vhdl=../src/submit_vhdl.f;
+softdir=../../../../software/baremetal/$1;
+elffile=../../../../software/baremetal/$1/$1.elf;
+verfile=../../../../bench/verilog/baremetal/regression/$1.sv;
 submit=../src/submit.f;
 if [ $OMSP_SIMULATOR == "isim" ]; then
     submit=../src/submit.prj;
 fi
-incfile=../../../rtl/verilog/pkg/msp430_defines.sv;
+incfile=../../../../rtl/verilog/pkg/msp430_defines.sv;
 
 if [ ! -e $softdir ]; then
     echo "Software directory doesn't exist: $softdir"
@@ -46,12 +44,8 @@ if [ ! -e $verfile ]; then
     echo "Verilog stimulus file $verfile doesn't exist: $verfile"
     exit 1
 fi
-if [ ! -e $submit_verilog ]; then
-    echo "Verilog submit file $submit doesn't exist: $submit_verilog"
-    exit 1
-fi
-if [ ! -e $submit_vhdl ]; then
-    echo "VHDL submit file $submit doesn't exist: $submit_vhdl"
+if [ ! -e $submit ]; then
+    echo "Verilog submit file $submit doesn't exist: $submit"
     exit 1
 fi
 
@@ -79,7 +73,7 @@ echo " ======================================================="
 cd $softdir
 make clean
 make
-cd ../../sim/mixed/run/
+cd ../../../sim/verilog/baremetal/run/
 
 # Create links
 if [ `uname -o` = "Cygwin" ]
@@ -118,4 +112,4 @@ echo "Convert IHEX file to Verilog MEMH format..."
 
 # Start verilog simulation
 echo "Start Verilog simulation..."
-../bin/rtlsim.sh    stimulus.sv pmem.mem $submit_verilog $submit_vhdl $submit
+../bin/rtlsim.sh    stimulus.sv pmem.mem $submit
