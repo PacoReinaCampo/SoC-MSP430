@@ -452,7 +452,7 @@ A PU cache is a hardware cache used by the PU to reduce the average cost (time o
 | `derr`  |    1   |   Output  | Bus Cycle Error Output          |
 | `dint`  |    1   |   Output  | Interrupt Signal Output         |
 
-## 2.3. Soc-OR1K
+## 2.3. SoC-MSP430
 
 ### 2.3.1. MPSoC-DBG
 
