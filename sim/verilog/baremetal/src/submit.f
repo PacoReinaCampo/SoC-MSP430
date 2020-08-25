@@ -45,16 +45,16 @@
 // Testbench related
 //=============================================================================
 
-+incdir+../../../../bench/verilog/baremetal/
++incdir+../../../../bench/verilog/
 
-../../../../bench/verilog/baremetal/ram_d1.sv
-../../../../bench/verilog/baremetal/ram_d2.sv
-../../../../bench/verilog/baremetal/ram_dp.sv
-../../../../bench/verilog/baremetal/ram_p2.sv
-../../../../bench/verilog/baremetal/ram_sp.sv
-../../../../bench/verilog/baremetal/glbl.sv
-../../../../bench/verilog/baremetal/msp430_debug.sv
-../../../../bench/verilog/baremetal/msp430_testbench.sv
+../../../../bench/verilog/ram_d1.sv
+../../../../bench/verilog/ram_d2.sv
+../../../../bench/verilog/ram_dp.sv
+../../../../bench/verilog/ram_p2.sv
+../../../../bench/verilog/ram_sp.sv
+../../../../bench/verilog/glbl.sv
+../../../../bench/verilog/msp430_debug.sv
+../../../../bench/verilog/msp430_testbench.sv
 
 
 //=============================================================================

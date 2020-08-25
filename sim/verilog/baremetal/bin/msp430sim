@@ -29,7 +29,7 @@ fi
 ###############################################################################
 softdir=../../../../software/baremetal/$1;
 elffile=../../../../software/baremetal/$1/$1.elf;
-verfile=../../../../bench/verilog/baremetal/regression/$1.sv;
+verfile=../../../../bench/verilog/regression/$1.sv;
 submit=../src/submit.f;
 if [ $OMSP_SIMULATOR == "isim" ]; then
     submit=../src/submit.prj;
