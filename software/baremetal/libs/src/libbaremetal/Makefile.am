@@ -56,28 +56,28 @@ pkgconfig_DATA = share/optimsoc-baremetal.pc
 EXTRA_DIST = share/optimsoc-baremetal.pc.in
 CLEANFILES = share/optimsoc-baremetal.pc
 
-if OR1KOBJDUMPSET
-MYOR1KOBJDUMP = $(OR1KOBJDUMP)
+if MSP430OBJDUMPSET
+MYMSP430OBJDUMP = $(MSP430OBJDUMP)
 else
-MYOR1KOBJDUMP = $(subst gcc,objdump,$(wordlist 1,1,$(CC)))
+MYMSP430OBJDUMP = $(subst gcc,objdump,$(wordlist 1,1,$(CC)))
 endif
 
-if OR1KOBJCOPYSET
-MYOR1KOBJCOPY = $(OR1KOBJCOPY)
+if MSP430OBJCOPYSET
+MYMSP430OBJCOPY = $(MSP430OBJCOPY)
 else
-MYOR1KOBJCOPY = $(subst gcc,objcopy,$(wordlist 1,1,$(CC)))
+MYMSP430OBJCOPY = $(subst gcc,objcopy,$(wordlist 1,1,$(CC)))
 endif
 
 share/Makefile.inc: share/Makefile.inc.in Makefile
 	$(AM_V_GEN)$(MKDIR_P) share; \
-	$(SED) -e 's,@OR1K-CC@,$(CC),g' -e 's,@OR1K-OBJDUMP@,$(MYOR1KOBJDUMP),g' \
-	-e 's,@OR1K-OBJCOPY@,$(MYOR1KOBJCOPY),g' < $< > $@ || rm $@
+	$(SED) -e 's,@MSP430-CC@,$(CC),g' -e 's,@MSP430-OBJDUMP@,$(MYMSP430OBJDUMP),g' \
+	-e 's,@MSP430-OBJCOPY@,$(MYMSP430OBJCOPY),g' < $< > $@ || rm $@
 
 CLEANFILES += share/Makefile.inc
 
 share/create_pgas_binary.sh: share/create_pgas_binary.sh.in Makefile 
 	$(AM_V_GEN)$(MKDIR_P) share; \
-	$(SED) -e 's,@OR1K-CC@,$(CC),g' -e 's,@OR1K-OBJDUMP@,$(MYOR1KOBJDUMP),g' \
-	-e 's,@OR1K-OBJCOPY@,$(MYOR1KOBJCOPY),g' < $< > $@ || rm $@
+	$(SED) -e 's,@MSP430-CC@,$(CC),g' -e 's,@MSP430-OBJDUMP@,$(MYMSP430OBJDUMP),g' \
+	-e 's,@MSP430-OBJCOPY@,$(MYMSP430OBJCOPY),g' < $< > $@ || rm $@
 
 CLEANFILES += share/create_pgas_binary.sh

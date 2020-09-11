@@ -635,12 +635,12 @@ ac_subst_vars='am__EXEEXT_FALSE
 am__EXEEXT_TRUE
 LTLIBOBJS
 LIBOBJS
-OR1KOBJCOPY
-OR1KOBJDUMP
-OR1KOBJCOPYSET_FALSE
-OR1KOBJCOPYSET_TRUE
-OR1KOBJDUMPSET_FALSE
-OR1KOBJDUMPSET_TRUE
+MSP430OBJCOPY
+MSP430OBJDUMP
+MSP430OBJCOPYSET_FALSE
+MSP430OBJCOPYSET_TRUE
+MSP430OBJDUMPSET_FALSE
+MSP430OBJDUMPSET_TRUE
 GZLL_LIBS
 GZLL_CFLAGS
 PKG_CONFIG_LIBDIR
@@ -12242,20 +12242,20 @@ fi
 
 
 
- if test "x$OR1KOBJDUMP" != "x"; then
-  OR1KOBJDUMPSET_TRUE=
-  OR1KOBJDUMPSET_FALSE='#'
+ if test "x$MSP430OBJDUMP" != "x"; then
+  MSP430OBJDUMPSET_TRUE=
+  MSP430OBJDUMPSET_FALSE='#'
 else
-  OR1KOBJDUMPSET_TRUE='#'
-  OR1KOBJDUMPSET_FALSE=
+  MSP430OBJDUMPSET_TRUE='#'
+  MSP430OBJDUMPSET_FALSE=
 fi
 
- if test "x$OR1KOBJCOPY" != "x"; then
-  OR1KOBJCOPYSET_TRUE=
-  OR1KOBJCOPYSET_FALSE='#'
+ if test "x$MSP430OBJCOPY" != "x"; then
+  MSP430OBJCOPYSET_TRUE=
+  MSP430OBJCOPYSET_FALSE='#'
 else
-  OR1KOBJCOPYSET_TRUE='#'
-  OR1KOBJCOPYSET_FALSE=
+  MSP430OBJCOPYSET_TRUE='#'
+  MSP430OBJCOPYSET_FALSE=
 fi
 
 
@@ -12437,12 +12437,12 @@ if test -z "${am__fastdepCCAS_TRUE}" && test -z "${am__fastdepCCAS_FALSE}"; then
   as_fn_error $? "conditional \"am__fastdepCCAS\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
-if test -z "${OR1KOBJDUMPSET_TRUE}" && test -z "${OR1KOBJDUMPSET_FALSE}"; then
-  as_fn_error $? "conditional \"OR1KOBJDUMPSET\" was never defined.
+if test -z "${MSP430OBJDUMPSET_TRUE}" && test -z "${MSP430OBJDUMPSET_FALSE}"; then
+  as_fn_error $? "conditional \"MSP430OBJDUMPSET\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
-if test -z "${OR1KOBJCOPYSET_TRUE}" && test -z "${OR1KOBJCOPYSET_FALSE}"; then
-  as_fn_error $? "conditional \"OR1KOBJCOPYSET\" was never defined.
+if test -z "${MSP430OBJCOPYSET_TRUE}" && test -z "${MSP430OBJCOPYSET_FALSE}"; then
+  as_fn_error $? "conditional \"MSP430OBJCOPYSET\" was never defined.
 Usually this means the macro was only invoked conditionally." "$LINENO" 5
 fi
 

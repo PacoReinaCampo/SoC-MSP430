@@ -24,7 +24,7 @@
 
 #!/bin/bash
 
-OBJDUMP_FOR_TARGET?=@OR1K-OBJDUMP@
+OBJDUMP_FOR_TARGET?=@MSP430-OBJDUMP@
 
 ## Extract memory size
 

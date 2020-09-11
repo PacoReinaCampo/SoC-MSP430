@@ -22,8 +22,8 @@
  *   Stefan Wallentowitz <stefan.wallentowitz@tum.de>
  */
 
-#include <or1k-sprs.h>
-#include <or1k-asm.h>
+#include <msp430-sprs.h>
+#include <msp430-asm.h>
 
 #define CTX_REG(x) (x << 2)
 
@@ -39,10 +39,10 @@
 // r3 is the context to set
 _optimsoc_context_replace:
     l.lwz   r1,CTX_PC(r3)
-    l.mtspr r0,r1,OR1K_SPR_SYS_EPCR_BASE
+    l.mtspr r0,r1,MSP430_SPR_SYS_EPCR_BASE
 
     l.lwz   r1,CTX_SR(r3)
-    l.mtspr r0,r1,OR1K_SPR_SYS_ESR_BASE
+    l.mtspr r0,r1,MSP430_SPR_SYS_ESR_BASE
 
     l.lwz   r31,CTX_REG(31)(r3)
     l.lwz   r30,CTX_REG(30)(r3)
@@ -83,7 +83,7 @@ _optimsoc_context_replace:
 .global _optimsoc_context_enter_exception;
 .type   _optimsoc_context_enter_exception,function;
 
-.extern _or1k_exception_stack_core;
+.extern _msp430_exception_stack_core;
 
 // r3 is the context where to save to
 _optimsoc_context_enter_exception:
@@ -119,16 +119,16 @@ _optimsoc_context_enter_exception:
     l.sw    CTX_REG(29)(r3),r29
     l.sw    CTX_REG(30)(r3),r30
     l.sw    CTX_REG(31)(r3),r31
-    l.mfspr r4,r0,OR1K_SPR_SYS_SR_ADDR
+    l.mfspr r4,r0,MSP430_SPR_SYS_SR_ADDR
     l.sw    CTX_SR(r3),r4
     l.movhi r4,hi(._optimsoc_context_enter_exception_wakeup)
     l.ori   r4,r4,lo(._optimsoc_context_enter_exception_wakeup)
     l.sw    CTX_PC(r3),r4
 
-    l.movhi r1,hi(_or1k_exception_stack_core)
-    l.ori   r1,r1,lo(_or1k_exception_stack_core)
+    l.movhi r1,hi(_msp430_exception_stack_core)
+    l.ori   r1,r1,lo(_msp430_exception_stack_core)
     l.lwz   r1,0(r1)
-    l.mfspr r3,r0,OR1K_SPR_SYS_COREID_ADDR
+    l.mfspr r3,r0,MSP430_SPR_SYS_COREID_ADDR
     l.slli  r3,r3,2
     l.add   r1,r1,r3
     l.lwz   r1,0(r1)

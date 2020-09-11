@@ -43,7 +43,7 @@
 #include <stdio.h> // For printf
 
 #include <optimsoc-mp.h>
-#include <or1k-support.h>
+#include <msp430-support.h>
 #include <optimsoc-baremetal.h>
 
 #include <assert.h>
@@ -76,7 +76,7 @@ void recv(uint32_t * buffer, size_t len) {
 
 // The main function
 int main() {
-  if (or1k_coreid() != 0)
+  if (msp430_coreid() != 0)
     return 0;
 
   // Initialize optimsoc library
@@ -85,7 +85,7 @@ int main() {
 
   // Add handler for received messages (of class 0)
   optimsoc_mp_simple_addhandler(0, & recv);
-  or1k_interrupts_enable();
+  msp430_interrupts_enable();
 
   // Determine tiles rank
   int rank = optimsoc_get_ctrank();

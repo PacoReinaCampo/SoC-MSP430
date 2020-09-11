@@ -22,9 +22,9 @@
 #   Stefan Wallentowitz <stefan.wallentowitz@tum.de>
 #
 
-CC_FOR_TARGET ?= @OR1K-CC@
-OBJDUMP_FOR_TARGET ?= @OR1K-OBJDUMP@
-OBJCOPY_FOR_TARGET ?= @OR1K-OBJCOPY@
+CC_FOR_TARGET ?= @MSP430-CC@
+OBJDUMP_FOR_TARGET ?= @MSP430-OBJDUMP@
+OBJCOPY_FOR_TARGET ?= @MSP430-OBJCOPY@
 
 LIBS = $(shell pkg-config --libs --static optimsoc-gzll)
 INCS = $(shell pkg-config --cflags optimsoc-gzll)

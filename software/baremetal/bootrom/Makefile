@@ -53,13 +53,13 @@ bootrom_code.sv: bootrom.bin bin2vlogarray bin2vmem
 	cat bootrom.bin | ./bin2vlogarray >> bootrom_code.sv
 
 bootrom.bin: a.out
-	or1k-elf-objcopy -O binary a.out bootrom.bin
+	msp430-elf-objcopy -O binary a.out bootrom.bin
 
 bootrom.dis: a.out
-	or1k-elf-objdump -d a.out > bootrom.dis
+	msp430-elf-objdump -d a.out > bootrom.dis
 
 a.out: boot.s
-	or1k-elf-as boot.s
+	msp430-elf-as boot.s
 
 bin2vlogarray: bin2vlogarray.c
 	gcc -Wall -o bin2vlogarray bin2vlogarray.c
@@ -70,8 +70,8 @@ bin2vmem: bin2vmem.c
 	cp bin2vmem ../host/bin/
 
 install:
-	rm -f ../../../rtl/verilog/bootrom/bootrom_code.sv
-	cp -i bootrom_code.sv ../../../rtl/verilog/soc/bootrom/
+	rm -f ../../../soc/rtl/verilog/soc/bootrom/bootrom_code.sv
+	cp -i bootrom_code.sv ../../../soc/rtl/verilog/soc/bootrom/
 
 clean:
 	rm -f a.out bootrom.bin bootrom.hex bootrom_code.sv bin2vlogarray bin2vmem
