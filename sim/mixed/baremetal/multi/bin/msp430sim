@@ -79,7 +79,7 @@ echo " ======================================================="
 cd $softdir
 make clean
 make
-cd ../../../sim/mixed/baremetal/multirun/
+cd ../../../sim/mixed/baremetal/multi/run/
 
 # Create links
 if [ `uname -o` = "Cygwin" ]
