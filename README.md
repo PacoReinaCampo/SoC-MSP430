@@ -70,7 +70,7 @@ sudo apt upgrade
 
 | Core                        | Module description                 |
 | --------------------------- | ---------------------------------- |
-| `msp430_pu`                 |                                    |
+| `msp430_core`               |                                    |
 | `...msp430_bcm`             |                                    |
 | `...msp430_frontend`        |                                    |
 | `...msp430_execution`       |                                    |

@@ -90,7 +90,7 @@
 ../../../../pu/rtl/verilog/core/main/msp430_template08.sv
 ../../../../pu/rtl/verilog/core/main/msp430_template16.sv
 ../../../../pu/rtl/verilog/core/main/msp430_uart.sv
-../../../../pu/rtl/verilog/pu/msp430_pu.sv
+../../../../pu/rtl/verilog/pu/msp430_core.sv
 ../../../../rtl/verilog/soc/adapter/networkadapter_conf.sv
 ../../../../rtl/verilog/soc/adapter/networkadapter_ct.sv
 ../../../../rtl/verilog/soc/bootrom/bootrom.sv
