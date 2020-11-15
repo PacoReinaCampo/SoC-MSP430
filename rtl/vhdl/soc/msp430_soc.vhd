@@ -203,7 +203,7 @@ entity msp430_soc is
 end msp430_soc;
 
 architecture rtl of msp430_soc is
-  component msp430_core0
+  component msp430_pu0
     port (
       -- CPU registers
       r0  : out std_logic_vector(15 downto 0);
@@ -275,9 +275,9 @@ architecture rtl of msp430_soc is
       -- Switches & LEDs
       switch : in  std_logic_vector(3 downto 0);   -- Input switches
       led    : out std_logic_vector(1 downto 0));  -- LEDs
-  end component msp430_core0;
+  end component msp430_pu0;
 
-  component msp430_core1
+  component msp430_pu1
     port (
       -- CPU registers
       r0  : out std_logic_vector(15 downto 0);
@@ -345,7 +345,7 @@ architecture rtl of msp430_soc is
       -- LEDs
       switch : in  std_logic_vector(3 downto 0);   -- Input switches
       led    : out std_logic_vector(1 downto 0));  -- LEDs
-  end component msp430_core1;
+  end component msp430_pu1;
 
   component msp430_io_cell
     port (
@@ -423,7 +423,7 @@ begin
   -- 4)  OPENMSP430 SYSTEM 0
   --=============================================================================
 
-  msp430_core0_0 : msp430_core0
+  msp430_pu0_0 : msp430_pu0
     port map (
       -- CPU registers
       r0  => omsp0_r0,
@@ -499,7 +499,7 @@ begin
   --=============================================================================
   -- 5)  OPENMSP430 SYSTEM 1
   --=============================================================================
-  msp430_core1_0 : msp430_core1
+  msp430_pu1_0 : msp430_pu1
     port map (
       -- CPU registers
       r0  => omsp1_r0,

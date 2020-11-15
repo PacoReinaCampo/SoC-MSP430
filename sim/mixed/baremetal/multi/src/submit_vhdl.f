@@ -45,8 +45,9 @@
 // SoC-MSP430
 //=============================================================================
 
-../../../../../rtl/vhdl/soc/msp430_core0.vhd
-../../../../../rtl/vhdl/soc/msp430_core1.vhd
+../../../../../rtl/vhdl/pu/msp430_pu0.vhd
+../../../../../rtl/vhdl/pu/msp430_pu1.vhd
+
 ../../../../../rtl/vhdl/soc/msp430_soc.vhd
 ../../../../../rtl/vhdl/soc/msp430_io_cell.vhd
 
@@ -85,4 +86,4 @@
 ../../../../../pu/rtl/vhdl/core/main/msp430_template16.vhd
 ../../../../../pu/rtl/vhdl/core/main/msp430_uart.vhd
 
-../../../../../pu/rtl/vhdl/pu/msp430_pu.vhd
+../../../../../pu/rtl/vhdl/pu/msp430_core.vhd

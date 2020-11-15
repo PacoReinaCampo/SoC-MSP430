@@ -263,7 +263,7 @@ module msp430_soc (
   // 4)  OPENMSP430 SYSTEM 0
   //=============================================================================
 
-  msp430_core0 msp430_core0_0 (
+  msp430_pu0 msp430_pu0_0 (
 
     // CPU registers
     .r0                (omsp0_r0),
@@ -341,7 +341,7 @@ module msp430_soc (
   // 5)  OPENMSP430 SYSTEM 1
   //=============================================================================
 
-  msp430_core1 msp430_core1_0 (
+  msp430_pu1 msp430_pu1_0 (
 
     // CPU registers
     .r0                (omsp1_r0),

@@ -41,7 +41,7 @@
 
 `include "msp430_defines.sv"
 
-module msp430_core1 (
+module msp430_pu1 (
   // CPU registers
   output        [15:0] r0,
   output        [15:0] r1,
@@ -153,11 +153,11 @@ module msp430_core1 (
   // 2)  OPENMSP430 CORE
   //=============================================================================
 
-  msp430_pu #(
+  msp430_core #(
     .INST_NR  (1),
     .TOTAL_NR (1)
   )
-  msp430_pu_0 (
+  msp430_core_0 (
 
     // OUTPUTs
     .r0                (r0),
@@ -363,4 +363,4 @@ module msp430_core1 (
                       1'b0,         // Vector  2  (0xFFE4) - Reserved (Port 1 from system 0)
                       irq_port2,    // Vector  1  (0xFFE2)
                       irq_port1};   // Vector  0  (0xFFE0)
-endmodule // msp430_core1
+endmodule // msp430_pu1

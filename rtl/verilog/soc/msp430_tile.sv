@@ -243,7 +243,7 @@ module msp430_tile #(
 
   generate
     for (c = 0; c < CONFIG.CORES_PER_TILE; c = c + 1) begin : gen_cores
-      msp430_pu #(
+      msp430_core #(
         .DW ( 16 ),
         .AW ( 16 )
       )

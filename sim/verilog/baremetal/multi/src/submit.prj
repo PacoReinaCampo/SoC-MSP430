@@ -7,8 +7,9 @@ verilog work ../../../../../bench/verilog/glbl.sv
 verilog work ../../../../../bench/verilog/msp430_debug.sv
 verilog work ../../../../../bench/verilog/msp430_testbench.sv
 
-verilog work ../../../../../rtl/verilog/soc/msp430_core0.sv
-verilog work ../../../../../rtl/verilog/soc/msp430_core1.sv
+verilog work ../../../../../rtl/verilog/pu/msp430_pu0.sv
+verilog work ../../../../../rtl/verilog/pu/msp430_pu1.sv
+
 verilog work ../../../../../rtl/verilog/soc/msp430_soc.sv
 verilog work ../../../../../rtl/verilog/soc/msp430_io_cell.sv
 
@@ -41,5 +42,5 @@ verilog work ../../../../../pu/rtl/verilog/core/main/msp430_sfr.sv
 verilog work ../../../../../pu/rtl/verilog/core/main/msp430_ta.sv
 verilog work ../../../../../pu/rtl/verilog/core/main/msp430_watchdog.sv
 
-verilog work ../../../../../pu/rtl/verilog/pu/msp430_pu.sv
+verilog work ../../../../../pu/rtl/verilog/pu/msp430_core.sv
 
