@@ -68,6 +68,23 @@ sudo apt upgrade
 
 ### 2.1.3. CORE-MSP430 Organization
 
+| Core                        | Module description                 |
+| --------------------------- | ---------------------------------- |
+| `msp430_pu`                 |                                    |
+| `...msp430_bcm`             |                                    |
+| `...msp430_frontend`        |                                    |
+| `...msp430_execution`       |                                    |
+| `.....msp430_register_file` |                                    |
+| `.....msp430_alu`           |                                    |
+| `...msp430_memory`          |                                    |
+| `...msp430_sfr`             |                                    |
+| `...msp430_watchdog`        |                                    |
+| `...msp430_multiplier`      |                                    |
+| `...msp430_dbg`             |                                    |
+| `.....msp430_dbg_hwbrk`     |                                    |
+| `.....msp430_dbg_uart`      |                                    |
+| `.....msp430_dbg_i2c`       |                                    |
+
 ### 2.1.4. Parameters
 
 #### 2.1.4.1. Basic System Configuration
