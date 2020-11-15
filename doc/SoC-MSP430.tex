@@ -158,20 +158,20 @@ Collection}\label{openrisc-gnu-compiler-collection}}
 \paragraph{1.2.2.3. RISC-V GNU Compiler
 Collection}\label{risc-v-gnu-compiler-collection}}
 
-\hypertarget{risc-v-isa}{%
-\subsection{1.2. RISC-V ISA}\label{risc-v-isa}}
+\hypertarget{msp430-isa}{%
+\subsection{1.2. MSP430 ISA}\label{msp430-isa}}
 
 \hypertarget{isa-bases}{%
 \subsubsection{1.2.1. ISA Bases}\label{isa-bases}}
 
-\hypertarget{risc-v-32}{%
-\paragraph{1.2.2.1. RISC-V 32}\label{risc-v-32}}
+\hypertarget{msp430-32}{%
+\paragraph{1.2.2.1. MSP430 32}\label{msp430-32}}
 
-\hypertarget{risc-v-64}{%
-\paragraph{1.2.2.2. RISC-V 64}\label{risc-v-64}}
+\hypertarget{msp430-64}{%
+\paragraph{1.2.2.2. MSP430 64}\label{msp430-64}}
 
-\hypertarget{risc-v-128}{%
-\paragraph{1.2.2.3. RISC-V 128}\label{risc-v-128}}
+\hypertarget{msp430-128}{%
+\paragraph{1.2.2.3. MSP430 128}\label{msp430-128}}
 
 \hypertarget{isa-extensions}{%
 \subsubsection{1.2.2. ISA Extensions}\label{isa-extensions}}
@@ -179,17 +179,17 @@ Collection}\label{risc-v-gnu-compiler-collection}}
 \hypertarget{isa-modes}{%
 \subsubsection{1.2.3. ISA Modes}\label{isa-modes}}
 
-\hypertarget{risc-v-user}{%
-\paragraph{1.2.3.1. RISC-V User}\label{risc-v-user}}
+\hypertarget{msp430-user}{%
+\paragraph{1.2.3.1. MSP430 User}\label{msp430-user}}
 
-\hypertarget{risc-v-supervisor}{%
-\paragraph{1.2.3.2. RISC-V Supervisor}\label{risc-v-supervisor}}
+\hypertarget{msp430-supervisor}{%
+\paragraph{1.2.3.2. MSP430 Supervisor}\label{msp430-supervisor}}
 
-\hypertarget{risc-v-hypervisor}{%
-\paragraph{1.2.3.3. RISC-V Hypervisor}\label{risc-v-hypervisor}}
+\hypertarget{msp430-hypervisor}{%
+\paragraph{1.2.3.3. MSP430 Hypervisor}\label{msp430-hypervisor}}
 
-\hypertarget{risc-v-machine}{%
-\paragraph{1.2.3.4. RISC-V Machine}\label{risc-v-machine}}
+\hypertarget{msp430-machine}{%
+\paragraph{1.2.3.4. MSP430 Machine}\label{msp430-machine}}
 
 \hypertarget{projects}{%
 \section{2. PROJECTS}\label{projects}}
@@ -212,7 +212,7 @@ Organization}\label{core-msp430-organization}}
 Core & Module description\tabularnewline
 \midrule
 \endhead
-\texttt{msp430\_pu} &\tabularnewline
+\texttt{msp430\_core} &\tabularnewline
 \texttt{...msp430\_bcm} &\tabularnewline
 \texttt{...msp430\_frontend} &\tabularnewline
 \texttt{...msp430\_execution} &\tabularnewline
@@ -480,6 +480,20 @@ The MSP430 implementation has a 16 bit Microarchitecture, 3 stages data
 pipeline and an Instruction Set Architecture based on Reduced
 Instruction Set Computer. Compatible with Wishbone Bus. Only For
 Researching.
+
+\begin{longtable}[]{@{}ll@{}}
+\toprule
+Processing Unit & Module description\tabularnewline
+\midrule
+\endhead
+\texttt{msp430\_pu} & Processing Unit\tabularnewline
+\texttt{...msp430\_core} & Core\tabularnewline
+\texttt{...msp430\_gpio} & General Purpose Input Output\tabularnewline
+\texttt{...msp430\_ta} & Timer A\tabularnewline
+\texttt{...msp430\_uart} & Universal Asynchronous
+Receiver-Transmitter\tabularnewline
+\bottomrule
+\end{longtable}
 
 A PU cache is a hardware cache used by the PU to reduce the average cost
 (time or energy) to access instruction/data from the main memory. A
@@ -1462,8 +1476,8 @@ libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf \
 libtool patchutils bc zlib1g-dev libexpat-dev
 \end{verbatim}
 
-\hypertarget{risc-v-gnu-cc}{%
-\paragraph{3.2.1.1. RISC-V GNU C/C++}\label{risc-v-gnu-cc}}
+\hypertarget{msp430-gnu-cc}{%
+\paragraph{3.2.1.1. MSP430 GNU C/C++}\label{msp430-gnu-cc}}
 
 type:
 
@@ -1485,8 +1499,8 @@ sudo make clean
 sudo make linux
 \end{verbatim}
 
-\hypertarget{risc-v-gnu-go}{%
-\paragraph{3.2.1.2. RISC-V GNU Go}\label{risc-v-gnu-go}}
+\hypertarget{msp430-gnu-go}{%
+\paragraph{3.2.1.2. MSP430 GNU Go}\label{msp430-gnu-go}}
 
 type:
 
@@ -1597,8 +1611,8 @@ source FLOW-IT
 \hypertarget{software-1}{%
 \subsection{4.2. SOFTWARE}\label{software-1}}
 
-\hypertarget{risc-v-tests}{%
-\subsubsection{4.2.1. RISC-V Tests}\label{risc-v-tests}}
+\hypertarget{msp430-tests}{%
+\subsubsection{4.2.1. MSP430 Tests}\label{msp430-tests}}
 
 type:
 
@@ -1651,8 +1665,8 @@ spike rv32mi-p-csr
 spike rv64um-v-remw
 \end{verbatim}
 
-\hypertarget{risc-v-bare-metal}{%
-\subsubsection{4.2.2. RISC-V Bare Metal}\label{risc-v-bare-metal}}
+\hypertarget{msp430-bare-metal}{%
+\subsubsection{4.2.2. MSP430 Bare Metal}\label{msp430-bare-metal}}
 
 type:
 
@@ -1746,9 +1760,9 @@ Go Language:
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{risc-v-operating-system}{%
-\subsubsection{4.2.3. RISC-V Operating
-System}\label{risc-v-operating-system}}
+\hypertarget{msp430-operating-system}{%
+\subsubsection{4.2.3. MSP430 Operating
+System}\label{msp430-operating-system}}
 
 \hypertarget{gnu-linux}{%
 \paragraph{4.2.3.1. GNU Linux}\label{gnu-linux}}
@@ -1797,8 +1811,8 @@ qemu-system-riscv64 -nographic -machine virt \
 \hypertarget{gnu-hurd}{%
 \paragraph{4.2.3.2. GNU Hurd}\label{gnu-hurd}}
 
-\hypertarget{risc-v-distribution}{%
-\subsubsection{4.2.4. RISC-V Distribution}\label{risc-v-distribution}}
+\hypertarget{msp430-distribution}{%
+\subsubsection{4.2.4. MSP430 Distribution}\label{msp430-distribution}}
 
 \hypertarget{gnu-debian}{%
 \paragraph{4.2.4.1. GNU Debian}\label{gnu-debian}}

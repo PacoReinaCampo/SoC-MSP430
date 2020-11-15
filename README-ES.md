@@ -36,27 +36,27 @@ sudo apt upgrade
 
 #### 1.2.2.3. RISC-V GNU Compiler Collection
 
-## 1.2. RISC-V ISA
+## 1.2. MSP430 ISA
 
 ### 1.2.1. ISA Bases
 
-#### 1.2.2.1. RISC-V 32
+#### 1.2.2.1. MSP430 32
 
-#### 1.2.2.2. RISC-V 64
+#### 1.2.2.2. MSP430 64
 
-#### 1.2.2.3. RISC-V 128
+#### 1.2.2.3. MSP430 128
 
 ### 1.2.2. ISA Extensions
 
 ### 1.2.3. ISA Modes
 
-#### 1.2.3.1. RISC-V User
+#### 1.2.3.1. MSP430 User
 
-#### 1.2.3.2. RISC-V Supervisor
+#### 1.2.3.2. MSP430 Supervisor
 
-#### 1.2.3.3. RISC-V Hypervisor
+#### 1.2.3.3. MSP430 Hypervisor
 
-#### 1.2.3.4. RISC-V Machine
+#### 1.2.3.4. MSP430 Machine
 
 # 2. PROJECTS
 
@@ -263,6 +263,14 @@ sudo apt upgrade
 ### 2.2.1. Definition
 
 The MSP430 implementation has a 16 bit Microarchitecture, 3 stages data pipeline and an Instruction Set Architecture based on Reduced Instruction Set Computer. Compatible with Wishbone Bus. Only For Researching.
+
+| Processing Unit  | Module description                          |
+| ---------------- | ------------------------------------------- |
+| `msp430_pu`      | Processing Unit                             |
+| `...msp430_core` | Core                                        |
+| `...msp430_gpio` | General Purpose Input Output                |
+| `...msp430_ta`   | Timer A                                     |
+| `...msp430_uart` | Universal Asynchronous Receiver-Transmitter |
 
 A PU cache is a hardware cache used by the PU to reduce the average cost (time or energy) to access instruction/data from the main memory. A cache is a smaller, faster memory, closer to a core, which stores copies of the data from frequently used main memory locations. Most CPUs have different independent caches, including instruction and data caches.
 
@@ -881,7 +889,7 @@ libmpfr-dev libgmp-dev gawk build-essential bison flex texinfo gperf \
 libtool patchutils bc zlib1g-dev libexpat-dev
 ```
 
-#### 3.2.1.1. RISC-V GNU C/C++
+#### 3.2.1.1. MSP430 GNU C/C++
 
 type:
 ```
@@ -902,7 +910,7 @@ sudo make clean
 sudo make linux
 ```
 
-#### 3.2.1.2. RISC-V GNU Go
+#### 3.2.1.2. MSP430 GNU Go
 
 type:
 ```
@@ -996,7 +1004,7 @@ source FLOW-IT
 
 ## 4.2. SOFTWARE
 
-### 4.2.1. RISC-V Tests
+### 4.2.1. MSP430 Tests
 
 type:
 ```
@@ -1046,7 +1054,7 @@ spike rv32mi-p-csr
 spike rv64um-v-remw
 ```
 
-### 4.2.2. RISC-V Bare Metal
+### 4.2.2. MSP430 Bare Metal
 
 type:
 ```
@@ -1126,7 +1134,7 @@ func main() {
 }
 ```
 
-### 4.2.3. RISC-V Operating System
+### 4.2.3. MSP430 Operating System
 
 #### 4.2.3.1. GNU Linux
 
@@ -1170,7 +1178,7 @@ qemu-system-riscv64 -nographic -machine virt \
 
 #### 4.2.3.2. GNU Hurd
 
-### 4.2.4. RISC-V Distribution
+### 4.2.4. MSP430 Distribution
 
 #### 4.2.4.1. GNU Debian
 
