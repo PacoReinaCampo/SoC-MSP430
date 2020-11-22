@@ -197,15 +197,11 @@ Collection}\label{risc-v-gnu-compiler-collection}}
 \hypertarget{core-msp430}{%
 \subsection{2.1. CORE-MSP430}\label{core-msp430}}
 
-\hypertarget{definition}{%
-\subsubsection{2.1.1. Definition}\label{definition}}
+\hypertarget{functionality}{%
+\subsubsection{2.1.1. Functionality}\label{functionality}}
 
-\hypertarget{risc-pipeline}{%
-\subsubsection{2.1.2. RISC Pipeline}\label{risc-pipeline}}
-
-\hypertarget{core-msp430-organization}{%
-\subsubsection{2.1.3. CORE-MSP430
-Organization}\label{core-msp430-organization}}
+\hypertarget{organization}{%
+\paragraph{2.1.1.1. Organization}\label{organization}}
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule
@@ -230,10 +226,10 @@ Core & Module description\tabularnewline
 \end{longtable}
 
 \hypertarget{parameters}{%
-\subsubsection{2.1.4. Parameters}\label{parameters}}
+\paragraph{2.1.1.2. Parameters}\label{parameters}}
 
 \hypertarget{basic-system-configuration}{%
-\paragraph{2.1.4.1. Basic System
+\subparagraph{2.1.1.2.1. Basic System
 Configuration}\label{basic-system-configuration}}
 
 \begin{longtable}[]{@{}lccc@{}}
@@ -251,7 +247,7 @@ Include/Exclude Serial Debug interface & DBG\_ON & bit &
 \end{longtable}
 
 \hypertarget{advanced-system-configuration-for-experienced-users}{%
-\paragraph{2.1.4.2. Advanced System Configuration (for experienced
+\subparagraph{2.1.1.2.2. Advanced System Configuration (for experienced
 users)}\label{advanced-system-configuration-for-experienced-users}}
 
 \begin{longtable}[]{@{}lccc@{}}
@@ -275,7 +271,7 @@ Debugger definition & DBG\_RST\_BRK\_EN & bit & 0\tabularnewline
 \end{longtable}
 
 \hypertarget{expert-system-configuration-experts-only}{%
-\paragraph{2.1.4.3. Expert System Configuration (experts
+\subparagraph{2.1.1.2.3. Expert System Configuration (experts
 only)}\label{expert-system-configuration-experts-only}}
 
 \begin{longtable}[]{@{}lccc@{}}
@@ -296,7 +292,8 @@ ASIC version & ASIC & bit & 1\tabularnewline
 \end{longtable}
 
 \hypertarget{asic-system-configuration-expertsprofessionals-only}{%
-\paragraph{2.1.4.4. ASIC System Configuration (experts/professionals
+\subparagraph{2.1.1.2.4. ASIC System Configuration
+(experts/professionals
 only)}\label{asic-system-configuration-expertsprofessionals-only}}
 
 \begin{longtable}[]{@{}lccc@{}}
@@ -322,7 +319,7 @@ LOW POWER MODE: OSCOFF & OSCOFF\_EN & bit & 1\tabularnewline
 \end{longtable}
 
 \hypertarget{system-constants-do-not-edit}{%
-\paragraph{2.1.4.5. System Constants (do not
+\subparagraph{2.1.1.2.5. System Constants (do not
 edit)}\label{system-constants-do-not-edit}}
 
 \begin{longtable}[]{@{}lccc@{}}
@@ -462,19 +459,28 @@ MULTIPLIER CONFIGURATION & MPY\_16X16 & bit & 1\tabularnewline
 \bottomrule
 \end{longtable}
 
+\hypertarget{interface}{%
+\subsubsection{2.1.2. Interface}\label{interface}}
+
 \hypertarget{instruction-inputsoutputs-bus}{%
-\subsubsection{2.1.5. Instruction Inputs/Outputs
+\paragraph{2.1.2.1. Instruction Inputs/Outputs
 Bus}\label{instruction-inputsoutputs-bus}}
 
 \hypertarget{data-inputsoutputs-bus}{%
-\subsubsection{2.1.6. Data Inputs/Outputs
+\paragraph{2.1.2.2. Data Inputs/Outputs
 Bus}\label{data-inputsoutputs-bus}}
+
+\hypertarget{registers}{%
+\subsubsection{2.1.3. Registers}\label{registers}}
+
+\hypertarget{interruptions}{%
+\subsubsection{2.1.4. Interruptions}\label{interruptions}}
 
 \hypertarget{pu-msp430}{%
 \subsection{2.2. PU-MSP430}\label{pu-msp430}}
 
-\hypertarget{definition-1}{%
-\subsubsection{2.2.1. Definition}\label{definition-1}}
+\hypertarget{processing-unit}{%
+\subsubsection{2.2.1. Processing Unit}\label{processing-unit}}
 
 The MSP430 implementation has a 16 bit Microarchitecture, 3 stages data
 pipeline and an Instruction Set Architecture based on Reduced
@@ -504,9 +510,8 @@ different independent caches, including instruction and data caches.
 \hypertarget{instruction-cache}{%
 \subsubsection{2.2.2. Instruction Cache}\label{instruction-cache}}
 
-\hypertarget{instruction-organization}{%
-\paragraph{2.2.2.1. Instruction
-Organization}\label{instruction-organization}}
+\hypertarget{functionality-1}{%
+\paragraph{2.2.2.1. Functionality}\label{functionality-1}}
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule
@@ -535,13 +540,14 @@ Generic\tabularnewline
 \bottomrule
 \end{longtable}
 
+\hypertarget{interface-1}{%
+\paragraph{2.2.2.2. Interface}\label{interface-1}}
+
 \hypertarget{instruction-inputsoutputs-amba4-axi-lite-bus}{%
-\paragraph{2.2.2.2. Instruction INPUTS/OUTPUTS AMBA4 AXI-Lite
+\subparagraph{2.2.2.2.1. Instruction INPUTS/OUTPUTS AMBA4 AXI-Lite
 Bus}\label{instruction-inputsoutputs-amba4-axi-lite-bus}}
 
-\hypertarget{signals-of-the-read-and-write-address-channels}{%
-\subparagraph{2.2.2.2.1. Signals of the Read and Write Address
-channels}\label{signals-of-the-read-and-write-address-channels}}
+2.2.2.2.1.1. Signals of the Read and Write Address channels
 
 \begin{longtable}[]{@{}llccl@{}}
 \toprule
@@ -577,9 +583,7 @@ signal\tabularnewline
 \bottomrule
 \end{longtable}
 
-\hypertarget{signals-of-the-read-and-write-data-channels}{%
-\subparagraph{2.2.2.2.2. Signals of the Read and Write Data
-channels}\label{signals-of-the-read-and-write-data-channels}}
+2.2.2.2.1.2. Signals of the Read and Write Data channels
 
 \begin{longtable}[]{@{}llccl@{}}
 \toprule
@@ -605,9 +609,7 @@ signal\tabularnewline
 \bottomrule
 \end{longtable}
 
-\hypertarget{signals-of-the-write-response-channel}{%
-\subparagraph{2.2.2.2.3. Signals of the Write Response
-channel}\label{signals-of-the-write-response-channel}}
+2.2.2.2.1.3. Signals of the Write Response channel
 
 \begin{longtable}[]{@{}lccl@{}}
 \toprule
@@ -626,7 +628,7 @@ data\tabularnewline
 \end{longtable}
 
 \hypertarget{instruction-inputsoutputs-amba3-ahb-lite-bus}{%
-\paragraph{2.2.2.3. Instruction INPUTS/OUTPUTS AMBA3 AHB-Lite
+\subparagraph{2.2.2.2.2. Instruction INPUTS/OUTPUTS AMBA3 AHB-Lite
 Bus}\label{instruction-inputsoutputs-amba3-ahb-lite-bus}}
 
 \begin{longtable}[]{@{}lccl@{}}
@@ -662,7 +664,7 @@ Response\tabularnewline
 \end{longtable}
 
 \hypertarget{instruction-inputsoutputs-wishbone-bus}{%
-\paragraph{2.2.2.4. Instruction INPUTS/OUTPUTS Wishbone
+\subparagraph{2.2.2.2.3. Instruction INPUTS/OUTPUTS Wishbone
 Bus}\label{instruction-inputsoutputs-wishbone-bus}}
 
 \begin{longtable}[]{@{}lccl@{}}
@@ -694,8 +696,8 @@ Input\tabularnewline
 \hypertarget{data-cache}{%
 \subsubsection{2.2.3. Data Cache}\label{data-cache}}
 
-\hypertarget{data-organization}{%
-\paragraph{2.2.3.1. Data Organization}\label{data-organization}}
+\hypertarget{functionality-2}{%
+\paragraph{2.2.3.1. Functionality}\label{functionality-2}}
 
 \begin{longtable}[]{@{}ll@{}}
 \toprule
@@ -721,13 +723,14 @@ Generic\tabularnewline
 \bottomrule
 \end{longtable}
 
+\hypertarget{interface-2}{%
+\paragraph{2.2.3.2. Interface}\label{interface-2}}
+
 \hypertarget{data-inputsoutputs-amba4-axi-lite-bus}{%
-\paragraph{2.2.3.2. Data INPUTS/OUTPUTS AMBA4 AXI-Lite
+\subparagraph{2.2.3.2.1. Data INPUTS/OUTPUTS AMBA4 AXI-Lite
 Bus}\label{data-inputsoutputs-amba4-axi-lite-bus}}
 
-\hypertarget{signals-of-the-read-and-write-address-channels-1}{%
-\subparagraph{2.2.3.2.1. Signals of the Read and Write Address
-channels}\label{signals-of-the-read-and-write-address-channels-1}}
+2.2.3.2.1.1. Signals of the Read and Write Address channels
 
 \begin{longtable}[]{@{}llccl@{}}
 \toprule
@@ -763,9 +766,7 @@ signal\tabularnewline
 \bottomrule
 \end{longtable}
 
-\hypertarget{signals-of-the-read-and-write-data-channels-1}{%
-\subparagraph{2.2.3.2.2. Signals of the Read and Write Data
-channels}\label{signals-of-the-read-and-write-data-channels-1}}
+2.2.3.2.1.2. Signals of the Read and Write Data channels
 
 \begin{longtable}[]{@{}llccl@{}}
 \toprule
@@ -791,9 +792,7 @@ signal\tabularnewline
 \bottomrule
 \end{longtable}
 
-\hypertarget{signals-of-the-write-response-channel-1}{%
-\subparagraph{2.2.3.2.3. Signals of the Write Response
-channel}\label{signals-of-the-write-response-channel-1}}
+2.2.3.2.1.3. Signals of the Write Response channel
 
 \begin{longtable}[]{@{}lccl@{}}
 \toprule
@@ -812,7 +811,7 @@ data\tabularnewline
 \end{longtable}
 
 \hypertarget{data-inputsoutputs-amba3-ahb-lite-bus}{%
-\paragraph{2.2.3.3. Data INPUTS/OUTPUTS AMBA3 AHB-Lite
+\paragraph{2.2.3.2.2. Data INPUTS/OUTPUTS AMBA3 AHB-Lite
 Bus}\label{data-inputsoutputs-amba3-ahb-lite-bus}}
 
 \begin{longtable}[]{@{}lccl@{}}
@@ -845,7 +844,7 @@ Lock\tabularnewline
 \end{longtable}
 
 \hypertarget{data-inputsoutputs-wishbone-bus}{%
-\paragraph{2.2.3.4. Data INPUTS/OUTPUTS Wishbone
+\paragraph{2.2.3.2.3. Data INPUTS/OUTPUTS Wishbone
 Bus}\label{data-inputsoutputs-wishbone-bus}}
 
 \begin{longtable}[]{@{}lccl@{}}

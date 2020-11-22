@@ -62,11 +62,9 @@ sudo apt upgrade
 
 ## 2.1. CORE-MSP430
 
-### 2.1.1. Definition
+### 2.1.1. Functionality
 
-### 2.1.2. RISC Pipeline
-
-### 2.1.3. CORE-MSP430 Organization
+#### 2.1.1.1. Organization
 
 | Core                        | Module description                 |
 | --------------------------- | ---------------------------------- |
@@ -85,9 +83,9 @@ sudo apt upgrade
 | `.....msp430_dbg_uart`      |                                    |
 | `.....msp430_dbg_i2c`       |                                    |
 
-### 2.1.4. Parameters
+#### 2.1.1.2. Parameters
 
-#### 2.1.4.1. Basic System Configuration
+##### 2.1.1.2.1. Basic System Configuration
 
 |Description                            | Parameter   | Type    | Default |
 |-------------------------------------- |:-----------:|:-------:|:-------:|
@@ -96,7 +94,7 @@ sudo apt upgrade
 |Include/Exclude Hardware Multiplier    | MULTIPLYING | bit     | 1       |
 |Include/Exclude Serial Debug interface | DBG_ON      | bit     | 1       |
 
-#### 2.1.4.2. Advanced System Configuration (for experienced users)
+##### 2.1.1.2.2. Advanced System Configuration (for experienced users)
 
 | Description                    | Parameter      | Type       | Default |
 | ------------------------------ |:--------------:|:----------:|:-------:|
@@ -113,7 +111,7 @@ sudo apt upgrade
 | Debugger definition            | DBG_RST_BRK_EN | bit        | 0       |
 
 
-#### 2.1.4.3. Expert System Configuration (experts only)
+##### 2.1.1.2.3. Expert System Configuration (experts only)
 
 | Description                            | Parameter          | Type       | Default |
 | -------------------------------------- |:------------------:|:----------:|:-------:|
@@ -124,7 +122,7 @@ sudo apt upgrade
 | Hardware breakpoint RANGE mode         | HWBRK_RANGE        | bit        | 1       |
 | ASIC version                           | ASIC               | bit        | 1       |
 
-#### 2.1.4.4. ASIC System Configuration (experts/professionals only)
+##### 2.1.1.2.4. ASIC System Configuration (experts/professionals only)
 
 |Description                     | Parameter           | Type       | Default |
 |------------------------------- |:-------------------:|:----------:|:-------:|
@@ -142,7 +140,7 @@ sudo apt upgrade
 |LOW POWER MODE: CPUOFF          | CPUOFF_EN           | bit        | 1       |
 |LOW POWER MODE: OSCOFF          | OSCOFF_EN           | bit        | 1       |
 
-#### 2.1.4.5. System Constants (do not edit)
+##### 2.1.1.2.5. System Constants (do not edit)
 
 |Description                                  | Parameter           | Type       | Default  |
 |-------------------------------------------- |:-------------------:|:----------:|:--------:|
@@ -254,13 +252,19 @@ sudo apt upgrade
 |Debug interface input synchronizer           | SYNC_DBG_UART_RXD   | bit        | 1        |
 |MULTIPLIER CONFIGURATION                     | MPY_16X16           | bit        | 1        |
 
-### 2.1.5. Instruction Inputs/Outputs Bus
+### 2.1.2. Interface
 
-### 2.1.6. Data Inputs/Outputs Bus
+#### 2.1.2.1. Instruction Inputs/Outputs Bus
+
+#### 2.1.2.2. Data Inputs/Outputs Bus
+
+### 2.1.3. Registers
+
+### 2.1.4. Interruptions
 
 ## 2.2. PU-MSP430
 
-### 2.2.1. Definition
+### 2.2.1. Processing Unit
 
 The MSP430 implementation has a 16 bit Microarchitecture, 3 stages data pipeline and an Instruction Set Architecture based on Reduced Instruction Set Computer. Compatible with Wishbone Bus. Only For Researching.
 
@@ -276,7 +280,7 @@ A PU cache is a hardware cache used by the PU to reduce the average cost (time o
 
 ### 2.2.2. Instruction Cache
 
-#### 2.2.2.1. Instruction Organization
+#### 2.2.2.1. Functionality
 
 | Instruction Memory             | Module description                 |
 | ------------------------------ | ---------------------------------- |
@@ -295,9 +299,11 @@ A PU cache is a hardware cache used by the PU to reduce the average cost (time o
 | `...riscv_mux`                 | Bus-Interface-Unit Mux             |
 | `riscv_biu`                    | Bus Interface Unit                 |
 
-#### 2.2.2.2. Instruction INPUTS/OUTPUTS AMBA4 AXI-Lite Bus
+#### 2.2.2.2. Interface
 
-##### 2.2.2.2.1. Signals of the Read and Write Address channels
+##### 2.2.2.2.1. Instruction INPUTS/OUTPUTS AMBA4 AXI-Lite Bus
+
+###### 2.2.2.2.1.1. Signals of the Read and Write Address channels
 
 | Write Port | Read Port  |  Size            | Direction | Description                              |
 | ---------- | ---------- |:----------------:|:---------:| ---------------------------------------- |
@@ -315,7 +321,7 @@ A PU cache is a hardware cache used by the PU to reduce the average cost (time o
 | `AWVALID`  | `ARVALID`  |         1        | Output    | xVALID handshake signal                  |
 | `AWREADY`  | `ARREADY`  |         1        | Input     | xREADY handshake signal                  |
 
-##### 2.2.2.2.2. Signals of the Read and Write Data channels
+###### 2.2.2.2.1.2. Signals of the Read and Write Data channels
 
 | Write Port | Read Port  |  Size            | Direction | Description                              |
 | ---------- | ---------- |:----------------:|:---------:| ---------------------------------------- |
@@ -328,7 +334,7 @@ A PU cache is a hardware cache used by the PU to reduce the average cost (time o
 | `WVALID`   | `RVALID`   |         1        | Output    | xVALID handshake signal                  |
 | `WREADY`   | `RREADY`   |         1        | Input     | xREADY handshake signal                  |
 
-##### 2.2.2.2.3. Signals of the Write Response channel
+###### 2.2.2.2.1.3. Signals of the Write Response channel
 
 | Write Port | Size             | Direction | Description                                     |
 | ---------- |:----------------:|:---------:| ----------------------------------------------- |
@@ -338,7 +344,7 @@ A PU cache is a hardware cache used by the PU to reduce the average cost (time o
 | `BVALID`   |         1        |   Input   | xVALID handshake signal                         |
 | `BREADY`   |         1        |   Output  | xREADY handshake signal                         |
 
-#### 2.2.2.3. Instruction INPUTS/OUTPUTS AMBA3 AHB-Lite Bus
+##### 2.2.2.2.2. Instruction INPUTS/OUTPUTS AMBA3 AHB-Lite Bus
 
 | Port         |  Size  | Direction | Description                           |
 | ------------ |:------:|:---------:| ------------------------------------- |
@@ -358,7 +364,7 @@ A PU cache is a hardware cache used by the PU to reduce the average cost (time o
 | `IHREADY`    |    1   |   Input   | Instruction Slave Ready Indicator     |
 | `IHRESP`     |    1   |   Input   | Instruction Transfer Response         |
 
-#### 2.2.2.4. Instruction INPUTS/OUTPUTS Wishbone Bus
+##### 2.2.2.2.3. Instruction INPUTS/OUTPUTS Wishbone Bus
 
 | Port    |  Size  | Direction | Description                     |
 | ------- |:------:|:---------:| ------------------------------- |
@@ -378,7 +384,7 @@ A PU cache is a hardware cache used by the PU to reduce the average cost (time o
 
 ### 2.2.3. Data Cache
 
-#### 2.2.3.1. Data Organization
+#### 2.2.3.1. Functionality
 
 | Data Memory                    | Module description                 |
 | ------------------------------ | ---------------------------------- |
@@ -396,9 +402,11 @@ A PU cache is a hardware cache used by the PU to reduce the average cost (time o
 | `...riscv_mux`                 | Bus-Interface-Unit Mux             |
 | `riscv_biu`                    | Bus Interface Unit                 |
 
-#### 2.2.3.2. Data INPUTS/OUTPUTS AMBA4 AXI-Lite Bus
+#### 2.2.3.2. Interface
 
-##### 2.2.3.2.1. Signals of the Read and Write Address channels
+##### 2.2.3.2.1. Data INPUTS/OUTPUTS AMBA4 AXI-Lite Bus
+
+###### 2.2.3.2.1.1. Signals of the Read and Write Address channels
 
 | Write Port | Read Port  |  Size            | Direction | Description                              |
 | ---------- | ---------- |:----------------:|:---------:| ---------------------------------------- |
@@ -416,7 +424,7 @@ A PU cache is a hardware cache used by the PU to reduce the average cost (time o
 | `AWVALID`  | `ARVALID`  |         1        | Output    | xVALID handshake signal                  |
 | `AWREADY`  | `ARREADY`  |         1        | Input     | xREADY handshake signal                  |
 
-##### 2.2.3.2.2. Signals of the Read and Write Data channels
+###### 2.2.3.2.1.2. Signals of the Read and Write Data channels
 
 | Write Port | Read Port  |  Size            | Direction | Description                              |
 | ---------- | ---------- |:----------------:|:---------:| ---------------------------------------- |
@@ -429,7 +437,7 @@ A PU cache is a hardware cache used by the PU to reduce the average cost (time o
 | `WVALID`   | `RVALID`   |        1         | Output    | xVALID handshake signal                  |
 | `WREADY`   | `RREADY`   |        1         | Input     | xREADY handshake signal                  |
 
-##### 2.2.3.2.3. Signals of the Write Response channel
+###### 2.2.3.2.1.3. Signals of the Write Response channel
 
 | Write Port | Size             | Direction | Description                                     |
 | ---------- |:----------------:|:---------:| ----------------------------------------------- |
@@ -439,7 +447,7 @@ A PU cache is a hardware cache used by the PU to reduce the average cost (time o
 | `BVALID`   |         1        |   Input   | xVALID handshake signal                         |
 | `BREADY`   |         1        |   Output  | xREADY handshake signal                         |
 
-#### 2.2.3.3. Data INPUTS/OUTPUTS AMBA3 AHB-Lite Bus
+#### 2.2.3.2.2. Data INPUTS/OUTPUTS AMBA3 AHB-Lite Bus
 
 | Port         |  Size  | Direction | Description                    |
 | ------------ |:------:|:---------:| ------------------------------ |
@@ -459,7 +467,7 @@ A PU cache is a hardware cache used by the PU to reduce the average cost (time o
 | `DHREADY`    |    1   |   Input   | Data Slave Ready Indicator     |
 | `DHRESP`     |    1   |   Input   | Data Transfer Response         |
 
-#### 2.2.3.4. Data INPUTS/OUTPUTS Wishbone Bus
+#### 2.2.3.2.3. Data INPUTS/OUTPUTS Wishbone Bus
 
 | Port    |  Size  | Direction | Description                     |
 | ------- |:------:|:---------:| ------------------------------- |
