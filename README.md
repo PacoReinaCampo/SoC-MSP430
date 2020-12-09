@@ -83,9 +83,13 @@ sudo apt upgrade
 | `.....msp430_dbg_uart`      |                                    |
 | `.....msp430_dbg_i2c`       |                                    |
 
-#### 2.1.1.2. Parameters
+#### 2.1.1.2. Pipeline
 
-##### 2.1.1.2.1. Basic System Configuration
+### 2.1.2. Interface
+
+#### 2.1.1.1. Constants
+
+##### 2.1.1.1.1. Basic System Configuration
 
 |Description                            | Parameter   | Type    | Default |
 |-------------------------------------- |:-----------:|:-------:|:-------:|
@@ -94,7 +98,7 @@ sudo apt upgrade
 |Include/Exclude Hardware Multiplier    | MULTIPLYING | bit     | 1       |
 |Include/Exclude Serial Debug interface | DBG_ON      | bit     | 1       |
 
-##### 2.1.1.2.2. Advanced System Configuration (for experienced users)
+##### 2.1.1.1.2. Advanced System Configuration (for experienced users)
 
 | Description                    | Parameter      | Type       | Default |
 | ------------------------------ |:--------------:|:----------:|:-------:|
@@ -111,7 +115,7 @@ sudo apt upgrade
 | Debugger definition            | DBG_RST_BRK_EN | bit        | 0       |
 
 
-##### 2.1.1.2.3. Expert System Configuration (experts only)
+##### 2.1.1.1.3. Expert System Configuration (experts only)
 
 | Description                            | Parameter          | Type       | Default |
 | -------------------------------------- |:------------------:|:----------:|:-------:|
@@ -122,7 +126,7 @@ sudo apt upgrade
 | Hardware breakpoint RANGE mode         | HWBRK_RANGE        | bit        | 1       |
 | ASIC version                           | ASIC               | bit        | 1       |
 
-##### 2.1.1.2.4. ASIC System Configuration (experts/professionals only)
+##### 2.1.1.1.4. ASIC System Configuration (experts/professionals only)
 
 |Description                     | Parameter           | Type       | Default |
 |------------------------------- |:-------------------:|:----------:|:-------:|
@@ -140,7 +144,7 @@ sudo apt upgrade
 |LOW POWER MODE: CPUOFF          | CPUOFF_EN           | bit        | 1       |
 |LOW POWER MODE: OSCOFF          | OSCOFF_EN           | bit        | 1       |
 
-##### 2.1.1.2.5. System Constants (do not edit)
+##### 2.1.1.1.5. System Constants (do not edit)
 
 |Description                                  | Parameter           | Type       | Default  |
 |-------------------------------------------- |:-------------------:|:----------:|:--------:|
@@ -252,11 +256,11 @@ sudo apt upgrade
 |Debug interface input synchronizer           | SYNC_DBG_UART_RXD   | bit        | 1        |
 |MULTIPLIER CONFIGURATION                     | MPY_16X16           | bit        | 1        |
 
-### 2.1.2. Interface
+#### 2.1.1.2. Signals
 
-#### 2.1.2.1. Instruction Inputs/Outputs Bus
+##### 2.1.1.2.1. Instruction Inputs/Outputs Bus
 
-#### 2.1.2.2. Data Inputs/Outputs Bus
+##### 2.1.1.2.2. Data Inputs/Outputs Bus
 
 ### 2.1.3. Registers
 
@@ -499,9 +503,11 @@ A PU cache is a hardware cache used by the PU to reduce the average cost (time o
 
 ### 2.3.6. MPSoC-MSI
 
-### 2.3.7. MPSoC-SPRAM
+### 2.3.7. MPSoC-NoC
 
-### 2.3.8. MPSoC-UART
+### 2.3.8. MPSoC-SPRAM
+
+### 2.3.9. MPSoC-UART
 
 # 3. WORKFLOW
 
