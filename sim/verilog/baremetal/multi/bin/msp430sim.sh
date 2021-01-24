@@ -5,22 +5,22 @@
 ###############################################################################
 EXPECTED_ARGS=1
 if [ $# -ne $EXPECTED_ARGS ]; then
-  echo "ERROR    : wrong number of arguments"
-  echo "USAGE    : msp430sim <test name>"
-  echo "Example  : msp430sim leds"
-  echo ""
-  echo "In order to switch the verilog simulator, the OMSP_SIMULATOR environment"
-  echo "variable can be set to the following values:"
-  echo ""
-  echo "                  - iverilog  : Icarus Verilog  (default)"
-  echo "                  - cver      : CVer"
-  echo "                  - verilog   : Verilog-XL"
-  echo "                  - ncverilog : NC-Verilog"
-  echo "                  - vcs       : VCS"
-  echo "                  - msim      : Modelsim"
-  echo "                  - isim      : Xilinx simulator"
-  echo ""
-  exit 1
+    echo "ERROR    : wrong number of arguments"
+    echo "USAGE    : msp430sim <test name>"
+    echo "Example  : msp430sim leds"
+    echo ""
+    echo "In order to switch the verilog simulator, the OMSP_SIMULATOR environment"
+    echo "variable can be set to the following values:"
+    echo ""
+    echo "                  - iverilog  : Icarus Verilog  (default)"
+    echo "                  - cver      : CVer"
+    echo "                  - verilog   : Verilog-XL"
+    echo "                  - ncverilog : NC-Verilog"
+    echo "                  - vcs       : VCS"
+    echo "                  - msim      : Modelsim"
+    echo "                  - isim      : Xilinx simulator"
+    echo ""
+    exit 1
 fi
 
 
@@ -30,10 +30,13 @@ fi
 softdir=../../../../../software/baremetal/$1;
 elffile=../../../../../software/baremetal/$1/$1.elf;
 verfile=../../../../../bench/verilog/regression/$1.sv;
-submit_verilog=../src/submit_verilog.f;
-submit_vhdl=../src/submit_vhdl.f;
-submit=../src/submit.f;
-if [ $OMSP_SIMULATOR == "isim" ]; then
+if [ $OMSP_SIMULATOR == "iverilog" ]; then
+    submit=../src/submit.f;
+fi
+if [ $OMSP_SIMULATOR == "msim" ]; then
+    submit=../src/submit.f;
+fi
+if [ $OMSP_SIMULATOR == "xsim" ]; then
     submit=../src/submit.prj;
 fi
 incfile=../../../../../rtl/verilog/pkg/msp430_defines.sv;
@@ -46,12 +49,8 @@ if [ ! -e $verfile ]; then
     echo "Verilog stimulus file $verfile doesn't exist: $verfile"
     exit 1
 fi
-if [ ! -e $submit_verilog ]; then
-    echo "Verilog submit file $submit doesn't exist: $submit_verilog"
-    exit 1
-fi
-if [ ! -e $submit_vhdl ]; then
-    echo "VHDL submit file $submit doesn't exist: $submit_vhdl"
+if [ ! -e $submit ]; then
+    echo "Verilog submit file $submit doesn't exist: $submit"
     exit 1
 fi
 
@@ -79,7 +78,7 @@ echo " ======================================================="
 cd $softdir
 make clean
 make
-cd ../../../sim/mixed/baremetal/multi/run/
+cd ../../../sim/verilog/baremetal/multi/run/
 
 # Create links
 if [ `uname -o` = "Cygwin" ]
@@ -94,11 +93,11 @@ fi
 # Make local copy of the openMSP403 configuration file
 # and prepare it for MSPGCC preprocessing
 cp  $incfile  ./pmem.h
-sed -i 's/`ifdef/#ifdef/g'   ./pmem.h 
-sed -i 's/`else/#else/g'     ./pmem.h 
-sed -i 's/`endif/#endif/g'   ./pmem.h 
-sed -i 's/`define/#define/g' ./pmem.h 
-sed -i 's/`//g'              ./pmem.h 
+sed -i 's/`ifdef/#ifdef/g'   ./pmem.h
+sed -i 's/`else/#else/g'     ./pmem.h
+sed -i 's/`endif/#endif/g'   ./pmem.h
+sed -i 's/`define/#define/g' ./pmem.h
+sed -i 's/`//g'              ./pmem.h
 sed -i "s/'//g"              ./pmem.h
 
 # Use MSPGCC preprocessor to extract the Program, Data
@@ -110,7 +109,7 @@ source pmem.sh
 
 # Create IHEX file from ELF
 echo "Convert ELF file to IHEX format..."
-msp430-objcopy -O ihex  pmem.elf pmem.ihex
+msp430-objcopy -O ihex pmem.elf pmem.ihex
 
 # Generate Program memory file
 echo "Convert IHEX file to Verilog MEMH format..."
@@ -118,4 +117,4 @@ echo "Convert IHEX file to Verilog MEMH format..."
 
 # Start verilog simulation
 echo "Start Verilog simulation..."
-../bin/rtlsim.sh    stimulus.sv pmem.mem $submit_verilog $submit_vhdl $submit
+../bin/rtlsim.sh stimulus.sv pmem.mem $submit
