@@ -1,11 +1,11 @@
-verilog work ../../../../../bench/verilog/ram_d1.sv
-verilog work ../../../../../bench/verilog/ram_d2.sv
-verilog work ../../../../../bench/verilog/ram_dp.sv
-verilog work ../../../../../bench/verilog/ram_p2.sv
-verilog work ../../../../../bench/verilog/ram_sp.sv
-verilog work ../../../../../bench/verilog/glbl.sv
-verilog work ../../../../../bench/verilog/msp430_debug.sv
-verilog work ../../../../../bench/verilog/msp430_testbench.sv
+verilog work ../../../../../bench/verilog/main/ram_d1.sv
+verilog work ../../../../../bench/verilog/main/ram_d2.sv
+verilog work ../../../../../bench/verilog/main/ram_dp.sv
+verilog work ../../../../../bench/verilog/main/ram_p2.sv
+verilog work ../../../../../bench/verilog/main/ram_sp.sv
+verilog work ../../../../../bench/verilog/main/glbl.sv
+verilog work ../../../../../bench/verilog/main/msp430_debug.sv
+verilog work ../../../../../bench/verilog/main/msp430_testbench.sv
 
 verilog work ../../../../../rtl/verilog/pu/msp430_pu0.sv
 verilog work ../../../../../rtl/verilog/pu/msp430_pu1.sv

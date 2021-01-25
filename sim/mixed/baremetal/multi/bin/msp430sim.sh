@@ -9,7 +9,7 @@ if [ $# -ne $EXPECTED_ARGS ]; then
     echo "USAGE    : msp430sim <test name>"
     echo "Example  : msp430sim leds"
     echo ""
-    echo "In order to switch the verilog simulator, the OMSP_SIMULATOR environment"
+    echo "In order to switch the HDL Simulator, the OMSP_SIMULATOR environment"
     echo "variable can be set to the following values:"
     echo ""
     echo "                  - iverilog  : Icarus Verilog  (default)"
@@ -33,9 +33,6 @@ fi
 if [ $OMSP_SIMULATOR == "xsim" ]; then
     submit_verilog=../src/submit.verilog.prj;
     submit_vhdl=../src/submit.vhdl.prj;
-fi
-if [ $OMSP_SIMULATOR == "isim" ]; then
-    submit=../src/submit.prj;
 fi
 incfile=../../../../../rtl/verilog/pkg/msp430_defines.sv;
 

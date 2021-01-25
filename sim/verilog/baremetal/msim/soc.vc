@@ -106,4 +106,4 @@
 ../../../../bench/verilog/glip/glip_tcp_toplevel.sv
 ../../../../bench/verilog/monitor/r3_checker.sv
 ../../../../bench/verilog/monitor/trace_monitor.sv
-../../../../bench/verilog/msp430_tile_testbench.sv
+../../../../bench/verilog/main/msp430_tile_testbench.sv
