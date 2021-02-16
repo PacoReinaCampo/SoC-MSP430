@@ -3,6 +3,7 @@
 +incdir+../../../../bench/cpp/verilator/inc
 +incdir+../../../../bench/cpp/glip
 +incdir+../../../../dma/rtl/verilog/bb/pkg
+
 ../../../../rtl/verilog/pkg/arbiter/arb_rr.sv
 ../../../../rtl/verilog/pkg/functions/optimsoc_functions.sv
 ../../../../rtl/verilog/pkg/config/optimsoc_config.sv
@@ -102,8 +103,3 @@
 ../../../../rtl/verilog/soc/spram/bb_sram_sp.sv
 ../../../../rtl/verilog/soc/spram/bb2sram.sv
 ../../../../rtl/verilog/soc/msp430_tile.sv
-
-../../../../bench/verilog/glip/glip_tcp_toplevel.sv
-../../../../bench/verilog/monitor/r3_checker.sv
-../../../../bench/verilog/monitor/trace_monitor.sv
-../../../../bench/verilog/main/msp430_tile_testbench.sv
