@@ -103,3 +103,5 @@
 ../../../../rtl/verilog/soc/spram/bb_sram_sp.sv
 ../../../../rtl/verilog/soc/spram/bb2sram.sv
 ../../../../rtl/verilog/soc/msp430_tile.sv
+
+../../../../bench/verilog/main/soc_msp430_testbench.sv

@@ -51,8 +51,8 @@ build:
 	-i ../../../../dma/rtl/verilog/bb/pkg
 
 simulate:
-	xelab msp430_tile
-	xsim -R msp430_tile
+	xelab soc_msp430_testbench
+	xsim -R soc_msp430_testbench
 
 clean:
 	rm -rf .Xil *.dir *.jou *.log *.pb

@@ -97,3 +97,5 @@ sv work ../../../../rtl/verilog/soc/spram/sram_sp.sv
 sv work ../../../../rtl/verilog/soc/spram/bb_sram_sp.sv
 sv work ../../../../rtl/verilog/soc/spram/bb2sram.sv
 sv work ../../../../rtl/verilog/soc/msp430_tile.sv
+
+sv work ../../../../bench/verilog/main/soc_msp430_testbench.sv

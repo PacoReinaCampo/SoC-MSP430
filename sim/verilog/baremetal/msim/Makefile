@@ -5,7 +5,7 @@ build:
 	vlog -sv -f soc.vc
 
 simulate:
-	vsim -c -do run.do work.msp430_tile
+	vsim -c -do run.do work.soc_msp430_testbench
 
 clean:
-	rm -rf work transcript stdout.*
+	rm -rf work transcript
