@@ -1,0 +1,40 @@
+verilog
+├── pkg
+│   ├── arbiter
+│   │   └── arb_rr.sv
+│   ├── config
+│   │   └── optimsoc_config.sv
+│   ├── constants
+│   │   └── optimsoc_constants.sv
+│   ├── functions
+│   │   └── optimsoc_functions.sv
+│   ├── msp430_defines.sv
+│   ├── msp430_undefines.sv
+│   └── timescale.sv
+├── pu
+│   ├── msp430_pu0.sv
+│   └── msp430_pu1.sv
+└── soc
+    ├── adapter
+    │   ├── networkadapter_conf.sv
+    │   └── networkadapter_ct.sv
+    ├── bootrom
+    │   ├── bootrom_code.sv
+    │   └── bootrom.sv
+    ├── interconnection
+    │   ├── bus
+    │   │   └── bb_bus_b3.sv
+    │   ├── decode
+    │   │   └── bb_decode.sv
+    │   └── mux
+    │       └── bb_mux.sv
+    ├── msp430_io_cell.sv
+    ├── msp430_soc.sv
+    ├── msp430_tile.sv
+    └── spram
+        ├── bb2sram.sv
+        ├── bb_sram_sp.sv
+        ├── sram_sp_impl_plain.sv
+        └── sram_sp.sv
+
+14 directories, 23 files

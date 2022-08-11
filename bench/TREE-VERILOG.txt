@@ -1,0 +1,26 @@
+verilog
+├── cases
+│   ├── dac.sv
+│   └── leds.sv
+├── glip
+│   ├── glip_channel.sv
+│   └── glip_tcp_toplevel.sv
+├── main
+│   ├── DAC121S101.sv
+│   ├── glbl.sv
+│   ├── msp430_debug.sv
+│   ├── msp430_testbench.sv
+│   ├── msp430_tile_testbench.sv
+│   ├── ram_d1.sv
+│   ├── ram_d2.sv
+│   ├── ram_dp.sv
+│   ├── ram_p2.sv
+│   ├── ram_sp.sv
+│   ├── registers_omsp0.sv
+│   ├── registers_omsp1.sv
+│   └── soc_msp430_testbench.sv
+└── monitor
+    ├── r3_checker.sv
+    └── trace_monitor.sv
+
+4 directories, 19 files
