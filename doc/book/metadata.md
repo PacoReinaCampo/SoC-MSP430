@@ -1,6 +1,6 @@
 ---
 title: 'SoC-MSP430'
-subtitle: 'QueenField ![](../../icon.jpg)'
+subtitle: 'QueenField ![](../../soc-msp430.svg){width=17cm}'
 
 author: Paco Reina Campo
 
