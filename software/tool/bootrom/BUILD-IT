@@ -1,4 +1,0 @@
-export PATH=/opt/msp430-elf-gcc/bin:${PATH}
-
-make clean
-make 
