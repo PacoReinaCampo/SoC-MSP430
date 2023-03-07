@@ -44,3 +44,4 @@
 
 tree -P '*.sv' verilog > TREE-VERILOG.txt
 tree -P '*.vhd' vhdl > TREE-VHDL.txt
+tree -P '*.cpp' cpp > TREE-CPP.txt
