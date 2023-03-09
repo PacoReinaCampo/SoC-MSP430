@@ -203,6 +203,11 @@ entity msp430_soc is
 end msp430_soc;
 
 architecture rtl of msp430_soc is
+
+  ------------------------------------------------------------------------------
+  -- Components
+  ------------------------------------------------------------------------------
+
   component msp430_pu0
     port (
       -- CPU registers
