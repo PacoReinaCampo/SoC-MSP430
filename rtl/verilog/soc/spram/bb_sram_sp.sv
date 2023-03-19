@@ -57,9 +57,7 @@ module bb_sram_sp #(
   parameter DW = 32,
 
   // byte select width
-  localparam SW = (DW == 32) ? 4 :
-                  (DW == 16) ? 2 :
-                  (DW ==  8) ? 1 : 'hx,
+  localparam SW = (DW == 32) ? 4 : (DW == 16) ? 2 : (DW == 8) ? 1 : 'hx,
 
   // Allowed values:
   //   * PLAIN
@@ -75,19 +73,18 @@ module bb_sram_sp #(
 
   localparam BYTE_AW = SW >> 1,
   localparam WORD_AW = AW - BYTE_AW
-)
-  (
-    // BB SLAVE interface
-    input  [AW-1:0] bb_addr_i,
-    input  [DW-1:0] bb_din_i,
-    input           bb_en_i,
-    input           bb_we_i,
+) (
+  // BB SLAVE interface
+  input [AW-1:0] bb_addr_i,
+  input [DW-1:0] bb_din_i,
+  input          bb_en_i,
+  input          bb_we_i,
 
-    output [DW-1:0] bb_dout_o,
+  output [DW-1:0] bb_dout_o,
 
-    input           bb_clk_i,
-    input           bb_rst_i
-  );
+  input bb_clk_i,
+  input bb_rst_i
+);
 
   ////////////////////////////////////////////////////////////////
   //
@@ -95,12 +92,12 @@ module bb_sram_sp #(
   //
 
   // Beginning of automatic wires (for undeclared instantiated-module outputs)
-  wire [WORD_AW-1:0]   sram_waddr;             // From bb_ram of bb2sram.v
-  wire                 sram_ce;                // From bb_ram of bb2sram.v
-  wire [DW     -1:0]   sram_din;               // From bb_ram of bb2sram.v
-  wire [DW     -1:0]   sram_dout;              // From sp_ram of sram_sp.v
-  wire [SW     -1:0]   sram_sel;               // From bb_ram of bb2sram.v
-  wire                 sram_we;                // From bb_ram of bb2sram.v
+  wire [WORD_AW-1:0] sram_waddr;  // From bb_ram of bb2sram.v
+  wire               sram_ce;  // From bb_ram of bb2sram.v
+  wire [DW     -1:0] sram_din;  // From bb_ram of bb2sram.v
+  wire [DW     -1:0] sram_dout;  // From sp_ram of sram_sp.v
+  wire [SW     -1:0] sram_sel;  // From bb_ram of bb2sram.v
+  wire               sram_we;  // From bb_ram of bb2sram.v
   // End of automatics
 
   ////////////////////////////////////////////////////////////////
@@ -109,50 +106,48 @@ module bb_sram_sp #(
   //
 
   bb2sram #(
-    .AW (AW),
-    .DW (DW)
-  )
-  bb_ram (
-    .bb_clk_i                 (bb_clk_i),
-    .bb_rst_i                 (bb_rst_i),
+    .AW(AW),
+    .DW(DW)
+  ) bb_ram (
+    .bb_clk_i(bb_clk_i),
+    .bb_rst_i(bb_rst_i),
 
-    .sram_ce                  (sram_ce),
-    .sram_we                  (sram_we),
-    .sram_waddr               (sram_waddr),
-    .sram_din                 (sram_din[DW-1:0]),
-    .sram_sel                 (sram_sel[SW-1:0]),
+    .sram_ce   (sram_ce),
+    .sram_we   (sram_we),
+    .sram_waddr(sram_waddr),
+    .sram_din  (sram_din[DW-1:0]),
+    .sram_sel  (sram_sel[SW-1:0]),
 
-    .bb_addr_i                (bb_addr_i[AW-1:0]),
-    .bb_din_i                 (bb_din_i[DW-1:0]),
-    .bb_en_i                  (bb_en_i),
-    .bb_we_i                  (bb_we_i),
+    .bb_addr_i(bb_addr_i[AW-1:0]),
+    .bb_din_i (bb_din_i[DW-1:0]),
+    .bb_en_i  (bb_en_i),
+    .bb_we_i  (bb_we_i),
 
-    .bb_dout_o                (bb_dout_o[DW-1:0]),
+    .bb_dout_o(bb_dout_o[DW-1:0]),
 
-    .sram_dout                (sram_dout[DW-1:0])
+    .sram_dout(sram_dout[DW-1:0])
   );
 
   sram_sp #(
-    .DW            (DW),
-    .AW            (AW),
-    .MEM_SIZE_BYTE (MEM_SIZE_BYTE),
-    .WORD_AW       (WORD_AW),
-    .MEM_IMPL_TYPE (MEM_IMPL_TYPE),
-    .MEM_FILE      (MEM_FILE)
-  )
-  sp_ram (
-    .clk   (bb_clk_i),
-    .rst   (bb_rst_i),
+    .DW           (DW),
+    .AW           (AW),
+    .MEM_SIZE_BYTE(MEM_SIZE_BYTE),
+    .WORD_AW      (WORD_AW),
+    .MEM_IMPL_TYPE(MEM_IMPL_TYPE),
+    .MEM_FILE     (MEM_FILE)
+  ) sp_ram (
+    .clk(bb_clk_i),
+    .rst(bb_rst_i),
 
     // Outputs
-    .dout  (sram_dout[DW-1:0]),
+    .dout(sram_dout[DW-1:0]),
 
     // Inputs
-    .ce    (sram_ce),
-    .we    (sram_we),
-    .oe    (1'b1),
-    .waddr (sram_waddr),
-    .din   (sram_din),
-    .sel   (sram_sel)
+    .ce   (sram_ce),
+    .we   (sram_we),
+    .oe   (1'b1),
+    .waddr(sram_waddr),
+    .din  (sram_din),
+    .sel  (sram_sel)
   );
 endmodule

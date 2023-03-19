@@ -81,55 +81,54 @@
 import optimsoc_config::*;
 
 module networkadapter_conf #(
-  parameter DW              = 32,
-  parameter config_t CONFIG = 'x,
-  parameter TILEID          = 'x,
-  parameter COREBASE        = 'x
-)
-  (
-    input clk,
-    input rst,
+  parameter          DW       = 32,
+  parameter config_t CONFIG   = 'x,
+  parameter          TILEID   = 'x,
+  parameter          COREBASE = 'x
+) (
+  input clk,
+  input rst,
 
-    // CDC configuration register
-    `ifdef OPTIMSOC_CLOCKDOMAINS
-    `ifdef OPTIMSOC_CDC_DYNAMIC
-    output reg [2:0] cdc_conf,
-    output reg       cdc_enable,
-    `endif
-    `endif
+  // CDC configuration register
+`ifdef OPTIMSOC_CLOCKDOMAINS
+`ifdef OPTIMSOC_CDC_DYNAMIC
+  output reg [2:0] cdc_conf,
+  output reg       cdc_enable,
+`endif
+`endif
 
-    input      [  15:0] addr,
-    input      [DW-1:0] din,
-    input               en,
-    input               we,
+  input [  15:0] addr,
+  input [DW-1:0] din,
+  input          en,
+  input          we,
 
-    output reg [DW-1:0] dout
-  );
+  output reg [DW-1:0] dout
+);
 
   ////////////////////////////////////////////////////////////////
   //
   // Constans
   //
 
-  localparam REG_TILEID          = 0;
-  localparam REG_NUMTILES        = 1;
-  localparam REG_CONF            = 3;
-  localparam REG_COREBASE        = 4;
+  localparam REG_TILEID = 0;
+  localparam REG_NUMTILES = 1;
+  localparam REG_CONF = 3;
+  localparam REG_COREBASE = 4;
   localparam REG_DOMAIN_NUMCORES = 6;
-  localparam REG_GMEM_SIZE       = 7;
-  localparam REG_GMEM_TILE       = 8;
-  localparam REG_LMEM_SIZE       = 9;
-  localparam REG_NUMCTS          = 10;
-  localparam REG_SEED            = 11;
+  localparam REG_GMEM_SIZE = 7;
+  localparam REG_GMEM_TILE = 8;
+  localparam REG_LMEM_SIZE = 9;
+  localparam REG_NUMCTS = 10;
+  localparam REG_SEED = 11;
 
-  localparam REG_CDC      = 10'h40;
-  localparam REG_CDC_DYN  = 10'h41;
+  localparam REG_CDC = 10'h40;
+  localparam REG_CDC_DYN = 10'h41;
   localparam REG_CDC_CONF = 10'h42;
 
   localparam REG_CTLIST = 10'h80;
 
   localparam REGBIT_CONF_MPSIMPLE = 0;
-  localparam REGBIT_CONF_DMA      = 1;
+  localparam REGBIT_CONF_DMA = 1;
 
   ////////////////////////////////////////////////////////////////
   //
@@ -147,22 +146,21 @@ module networkadapter_conf #(
   // Module Body
   //
 
-  `ifdef verilator
+`ifdef verilator
   initial begin
     seed = $random();
   end
-  `else
+`else
   assign seed = 32'h0;
-  `endif
+`endif
 
   generate
-    for (i = 0; i < 64; i = i + 1) begin : gen_ctlist_vector // array is indexed by the desired destination
+    for (i = 0; i < 64; i = i + 1) begin : gen_ctlist_vector  // array is indexed by the desired destination
       if (i < CONFIG.NUMCTS) begin
         // The entries of the ctlist_vector array are subranges from the parameter, where
         // the indexing is reversed (num_dests-i-1)!
         assign ctlist_vector[CONFIG.NUMCTS - i - 1] = CONFIG.CTLIST[i];
-      end
-      else begin
+      end else begin
         // All other entries are unused and zero'ed.
         assign ctlist_vector[i] = 16'h0;
       end
@@ -172,13 +170,11 @@ module networkadapter_conf #(
   always @(*) begin
     if (addr[11:9] == REG_CTLIST[9:7]) begin
       if (addr[1]) begin
-        dout = {16'h0,ctlist_vector[addr[6:1]]};
+        dout = {16'h0, ctlist_vector[addr[6:1]]};
+      end else begin
+        dout = {ctlist_vector[addr[6:1]], 16'h0};
       end
-      else begin
-        dout = {ctlist_vector[addr[6:1]],16'h0};
-      end
-    end
-    else begin
+    end else begin
       case (addr[11:2])
         REG_TILEID: begin
           dout = TILEID;
@@ -187,7 +183,7 @@ module networkadapter_conf #(
           dout = CONFIG.NUMTILES;
         end
         REG_CONF: begin
-          dout = 32'h0000_0000;
+          dout                       = 32'h0000_0000;
           dout[REGBIT_CONF_MPSIMPLE] = CONFIG.NA_ENABLE_MPSIMPLE;
           dout[REGBIT_CONF_DMA]      = CONFIG.NA_ENABLE_DMA;
         end
@@ -213,29 +209,29 @@ module networkadapter_conf #(
           dout = seed;
         end
         REG_CDC: begin
-          `ifdef OPTIMSOC_CLOCKDOMAINS
+`ifdef OPTIMSOC_CLOCKDOMAINS
           dout = 32'b1;
-          `else
+`else
           dout = 32'b0;
-          `endif
+`endif
         end
         REG_CDC_DYN: begin
-          `ifdef OPTIMSOC_CDC_DYNAMIC
+`ifdef OPTIMSOC_CDC_DYNAMIC
           dout = 32'b1;
-          `else
+`else
           dout = 32'b0;
-          `endif
+`endif
         end
         REG_CDC_CONF: begin
-          `ifdef OPTIMSOC_CLOCKDOMAINS
-          `ifdef OPTIMSOC_CDC_DYNAMIC
+`ifdef OPTIMSOC_CLOCKDOMAINS
+`ifdef OPTIMSOC_CDC_DYNAMIC
           dout = cdc_conf;
-          `else
+`else
           dout = 32'hx;
-          `endif
-          `else
+`endif
+`else
           dout = 32'hx;
-          `endif
+`endif
         end
 
         default: begin
@@ -245,24 +241,22 @@ module networkadapter_conf #(
     end
   end
 
-  `ifdef OPTIMSOC_CLOCKDOMAINS
-  `ifdef OPTIMSOC_CDC_DYNAMIC
+`ifdef OPTIMSOC_CLOCKDOMAINS
+`ifdef OPTIMSOC_CDC_DYNAMIC
   always @(posedge clk) begin
     if (rst) begin
       cdc_conf   <= `OPTIMSOC_CDC_DYN_DEFAULT;
       cdc_enable <= 0;
-    end
-    else begin
-      if ((addr[11:2]==REG_CDC_CONF) && we) begin
+    end else begin
+      if ((addr[11:2] == REG_CDC_CONF) && we) begin
         cdc_conf   <= din[2:0];
         cdc_enable <= 1;
-      end
-      else begin
+      end else begin
         cdc_conf   <= cdc_conf;
         cdc_enable <= 0;
       end
     end
   end
-  `endif
-  `endif
+`endif
+`endif
 endmodule

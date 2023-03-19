@@ -55,18 +55,17 @@ module ram_d1 (
   //============
 
   ram_sp #(
-    .ADDR_MSB (`DMEM_MSB-1),
-    .MEM_SIZE (`DMEM_SIZE)
-  )
-  sp (
+    .ADDR_MSB(`DMEM_MSB - 1),
+    .MEM_SIZE(`DMEM_SIZE)
+  ) sp (
     // OUTPUTs
-    .ram_dout     ( douta),      // RAM data output
+    .ram_dout(douta),  // RAM data output
 
     // INPUTs
-    .ram_addr     ( addra),      // RAM address
-    .ram_cen      (~ena),        // RAM chip enable (low active)
-    .ram_clk      ( clka),       // RAM clock
-    .ram_din      ( dina),       // RAM data input
-    .ram_wen      (~wea)         // RAM write enable (low active)
+    .ram_addr(addra),  // RAM address
+    .ram_cen (~ena),   // RAM chip enable (low active)
+    .ram_clk (clka),   // RAM clock
+    .ram_din (dina),   // RAM data input
+    .ram_wen (~wea)    // RAM write enable (low active)
   );
-endmodule // ram_d1
+endmodule  // ram_d1

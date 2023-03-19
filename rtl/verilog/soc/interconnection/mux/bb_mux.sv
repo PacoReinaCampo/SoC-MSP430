@@ -53,29 +53,28 @@ module bb_mux #(
   /* Derived local parameters */
   // Width of byte select registers
   localparam SEL_WIDTH = DATA_WIDTH >> 3
-)
-  (
-    /* Ports */
-    input clk_i,
-    input rst_i,
+) (
+  /* Ports */
+  input clk_i,
+  input rst_i,
 
-    input      [MASTERS-1:0][ADDR_WIDTH-1:0] m_addr_i,
-    input      [MASTERS-1:0][DATA_WIDTH-1:0] m_din_i,
-    input      [MASTERS-1:0]                 m_en_i,
-    input      [MASTERS-1:0]                 m_we_i,
+  input [MASTERS-1:0][ADDR_WIDTH-1:0] m_addr_i,
+  input [MASTERS-1:0][DATA_WIDTH-1:0] m_din_i,
+  input [MASTERS-1:0]                 m_en_i,
+  input [MASTERS-1:0]                 m_we_i,
 
-    output reg [MASTERS-1:0][DATA_WIDTH-1:0] m_dout_o,
+  output reg [MASTERS-1:0][DATA_WIDTH-1:0] m_dout_o,
 
-    output reg              [ADDR_WIDTH-1:0] s_addr_o,
-    output reg              [DATA_WIDTH-1:0] s_din_o,
-    output reg                               s_en_o,
-    output reg                               s_we_o,
+  output reg [ADDR_WIDTH-1:0] s_addr_o,
+  output reg [DATA_WIDTH-1:0] s_din_o,
+  output reg                  s_en_o,
+  output reg                  s_we_o,
 
-    input                   [DATA_WIDTH-1:0] s_dout_i,
+  input [DATA_WIDTH-1:0] s_dout_i,
 
-    input                                    bus_hold,
-    output reg                               bus_hold_ack
-  );
+  input      bus_hold,
+  output reg bus_hold_ack
+);
 
   ////////////////////////////////////////////////////////////////
   //
@@ -83,9 +82,9 @@ module bb_mux #(
   //
 
   // The granted master is one hot encoded
-  wire [MASTERS-1:0]     grant;
+  wire [MASTERS-1:0] grant;
   // The granted master from previous cycle (register)
-  reg  [MASTERS-1:0]     prev_grant;
+  reg  [MASTERS-1:0] prev_grant;
 
   // This is a net that masks the actual requests. The arbiter
   // selects a different master each cycle. Therefore we need to
@@ -94,7 +93,7 @@ module bb_mux #(
   // mask out all other requests (be setting the requests to grant).
   // When the cycle signal is released, we set the request to all
   // masters cycle signals.
-  reg [MASTERS-1:0] m_req;
+  reg  [MASTERS-1:0] m_req;
 
   // This is the arbitration net from round robin
   wire [MASTERS-1:0] arb_grant;
@@ -114,8 +113,7 @@ module bb_mux #(
       // The bus is not released this cycle
       m_req        = prev_grant;
       bus_hold_ack = 1'b0;
-    end 
-    else begin
+    end else begin
       m_req        = m_en_i;
       bus_hold_ack = bus_hold;
     end
@@ -125,26 +123,24 @@ module bb_mux #(
   // fair arbitration (round robin)
   always @(posedge clk_i) begin
     if (rst_i) begin
-      prev_arb_grant <= {{MASTERS-1{1'b0}},1'b1};
-      prev_grant     <= {{MASTERS-1{1'b0}},1'b1};
-    end
-    else begin
+      prev_arb_grant <= {{MASTERS - 1{1'b0}}, 1'b1};
+      prev_grant     <= {{MASTERS - 1{1'b0}}, 1'b1};
+    end else begin
       prev_arb_grant <= arb_grant;
       prev_grant     <= grant;
     end
   end
 
   arb_rr #(
-    .N (MASTERS)
-  )
-  u_arbiter (
+    .N(MASTERS)
+  ) u_arbiter (
     // Outputs
-    .nxt_gnt (arb_grant),
+    .nxt_gnt(arb_grant),
 
     // Inputs
-    .en  (1'b1),
-    .req (m_req),
-    .gnt (prev_arb_grant)
+    .en (1'b1),
+    .req(m_req),
+    .gnt(prev_arb_grant)
   );
 
   // Mux the bus based on the grant signal which must be one hot!
@@ -159,10 +155,10 @@ module bb_mux #(
       m_dout_o[i] = s_dout_i;
 
       if (grant[i]) begin
-        s_addr_o = m_addr_i [i];
-        s_din_o  = m_din_i  [i];
-        s_en_o   = m_en_i   [i];
-        s_we_o   = m_we_i   [i];
+        s_addr_o = m_addr_i[i];
+        s_din_o  = m_din_i[i];
+        s_en_o   = m_en_i[i];
+        s_we_o   = m_we_i[i];
       end
     end
   end

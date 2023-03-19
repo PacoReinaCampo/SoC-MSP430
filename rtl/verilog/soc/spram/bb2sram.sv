@@ -52,9 +52,7 @@ module bb2sram #(
   parameter AW = 32,
 
   // byte select width
-  localparam SW = (DW == 32) ? 4 :
-                  (DW == 16) ? 2 :
-                  (DW ==  8) ? 1 : 'hx,
+  localparam SW = (DW == 32) ? 4 : (DW == 16) ? 2 : (DW == 8) ? 1 : 'hx,
 
   /*
    * +--------------+--------------+
@@ -66,27 +64,26 @@ module bb2sram #(
 
   localparam BYTE_AW = SW >> 1,
   localparam WORD_AW = AW - BYTE_AW
-)
-  (
-    // BB ports
-    input  [AW-1:0] bb_addr_i,
-    input  [DW-1:0] bb_din_i,
-    input           bb_en_i,
-    input           bb_we_i,
+) (
+  // BB ports
+  input [AW-1:0] bb_addr_i,
+  input [DW-1:0] bb_din_i,
+  input          bb_en_i,
+  input          bb_we_i,
 
-    output [DW-1:0] bb_dout_o,
+  output [DW-1:0] bb_dout_o,
 
-    input           bb_clk_i,
-    input           bb_rst_i,
+  input bb_clk_i,
+  input bb_rst_i,
 
-    // generic RAM ports
-    output               sram_ce,
-    output               sram_we,
-    output [WORD_AW-1:0] sram_waddr,
-    output [DW     -1:0] sram_din,
-    output [SW     -1:0] sram_sel,
-    input  [DW     -1:0] sram_dout
-  );
+  // generic RAM ports
+  output               sram_ce,
+  output               sram_we,
+  output [WORD_AW-1:0] sram_waddr,
+  output [DW     -1:0] sram_din,
+  output [SW     -1:0] sram_sel,
+  input  [DW     -1:0] sram_dout
+);
 
   ////////////////////////////////////////////////////////////////
   //
@@ -101,7 +98,7 @@ module bb2sram #(
   // Register to indicate if the cycle is a Wishbone B3-registered feedback
   // type access
   reg                bb_b3_trans;
-  wire               bb_b3_trans_start, bb_b3_trans_stop;
+  wire bb_b3_trans_start, bb_b3_trans_stop;
 
   // Register to use for counting the addresses when doing burst accesses
   reg  [WORD_AW-1:0] burst_adr_counter;
@@ -112,16 +109,16 @@ module bb2sram #(
   // Module Body
   //
 
-  assign word_addr_in = bb_din_i[AW-1:BYTE_AW];
+  assign word_addr_in      = bb_din_i[AW-1:BYTE_AW];
 
   // assignments from bb to memory
-  assign sram_ce    = 1'b1;
-  assign sram_we    = bb_we_i;
-  assign sram_waddr = (bb_we_i) ? word_addr_reg : word_addr;
-  assign sram_din   = bb_din_i;
-  assign sram_sel   = {SW{1'b0}};
+  assign sram_ce           = 1'b1;
+  assign sram_we           = bb_we_i;
+  assign sram_waddr        = (bb_we_i) ? word_addr_reg : word_addr;
+  assign sram_din          = bb_din_i;
+  assign sram_sel          = {SW{1'b0}};
 
-  assign bb_dout_o = sram_dout;
+  assign bb_dout_o         = sram_dout;
 
   // Logic to detect if there's a burst access going on
   assign bb_b3_trans_start = !bb_b3_trans;
@@ -131,11 +128,9 @@ module bb2sram #(
   always @(posedge bb_clk_i) begin
     if (bb_rst_i) begin
       bb_b3_trans <= 0;
-    end
-    else if (bb_b3_trans_start) begin
+    end else if (bb_b3_trans_start) begin
       bb_b3_trans <= 1;
-    end
-    else if (bb_b3_trans_stop) begin
+    end else if (bb_b3_trans_stop) begin
       bb_b3_trans <= 0;
     end
   end
@@ -144,13 +139,11 @@ module bb2sram #(
   always @(*) begin
     if (bb_rst_i) begin
       burst_adr_counter = 0;
-    end
-    else begin
+    end else begin
       burst_adr_counter = word_addr_reg;
       if (bb_b3_trans_start) begin
         burst_adr_counter = word_addr_in;
-      end
-      else if (bb_b3_trans) begin
+      end else if (bb_b3_trans) begin
         burst_adr_counter = word_addr_reg;
       end
     end
@@ -162,11 +155,9 @@ module bb2sram #(
   always @(*) begin
     if (using_burst_adr) begin
       word_addr = burst_adr_counter;
-    end
-    else if (bb_en_i) begin
+    end else if (bb_en_i) begin
       word_addr = word_addr_in;
-    end
-    else begin
+    end else begin
       word_addr = word_addr_reg;
     end
   end
@@ -175,8 +166,7 @@ module bb2sram #(
   always @(posedge bb_clk_i) begin
     if (bb_rst_i) begin
       word_addr_reg <= {WORD_AW{1'bx}};
-    end
-    else begin
+    end else begin
       word_addr_reg <= word_addr;
     end
   end

@@ -43,26 +43,25 @@
 module bootrom #(
   parameter AW = 32,
   parameter DW = 32
-)
-  (
-    input clk,
-    input rst,
+) (
+  input clk,
+  input rst,
 
 
-    input      [AW-1:0] bb_addr_i,
-    input      [DW-1:0] bb_din_i,
-    input               bb_en_i,
-    input               bb_we_i,
+  input [AW-1:0] bb_addr_i,
+  input [DW-1:0] bb_din_i,
+  input          bb_en_i,
+  input          bb_we_i,
 
-    output reg [DW-1:0] bb_dout_o
-  );
+  output reg [DW-1:0] bb_dout_o
+);
 
   ////////////////////////////////////////////////////////////////
   //
   // Module Body
   //
   always @(*) begin
-    case(bb_addr_i[7:2])
+    case (bb_addr_i[7:2])
       `include "bootrom_code.sv"
       default: bb_dout_o = 32'hx;
     endcase
