@@ -46,7 +46,7 @@
  *   Paco Reina Campo <pacoreinacampo@queenfield.tech>
  */
 
-module mpsoc_spsoc_ram_synthesis #(
+module peripheral_spram_synthesis #(
   parameter AW       = 6,   // Address bus
   parameter DW       = 16,  // Data bus
   parameter MEM_SIZE = 256  // Memory size in bytes

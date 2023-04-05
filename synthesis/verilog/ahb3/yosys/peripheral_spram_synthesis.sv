@@ -40,46 +40,31 @@
  *   Paco Reina Campo <pacoreinacampo@queenfield.tech>
  */
 
-module mpsoc_spsoc_ram_testbench;
+module peripheral_spram_synthesis #(
+  parameter MEM_SIZE          = 256,        //Memory in Bytes
+  parameter MEM_DEPTH         = 256,        //Memory depth
+  parameter PLEN              = 8,
+  parameter XLEN              = 32,
+  parameter TECHNOLOGY        = "GENERIC",
+  parameter REGISTERED_OUTPUT = "NO"
+) (
+  input HRESETn,
+  input HCLK,
 
-  //////////////////////////////////////////////////////////////////
-  //
-  // Constants
-  //
-
-  localparam XLEN = 64;
-  localparam PLEN = 64;
-
-  localparam SYNC_DEPTH = 3;
-  localparam TECHNOLOGY = "GENERIC";
-
-  //Memory parameters
-  parameter DEPTH = 256;
-  parameter MEMFILE = "";
-
-  //////////////////////////////////////////////////////////////////
-  //
-  // Variables
-  //
-
-  //Common signals
-  wire                       HRESETn;
-  wire                       HCLK;
-
-  //AHB3 signals
-  wire                       mst_spsoc_ram_HSEL;
-  wire [PLEN           -1:0] mst_spsoc_ram_HADDR;
-  wire [XLEN           -1:0] mst_spsoc_ram_HWDATA;
-  wire [XLEN           -1:0] mst_spsoc_ram_HRDATA;
-  wire                       mst_spsoc_ram_HWRITE;
-  wire [                2:0] mst_spsoc_ram_HSIZE;
-  wire [                2:0] mst_spsoc_ram_HBURST;
-  wire [                3:0] mst_spsoc_ram_HPROT;
-  wire [                1:0] mst_spsoc_ram_HTRANS;
-  wire                       mst_spsoc_ram_HMASTLOCK;
-  wire                       mst_spsoc_ram_HREADY;
-  wire                       mst_spsoc_ram_HREADYOUT;
-  wire                       mst_spsoc_ram_HRESP;
+  input                 HSEL,
+  input      [PLEN-1:0] HADDR,
+  input      [XLEN-1:0] HWDATA,
+  output reg [XLEN-1:0] HRDATA,
+  input                 HWRITE,
+  input      [     2:0] HSIZE,
+  input      [     2:0] HBURST,
+  input      [     3:0] HPROT,
+  input      [     1:0] HTRANS,
+  input                 HMASTLOCK,
+  output reg            HREADYOUT,
+  input                 HREADY,
+  output                HRESP
+);
 
   //////////////////////////////////////////////////////////////////
   //
@@ -88,28 +73,28 @@ module mpsoc_spsoc_ram_testbench;
 
   //DUT AHB3
   mpsoc_ahb3_spram #(
-    .MEM_SIZE         (256),
-    .MEM_DEPTH        (256),
+    .MEM_SIZE         (MEM_SIZE),
+    .MEM_DEPTH        (MEM_DEPTH),
     .PLEN             (PLEN),
     .XLEN             (XLEN),
     .TECHNOLOGY       (TECHNOLOGY),
-    .REGISTERED_OUTPUT("NO")
+    .REGISTERED_OUTPUT(REGISTERED_OUTPUT)
   ) ahb3_spram (
     .HRESETn(HRESETn),
     .HCLK   (HCLK),
 
-    .HSEL     (mst_spsoc_ram_HSEL),
-    .HADDR    (mst_spsoc_ram_HADDR),
-    .HWDATA   (mst_spsoc_ram_HWDATA),
-    .HRDATA   (mst_spsoc_ram_HRDATA),
-    .HWRITE   (mst_spsoc_ram_HWRITE),
-    .HSIZE    (mst_spsoc_ram_HSIZE),
-    .HBURST   (mst_spsoc_ram_HBURST),
-    .HPROT    (mst_spsoc_ram_HPROT),
-    .HTRANS   (mst_spsoc_ram_HTRANS),
-    .HMASTLOCK(mst_spsoc_ram_HMASTLOCK),
-    .HREADYOUT(mst_spsoc_ram_HREADYOUT),
-    .HREADY   (mst_spsoc_ram_HREADY),
-    .HRESP    (mst_spsoc_ram_HRESP)
+    .HSEL     (HSEL),
+    .HADDR    (HADDR),
+    .HWDATA   (HWDATA),
+    .HRDATA   (HRDATA),
+    .HWRITE   (HWRITE),
+    .HSIZE    (HSIZE),
+    .HBURST   (HBURST),
+    .HPROT    (HPROT),
+    .HTRANS   (HTRANS),
+    .HMASTLOCK(HMASTLOCK),
+    .HREADYOUT(HREADYOUT),
+    .HREADY   (HREADY),
+    .HRESP    (HRESP)
   );
 endmodule

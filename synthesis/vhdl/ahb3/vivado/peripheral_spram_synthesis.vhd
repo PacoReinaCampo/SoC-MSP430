@@ -1,4 +1,4 @@
--- Converted from bench/verilog/regression/mpsoc_spsoc_ram_testbench.sv
+-- Converted from bench/verilog/regression/peripheral_spram_testbench.sv
 -- by verilog2vhdl - QueenField
 
 --------------------------------------------------------------------------------
@@ -48,34 +48,40 @@ use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 use ieee.math_real.all;
 
-use work.mpsoc_spsoc_ram_ahb3_pkg.all;
+use work.peripheral_spram_ahb3_pkg.all;
 
-entity mpsoc_spsoc_ram_testbench is
-end mpsoc_spsoc_ram_testbench;
+entity peripheral_spram_synthesis is
+  generic (
+    MEM_SIZE          : integer := 256;  --Memory in Bytes
+    MEM_DEPTH         : integer := 256;  --Memory depth
+    PLEN              : integer := 8;
+    XLEN              : integer := 32;
+    TECHNOLOGY        : string  := "GENERIC";
+    REGISTERED_OUTPUT : string  := "NO"
+  );
+  port (
+    HRESETn : in std_logic;
+    HCLK    : in std_logic;
 
-architecture rtl of mpsoc_spsoc_ram_testbench is
-  ------------------------------------------------------------------------------
-  -- Variables
-  ------------------------------------------------------------------------------
+    --AHB3 Slave Interfaces (receive data from AHB Masters)
+    --AHB3 Masters connect to these ports
+    HSEL      : in  std_logic;
+    HADDR     : in  std_logic_vector(PLEN-1 downto 0);
+    HWDATA    : in  std_logic_vector(XLEN-1 downto 0);
+    HRDATA    : out std_logic_vector(XLEN-1 downto 0);
+    HWRITE    : in  std_logic;
+    HSIZE     : in  std_logic_vector(2 downto 0);
+    HBURST    : in  std_logic_vector(2 downto 0);
+    HPROT     : in  std_logic_vector(3 downto 0);
+    HTRANS    : in  std_logic_vector(1 downto 0);
+    HMASTLOCK : in  std_logic;
+    HREADYOUT : out std_logic;
+    HREADY    : in  std_logic;
+    HRESP     : out std_logic
+  );
+end peripheral_spram_synthesis;
 
-  --Common signals
-  signal HRESETn : std_logic;
-  signal HCLK    : std_logic;
-
-  --AHB3 signals
-  signal mst_spsoc_ram_HSEL      : std_logic;
-  signal mst_spsoc_ram_HADDR     : std_logic_vector(PLEN-1 downto 0);
-  signal mst_spsoc_ram_HWDATA    : std_logic_vector(XLEN-1 downto 0);
-  signal mst_spsoc_ram_HRDATA    : std_logic_vector(XLEN-1 downto 0);
-  signal mst_spsoc_ram_HWRITE    : std_logic;
-  signal mst_spsoc_ram_HSIZE     : std_logic_vector(2 downto 0);
-  signal mst_spsoc_ram_HBURST    : std_logic_vector(2 downto 0);
-  signal mst_spsoc_ram_HPROT     : std_logic_vector(3 downto 0);
-  signal mst_spsoc_ram_HTRANS    : std_logic_vector(1 downto 0);
-  signal mst_spsoc_ram_HMASTLOCK : std_logic;
-  signal mst_spsoc_ram_HREADY    : std_logic;
-  signal mst_spsoc_ram_HREADYOUT : std_logic;
-  signal mst_spsoc_ram_HRESP     : std_logic;
+architecture rtl of peripheral_spram_synthesis is
 
   ------------------------------------------------------------------------------
   -- Components
@@ -84,17 +90,17 @@ architecture rtl of mpsoc_spsoc_ram_testbench is
     generic (
       MEM_SIZE          : integer := 256;  --Memory in Bytes
       MEM_DEPTH         : integer := 256;  --Memory depth
-      PLEN              : integer := 64;
-      XLEN              : integer := 64;
+      PLEN              : integer := 8;
+      XLEN              : integer := 32;
       TECHNOLOGY        : string  := "GENERIC";
       REGISTERED_OUTPUT : string  := "NO"
-      );
+    );
     port (
       HRESETn : in std_logic;
       HCLK    : in std_logic;
 
-      --AHB Slave Interfaces (receive data from AHB Masters)
-      --AHB Masters connect to these ports
+      --AHB3 Slave Interfaces (receive data from AHB Masters)
+      --AHB3 Masters connect to these ports
       HSEL      : in  std_logic;
       HADDR     : in  std_logic_vector(PLEN-1 downto 0);
       HWDATA    : in  std_logic_vector(XLEN-1 downto 0);
@@ -108,7 +114,7 @@ architecture rtl of mpsoc_spsoc_ram_testbench is
       HREADYOUT : out std_logic;
       HREADY    : in  std_logic;
       HRESP     : out std_logic
-      );
+    );
   end component;
 
 begin
@@ -119,29 +125,29 @@ begin
   --DUT AHB3
   ahb3_spram : mpsoc_ahb3_spram
     generic map (
-      MEM_SIZE          => 256,
-      MEM_DEPTH         => 256,
+      MEM_SIZE          => MEM_SIZE,
+      MEM_DEPTH         => MEM_DEPTH,
       PLEN              => PLEN,
       XLEN              => XLEN,
       TECHNOLOGY        => TECHNOLOGY,
-      REGISTERED_OUTPUT => "NO"
-      )
+      REGISTERED_OUTPUT => REGISTERED_OUTPUT
+    )
     port map (
       HRESETn => HRESETn,
       HCLK    => HCLK,
 
-      HSEL      => mst_spsoc_ram_HSEL,
-      HADDR     => mst_spsoc_ram_HADDR,
-      HWDATA    => mst_spsoc_ram_HWDATA,
-      HRDATA    => mst_spsoc_ram_HRDATA,
-      HWRITE    => mst_spsoc_ram_HWRITE,
-      HSIZE     => mst_spsoc_ram_HSIZE,
-      HBURST    => mst_spsoc_ram_HBURST,
-      HPROT     => mst_spsoc_ram_HPROT,
-      HTRANS    => mst_spsoc_ram_HTRANS,
-      HMASTLOCK => mst_spsoc_ram_HMASTLOCK,
-      HREADYOUT => mst_spsoc_ram_HREADYOUT,
-      HREADY    => mst_spsoc_ram_HREADY,
-      HRESP     => mst_spsoc_ram_HRESP
-      );
+      HSEL      => HSEL,
+      HADDR     => HADDR,
+      HWDATA    => HWDATA,
+      HRDATA    => HRDATA,
+      HWRITE    => HWRITE,
+      HSIZE     => HSIZE,
+      HBURST    => HBURST,
+      HPROT     => HPROT,
+      HTRANS    => HTRANS,
+      HMASTLOCK => HMASTLOCK,
+      HREADYOUT => HREADYOUT,
+      HREADY    => HREADY,
+      HRESP     => HRESP
+    );
 end rtl;

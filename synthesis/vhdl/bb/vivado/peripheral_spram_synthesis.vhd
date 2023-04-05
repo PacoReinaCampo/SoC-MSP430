@@ -1,4 +1,4 @@
--- Converted from mpsoc_spsoc_ram_synthesis.sv
+-- Converted from peripheral_spram_synthesis.sv
 -- by verilog2vhdl - QueenField
 
 --------------------------------------------------------------------------------
@@ -53,7 +53,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
 
-entity mpsoc_spsoc_ram_synthesis is
+entity peripheral_spram_synthesis is
   generic (
     AW       : integer := 6;   -- Address bus
     DW       : integer := 16;  -- Data bus
@@ -71,9 +71,9 @@ entity mpsoc_spsoc_ram_synthesis is
     soc_ram_cen  : in  std_logic;                        -- RAM chip enable (low active)
     soc_ram_wen  : in  std_logic_vector(1 downto 0)      -- RAM write enable (low active)
   );
-end mpsoc_spsoc_ram_synthesis;
+end peripheral_spram_synthesis;
 
-architecture rtl of mpsoc_spsoc_ram_synthesis is
+architecture rtl of peripheral_spram_synthesis is
 
   ------------------------------------------------------------------------------
   -- Components
