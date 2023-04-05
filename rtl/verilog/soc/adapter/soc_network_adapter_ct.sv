@@ -233,7 +233,7 @@ module soc_network_adapter_ct #(
       assign mod_out_last[C_DMA_RES] = dma_out_flit[1][CONFIG.NOC_FLIT_WIDTH+1];
       assign mod_out_flit[C_DMA_RES] = dma_out_flit[1][CONFIG.NOC_FLIT_WIDTH-1:0];
 
-      mpsoc_dma_bb_top #(
+      peripheral_dma_top_wb #(
         .TILEID       (TILEID),
         .TABLE_ENTRIES(CONFIG.NA_DMA_ENTRIES)
       ) u_dma (

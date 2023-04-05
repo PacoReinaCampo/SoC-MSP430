@@ -64,9 +64,9 @@ module soc_ram_dp #(
   // RAM
   //============
 
-  reg  [      15:0]                            mem           [0:(MEM_SIZE/2)-1];
-  reg  [ADDR_MSB:0]                            soc_ram_addra_reg;
-  reg  [ADDR_MSB:0]                            soc_ram_addrb_reg;
+  reg  [      15:0] mem                           [0:(MEM_SIZE/2)-1];
+  reg  [ADDR_MSB:0] soc_ram_addra_reg;
+  reg  [ADDR_MSB:0] soc_ram_addrb_reg;
 
   wire [      15:0] mem_vala = mem[soc_ram_addra];
   wire [      15:0] mem_valb = mem[soc_ram_addrb];

@@ -40,8 +40,8 @@
  *   Paco Reina Campo <pacoreinacampo@queenfield.tech>
  */
 
-import dii_package::dii_flit;
-import opensocdebug::msoc_msp430_trace_exec;
+import peripheral_dbg_soc_dii_channel::dii_flit;
+import opensocdebug::peripheral_dbg_soc_mmsp430_trace_exec;
 import soc_optimsoc_configuration::*;
 import soc_optimsoc_functions::*;
 
@@ -110,28 +110,28 @@ module soc_msp430_testbench;
   reg rst;
 `endif
 
-  wire                 [CONFIG.NOC_CHANNELS-1:0]             [CONFIG.NOC_FLIT_WIDTH-1:0]  noc_in_flit;
-  wire                 [CONFIG.NOC_CHANNELS-1:0]                                          noc_in_last;
-  wire                 [CONFIG.NOC_CHANNELS-1:0]                                          noc_in_valid;
-  wire                 [CONFIG.NOC_CHANNELS-1:0]                                          noc_in_ready;
-  wire                 [CONFIG.NOC_CHANNELS-1:0]             [CONFIG.NOC_FLIT_WIDTH-1:0]  noc_out_flit;
-  wire                 [CONFIG.NOC_CHANNELS-1:0]                                          noc_out_last;
-  wire                 [CONFIG.NOC_CHANNELS-1:0]                                          noc_out_valid;
-  wire                 [CONFIG.NOC_CHANNELS-1:0]                                          noc_out_ready;
+  wire                                    [CONFIG.NOC_CHANNELS-1:0]             [CONFIG.NOC_FLIT_WIDTH-1:0]  noc_in_flit;
+  wire                                    [CONFIG.NOC_CHANNELS-1:0]                                          noc_in_last;
+  wire                                    [CONFIG.NOC_CHANNELS-1:0]                                          noc_in_valid;
+  wire                                    [CONFIG.NOC_CHANNELS-1:0]                                          noc_in_ready;
+  wire                                    [CONFIG.NOC_CHANNELS-1:0]             [CONFIG.NOC_FLIT_WIDTH-1:0]  noc_out_flit;
+  wire                                    [CONFIG.NOC_CHANNELS-1:0]                                          noc_out_last;
+  wire                                    [CONFIG.NOC_CHANNELS-1:0]                                          noc_out_valid;
+  wire                                    [CONFIG.NOC_CHANNELS-1:0]                                          noc_out_ready;
 
   // Monitor system behavior in simulation
-  msoc_msp430_trace_exec [                          NUM_CORES-1:0                           ] trace;
+  peripheral_dbg_soc_mmsp430_trace_exec [                          NUM_CORES-1:0                           ] trace;
 
-  logic                [                   31:0]                                          trace_r3             [0:NUM_CORES-1];
+  logic                                   [                   31:0]                                          trace_r3             [0:NUM_CORES-1];
 
-  wire                 [          NUM_CORES-1:0]                                          termination;
+  wire                                    [          NUM_CORES-1:0]                                          termination;
 
   // OSD-based debug system
-  dii_flit           [                          1:0                                     ] debug_ring_in;
-  dii_flit           [                          1:0                                     ] debug_ring_out;
+  dii_flit                              [                          1:0                                     ] debug_ring_in;
+  dii_flit                              [                          1:0                                     ] debug_ring_out;
 
-  logic                [                    1:0]                                          debug_ring_in_ready;
-  logic                [                    1:0]                                          debug_ring_out_ready;
+  logic                                   [                    1:0]                                          debug_ring_in_ready;
+  logic                                   [                    1:0]                                          debug_ring_out_ready;
 
   genvar i;
 

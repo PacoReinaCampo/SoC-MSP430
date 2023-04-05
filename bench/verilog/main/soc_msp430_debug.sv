@@ -83,11 +83,11 @@ module soc_msp430_debug (
       end
 
       for (i = 0; i < space; i = i + 1)  // Add spaces
-        myFormat[8*(j+i) +: 8] = " ";
+      myFormat[8*(j+i) +: 8] = " ";
       j = j + space;
 
       for (i = 0; i < 32; i = i + 1)  // Copy string1
-        myFormat[8*(j+i) +: 8] = string1[8*i +: 8];
+      myFormat[8*(j+i) +: 8] = string1[8*i +: 8];
 `endif
     end
   endfunction
@@ -99,47 +99,47 @@ module soc_msp430_debug (
   //-------------------------
   // CPU 0
   //-------------------------
-  wire                                                                 [ 2:0] omsp0_i_state_bin = soc_msp430_testbench.omsp0_i_state_bin;
-  wire                                                                 [ 3:0] omsp0_e_state_bin = soc_msp430_testbench.omsp0_e_state_bin;
+  wire [ 2:0] omsp0_i_state_bin = soc_msp430_testbench.omsp0_i_state_bin;
+  wire [ 3:0] omsp0_e_state_bin = soc_msp430_testbench.omsp0_e_state_bin;
 
-  wire omsp0_decode = soc_msp430_testbench.omsp0_decode;
-  wire                                                                 [15:0] omsp0_ir = soc_msp430_testbench.omsp0_ir;
-  wire omsp0_irq_detect = soc_msp430_testbench.omsp0_irq_detect;
-  wire                                                                 [ 3:0] omsp0_irq_num = soc_msp430_testbench.omsp0_irq_num;
-  wire                                                                 [15:0] omsp0_pc = soc_msp430_testbench.omsp0_pc;
+  wire        omsp0_decode = soc_msp430_testbench.omsp0_decode;
+  wire [15:0] omsp0_ir = soc_msp430_testbench.omsp0_ir;
+  wire        omsp0_irq_detect = soc_msp430_testbench.omsp0_irq_detect;
+  wire [ 3:0] omsp0_irq_num = soc_msp430_testbench.omsp0_irq_num;
+  wire [15:0] omsp0_pc = soc_msp430_testbench.omsp0_pc;
 
-  wire omsp0_mclk = soc_msp430_testbench.omsp0_mclk;
-  wire omsp0_puc_rst = soc_msp430_testbench.omsp0_puc_rst;
+  wire        omsp0_mclk = soc_msp430_testbench.omsp0_mclk;
+  wire        omsp0_puc_rst = soc_msp430_testbench.omsp0_puc_rst;
 
   //-------------------------
   // CPU 1
   //-------------------------
-  wire                                                                 [ 2:0] omsp1_i_state_bin = soc_msp430_testbench.omsp1_i_state_bin;
-  wire                                                                 [ 3:0] omsp1_e_state_bin = soc_msp430_testbench.omsp1_e_state_bin;
+  wire [ 2:0] omsp1_i_state_bin = soc_msp430_testbench.omsp1_i_state_bin;
+  wire [ 3:0] omsp1_e_state_bin = soc_msp430_testbench.omsp1_e_state_bin;
 
-  wire omsp1_decode = soc_msp430_testbench.omsp1_decode;
-  wire                                                                 [15:0] omsp1_ir = soc_msp430_testbench.omsp1_ir;
-  wire omsp1_irq_detect = soc_msp430_testbench.omsp1_irq_detect;
-  wire                                                                 [ 3:0] omsp1_irq_num = soc_msp430_testbench.omsp1_irq_num;
-  wire                                                                 [15:0] omsp1_pc = soc_msp430_testbench.omsp1_pc;
+  wire        omsp1_decode = soc_msp430_testbench.omsp1_decode;
+  wire [15:0] omsp1_ir = soc_msp430_testbench.omsp1_ir;
+  wire        omsp1_irq_detect = soc_msp430_testbench.omsp1_irq_detect;
+  wire [ 3:0] omsp1_irq_num = soc_msp430_testbench.omsp1_irq_num;
+  wire [15:0] omsp1_pc = soc_msp430_testbench.omsp1_pc;
 
-  wire omsp1_mclk = soc_msp430_testbench.omsp1_mclk;
-  wire omsp1_puc_rst = soc_msp430_testbench.omsp1_puc_rst;
+  wire        omsp1_mclk = soc_msp430_testbench.omsp1_mclk;
+  wire        omsp1_puc_rst = soc_msp430_testbench.omsp1_puc_rst;
 
   //-------------------------
   // CPU Selection
   //-------------------------
-  wire                                                                 [ 2:0] i_state_bin = core_select ? omsp1_i_state_bin : omsp0_i_state_bin;
-  wire                                                                 [ 3:0] e_state_bin = core_select ? omsp1_e_state_bin : omsp0_e_state_bin;
+  wire [ 2:0] i_state_bin = core_select ? omsp1_i_state_bin : omsp0_i_state_bin;
+  wire [ 3:0] e_state_bin = core_select ? omsp1_e_state_bin : omsp0_e_state_bin;
 
-  wire decode = core_select ? omsp1_decode : omsp0_decode;
-  wire                                                                 [15:0] ir = core_select ? omsp1_ir : omsp0_ir;
-  wire irq_detect = core_select ? omsp1_irq_detect : omsp0_irq_detect;
-  wire                                                                 [ 3:0] irq_num = core_select ? omsp1_irq_num : omsp0_irq_num;
-  wire                                                                 [15:0] pc = core_select ? omsp1_pc : omsp0_pc;
+  wire        decode = core_select ? omsp1_decode : omsp0_decode;
+  wire [15:0] ir = core_select ? omsp1_ir : omsp0_ir;
+  wire        irq_detect = core_select ? omsp1_irq_detect : omsp0_irq_detect;
+  wire [ 3:0] irq_num = core_select ? omsp1_irq_num : omsp0_irq_num;
+  wire [15:0] pc = core_select ? omsp1_pc : omsp0_pc;
 
-  wire mclk = core_select ? omsp1_mclk : omsp0_mclk;
-  wire puc_rst = core_select ? omsp1_puc_rst : omsp0_puc_rst;
+  wire        mclk = core_select ? omsp1_mclk : omsp0_mclk;
+  wire        puc_rst = core_select ? omsp1_puc_rst : omsp0_puc_rst;
 
   //=============================================================================
   // 3) GENERATE DEBUG SIGNALS
@@ -296,7 +296,7 @@ module soc_msp430_debug (
   end
 
   // Source register
-  reg  [8*32-1:0]                                                                 inst_src;
+  reg  [8*32-1:0] inst_src;
   wire [     3:0] src_reg = (inst_type == "SIG-OP") ? opcode[3:0] : opcode[11:8];
 
   always @(src_reg or inst_type) begin
