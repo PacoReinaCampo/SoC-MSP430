@@ -3,24 +3,24 @@ verilog
 │   ├── dac.sv
 │   └── leds.sv
 ├── glip
-│   ├── glip_channel.sv
-│   └── glip_tcp_toplevel.sv
+│   ├── soc_glip_channel.sv
+│   └── soc_glip_tcp_top.sv
 ├── main
-│   ├── DAC121S101.sv
-│   ├── glbl.sv
-│   ├── msp430_debug.sv
-│   ├── msp430_testbench.sv
-│   ├── msp430_tile_testbench.sv
-│   ├── ram_d1.sv
-│   ├── ram_d2.sv
-│   ├── ram_dp.sv
-│   ├── ram_p2.sv
-│   ├── ram_sp.sv
+│   ├── soc_msp430_dac.sv
+│   ├── soc_msp430_glbl.sv
+│   ├── soc_msp430_debug.sv
+│   ├── soc_msp430_testbench.sv
+│   ├── soc_msp430_tile_testbench.sv
+│   ├── soc_ram_d1.sv
+│   ├── soc_ram_d2.sv
+│   ├── soc_ram_dp.sv
+│   ├── soc_ram_p2.sv
+│   ├── soc_ram_sp.sv
 │   ├── registers_omsp0.sv
 │   ├── registers_omsp1.sv
 │   └── soc_msp430_testbench.sv
 └── monitor
-    ├── r3_checker.sv
-    └── trace_monitor.sv
+    ├── soc_r3_checker.sv
+    └── soc_trace_monitor.sv
 
 4 directories, 19 files

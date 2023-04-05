@@ -1,6 +1,6 @@
 vhdl
 └── main
-    ├── ram_d1.vhd
-    └── ram_d2.vhd
+    ├── soc_ram_d1.vhd
+    └── soc_ram_d2.vhd
 
 1 directory, 2 files

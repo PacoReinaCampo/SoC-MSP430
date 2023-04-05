@@ -1,42 +1,42 @@
 verilog
 ├── pkg
 │   ├── arbiter
-│   │   └── arb_rr.sv
-│   ├── config
-│   │   └── optimsoc_config.sv
+│   │   └── soc_arbiter_rr.sv
+│   ├── configuration
+│   │   └── soc_optimsoc_configuration.sv
 │   ├── constants
-│   │   └── optimsoc_constants.sv
+│   │   └── soc_optimsoc_constants.sv
 │   ├── functions
-│   │   └── optimsoc_functions.sv
+│   │   └── soc_optimsoc_functions.sv
 │   └── main
-│       ├── msp430_defines.sv
-│       ├── msp430_undefines.sv
+│       ├── soc_msp430_defines.sv
+│       ├── soc_msp430_undefines.sv
 │       └── timescale.sv
 ├── pu
-│   ├── msp430_pu0.sv
-│   └── msp430_pu1.sv
+│   ├── soc_msp430_pu0.sv
+│   └── soc_msp430_pu1.sv
 └── soc
     ├── adapter
-    │   ├── networkadapter_conf.sv
-    │   └── networkadapter_ct.sv
+    │   ├── soc_network_adapter_configuration.sv
+    │   └── soc_network_adapter_ct.sv
     ├── bootrom
-    │   ├── bootrom_code.sv
-    │   └── bootrom.sv
+    │   ├── soc_bootrom_code.sv
+    │   └── soc_bootrom.sv
     ├── interconnection
     │   ├── bus
-    │   │   └── bb_bus_b3.sv
+    │   │   └── soc_b3_bb.sv
     │   ├── decode
-    │   │   └── bb_decode.sv
+    │   │   └── soc_decode_bb.sv
     │   └── mux
-    │       └── bb_mux.sv
+    │       └── soc_mux_bb.sv
     ├── main
-    │   ├── msp430_io_cell.sv
-    │   ├── msp430_soc.sv
-    │   └── msp430_tile.sv
+    │   ├── soc_msp430_io_cell.sv
+    │   ├── soc_msp430.sv
+    │   └── soc_msp430_tile.sv
     └── spram
-        ├── bb2sram.sv
-        ├── bb_sram_sp.sv
-        ├── sram_sp_impl_plain.sv
-        └── sram_sp.sv
+        ├── soc_bb2sram.sv
+        ├── soc_sram_sp_bb.sv
+        ├── soc_sram_sp_impl_plain.sv
+        └── soc_sram_sp.sv
 
 16 directories, 23 files
