@@ -194,7 +194,7 @@ module soc_network_adapter_ct #(
     .dout(bbif_dout_o[ID_CONF])
   );
 
-  mpi_bb #(
+  peripheral_mpi_bb #(
     .NOC_FLIT_WIDTH(CONFIG.NOC_FLIT_WIDTH),
     .SIZE          (16),
     .N             (2)
@@ -233,7 +233,7 @@ module soc_network_adapter_ct #(
       assign mod_out_last[C_DMA_RES] = dma_out_flit[1][CONFIG.NOC_FLIT_WIDTH+1];
       assign mod_out_flit[C_DMA_RES] = dma_out_flit[1][CONFIG.NOC_FLIT_WIDTH-1:0];
 
-      peripheral_dma_top_wb #(
+      peripheral_dma_top_bb #(
         .TILEID       (TILEID),
         .TABLE_ENTRIES(CONFIG.NA_DMA_ENTRIES)
       ) u_dma (
@@ -280,7 +280,7 @@ module soc_network_adapter_ct #(
   wire [1:0][FLIT_WIDTH-1:0] muxed_flit;
   wire [1:0] muxed_last, muxed_valid, muxed_ready;
 
-  noc_mux #(
+  peripheral_noc_mux #(
     .FLIT_WIDTH(FLIT_WIDTH),
     .CHANNELS  (2)
   ) u_mux0 (
@@ -295,7 +295,7 @@ module soc_network_adapter_ct #(
     .out_ready(muxed_ready[0])
   );
 
-  noc_mux #(
+  peripheral_noc_mux #(
     .FLIT_WIDTH(FLIT_WIDTH),
     .CHANNELS  (2)
   ) u_mux1 (
@@ -310,7 +310,7 @@ module soc_network_adapter_ct #(
     .out_ready(muxed_ready[1])
   );
 
-  noc_buffer #(
+  peripheral_noc_buffer #(
     .FLIT_WIDTH(FLIT_WIDTH),
     .DEPTH     (4)
   ) u_outbuffer0 (
@@ -326,7 +326,7 @@ module soc_network_adapter_ct #(
     .packet_size()
   );
 
-  noc_buffer #(
+  peripheral_noc_buffer #(
     .FLIT_WIDTH(FLIT_WIDTH),
     .DEPTH     (4)
   ) u_outbuffer1 (
@@ -347,7 +347,7 @@ module soc_network_adapter_ct #(
   wire [1:0]                 inbuffer_valid;
   wire [1:0]                 inbuffer_ready;
 
-  noc_buffer #(
+  peripheral_noc_buffer #(
     .FLIT_WIDTH(FLIT_WIDTH),
     .DEPTH     (4)
   ) u_inbuffer0 (
@@ -363,7 +363,7 @@ module soc_network_adapter_ct #(
     .packet_size()
   );
 
-  noc_demux #(
+  peripheral_noc_demux #(
     .FLIT_WIDTH(FLIT_WIDTH),
     .CHANNELS  (2),
     .MAPPING   ({48'h0, 8'h2, 8'h1})
@@ -379,7 +379,7 @@ module soc_network_adapter_ct #(
     .out_ready({mod_in_ready[C_DMA_REQ], mod_in_ready[C_MPSIMPLE_REQ]})
   );
 
-  noc_buffer #(
+  peripheral_noc_buffer #(
     .FLIT_WIDTH(FLIT_WIDTH),
     .DEPTH     (4)
   ) u_inbuffer1 (
@@ -395,7 +395,7 @@ module soc_network_adapter_ct #(
     .packet_size()
   );
 
-  noc_demux #(
+  peripheral_noc_demux #(
     .FLIT_WIDTH(FLIT_WIDTH),
     .CHANNELS  (2),
     .MAPPING   ({48'h0, 8'h2, 8'h1})

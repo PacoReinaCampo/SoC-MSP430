@@ -45,7 +45,7 @@ import opensocdebug::peripheral_dbg_soc_mmsp430_trace_exec;
 import soc_optimsoc_configuration::*;
 import soc_optimsoc_functions::*;
 
-module soc_msp430_testbench;
+module soc_msp430_soc_testbench;
 
   ////////////////////////////////////////////////////////////////
   //

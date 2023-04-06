@@ -92,12 +92,12 @@ module soc_sram_sp_bb #(
   //
 
   // Beginning of automatic wires (for undeclared instantiated-module outputs)
-  wire [WORD_AW-1:0] ssoc_ram_waddr;  // From bb_ram of soc_bb2sram.v
-  wire               ssoc_ram_ce;  // From bb_ram of soc_bb2sram.v
-  wire [DW     -1:0] ssoc_ram_din;  // From bb_ram of soc_bb2sram.v
-  wire [DW     -1:0] ssoc_ram_dout;  // From sp_ram of soc_sram_sp.v
-  wire [SW     -1:0] ssoc_ram_sel;  // From bb_ram of soc_bb2sram.v
-  wire               ssoc_ram_we;  // From bb_ram of soc_bb2sram.v
+  wire [WORD_AW-1:0] sram_waddr;  // From bb_ram of soc_bb2sram.v
+  wire               sram_ce;  // From bb_ram of soc_bb2sram.v
+  wire [DW     -1:0] sram_din;  // From bb_ram of soc_bb2sram.v
+  wire [DW     -1:0] sram_dout;  // From sp_ram of soc_sram_sp.v
+  wire [SW     -1:0] sram_sel;  // From bb_ram of soc_bb2sram.v
+  wire               sram_we;  // From bb_ram of soc_bb2sram.v
   // End of automatics
 
   ////////////////////////////////////////////////////////////////
@@ -112,11 +112,11 @@ module soc_sram_sp_bb #(
     .bb_clk_i(bb_clk_i),
     .bb_rst_i(bb_rst_i),
 
-    .ssoc_ram_ce   (sram_ce),
-    .ssoc_ram_we   (sram_we),
-    .ssoc_ram_waddr(sram_waddr),
-    .ssoc_ram_din  (sram_din[DW-1:0]),
-    .ssoc_ram_sel  (sram_sel[SW-1:0]),
+    .sram_ce   (sram_ce),
+    .sram_we   (sram_we),
+    .sram_waddr(sram_waddr),
+    .sram_din  (sram_din[DW-1:0]),
+    .sram_sel  (sram_sel[SW-1:0]),
 
     .bb_addr_i(bb_addr_i[AW-1:0]),
     .bb_din_i (bb_din_i[DW-1:0]),
@@ -125,7 +125,7 @@ module soc_sram_sp_bb #(
 
     .bb_dout_o(bb_dout_o[DW-1:0]),
 
-    .ssoc_ram_dout(sram_dout[DW-1:0])
+    .sram_dout(sram_dout[DW-1:0])
   );
 
   soc_sram_sp #(
@@ -140,14 +140,14 @@ module soc_sram_sp_bb #(
     .rst(bb_rst_i),
 
     // Outputs
-    .dout(ssoc_ram_dout[DW-1:0]),
+    .dout(sram_dout[DW-1:0]),
 
     // Inputs
-    .ce   (ssoc_ram_ce),
-    .we   (ssoc_ram_we),
+    .ce   (sram_ce),
+    .we   (sram_we),
     .oe   (1'b1),
-    .waddr(ssoc_ram_waddr),
-    .din  (ssoc_ram_din),
-    .sel  (ssoc_ram_sel)
+    .waddr(sram_waddr),
+    .din  (sram_din),
+    .sel  (sram_sel)
   );
 endmodule

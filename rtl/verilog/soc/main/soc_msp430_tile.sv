@@ -40,8 +40,8 @@
  *   Paco Reina Campo <pacoreinacampo@queenfield.tech>
  */
 
-import dii_package::dii_flit;
-import opensocdebug::msoc_msp430_trace_exec;
+import peripheral_dbg_soc_dii_channel::dii_flit;
+import opensocdebug::peripheral_dbg_soc_mmsp430_trace_exec;
 import soc_optimsoc_configuration::*;
 import soc_optimsoc_functions::*;
 
@@ -114,7 +114,7 @@ module soc_msp430_tile #(
   // Variables
   //
 
-  msoc_msp430_trace_exec [                                        CONFIG.CORES_PER_TILE-1:0] trace;
+  peripheral_dbg_soc_mmsp430_trace_exec [                                        CONFIG.CORES_PER_TILE-1:0] trace;
 
   logic                                                                                  bb_mem_clk_i;
   logic                                                                                  bb_mem_rst_i;
@@ -194,7 +194,7 @@ module soc_msp430_tile #(
         assign id_map[i][15:0] = 16'(DEBUG_BASEID + i);
       end
 
-      debug_ring_expand #(
+      peripheral_dbg_soc_debug_ring_expand #(
         .BUFFER_SIZE(CONFIG.DEBUG_ROUTER_BUFFER_SIZE),
         .PORTS      (CONFIG.DEBUG_MODS_PER_TILE)
       ) u_debug_ring_segment (
@@ -241,7 +241,7 @@ module soc_msp430_tile #(
 
   generate
     for (c = 0; c < CONFIG.CORES_PER_TILE; c = c + 1) begin : gen_cores
-      soc_msp430_core #(
+      pu_msp430_core #(
         .DW(16),
         .AW(16)
       ) u_core (
@@ -327,7 +327,7 @@ module soc_msp430_tile #(
       );
 
       if (CONFIG.USE_DEBUG == 1) begin : gen_ctm_stm
-        osd_stm_mmsp430 #(
+        peripheral_dbg_soc_osd_stm_mmsp430 #(
           .MAX_PKT_LEN(CONFIG.DEBUG_MAX_PKT_LEN)
         ) u_stm (
           .clk            (clk),
@@ -340,7 +340,7 @@ module soc_msp430_tile #(
           .trace_port     (trace[c])
         );
 
-        osd_ctm_mmsp430 #(
+         peripheral_dbg_soc_osd_ctm_mmsp430 #(
           .MAX_PKT_LEN(CONFIG.DEBUG_MAX_PKT_LEN)
         ) u_ctm (
           .clk            (clk),
@@ -358,7 +358,7 @@ module soc_msp430_tile #(
 
   generate
     if (CONFIG.USE_DEBUG != 0 && CONFIG.DEBUG_DEM_UART != 0) begin : gen_dem_uart
-      osd_dem_uart_bb u_dem_uart (
+      peripheral_dbg_soc_osd_dem_uart_bb u_dem_uart (
         .clk            (clk),
         .rst            (rst_sys),
         .id             (16'(DEBUG_BASEID + CONFIG.DEBUG_MODS_PER_TILE - 1)),
@@ -424,7 +424,7 @@ module soc_msp430_tile #(
 
   if (CONFIG.USE_DEBUG == 1) begin : gen_mam_dm_bb
     //MAM
-    osd_mam_bb #(
+    peripheral_dbg_soc_osd_mam_bb #(
       .ADDR_WIDTH(16),
       .DATA_WIDTH(DW),
 
@@ -451,11 +451,11 @@ module soc_msp430_tile #(
     );
   end
 
-  if (CONFIG.ENABLE_DM) begin : gen_mam_bb_adapter
-    mam_bb_adapter #(
+  if (CONFIG.ENABLE_DM) begin : gen_mam_adapter_bb
+    peripheral_dbg_soc_mam_adapter_bb #(
       .AW(AW),
       .DW(DW)
-    ) u_mam_bb_adapter_dm (
+    ) u_mam_adapter_bb_dm (
       .bb_mam_addr_o(mam_dm_addr_o),
       .bb_mam_din_o (mam_dm_din_o),
       .bb_mam_en_o  (mam_dm_en_o),

@@ -47,12 +47,11 @@ all: build simulate
 build:
 	xvlog -prj soc.prj \
 	-i ../../../../pu/rtl/verilog/pkg \
-	-i ../../../../rtl/verilog/soc/soc_bootrom \
-	-i ../../../../dma/rtl/verilog/bb/pkg
+	-i ../../../../rtl/verilog/soc/soc_bootrom
 
 simulate:
-	xelab soc_msp430_testbench
-	xsim -R soc_msp430_testbench
+	xelab soc_msp430_soc_testbench
+	xsim -R soc_msp430_soc_testbench
 
 clean:
 	rm -rf .Xil *.dir *.jou *.log *.pb

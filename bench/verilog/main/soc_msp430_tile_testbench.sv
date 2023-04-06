@@ -40,8 +40,8 @@
  *   Paco Reina Campo <pacoreinacampo@queenfield.tech>
  */
 
-import dii_package::dii_flit;
-import opensocdebug::msoc_msp430_trace_exec;
+import peripheral_dbg_soc_dii_channel::dii_flit;
+import opensocdebug::peripheral_dbg_soc_mmsp430_trace_exec;
 import soc_optimsoc_configuration::*;
 import soc_optimsoc_functions::*;
 
@@ -125,7 +125,7 @@ module soc_msp430_tile_testbench (
   wire                     [CONFIG.NOC_CHANNELS-1:0]                                          noc_out_ready;
 
   // Monitor system behavior in simulation
-  msoc_msp430_trace_exec [                          NUM_CORES-1:0                           ] trace;
+  peripheral_dbg_soc_mmsp430_trace_exec [                          NUM_CORES-1:0                           ] trace;
 
   logic                    [                   31:0]                                          trace_r3             [0:NUM_CORES-1];
 
@@ -202,7 +202,7 @@ module soc_msp430_tile_testbench (
       );
 
       // System Interface
-      debug_interface #(
+      peripheral_dbg_soc_interface #(
         .SYSTEM_VENDOR_ID        (2),
         .SYSTEM_DEVICE_ID        (1),
         .NUM_MODULES             (CONFIG.DEBUG_NUM_MODS),
@@ -210,7 +210,7 @@ module soc_msp430_tile_testbench (
         .LOCAL_SUBNET            (CONFIG.DEBUG_LOCAL_SUBNET),
         .MAX_PKT_LEN             (CONFIG.DEBUG_MAX_PKT_LEN),
         .DEBUG_ROUTER_BUFFER_SIZE(CONFIG.DEBUG_ROUTER_BUFFER_SIZE)
-      ) u_debuginterface (
+      ) u_debug_interface (
         .clk(clk),
         .rst(rst),
 

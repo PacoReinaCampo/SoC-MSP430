@@ -77,12 +77,12 @@ module soc_bb2sram #(
   input bb_rst_i,
 
   // generic RAM ports
-  output               ssoc_ram_ce,
-  output               ssoc_ram_we,
-  output [WORD_AW-1:0] ssoc_ram_waddr,
-  output [DW     -1:0] ssoc_ram_din,
-  output [SW     -1:0] ssoc_ram_sel,
-  input  [DW     -1:0] ssoc_ram_dout
+  output               sram_ce,
+  output               sram_we,
+  output [WORD_AW-1:0] sram_waddr,
+  output [DW     -1:0] sram_din,
+  output [SW     -1:0] sram_sel,
+  input  [DW     -1:0] sram_dout
 );
 
   ////////////////////////////////////////////////////////////////
@@ -112,13 +112,13 @@ module soc_bb2sram #(
   assign word_addr_in      = bb_din_i[AW-1:BYTE_AW];
 
   // assignments from bb to memory
-  assign ssoc_ram_ce           = 1'b1;
-  assign ssoc_ram_we           = bb_we_i;
-  assign ssoc_ram_waddr        = (bb_we_i) ? word_addr_reg : word_addr;
-  assign ssoc_ram_din          = bb_din_i;
-  assign ssoc_ram_sel          = {SW{1'b0}};
+  assign sram_ce           = 1'b1;
+  assign sram_we           = bb_we_i;
+  assign sram_waddr        = (bb_we_i) ? word_addr_reg : word_addr;
+  assign sram_din          = bb_din_i;
+  assign sram_sel          = {SW{1'b0}};
 
-  assign bb_dout_o         = ssoc_ram_dout;
+  assign bb_dout_o         = sram_dout;
 
   // Logic to detect if there's a burst access going on
   assign bb_b3_trans_start = !bb_b3_trans;
