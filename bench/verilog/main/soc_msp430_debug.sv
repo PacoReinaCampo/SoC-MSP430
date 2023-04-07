@@ -41,7 +41,7 @@
 
 `ifdef OMSP_NO_INCLUDE
 `else
-`include "soc_msp430_defines.sv"
+`include "pu_msp430_defines.sv"
 `endif
 
 module soc_msp430_debug (

@@ -39,7 +39,7 @@
  *   Paco Reina Campo <pacoreinacampo@queenfield.tech>
  */
 
-`include "soc_msp430_defines.sv"
+`include "pu_msp430_defines.sv"
 
 module soc_ram_d2 (
   input                  clka,
@@ -66,19 +66,19 @@ module soc_ram_d2 (
     .MEM_SIZE(`DMEM_SIZE)
   ) dp (
     // OUTPUTs
-    .soc_ram_douta(douta),  // RAM data output (Port A)
-    .soc_ram_doutb(doutb),  // RAM data output (Port B)
+    .ram_douta(douta),  // RAM data output (Port A)
+    .ram_doutb(doutb),  // RAM data output (Port B)
 
     // INPUTs
-    .soc_ram_addra(addra),  // RAM address (Port A)
-    .soc_ram_cena (~ena),   // RAM chip enable (low active) (Port A)
-    .soc_ram_clka (clka),   // RAM clock (Port A)
-    .soc_ram_dina (dina),   // RAM data input (Port A)
-    .soc_ram_wena (~wea),   // RAM write enable (low active) (Port A)
-    .soc_ram_addrb(addrb),  // RAM address (Port B)
-    .soc_ram_cenb (~enb),   // RAM chip enable (low active) (Port B)
-    .soc_ram_clkb (clkb),   // RAM clock (Port B)
-    .soc_ram_dinb (dinb),   // RAM data input (Port B)
-    .soc_ram_wenb (~web)    // RAM write enable (low active) (Port B)
+    .ram_addra(addra),  // RAM address (Port A)
+    .ram_cena (~ena),   // RAM chip enable (low active) (Port A)
+    .ram_clka (clka),   // RAM clock (Port A)
+    .ram_dina (dina),   // RAM data input (Port A)
+    .ram_wena (~wea),   // RAM write enable (low active) (Port A)
+    .ram_addrb(addrb),  // RAM address (Port B)
+    .ram_cenb (~enb),   // RAM chip enable (low active) (Port B)
+    .ram_clkb (clkb),   // RAM clock (Port B)
+    .ram_dinb (dinb),   // RAM data input (Port B)
+    .ram_wenb (~web)    // RAM write enable (low active) (Port B)
   );
 endmodule  // soc_ram_d2

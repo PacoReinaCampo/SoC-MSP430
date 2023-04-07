@@ -39,7 +39,7 @@
  *   Paco Reina Campo <pacoreinacampo@queenfield.tech>
  */
 
-`include "soc_msp430_defines.sv"
+`include "pu_msp430_defines.sv"
 
 module soc_msp430 (
   //CORE 0
@@ -245,7 +245,7 @@ module soc_msp430 (
 
   // Top level reset generation
   wire dco_rst;
-  soc_msp430_sync_reset sync_reset_dco (
+  pu_msp430_sync_reset sync_reset_dco (
     .rst_s(dco_rst),
     .clk  (dco_clk),
     .rst_a(!reset_n)

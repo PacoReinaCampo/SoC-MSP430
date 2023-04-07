@@ -46,7 +46,7 @@ rm -rf *.jou
 rm -rf *.log
 rm -rf *.pb
 rm -rf log
-rm -rf msp430_testbench.vcd
+rm -rf soc_msp430_testbench.vcd
 rm -rf pmem_defs.asm
 rm -rf pmem.*
 rm -rf simv

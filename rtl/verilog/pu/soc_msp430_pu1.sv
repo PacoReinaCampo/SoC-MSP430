@@ -39,7 +39,7 @@
  *   Paco Reina Campo <pacoreinacampo@queenfield.tech>
  */
 
-`include "soc_msp430_defines.sv"
+`include "pu_msp430_defines.sv"
 
 module soc_msp430_pu1 (
   // CPU registers
@@ -153,10 +153,10 @@ module soc_msp430_pu1 (
   // 2)  OPENMSP430 CORE
   //=============================================================================
 
-  soc_msp430_core #(
+  pu_msp430_core #(
     .INST_NR (1),
     .TOTAL_NR(1)
-  ) soc_msp430_core_0 (
+  ) pu_msp430_core_0 (
 
     // OUTPUTs
     .r0 (r0),
@@ -248,7 +248,7 @@ module soc_msp430_pu1 (
   // Digital I/O
   //-------------------------------
 
-  soc_msp430_gpio gpio_0 (
+  pu_msp430_gpio gpio_0 (
 
     // OUTPUTs
     .irq_port1 (irq_port1),      // Port 1 interrupt
@@ -301,7 +301,7 @@ module soc_msp430_pu1 (
   // Timer A
   //----------------------------------------------
 
-  soc_msp430_ta ta_0 (
+  pu_msp430_ta ta_0 (
 
     // OUTPUTs
     .irq_ta0   (irq_ta0),      // Timer A interrupt: TACCR0

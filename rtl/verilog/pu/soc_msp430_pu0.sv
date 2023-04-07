@@ -39,7 +39,7 @@
  *   Paco Reina Campo <pacoreinacampo@queenfield.tech>
  */
 
-`include "soc_msp430_defines.sv"
+`include "pu_msp430_defines.sv"
 
 module soc_msp430_pu0 (
   // CPU registers
@@ -160,10 +160,10 @@ module soc_msp430_pu0 (
   // 2)  OPENMSP430 CORE
   //=============================================================================
 
-  soc_msp430_core #(
+  pu_msp430_core #(
     .INST_NR (0),
     .TOTAL_NR(1)
-  ) soc_msp430_core_0 (
+  ) pu_msp430_core_0 (
     // OUTPUTs
     .r0 (r0),
     .r1 (r1),
@@ -254,7 +254,7 @@ module soc_msp430_pu0 (
   // Digital I/O
   //-------------------------------
 
-  soc_msp430_gpio gpio_0 (
+  pu_msp430_gpio gpio_0 (
     // OUTPUTs
     .irq_port1 (irq_port1),      // Port 1 interrupt
     .irq_port2 (irq_port2),      // Port 2 interrupt
@@ -306,7 +306,7 @@ module soc_msp430_pu0 (
   // Timer A
   //----------------------------------------------
 
-  soc_msp430_ta ta_0 (
+  pu_msp430_ta ta_0 (
     // OUTPUTs
     .irq_ta0   (irq_ta0),      // Timer A interrupt: TACCR0
     .irq_ta1   (irq_ta1),      // Timer A interrupt: TAIV, TACCR1, TACCR2
@@ -345,7 +345,7 @@ module soc_msp430_pu0 (
   // Hardware UART
   //----------------------------------------------
 
-  soc_msp430_uart uart_0 (
+  pu_msp430_uart uart_0 (
     // OUTPUTs
     .irq_uart_rx(irq_uart_rx),    // UART receive interrupt
     .irq_uart_tx(irq_uart_tx),    // UART transmit interrupt

@@ -44,52 +44,52 @@ module soc_ram_dp #(
   parameter MEM_SIZE = 256  // Memory size in bytes
 ) (
   // OUTPUTs
-  output [15:0] soc_ram_douta,  // RAM data output (Port A)
-  output [15:0] soc_ram_doutb,  // RAM data output (Port B)
+  output [15:0] ram_douta,  // RAM data output (Port A)
+  output [15:0] ram_doutb,  // RAM data output (Port B)
 
   // INPUTs
-  input [ADDR_MSB:0] soc_ram_addra,  // RAM address (Port A)
-  input              soc_ram_cena,   // RAM chip enable (low active) (Port A)
-  input              soc_ram_clka,   // RAM clock (Port A)
-  input [      15:0] soc_ram_dina,   // RAM data input (Port A)
-  input [       1:0] soc_ram_wena,   // RAM write enable (low active) (Port A)
+  input [ADDR_MSB:0] ram_addra,  // RAM address (Port A)
+  input              ram_cena,   // RAM chip enable (low active) (Port A)
+  input              ram_clka,   // RAM clock (Port A)
+  input [      15:0] ram_dina,   // RAM data input (Port A)
+  input [       1:0] ram_wena,   // RAM write enable (low active) (Port A)
 
-  input [ADDR_MSB:0] soc_ram_addrb,  // RAM address (Port B)
-  input              soc_ram_cenb,   // RAM chip enable (low active) (Port B)
-  input              soc_ram_clkb,   // RAM clock (Port B)
-  input [      15:0] soc_ram_dinb,   // RAM data input (Port B)
-  input [       1:0] soc_ram_wenb    // RAM write enable (low active) (Port B)
+  input [ADDR_MSB:0] ram_addrb,  // RAM address (Port B)
+  input              ram_cenb,   // RAM chip enable (low active) (Port B)
+  input              ram_clkb,   // RAM clock (Port B)
+  input [      15:0] ram_dinb,   // RAM data input (Port B)
+  input [       1:0] ram_wenb    // RAM write enable (low active) (Port B)
 );
 
   // RAM
   //============
 
   reg  [      15:0] mem                           [0:(MEM_SIZE/2)-1];
-  reg  [ADDR_MSB:0] soc_ram_addra_reg;
-  reg  [ADDR_MSB:0] soc_ram_addrb_reg;
+  reg  [ADDR_MSB:0] ram_addra_reg;
+  reg  [ADDR_MSB:0] ram_addrb_reg;
 
-  wire [      15:0] mem_vala = mem[soc_ram_addra];
-  wire [      15:0] mem_valb = mem[soc_ram_addrb];
+  wire [      15:0] mem_vala = mem[ram_addra];
+  wire [      15:0] mem_valb = mem[ram_addrb];
 
-  always @(posedge soc_ram_clka) begin
-    if (~soc_ram_cena && (ram_addra < (MEM_SIZE / 2))) begin
-      if (soc_ram_wena == 2'b00) mem[ram_addra] <= ram_dina;
-      else if (soc_ram_wena == 2'b01) mem[ram_addra] <= {ram_dina[15:8], mem_vala[7:0]};
-      else if (soc_ram_wena == 2'b10) mem[ram_addra] <= {mem_vala[15:8], ram_dina[7:0]};
-      soc_ram_addra_reg <= ram_addra;
+  always @(posedge ram_clka) begin
+    if (~ram_cena && (ram_addra < (MEM_SIZE / 2))) begin
+      if (ram_wena == 2'b00) mem[ram_addra] <= ram_dina;
+      else if (ram_wena == 2'b01) mem[ram_addra] <= {ram_dina[15:8], mem_vala[7:0]};
+      else if (ram_wena == 2'b10) mem[ram_addra] <= {mem_vala[15:8], ram_dina[7:0]};
+      ram_addra_reg <= ram_addra;
     end
   end
 
-  assign soc_ram_douta = mem[ram_addra_reg];
+  assign ram_douta = mem[ram_addra_reg];
 
-  always @(posedge soc_ram_clkb) begin
-    if (~soc_ram_cenb && (ram_addrb < (MEM_SIZE / 2))) begin
-      if (soc_ram_wenb == 2'b00) mem[ram_addrb] <= ram_dinb;
-      else if (soc_ram_wenb == 2'b01) mem[ram_addrb] <= {ram_dinb[15:8], mem_valb[7:0]};
-      else if (soc_ram_wenb == 2'b10) mem[ram_addrb] <= {mem_valb[15:8], ram_dinb[7:0]};
-      soc_ram_addrb_reg <= ram_addrb;
+  always @(posedge ram_clkb) begin
+    if (~ram_cenb && (ram_addrb < (MEM_SIZE / 2))) begin
+      if (ram_wenb == 2'b00) mem[ram_addrb] <= ram_dinb;
+      else if (ram_wenb == 2'b01) mem[ram_addrb] <= {ram_dinb[15:8], mem_valb[7:0]};
+      else if (ram_wenb == 2'b10) mem[ram_addrb] <= {mem_valb[15:8], ram_dinb[7:0]};
+      ram_addrb_reg <= ram_addrb;
     end
   end
 
-  assign soc_ram_doutb = mem[ram_addrb_reg];
+  assign ram_doutb = mem[ram_addrb_reg];
 endmodule  // soc_ram_dp

@@ -41,7 +41,7 @@
 
 `ifdef OMSP_NO_INCLUDE
 `else
-`include "soc_msp430_defines.sv"
+`include "pu_msp430_defines.sv"
 `endif
 
 module soc_msp430_testbench;
@@ -227,7 +227,7 @@ module soc_msp430_testbench;
 
     // Update Xilinx memory banks
     for (i = 0; i < 8192; i = i + 1) begin
-      soc_ram_p2_shared.dp.mem[i] = pmem[i];
+      ram_p2_shared.dp.mem[i] = pmem[i];
     end
   end
 

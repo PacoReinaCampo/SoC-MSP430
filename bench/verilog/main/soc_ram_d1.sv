@@ -39,7 +39,7 @@
  *   Paco Reina Campo <pacoreinacampo@queenfield.tech>
  */
 
-`include "soc_msp430_defines.sv"
+`include "pu_msp430_defines.sv"
 
 module soc_ram_d1 (
   input                  clka,
@@ -59,13 +59,13 @@ module soc_ram_d1 (
     .MEM_SIZE(`DMEM_SIZE)
   ) sp (
     // OUTPUTs
-    .soc_ram_dout(douta),  // RAM data output
+    .ram_dout(douta),  // RAM data output
 
     // INPUTs
-    .soc_ram_addr(addra),  // RAM address
-    .soc_ram_cen (~ena),   // RAM chip enable (low active)
-    .soc_ram_clk (clka),   // RAM clock
-    .soc_ram_din (dina),   // RAM data input
-    .soc_ram_wen (~wea)    // RAM write enable (low active)
+    .ram_addr(addra),  // RAM address
+    .ram_cen (~ena),   // RAM chip enable (low active)
+    .ram_clk (clka),   // RAM clock
+    .ram_din (dina),   // RAM data input
+    .ram_wen (~wea)    // RAM write enable (low active)
   );
 endmodule  // soc_ram_d1

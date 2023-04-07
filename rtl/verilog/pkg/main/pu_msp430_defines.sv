@@ -49,7 +49,7 @@
 //`define OMSP_NO_INCLUDE
 `ifdef OMSP_NO_INCLUDE
 `else
-`include "soc_msp430_undefines.sv"
+`include "pu_msp430_undefines.sv"
 `endif
 
 //============================================================================
