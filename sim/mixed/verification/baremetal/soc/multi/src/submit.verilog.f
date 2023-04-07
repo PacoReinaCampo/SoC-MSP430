@@ -39,7 +39,7 @@
  *   Paco Reina Campo <pacoreinacampo@queenfield.tech>
  */
 
-+incdir+../../../../../../../rtl/verilog/pkg/
++incdir+../../../../../../../rtl/verilog/pkg/main
 
 //=============================================================================
 // Testbench related

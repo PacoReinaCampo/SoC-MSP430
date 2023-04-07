@@ -121,7 +121,7 @@ echo " ======================================================="
 cd $softdir
 make clean
 make
-cd ../../../sim/verilog/verification/baremetal/soc/multi/run/
+cd ../../../sim/mixed/verification/baremetal/soc/multi/run/
 
 # Create links
 if [ `uname -o` = "Cygwin" ]

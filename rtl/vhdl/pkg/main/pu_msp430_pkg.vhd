@@ -43,7 +43,7 @@ library IEEE;
 use IEEE.STD_LOGIC_1164 .all;
 use IEEE.NUMERIC_STD .all;
 
-package soc_msp430_pkg is
+package pu_msp430_pkg is
 
   function reduce_or (reduce_or_in : std_logic_vector) return std_logic;
   function to_stdlogic (input : boolean) return std_logic;
@@ -356,7 +356,7 @@ package soc_msp430_pkg is
 
   --COMPONENT
   --omsp
-  component soc_msp430_alu
+  component pu_msp430_alu
     port (
       alu_stat    : out std_logic_vector (3 downto 0);
       alu_stat_wr : out std_logic_vector (3 downto 0);
@@ -372,9 +372,9 @@ package soc_msp430_pkg is
       inst_alu    : in std_logic_vector (11 downto 0);
       op_dst      : in std_logic_vector (15 downto 0);
       op_src      : in std_logic_vector (15 downto 0));
-  end component soc_msp430_alu;
+  end component pu_msp430_alu;
 
-  component soc_msp430_dbg_hwbrk
+  component pu_msp430_dbg_hwbrk
     port (
       brk_halt : out std_logic;
       brk_pnd  : out std_logic;
@@ -390,9 +390,9 @@ package soc_msp430_pkg is
       dbg_din      : in std_logic_vector (15 downto 0);
       eu_mab       : in std_logic_vector (15 downto 0);
       pc           : in std_logic_vector (15 downto 0));
-  end component soc_msp430_dbg_hwbrk;
+  end component pu_msp430_dbg_hwbrk;
 
-  component soc_msp430_dbg_i2c
+  component pu_msp430_dbg_i2c
     port (
       dbg_i2c_sda_out : out std_logic;
       dbg_rd          : out std_logic;
@@ -413,9 +413,9 @@ package soc_msp430_pkg is
       dbg_i2c_addr      : in std_logic_vector (6 downto 0);
       dbg_i2c_broadcast : in std_logic_vector (6 downto 0);
       dbg_dout          : in std_logic_vector (15 downto 0));
-  end component soc_msp430_dbg_i2c;
+  end component pu_msp430_dbg_i2c;
 
-  component soc_msp430_dbg_uart
+  component pu_msp430_dbg_uart
     port (
       dbg_uart_txd : out std_logic;
       dbg_rd       : out std_logic;
@@ -433,9 +433,9 @@ package soc_msp430_pkg is
       mem_burst_wr  : in std_logic;
       mem_bw        : in std_logic;
       dbg_dout      : in std_logic_vector (15 downto 0));
-  end component soc_msp430_dbg_uart;
+  end component pu_msp430_dbg_uart;
 
-  component soc_msp430_interrupt is
+  component msp430_interrupt is
     port (
       inst_irq_rst : out std_logic;
       irq_detect   : out std_logic;
@@ -455,9 +455,9 @@ package soc_msp430_pkg is
       cpu_halt_cmd : in std_logic;
       i_state      : in std_logic_vector (2 downto 0);
       irq          : in std_logic_vector (IRQ_NR - 3 downto 0));
-  end component soc_msp430_interrupt;
+  end component msp430_interrupt;
 
-  component soc_msp430_register_file
+  component pu_msp430_register_file
     port (
       r0  : out std_logic_vector (15 downto 0);
       r1  : out std_logic_vector (15 downto 0);
@@ -504,9 +504,9 @@ package soc_msp430_pkg is
       pc           : in std_logic_vector (15 downto 0);
       reg_dest_val : in std_logic_vector (15 downto 0);
       reg_sp_val   : in std_logic_vector (15 downto 0));
-  end component soc_msp430_register_file;
+  end component pu_msp430_register_file;
 
-  component soc_msp430_state_machine is
+  component msp430_state_machine is
     port (
       dbg_halt_st  : out std_logic;
       decode_noirq : out std_logic;
@@ -528,25 +528,25 @@ package soc_msp430_pkg is
       inst_sz_nxt  : in std_logic_vector (1 downto 0);
       e_state      : in std_logic_vector (3 downto 0);
       e_state_nxt  : in std_logic_vector (3 downto 0));
-  end component soc_msp430_state_machine;
+  end component msp430_state_machine;
 
   --fusibles
-  component soc_msp430_and_gate
+  component pu_msp430_and_gate
     port (
       y : out std_logic;
       a : in  std_logic;
       b : in  std_logic);
-  end component soc_msp430_and_gate;
+  end component pu_msp430_and_gate;
 
-  component soc_msp430_clock_gate
+  component pu_msp430_clock_gate
     port (
       gclk        : out std_logic;
       clk         : in  std_logic;
       enable      : in  std_logic;
       scan_enable : in  std_logic);
-  end component soc_msp430_clock_gate;
+  end component pu_msp430_clock_gate;
 
-  component soc_msp430_clock_mux
+  component pu_msp430_clock_mux
     port (
       clk_out   : out std_logic;
       clk_in0   : in  std_logic;
@@ -554,32 +554,32 @@ package soc_msp430_pkg is
       reset     : in  std_logic;
       scan_mode : in  std_logic;
       selection : in  std_logic);
-  end component soc_msp430_clock_mux;
+  end component pu_msp430_clock_mux;
 
-  component soc_msp430_scan_mux
+  component pu_msp430_scan_mux
     port (
       data_out     : out std_logic;
       data_in_scan : in  std_logic;
       data_in_func : in  std_logic;
       scan_mode    : in  std_logic);
-  end component soc_msp430_scan_mux;
+  end component pu_msp430_scan_mux;
 
-  component soc_msp430_sync_cell
+  component pu_msp430_sync_cell
     port (
       data_out : out std_logic;
       data_in  : in  std_logic;
       clk      : in  std_logic;
       rst      : in  std_logic);
-  end component soc_msp430_sync_cell;
+  end component pu_msp430_sync_cell;
 
-  component soc_msp430_sync_reset
+  component pu_msp430_sync_reset
     port (
       rst_s : out std_logic;
       clk   : in  std_logic;
       rst_a : in  std_logic);
-  end component soc_msp430_sync_reset;
+  end component pu_msp430_sync_reset;
 
-  component soc_msp430_wakeup_cell
+  component pu_msp430_wakeup_cell
     port (
       wkup_out   : out std_logic;
       scan_clk   : in  std_logic;
@@ -587,11 +587,11 @@ package soc_msp430_pkg is
       scan_rst   : in  std_logic;
       wkup_clear : in  std_logic;
       wkup_event : in  std_logic);
-  end component soc_msp430_wakeup_cell;
+  end component pu_msp430_wakeup_cell;
 
-end soc_msp430_pkg;
+end pu_msp430_pkg;
 
-package body soc_msp430_pkg is
+package body pu_msp430_pkg is
 
   function reduce_or (
     reduce_or_in : std_logic_vector
@@ -615,4 +615,4 @@ package body soc_msp430_pkg is
     end if;
   end function to_stdlogic;
 
-end soc_msp430_pkg;
+end pu_msp430_pkg;

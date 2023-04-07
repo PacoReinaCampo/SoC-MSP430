@@ -42,7 +42,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-use work.soc_msp430_pkg.all;
+use work.pu_msp430_pkg.all;
 
 entity soc_msp430 is
   port (
@@ -411,7 +411,7 @@ begin
   -- Release the reset only, if the DCM is locked
   reset_n <= reset_pin_n;
 
-  sync_reset_dco : soc_msp430_sync_reset
+  sync_reset_dco : pu_msp430_sync_reset
     port map (
       rst_s => dco_rst,
       clk   => dco_clk_omsp,
@@ -428,7 +428,7 @@ begin
   -- 4)  OPENMSP430 SYSTEM 0
   --=============================================================================
 
-  soc_msp430_pu0_0 : msp430_pu0
+  msp430_pu0_0 : soc_msp430_pu0
     port map (
       -- CPU registers
       r0  => omsp0_r0,
@@ -504,7 +504,7 @@ begin
   --=============================================================================
   -- 5)  OPENMSP430 SYSTEM 1
   --=============================================================================
-  soc_msp430_pu1_0 : msp430_pu1
+  msp430_pu1_0 : soc_msp430_pu1
     port map (
       -- CPU registers
       r0  => omsp1_r0,

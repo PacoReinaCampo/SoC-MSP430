@@ -39,7 +39,7 @@
  *   Paco Reina Campo <pacoreinacampo@queenfield.tech>
  */
 
-../../../../../../../rtl/vhdl/pkg/soc_msp430_pkg.vhd
+../../../../../../../rtl/vhdl/pkg/main/pu_msp430_pkg.vhd
 
 //=============================================================================
 // SoC-MSP430
@@ -68,9 +68,9 @@
 ../../../../../../../pu/rtl/vhdl/core/omsp/pu_msp430_dbg_hwbrk.vhd
 ../../../../../../../pu/rtl/vhdl/core/omsp/pu_msp430_dbg_i2c.vhd
 ../../../../../../../pu/rtl/vhdl/core/omsp/pu_msp430_dbg_uart.vhd
-../../../../../../../pu/rtl/vhdl/core/omsp/pu_msp430_interrupt.vhd
 ../../../../../../../pu/rtl/vhdl/core/omsp/pu_msp430_register_file.vhd
-../../../../../../../pu/rtl/vhdl/core/omsp/pu_msp430_state_machine.vhd
+../../../../../../../pu/rtl/vhdl/core/omsp/msp430_interrupt.vhd
+../../../../../../../pu/rtl/vhdl/core/omsp/msp430_state_machine.vhd
 
 ../../../../../../../pu/rtl/vhdl/core/main/pu_msp430_bcm.vhd
 ../../../../../../../pu/rtl/vhdl/core/main/pu_msp430_dbg.vhd

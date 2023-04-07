@@ -42,7 +42,7 @@
 library ieee;
 use ieee.std_logic_1164.all;
 use ieee.numeric_std.all;
-use work.soc_msp430_pkg.all;
+use work.pu_msp430_pkg.all;
 
 entity soc_msp430_pu0 is
   port (
@@ -119,7 +119,7 @@ entity soc_msp430_pu0 is
 end soc_msp430_pu0;
 
 architecture rtl of soc_msp430_pu0 is
-component soc_msp430_core
+component pu_msp430_core
   port (
     --FRONTEND - SCAN
     scan_enable : in std_logic;
@@ -216,9 +216,9 @@ component soc_msp430_core
     dco_clk     : in  std_logic;
     lfxt_clk    : in  std_logic;
     wkup        : in  std_logic);
-end component soc_msp430_core;
+end component pu_msp430_core;
 
-component soc_msp430_gpio
+component pu_msp430_gpio
   port (
     p1_dout : out std_logic_vector (7 downto 0);
     p2_dout : out std_logic_vector (7 downto 0);
@@ -261,9 +261,9 @@ component soc_msp430_gpio
     per_we   : in  std_logic_vector (1 downto 0);
     per_addr : in  std_logic_vector (13 downto 0);
     per_din  : in  std_logic_vector (15 downto 0));
-end component soc_msp430_gpio;
+end component pu_msp430_gpio;
 
-component soc_msp430_ta
+component pu_msp430_ta
   port (
     ta_out0 : out std_logic;
     ta_out1 : out std_logic;
@@ -301,9 +301,9 @@ component soc_msp430_ta
     per_we   : in std_logic_vector (1 downto 0);
     per_addr : in std_logic_vector (13 downto 0);
     per_din  : in std_logic_vector (15 downto 0));
-end component soc_msp430_ta;
+end component pu_msp430_ta;
 
-component soc_msp430_uart
+component pu_msp430_uart
   port (
     uart_txd : out std_logic;
     uart_rxd : in  std_logic;
@@ -319,7 +319,7 @@ component soc_msp430_uart
     per_we   : in  std_logic_vector (1 downto 0);
     per_addr : in  std_logic_vector (13 downto 0);
     per_din  : in  std_logic_vector (15 downto 0));
-end component soc_msp430_uart;
+end component pu_msp430_uart;
 
   --=============================================================================
   -- 1)  INTERNAL WIRES/REGISTERS/PARAMETERS DECLARATION
@@ -373,7 +373,7 @@ begin
   --=============================================================================
   -- 2)  OPENMSP430 CORE
   --=============================================================================
-  soc_msp430_core_0 : msp430_core
+  msp430_core_0 : pu_msp430_core
     generic map (
       INST_NR  => 0,
       TOTAL_NR => 1)
@@ -464,7 +464,7 @@ begin
   --=============================================================================
 
   -- Digital I/O
-  gpio_0 : soc_msp430_gpio
+  gpio_0 : pu_msp430_gpio
     port map (
       -- OUTPUTs
       irq_port1  => irq_port1,          -- Port 1 interrupt
@@ -513,7 +513,7 @@ begin
   p1_din(3 downto 0) <= switch;
 
   -- Timer A
-  ta_0 : soc_msp430_ta
+  ta_0 : pu_msp430_ta
     port map (
       -- OUTPUTs
       irq_ta0    => irq_ta0,            -- Timer A interrupt: TACCR0
@@ -549,7 +549,7 @@ begin
       taclk       => '0');              -- TACLK external timer clock (SLOW)
 
   -- Hardware UART
-  uart_0 : soc_msp430_uart
+  uart_0 : pu_msp430_uart
     port map (
       -- OUTPUTs
       irq_uart_rx => irq_uart_rx,       -- UART receive interrupt
