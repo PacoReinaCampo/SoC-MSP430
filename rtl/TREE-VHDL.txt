@@ -1,11 +1,13 @@
 vhdl
 ├── pkg
-│   └── soc_msp430_pkg.vhd
+│   └── main
+│       └── pu_msp430_pkg.vhd
 ├── pu
 │   ├── soc_msp430_pu0.vhd
 │   └── soc_msp430_pu1.vhd
 └── soc
-    ├── soc_msp430_io_cell.vhd
-    └── soc_msp430.vhd
+    └── main
+        ├── soc_msp430_io_cell.vhd
+        └── soc_msp430.vhd
 
-3 directories, 5 files
+5 directories, 5 files

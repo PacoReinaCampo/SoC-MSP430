@@ -9,8 +9,8 @@ verilog
 │   ├── functions
 │   │   └── soc_optimsoc_functions.sv
 │   └── main
-│       ├── soc_msp430_defines.sv
-│       ├── soc_msp430_undefines.sv
+│       ├── pu_msp430_defines.sv
+│       ├── pu_msp430_undefines.sv
 │       └── timescale.sv
 ├── pu
 │   ├── soc_msp430_pu0.sv

@@ -6,19 +6,19 @@ verilog
 │   ├── soc_glip_channel.sv
 │   └── soc_glip_tcp_top.sv
 ├── main
+│   ├── registers_omsp0.sv
+│   ├── registers_omsp1.sv
 │   ├── soc_msp430_dac.sv
-│   ├── soc_msp430_glbl.sv
 │   ├── soc_msp430_debug.sv
+│   ├── soc_msp430_glbl.sv
+│   ├── soc_msp430_soc_testbench.sv
 │   ├── soc_msp430_testbench.sv
 │   ├── soc_msp430_tile_testbench.sv
 │   ├── soc_ram_d1.sv
 │   ├── soc_ram_d2.sv
 │   ├── soc_ram_dp.sv
 │   ├── soc_ram_p2.sv
-│   ├── soc_ram_sp.sv
-│   ├── registers_omsp0.sv
-│   ├── registers_omsp1.sv
-│   └── soc_msp430_testbench.sv
+│   └── soc_ram_sp.sv
 └── monitor
     ├── soc_r3_checker.sv
     └── soc_trace_monitor.sv
