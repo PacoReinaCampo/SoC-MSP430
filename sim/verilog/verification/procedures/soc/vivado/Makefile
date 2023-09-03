@@ -54,4 +54,4 @@ simulate:
 	xsim -R soc_msp430_soc_testbench
 
 clean:
-	rm -rf .Xil *.dir *.jou *.log *.pb
+	rm -rf *.vcd .Xil *.dir *.jou *.log *.pb
