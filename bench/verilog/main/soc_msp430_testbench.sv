@@ -413,7 +413,7 @@ module soc_msp430_testbench;
 
     //----------------------------------------------
     // Peripheral Modules (PMODs) and GPIO
-    //     https://www.digilentinc.com/PMODs
+    //     https:// www.digilentinc.com/PMODs
     //----------------------------------------------
 
     // Connector J5

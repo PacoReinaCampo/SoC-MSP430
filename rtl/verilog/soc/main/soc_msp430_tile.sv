@@ -169,7 +169,7 @@ module soc_msp430_tile #(
 
   wire  [ NR_SLAVES-1:0][DW-1:0] bussl_dout_o_flat;
 
-  //MAM - BB adapter signals
+  // MAM - BB adapter signals
 
   logic [        AW-1:0]         mam_dm_addr_o;
   logic [        DW-1:0]         mam_dm_din_o;
@@ -423,7 +423,7 @@ module soc_msp430_tile #(
   );
 
   if (CONFIG.USE_DEBUG == 1) begin : gen_mam_dm_bb
-    //MAM
+    // MAM
     peripheral_dbg_soc_osd_mam_bb #(
       .ADDR_WIDTH(16),
       .DATA_WIDTH(DW),
