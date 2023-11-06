@@ -91,7 +91,7 @@ module soc_msp430_tile #(
 
   //////////////////////////////////////////////////////////////////////////////
   //
-  // Constans
+  // Constants
   //
 
   localparam NR_MASTERS = CONFIG.CORES_PER_TILE * 2 + 1;
@@ -110,9 +110,8 @@ module soc_msp430_tile #(
   localparam DEBUG_MODS_PER_TILE_NONZERO = (CONFIG.DEBUG_MODS_PER_TILE == 0) ? 1 : CONFIG.DEBUG_MODS_PER_TILE;
 
   //////////////////////////////////////////////////////////////////////////////
-  //
   // Variables
-  //
+  //////////////////////////////////////////////////////////////////////////////
 
   peripheral_dbg_soc_mmsp430_trace_exec [                                        CONFIG.CORES_PER_TILE-1:0] trace;
 
@@ -179,9 +178,8 @@ module soc_msp430_tile #(
   logic [        DW-1:0]         mam_dm_dout_i;
 
   //////////////////////////////////////////////////////////////////////////////
-  //
   // Module Body
-  //
+  //////////////////////////////////////////////////////////////////////////////
 
   assign pic_ints_i[0][31:5] = 27'h0;
   assign pic_ints_i[0][1:0]  = 2'b00;
