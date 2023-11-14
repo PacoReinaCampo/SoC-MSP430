@@ -1,6 +1,3 @@
--- Converted from peripheral_spram_synthesis.sv
--- by verilog2vhdl - QueenField
-
 --------------------------------------------------------------------------------
 --                                            __ _      _     _               --
 --                                           / _(_)    | |   | |              --
@@ -47,7 +44,6 @@
 -- Author(s):
 --   Olivier Girard <olgirard@gmail.com>
 --   Paco Reina Campo <pacoreinacampo@queenfield.tech>
---
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -102,7 +98,7 @@ begin
   -- Module Body
   ------------------------------------------------------------------------------
 
-  --DUT AHB3
+  -- DUT AHB3
   ram : soc_msp430_ram
     generic map (
       AW       => AW,

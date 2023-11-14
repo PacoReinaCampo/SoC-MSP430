@@ -37,7 +37,6 @@
 -- =============================================================================
 -- Author(s):
 --   Paco Reina Campo <pacoreinacampo@queenfield.tech>
---
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -46,7 +45,7 @@ use work.pu_msp430_pkg.all;
 
 entity soc_msp430 is
   port (
-    --CORE 0
+    -- CORE 0
     -- CPU registers
     omsp0_r0  : out std_logic_vector(15 downto 0);
     omsp0_r1  : out std_logic_vector(15 downto 0);
@@ -85,7 +84,7 @@ entity soc_msp430 is
     omsp0_mclk    : out std_logic;
     omsp0_puc_rst : out std_logic;
 
-    --CORE 1
+    -- CORE 1
     -- CPU registers
     omsp1_r0  : out std_logic_vector(15 downto 0);
     omsp1_r1  : out std_logic_vector(15 downto 0);

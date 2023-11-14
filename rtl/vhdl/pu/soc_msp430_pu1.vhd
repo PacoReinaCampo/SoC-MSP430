@@ -37,7 +37,6 @@
 -- =============================================================================
 -- Author(s):
 --   Paco Reina Campo <pacoreinacampo@queenfield.tech>
---
 
 library ieee;
 use ieee.std_logic_1164.all;
@@ -117,41 +116,41 @@ end soc_msp430_pu1;
 architecture rtl of soc_msp430_pu1 is
 component pu_msp430_core
   port (
-    --FRONTEND - SCAN
+    -- FRONTEND - SCAN
     scan_enable : in std_logic;
     scan_mode   : in std_logic;
 
-    --FRONTEND - INTERRUPTION
+    -- FRONTEND - INTERRUPTION
     irq_acc : out std_logic_vector (IRQ_NR - 3 downto 0);
     nmi     : in  std_logic;
     irq     : in  std_logic_vector (IRQ_NR - 3 downto 0);
 
-    --FRONTEND - RESET
+    -- FRONTEND - RESET
     puc_rst : out std_logic;
     reset_n : in  std_logic;
 
-    --DATA MEMORY
+    -- DATA MEMORY
     dmem_cen  : out std_logic;
     dmem_wen  : out std_logic_vector (1 downto 0);
     dmem_din  : out std_logic_vector (15 downto 0);
     dmem_addr : out std_logic_vector (DMEM_MSB downto 0);
     dmem_dout : in  std_logic_vector (15 downto 0);
 
-    --INSTRUCTION MEMORY
+    -- INSTRUCTION MEMORY
     pmem_cen  : out std_logic;
     pmem_wen  : out std_logic_vector (1 downto 0);
     pmem_din  : out std_logic_vector (15 downto 0);
     pmem_addr : out std_logic_vector (PMEM_MSB downto 0);
     pmem_dout : in  std_logic_vector (15 downto 0);
 
-    --PERIPHERAL MEMORY
+    -- PERIPHERAL MEMORY
     per_en   : out std_logic;
     per_we   : out std_logic_vector (1 downto 0);
     per_addr : out std_logic_vector (13 downto 0);
     per_din  : out std_logic_vector (15 downto 0);
     per_dout : in  std_logic_vector (15 downto 0);
 
-    --EXECUTION - REGISTERS
+    -- EXECUTION - REGISTERS
     r0  : out std_logic_vector (15 downto 0);
     r1  : out std_logic_vector (15 downto 0);
     r2  : out std_logic_vector (15 downto 0);
@@ -183,22 +182,22 @@ component pu_msp430_core
 
     nodiv_smclk : out std_logic;
 
-    --DBG
+    -- DBG
     dbg_freeze : out std_logic;
     dbg_en     : in  std_logic;
 
-    --DBG - I2C
+    -- DBG - I2C
     dbg_i2c_sda_out   : out std_logic;
     dbg_i2c_scl       : in  std_logic;
     dbg_i2c_sda_in    : in  std_logic;
     dbg_i2c_addr      : in  std_logic_vector (6 downto 0);
     dbg_i2c_broadcast : in  std_logic_vector (6 downto 0);
 
-    --DBG - UART
+    -- DBG - UART
     dbg_uart_txd : out std_logic;
     dbg_uart_rxd : in  std_logic;
 
-    --BCM
+    -- BCM
     aclk        : out std_logic;
     aclk_en     : out std_logic;
     dco_enable  : out std_logic;
