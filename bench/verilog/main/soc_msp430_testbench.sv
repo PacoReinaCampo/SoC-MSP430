@@ -13,31 +13,29 @@
 //              Processing Unit                                               //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
-
-/* Copyright (c) 2015-2016 by the author(s)
- *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
- * furnished to do so, subject to the following conditions:
- *
- * The above copyright notice and this permission notice shall be included in
- * all copies or substantial portions of the Software.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
- * THE SOFTWARE.
- *
- * =============================================================================
- * Author(s):
- *   Paco Reina Campo <pacoreinacampo@queenfield.tech>
- */
+// Copyright (c) 2015-2016 by the author(s)
+//
+// Permission is hereby granted, free of charge, to any person obtaining a copy
+// of this software and associated documentation files (the "Software"), to deal
+// in the Software without restriction, including without limitation the rights
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+// copies of the Software, and to permit persons to whom the Software is
+// furnished to do so, subject to the following conditions:
+//
+// The above copyright notice and this permission notice shall be included in
+// all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+// THE SOFTWARE.
+//
+////////////////////////////////////////////////////////////////////////////////
+// Author(s):
+//   Paco Reina Campo <pacoreinacampo@queenfield.tech>
 
 `ifdef OMSP_NO_INCLUDE
 `else
@@ -46,7 +44,6 @@
 
 module soc_msp430_testbench;
 
-  //
   // Wire & Register definition
   //------------------------------
 
@@ -206,7 +203,6 @@ module soc_msp430_testbench;
 
   wire                  dco_clk;
 
-  //
   // Include files
   //------------------------------
 
@@ -217,7 +213,6 @@ module soc_msp430_testbench;
   // Verilog stimulus
   `include "stimulus.sv"
 
-  //
   // Initialize Program Memory
   //------------------------------
 
@@ -231,7 +226,6 @@ module soc_msp430_testbench;
     end
   end
 
-  //
   // Generate Clock & Reset
   //------------------------------
   initial begin
@@ -245,7 +239,6 @@ module soc_msp430_testbench;
     #600 USER_RESET = 1'b0;
   end
 
-  //
   // Global initialization
   //------------------------------
   initial begin
@@ -259,7 +252,6 @@ module soc_msp430_testbench;
     PMOD1_P4      = 1'b1;
   end
 
-  //
   // openMSP430 FPGA Instance
   //----------------------------------
 
@@ -507,7 +499,6 @@ module soc_msp430_testbench;
     .core_select(1'b1)  // Core selection
   );
 
-  //
   // Generate Waveform
   //----------------------------------------
   initial begin
@@ -525,7 +516,6 @@ module soc_msp430_testbench;
 `endif
   end
 
-  //
   // End of simulation
   //----------------------------------------
 
@@ -553,7 +543,6 @@ module soc_msp430_testbench;
     $finish;
   end
 
-  //
   // Tasks Definition
   //------------------------------
 
