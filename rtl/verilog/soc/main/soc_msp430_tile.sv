@@ -136,7 +136,6 @@ module soc_msp430_tile #(
 
   wire                 [                         DW-1:0]                                 busms_dout_i  [           0:NR_MASTERS-1];
 
-
   wire                 [                         AW-1:0]                                 bussl_addr_i  [            0:NR_SLAVES-1];
   wire                 [                         DW-1:0]                                 bussl_din_i   [            0:NR_SLAVES-1];
   wire                                                                                   bussl_en_i    [            0:NR_SLAVES-1];

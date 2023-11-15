@@ -234,7 +234,6 @@ module soc_msp430_tile_testbench (
     end
   endgenerate
 
-
   // The actual system: a single compute tile
   soc_msp430_tile #(
     .CONFIG      (CONFIG),

@@ -45,7 +45,6 @@ module soc_bootrom #(
   input clk,
   input rst,
 
-
   input [AW-1:0] bb_addr_i,
   input [DW-1:0] bb_din_i,
   input          bb_en_i,
