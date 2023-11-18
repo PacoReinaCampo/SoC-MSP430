@@ -110,43 +110,43 @@ module soc_msp430_tile #(
   // Variables
   //////////////////////////////////////////////////////////////////////////////
 
-  peripheral_dbg_soc_mmsp430_trace_exec [                                        CONFIG.CORES_PER_TILE-1:0] trace;
+  peripheral_dbg_soc_mmsp430_trace_exec [CONFIG.CORES_PER_TILE-1:0] trace;
 
-  logic                                                                                  bb_mem_clk_i;
-  logic                                                                                  bb_mem_rst_i;
+  logic          bb_mem_clk_i;
+  logic          bb_mem_rst_i;
 
-  logic                [                         AW-1:0]                                 bb_mem_addr_i;
-  logic                [                         DW-1:0]                                 bb_mem_din_i;
-  logic                                                                                  bb_mem_en_i;
-  logic                                                                                  bb_mem_we_i;
+  logic [AW-1:0] bb_mem_addr_i;
+  logic [DW-1:0] bb_mem_din_i;
+  logic          bb_mem_en_i;
+  logic          bb_mem_we_i;
 
-  logic                [                         DW-1:0]                                 bb_mem_dout_o;
+  logic [DW-1:0] bb_mem_dout_o;
 
-  dii_flit           [                                  DEBUG_MODS_PER_TILE_NONZERO-1:0] dii_in;
-  dii_flit           [                                  DEBUG_MODS_PER_TILE_NONZERO-1:0] dii_out;
+  dii_flit [DEBUG_MODS_PER_TILE_NONZERO-1:0] dii_in;
+  dii_flit [DEBUG_MODS_PER_TILE_NONZERO-1:0] dii_out;
 
-  logic                [DEBUG_MODS_PER_TILE_NONZERO-1:0]                                 dii_in_ready;
-  logic                [DEBUG_MODS_PER_TILE_NONZERO-1:0]                                 dii_out_ready;
+  logic [DEBUG_MODS_PER_TILE_NONZERO-1:0] dii_in_ready;
+  logic [DEBUG_MODS_PER_TILE_NONZERO-1:0] dii_out_ready;
 
-  wire                 [                         AW-1:0]                                 busms_addr_o  [           0:NR_MASTERS-1];
-  wire                 [                         DW-1:0]                                 busms_din_o   [           0:NR_MASTERS-1];
-  wire                                                                                   busms_en_o    [           0:NR_MASTERS-1];
-  wire                                                                                   busms_we_o    [           0:NR_MASTERS-1];
-  wire                 [                            1:0]                                 busms_wen_o   [           0:NR_MASTERS-1];
+  wire [AW-1:0] busms_addr_o  [0:NR_MASTERS-1];
+  wire [DW-1:0] busms_din_o   [0:NR_MASTERS-1];
+  wire          busms_en_o    [0:NR_MASTERS-1];
+  wire          busms_we_o    [0:NR_MASTERS-1];
+  wire [   1:0] busms_wen_o   [0:NR_MASTERS-1];
 
-  wire                 [                         DW-1:0]                                 busms_dout_i  [           0:NR_MASTERS-1];
+  wire [DW-1:0] busms_dout_i  [0:NR_MASTERS-1];
 
-  wire                 [                         AW-1:0]                                 bussl_addr_i  [            0:NR_SLAVES-1];
-  wire                 [                         DW-1:0]                                 bussl_din_i   [            0:NR_SLAVES-1];
-  wire                                                                                   bussl_en_i    [            0:NR_SLAVES-1];
-  wire                                                                                   bussl_we_i    [            0:NR_SLAVES-1];
+  wire [AW-1:0] bussl_addr_i  [0:NR_SLAVES-1];
+  wire [DW-1:0] bussl_din_i   [0:NR_SLAVES-1];
+  wire          bussl_en_i    [0:NR_SLAVES-1];
+  wire          bussl_we_i    [0:NR_SLAVES-1];
 
-  wire                 [                         DW-1:0]                                 bussl_dout_o  [            0:NR_SLAVES-1];
+  wire [DW-1:0] bussl_dout_o  [0:NR_SLAVES-1];
 
-  wire                                                                                   snoop_enable;
-  wire                 [                           31:0]                                 snoop_adr;
+  wire          snoop_enable;
+  wire [  31:0] snoop_adr;
 
-  wire                 [                           31:0]                                 pic_ints_i    [0:CONFIG.CORES_PER_TILE-1];
+  wire [  31:0] pic_ints_i    [0:CONFIG.CORES_PER_TILE-1];
 
   genvar c, m, s;
 
