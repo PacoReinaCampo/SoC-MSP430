@@ -1,0 +1,69 @@
+digraph Project {
+  // Introduction
+  graph [rankdir = LR];
+  node[shape=record];
+
+  // Peripheral Blocks
+  subgraph "cluster PeripheralBlocks" { label = "Peripheral Blocks";
+    MPSoC_DBG[label="MPSoC_DBG\nPeripheral"];
+    MPSoC_DMA[label="MPSoC_DMA\nPeripheral"];
+    MPSoC_GPIO[label="MPSoC_GPIO\nPeripheral"];
+    MPSoC_MPI[label="MPSoC_MPI\nPeripheral"];
+    MPSoC_MPRAM[label="MPSoC_MPRAM\nPeripheral"];
+    MPSoC_MSI[label="MPSoC_MSI\nPeripheral"];
+    MPSoC_NoC[label="MPSoC_NoC\nPeripheral"];
+    MPSoC_SPRAM[label="MPSoC_SPRAM\nPeripheral"];
+    MPSoC_UART[label="MPSoC_UART\nPeripheral"];
+  }
+
+  // Architecture Blocks
+  subgraph "cluster ArchitectureBlocks" { label = "Architecture Blocks";
+    MPSoC_MSP430[label="MPSoC_MSP430\nArchitecture\nmsp430-pvt"];
+    SoC_MSP430[label="SoC_MSP430\nArchitecture\nmsp430-pv"];
+    PU_MSP430[label="PU_MSP430\nArchitecture\nmsp430-p"];
+  }
+
+  // Environment Blocks
+  subgraph "cluster EnvironmentBlocks" { label = "Environment Blocks";
+    MPSoC_DV[label="MPSoC_DV\nEnvironment\nmsp430-pvt"];
+    SoC_DV[label="SoC_DV\nEnvironment\nmsp430-pv"];
+    PU_DV[label="PU_DV\nEnvironment\nmsp430-p"];
+  }
+
+  // Peripheral -> Architecture
+  MPSoC_DBG -> MPSoC_MSP430;
+  MPSoC_DMA -> MPSoC_MSP430;
+  MPSoC_GPIO -> MPSoC_MSP430;
+  MPSoC_MPI -> MPSoC_MSP430;
+  MPSoC_MPRAM -> MPSoC_MSP430;
+  MPSoC_MSI -> MPSoC_MSP430;
+  MPSoC_NoC -> MPSoC_MSP430;
+  MPSoC_SPRAM -> MPSoC_MSP430;
+  MPSoC_UART -> MPSoC_MSP430;
+
+  MPSoC_DBG -> SoC_MSP430;
+  MPSoC_DMA -> SoC_MSP430;
+  MPSoC_GPIO -> SoC_MSP430;
+  MPSoC_MPI -> SoC_MSP430;
+  MPSoC_MPRAM -> SoC_MSP430;
+  MPSoC_MSI -> SoC_MSP430;
+  MPSoC_NoC -> SoC_MSP430;
+  MPSoC_SPRAM -> SoC_MSP430;
+  MPSoC_UART -> SoC_MSP430;
+
+  MPSoC_DBG -> PU_MSP430;
+  MPSoC_DMA -> PU_MSP430;
+  MPSoC_GPIO -> PU_MSP430;
+  MPSoC_MPI -> PU_MSP430;
+  MPSoC_MPRAM -> PU_MSP430;
+  MPSoC_MSI -> PU_MSP430;
+  MPSoC_SPRAM -> PU_MSP430;
+  MPSoC_UART -> PU_MSP430;
+
+  // Architecture -> Environment
+  PU_MSP430 -> PU_DV;
+
+  SoC_MSP430 -> SoC_DV;
+
+  MPSoC_MSP430 -> MPSoC_DV;
+}
