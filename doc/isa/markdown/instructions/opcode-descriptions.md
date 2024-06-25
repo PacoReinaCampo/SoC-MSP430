@@ -1,5 +1,7 @@
 ## INSTRUCTION DESCRIPTIONS
 
+Instructions in RISC-V are designed to perform specific operations ranging from basic arithmetic and logical computations to memory access and control flow. Each instruction description outlines its functionality, including operands (registers or immediates), effects on status flags, memory access patterns, and control flow implications. Descriptions provide a clear understanding of how instructions interact with processor state and contribute to program execution.
+
 Format of a line in the table:
 
 `<instruction name> "<instruction description>"`
