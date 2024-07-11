@@ -1,132 +1,191 @@
-# Processing Unit
+# ARCHITECTURE
 
-| `Name` | `Value` |
-| :----- | :------ |
-| `XLEN` | `64`    |
-| `PLEN` | `64`    |
-| `FLEN` | `64`    |
+## MAIN
 
-| `Name`      | `Value`       | `Description`                            |
-| :---------- | :------------ | :--------------------------------------- |
-| `PC_INIT`   | `'h8000_0000` | `Start here after reset`                 |
-| `BASE`      | `PC_INIT`     | `offset where to load program in memory` |
-| `INIT_FILE` | `"test.hex"`  |                                          |
+| `Component`       |
+| :---------------- |
+| `pu_msp430_core`  |
+: Implementation - Main
 
-| `Name`          | `Value`   |
-| :-------------- | :-------- |
-| `MEM_LATENCY`   | `1`       |
-| `HAS_USER`      | `1`       |
-| `HAS_SUPER`     | `1`       |
-| `HAS_HYPER`     | `1`       |
-| `HAS_BPU`       | `1`       |
-| `HAS_FPU`       | `1`       |
-| `HAS_MMU`       | `1`       |
-| `HAS_RVM`       | `1`       |
-| `HAS_RVA`       | `1`       |
-| `HAS_RVC`       | `1`       |
-| `HAS_RVN`       | `1`       |
-| `HAS_RVB`       | `1`       |
-| `HAS_RVT`       | `1`       |
-| `HAS_RVP`       | `1`       |
-| `HAS_EXT`       | `1`       |
-: Core Parameters
+| `Component`             |
+| :---------------------- |
+| `pu_msp430_and_gate`    |
+| `pu_msp430_clock_gate`  |
+| `pu_msp430_clock_mux`   |
+| `pu_msp430_scan_mux`    |
+| `pu_msp430_sync_cell`   |
+| `pu_msp430_sync_reset`  |
+| `pu_msp430_wakeup_cell` |
+: Implementation - Fuse
 
-| `Name`       | `Value`   |
-| :----------- | :-------- |
-| `IS_RV32E`   | `1`       |
+### PU MSP430 CORE
 
-| `Name`           | `Value`   |
-| :--------------- | :-------- |
-| `MULT_LATENCY`   | `1`       |
+This 5 bit field can be freely used in order to allowcustom identification of the system through the debug interface
 
-| `Name`    | `Value`        | `Description`    |
-| :-------- | :------------- | :--------------- |
-| `HTIF`    | `0`            | `Host-interface` |
-| `TOHOST`  | `32'h80001000` |                  |
-| `UART_TX` | `32'h80001080` |                  |
+| `Name`         | `Value`    |
+| :------------- | :--------- |
+| `USER_VERSION` | `5'b00000` |
+: Custom user version number
 
-| `Name`        | `Value` | `Description`                    |
-| :------------ | :------ | :------------------------------- |
-| `BREAKPOINTS` | `8`     | `Number of hardware breakpoints` |
+| `Clock` | `Divisions`  | `Constant`      |
+| :------ | :----------- | :-------------- |
+| `MCLK`  | `(/1/2/4/8)` | `MCLK_DIVIDER`  |
+| `SMCLK` | `(/1/2/4/8)` | `SMCLK_DIVIDER` |
+| `ACLK`  | `(/1/2/4/8)` | `ACLK_DIVIDER`  |
+: Clock Dividers
 
-| `Name`    | `Value` | `Description`                                  |
-| :-------- | :------ | :--------------------------------------------- |
-| `PMA_CNT` | ` 4`    |                                                |
-| `PMP_CNT` | `16`    | `Number of Physical Memory Protection entries` |
+| `Status` | `Low Power Mode`               | `Constant`  |
+| :------- | :----------------------------- | :---------- |
+| `CPUOFF` | `LPM0, LPM1, LPM2, LPM3, LPM4` | `CPUOFF_EN` |
+| `SCG0`   | `LPM1, LPM3, LPM4`             | `SCG0_EN`   |
+| `SCG1`   | `LPM2, LPM3, LPM4`             | `SCG1_EN`   |
+| `OSCOFF` | `LPM4`                         | `OSCOFF_EN` |
+: Low Power Modes
 
-| `Name`              | `Value` |
-| :------------------ | :------ |
-| `BP_GLOBAL_BITS`    | ` 2`    |
-| `BP_LOCAL_BITS`     | `10`    |
-| `BP_LOCAL_BITS_LSB` | ` 2`    |
+## FETCH
 
-| `Name`               | `Value` | `Description`             |
-| :------------------- | :------ | :------------------------ |
-| `ICACHE_SIZE`        | `64`    | `in KBytes`               |
-| `ICACHE_BLOCK_SIZE`  | `64`    | `in Bytes`                |
-| `ICACHE_WAYS`        | `2`     | `'n'-way set associative` |
-| `ICACHE_REPLACE_ALG` | `0`     |                           |
-| `ITCM_SIZE`          | `0`     |                           |
+| `Component`          |
+| :------------------- |
+| `pu_msp430_frontend` |
+: Implementation - Fetch
 
-| `Name`               | `Value` | `Description`             |
-| :------------------- | :------ | :------------------------ |
-| `DCACHE_SIZE`        | `64`    | `in KBytes`               |
-| `DCACHE_BLOCK_SIZE`  | `64`    | `in Bytes`                |
-| `DCACHE_WAYS`        | `2`     | `'n'-way set associative` |
-| `DCACHE_REPLACE_ALG` | `0`     |                           |
-| `DTCM_SIZE`          | `0`     |                           |
-| `WRITEBUFFER_SIZE`   | `8`     |                           |
+### PU MSP430 FRONTEND
 
-| `Name`       | `Value`     |
-| :----------- | :---------- |
-| `TECHNOLOGY` | `"GENERIC"` |
-| `AVOID_X`    | `0`         |
+## DECODE
 
-| `Name`            | `Value`           |
-| :---------------- | :---------------- |
-| `MNMIVEC_DEFAULT` | `PC_INIT - 'h004` |
-| `MTVEC_DEFAULT`   | `PC_INIT - 'h040` |
-| `HTVEC_DEFAULT`   | `PC_INIT - 'h080` |
-| `STVEC_DEFAULT`   | `PC_INIT - 'h0C0` |
-| `UTVEC_DEFAULT`   | `PC_INIT - 'h100` |
+| `Component`          |
+| :------------------- |
+| `pu_msp430_frontend` |
+: Implementation - Decode
 
-| `Name`                  | `Value` |
-| :---------------------- | :------ |
-| `JEDEC_BANK`            | `10`    |
-| `JEDEC_MANUFACTURER_ID` | `'h6e`  |
+### PU MSP430 FRONTEND
 
-| `Name`   | `Value` |
-| :------- | :------ |
-| `HARTID` | `0`     |
+## EXECUTE
 
-| `Name`        | `Value` |
-| :------------ | :------ |
-| `PARCEL_SIZE` | `32`    |
+| `Component`               |
+| :------------------------ |
+| `pu_msp430_execution`     |
+| `pu_msp430_alu`           |
+| `pu_msp430_multiplier`    |
+| `pu_msp430_register_file` |
+| `pu_msp430_sfr`           |
+: Implementation - Execute
 
-| `Name`       | `Value` |
-| :----------- | :------ |
-| `SYNC_DEPTH` | `3`     |
+### PU MSP430 EXECUTION
+### PU MSP430 ALU
+### PU MSP430 MULTIPLIER
+### PU MSP430 REGISTER-FILE
+### PU MSP430 SFR
 
-| `Name`         | `Value` |
-| :------------- | :------ |
-| `BUFFER_DEPTH` | `4`     |
+## MEMORY
 
-| `Name`    | `Value` |
-| :-------- | :------ |
-| `RDPORTS` | `1`     |
-| `WRPORTS` | `1`     |
-| `AR_BITS` | `5`     |
-: RF Access
+| `Component`        |
+| :----------------- |
+| `pu_msp430_memory` |
+: Implementation - Memory
 
-| `Name`        | `Value` |
-| :------------ | :------ |
-| `PMPCFG_MASK` | `8'h9F` |
+### PU MSP430 MEMORY
 
-| `Name`         | `Value` |
-| :------------- | :------ |
-| `ARCHID`       | `12`    |
-| `REVPRV_MAJOR` | `1`     |
-| `REVPRV_MINOR` | `10`    |
-| `REVUSR_MAJOR` | `2`     |
-| `REVUSR_MINOR` | `2`     |
-: Definitions Package
+The sum of program, data and peripheral memory spaces must not exceed 64 kB
+
+| `PMEM_SIZE_CUSTOM` |
+| :----------------- |
+| `PMEM_SIZE_59_KB`  |
+| `PMEM_SIZE_55_KB`  |
+| `PMEM_SIZE_54_KB`  |
+| `PMEM_SIZE_51_KB`  |
+| `PMEM_SIZE_48_KB`  |
+| `PMEM_SIZE_41_KB`  |
+| `PMEM_SIZE_32_KB`  |
+| `PMEM_SIZE_24_KB`  |
+| `PMEM_SIZE_16_KB`  |
+| `PMEM_SIZE_12_KB`  |
+| `PMEM_SIZE_8_KB`   |
+| `PMEM_SIZE_4_KB`   |
+| `PMEM_SIZE_2_KB`   |
+| `PMEM_SIZE_1_KB`   |
+: Program Memory Size
+
+| `PMEM_CUSTOM_AWIDTH` | `PMEM_CUSTOM_SIZE` |
+| :------------------- | :----------------- |
+| `13`                 | `10240`            |
+: Custom Program memory (enabled with `PMEM_SIZE_CUSTOM`)
+
+| `DMEM_SIZE_CUSTOM` |
+| :----------------- |
+| `DMEM_SIZE_32_KB`  |
+| `DMEM_SIZE_24_KB`  |
+| `DMEM_SIZE_16_KB`  |
+| `DMEM_SIZE_10_KB`  |
+| `DMEM_SIZE_8_KB`   |
+| `DMEM_SIZE_5_KB`   |
+| `DMEM_SIZE_4_KB`   |
+| `DMEM_SIZE_2p5_KB` |
+| `DMEM_SIZE_2_KB`   |
+| `DMEM_SIZE_1_KB`   |
+| `DMEM_SIZE_512_B`  |
+| `DMEM_SIZE_256_B`  |
+| `DMEM_SIZE_128_B`  |
+: Data Memory Size
+
+| `DMEM_CUSTOM_AWIDTH` | `DMEM_CUSTOM_SIZE` |
+| :------------------- | :----------------- |
+| `13`                 | `10240`            |
+: Custom Data memory (enabled with `DMEM_SIZE_CUSTOM`)
+
+## CONTROL
+
+### PU MSP430 DBG
+
+| `Component`           |
+| :-------------------- |
+| `pu_msp430_dbg`       |
+| `pu_msp430_dbg_hwbrk` |
+| `pu_msp430_dbg_i2c`   |
+| `pu_msp430_dbg_uart`  |
+: Implementation - Debugger
+
+### PU MSP430 DBG HWBRK
+### PU MSP430 DBG I2C
+### PU MSP430 DBG UART
+
+## PERIPHERAL
+
+| `Component`            |
+| :--------------------- |
+| `pu_msp430_template08` |
+| `pu_msp430_template16` |
+| `pu_msp430_bcm`        |
+| `pu_msp430_dac`        |
+| `pu_msp430_gpio`       |
+| `pu_msp430_ta`         |
+| `pu_msp430_uart`       |
+| `pu_msp430_watchdog`   |
+: Implementation - Peripherals
+
+The original MSP430 architecture map the peripherals from 0x0000 to 0x01FF (i.e. 512B of the memory space). The following defines allow you to expand this space up to 32 kB (i.e. from 0x0000 to 0x7fff). As a consequence, the data memory mapping will be shifted up and a custom linker script will therefore be required by the GCC compiler.
+
+| `PER_SIZE_CUSTOM` |
+| :---------------- |
+| `PER_SIZE_32_KB`  |
+| `PER_SIZE_16_KB`  |
+| `PER_SIZE_8_KB`   |
+| `PER_SIZE_4_KB`   |
+| `PER_SIZE_2_KB`   |
+| `PER_SIZE_1_KB`   |
+| `PER_SIZE_512_B`  |
+: Peripheral Memory Size
+
+| `PER_CUSTOM_AWIDTH` | `PER_CUSTOM_SIZE` |
+| :------------------ | :---------------- |
+| `8`                 | `512`             |
+: Custom Peripheral memory (enabled with `PER_SIZE_CUSTOM`)
+
+### PU MSP430 TEMPLATE-08
+### PU MSP430 TEMPLATE-16
+### PU MSP430 BCM
+### PU MSP430 DAC
+### PU MSP430 GPIO
+### PU MSP430 TA
+### PU MSP430 UART
+### PU MSP430 WATCHDOG

@@ -1,5 +1,5 @@
 ---
-title: 'MSP430 ISA'
+title: 'MSP430 Implementation'
 subtitle: '![](msp430.png){width=5cm}'
 
 author: Paco Reina Campo
