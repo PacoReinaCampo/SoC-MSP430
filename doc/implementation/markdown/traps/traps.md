@@ -31,11 +31,13 @@
 | `Name`          | `Value`                         |
 | :-------------- | :------------------------------ |
 `CPU_VERSION`     | `3'h2`                          |
+
 : Debug interface: CPU version
 
 | `Name`          | `Value`                         |
 | :-------------- | :------------------------------ |
 | `DBG_SWBRK_OP`  | `16'h4343`                      |
+
 : Debug interface: Software breakpoint opcode
 
 | `Name`          | `Value`                         |
@@ -52,6 +54,7 @@
 | `DBG_UART_BAUD` | `2000000`                       |
 | `DBG_DCO_FREQ`  | `20000000`                      |
 | `DBG_UART_CNT`  | `DBG_DCO_FREQ/DBG_UART_BAUD)-1` |
+
 : Debug UART interface data rate
 
 ### PU MSP430 DBG HWBRK

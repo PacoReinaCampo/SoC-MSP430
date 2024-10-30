@@ -24,288 +24,288 @@
 <polygon fill="none" stroke="black" points="355,-164 355,-401 516,-401 516,-164 355,-164"/>
 <text text-anchor="middle" x="435.5" y="-385.8" font-family="Times,serif" font-size="14.00">Environment Blocks</text>
 </g>
-<!-- MPSoC_DBG -->
+<!-- MPSoC-DBG -->
 <g id="node1" class="node">
-<title>MPSoC_DBG</title>
+<title>MPSoC-DBG</title>
 <polygon fill="none" stroke="black" points="28.5,-131 28.5,-169 137.5,-169 137.5,-131 28.5,-131"/>
-<text text-anchor="middle" x="83" y="-153.8" font-family="Times,serif" font-size="14.00">MPSoC_DBG</text>
+<text text-anchor="middle" x="83" y="-153.8" font-family="Times,serif" font-size="14.00">MPSoC-DBG</text>
 <text text-anchor="middle" x="83" y="-138.8" font-family="Times,serif" font-size="14.00">Peripheral</text>
 </g>
-<!-- MPSoC_MSP430 -->
+<!-- MPSoC-MSP430 -->
 <g id="node10" class="node">
-<title>MPSoC_MSP430</title>
+<title>MPSoC-MSP430</title>
 <polygon fill="none" stroke="black" points="188,-172.5 188,-225.5 325,-225.5 325,-172.5 188,-172.5"/>
-<text text-anchor="middle" x="256.5" y="-210.3" font-family="Times,serif" font-size="14.00">MPSoC_MSP430</text>
+<text text-anchor="middle" x="256.5" y="-210.3" font-family="Times,serif" font-size="14.00">MPSoC-MSP430</text>
 <text text-anchor="middle" x="256.5" y="-195.3" font-family="Times,serif" font-size="14.00">Architecture</text>
 <text text-anchor="middle" x="256.5" y="-180.3" font-family="Times,serif" font-size="14.00">msp430&#45;pvt</text>
 </g>
-<!-- MPSoC_DBG&#45;&gt;MPSoC_MSP430 -->
+<!-- MPSoC-DBG&#45;&gt;MPSoC-MSP430 -->
 <g id="edge1" class="edge">
-<title>MPSoC_DBG&#45;&gt;MPSoC_MSP430</title>
+<title>MPSoC-DBG&#45;&gt;MPSoC-MSP430</title>
 <path fill="none" stroke="black" d="M137.79,-165.37C150.6,-169.03 164.51,-173 178.14,-176.9"/>
 <polygon fill="black" stroke="black" points="177.42,-180.33 188,-179.71 179.34,-173.6 177.42,-180.33"/>
 </g>
-<!-- SoC_MSP430 -->
+<!-- SoC-MSP430 -->
 <g id="node11" class="node">
-<title>SoC_MSP430</title>
+<title>SoC-MSP430</title>
 <polygon fill="none" stroke="black" points="200,-244.5 200,-297.5 313,-297.5 313,-244.5 200,-244.5"/>
-<text text-anchor="middle" x="256.5" y="-282.3" font-family="Times,serif" font-size="14.00">SoC_MSP430</text>
+<text text-anchor="middle" x="256.5" y="-282.3" font-family="Times,serif" font-size="14.00">SoC-MSP430</text>
 <text text-anchor="middle" x="256.5" y="-267.3" font-family="Times,serif" font-size="14.00">Architecture</text>
 <text text-anchor="middle" x="256.5" y="-252.3" font-family="Times,serif" font-size="14.00">msp430&#45;pv</text>
 </g>
-<!-- MPSoC_DBG&#45;&gt;SoC_MSP430 -->
+<!-- MPSoC-DBG&#45;&gt;SoC-MSP430 -->
 <g id="edge10" class="edge">
-<title>MPSoC_DBG&#45;&gt;SoC_MSP430</title>
+<title>MPSoC-DBG&#45;&gt;SoC-MSP430</title>
 <path fill="none" stroke="black" d="M137.57,-164.52C145.11,-168.31 152.24,-173.06 158,-179 176.4,-197.97 160.19,-215.47 178,-235 181.81,-239.18 186.21,-242.91 190.93,-246.24"/>
 <polygon fill="black" stroke="black" points="189.4,-249.41 199.72,-251.8 193.14,-243.49 189.4,-249.41"/>
 </g>
-<!-- PU_MSP430 -->
+<!-- PU-MSP430 -->
 <g id="node12" class="node">
-<title>PU_MSP430</title>
+<title>PU-MSP430</title>
 <polygon fill="none" stroke="black" points="203.5,-316.5 203.5,-369.5 309.5,-369.5 309.5,-316.5 203.5,-316.5"/>
-<text text-anchor="middle" x="256.5" y="-354.3" font-family="Times,serif" font-size="14.00">PU_MSP430</text>
+<text text-anchor="middle" x="256.5" y="-354.3" font-family="Times,serif" font-size="14.00">PU-MSP430</text>
 <text text-anchor="middle" x="256.5" y="-339.3" font-family="Times,serif" font-size="14.00">Architecture</text>
 <text text-anchor="middle" x="256.5" y="-324.3" font-family="Times,serif" font-size="14.00">msp430&#45;p</text>
 </g>
-<!-- MPSoC_DBG&#45;&gt;PU_MSP430 -->
+<!-- MPSoC-DBG&#45;&gt;PU-MSP430 -->
 <g id="edge19" class="edge">
-<title>MPSoC_DBG&#45;&gt;PU_MSP430</title>
+<title>MPSoC-DBG&#45;&gt;PU-MSP430</title>
 <path fill="none" stroke="black" d="M137.86,-163.22C145.55,-167.19 152.65,-172.33 158,-179 194.03,-223.91 143.36,-261 178,-307 182.48,-312.95 188.18,-317.95 194.45,-322.14"/>
 <polygon fill="black" stroke="black" points="192.91,-325.3 203.3,-327.37 196.47,-319.27 192.91,-325.3"/>
 </g>
-<!-- MPSoC_DMA -->
+<!-- MPSoC-DMA -->
 <g id="node2" class="node">
-<title>MPSoC_DMA</title>
+<title>MPSoC-DMA</title>
 <polygon fill="none" stroke="black" points="27.5,-74 27.5,-112 138.5,-112 138.5,-74 27.5,-74"/>
-<text text-anchor="middle" x="83" y="-96.8" font-family="Times,serif" font-size="14.00">MPSoC_DMA</text>
+<text text-anchor="middle" x="83" y="-96.8" font-family="Times,serif" font-size="14.00">MPSoC-DMA</text>
 <text text-anchor="middle" x="83" y="-81.8" font-family="Times,serif" font-size="14.00">Peripheral</text>
 </g>
-<!-- MPSoC_DMA&#45;&gt;MPSoC_MSP430 -->
+<!-- MPSoC-DMA&#45;&gt;MPSoC-MSP430 -->
 <g id="edge2" class="edge">
-<title>MPSoC_DMA&#45;&gt;MPSoC_MSP430</title>
+<title>MPSoC-DMA&#45;&gt;MPSoC-MSP430</title>
 <path fill="none" stroke="black" d="M138.23,-112.09C145.03,-115.11 151.78,-118.43 158,-122 179.41,-134.29 201.17,-150.98 218.68,-165.69"/>
 <polygon fill="black" stroke="black" points="216.54,-168.45 226.42,-172.28 221.08,-163.13 216.54,-168.45"/>
 </g>
-<!-- MPSoC_DMA&#45;&gt;SoC_MSP430 -->
+<!-- MPSoC-DMA&#45;&gt;SoC-MSP430 -->
 <g id="edge11" class="edge">
-<title>MPSoC_DMA&#45;&gt;SoC_MSP430</title>
+<title>MPSoC-DMA&#45;&gt;SoC-MSP430</title>
 <path fill="none" stroke="black" d="M138.86,-106.9C146.13,-110.77 152.84,-115.7 158,-122 190.32,-161.46 146.91,-194.57 178,-235 181.71,-239.82 186.22,-244.02 191.17,-247.68"/>
 <polygon fill="black" stroke="black" points="189.58,-250.82 199.88,-253.33 193.39,-244.95 189.58,-250.82"/>
 </g>
-<!-- MPSoC_DMA&#45;&gt;PU_MSP430 -->
+<!-- MPSoC-DMA&#45;&gt;PU-MSP430 -->
 <g id="edge20" class="edge">
-<title>MPSoC_DMA&#45;&gt;PU_MSP430</title>
+<title>MPSoC-DMA&#45;&gt;PU-MSP430</title>
 <path fill="none" stroke="black" d="M138.5,-106.2C146.01,-110.16 152.89,-115.31 158,-122 208.21,-187.71 129.83,-239.78 178,-307 182.4,-313.13 188.11,-318.25 194.43,-322.52"/>
 <polygon fill="black" stroke="black" points="192.99,-325.73 203.38,-327.82 196.56,-319.71 192.99,-325.73"/>
 </g>
-<!-- MPSoC_GPIO -->
+<!-- MPSoC-GPIO -->
 <g id="node3" class="node">
-<title>MPSoC_GPIO</title>
+<title>MPSoC-GPIO</title>
 <polygon fill="none" stroke="black" points="26.5,-473 26.5,-511 139.5,-511 139.5,-473 26.5,-473"/>
-<text text-anchor="middle" x="83" y="-495.8" font-family="Times,serif" font-size="14.00">MPSoC_GPIO</text>
+<text text-anchor="middle" x="83" y="-495.8" font-family="Times,serif" font-size="14.00">MPSoC-GPIO</text>
 <text text-anchor="middle" x="83" y="-480.8" font-family="Times,serif" font-size="14.00">Peripheral</text>
 </g>
-<!-- MPSoC_GPIO&#45;&gt;MPSoC_MSP430 -->
+<!-- MPSoC-GPIO&#45;&gt;MPSoC-MSP430 -->
 <g id="edge3" class="edge">
-<title>MPSoC_GPIO&#45;&gt;MPSoC_MSP430</title>
+<title>MPSoC-GPIO&#45;&gt;MPSoC-MSP430</title>
 <path fill="none" stroke="black" d="M139.69,-479.06C146.76,-475.26 153.19,-470.35 158,-464 188.84,-423.28 148.67,-276.83 178,-235 178.88,-233.75 179.81,-232.54 180.79,-231.37"/>
 <polygon fill="black" stroke="black" points="183.33,-233.78 187.93,-224.23 178.38,-228.83 183.33,-233.78"/>
 </g>
-<!-- MPSoC_GPIO&#45;&gt;SoC_MSP430 -->
+<!-- MPSoC-GPIO&#45;&gt;SoC-MSP430 -->
 <g id="edge12" class="edge">
-<title>MPSoC_GPIO&#45;&gt;SoC_MSP430</title>
+<title>MPSoC-GPIO&#45;&gt;SoC-MSP430</title>
 <path fill="none" stroke="black" d="M139.84,-478.69C146.79,-474.95 153.15,-470.15 158,-464 201.56,-408.77 136.48,-363.78 178,-307 181.74,-301.89 186.38,-297.49 191.52,-293.69"/>
 <polygon fill="black" stroke="black" points="193.47,-296.6 199.96,-288.22 189.66,-290.72 193.47,-296.6"/>
 </g>
-<!-- MPSoC_GPIO&#45;&gt;PU_MSP430 -->
+<!-- MPSoC-GPIO&#45;&gt;PU-MSP430 -->
 <g id="edge21" class="edge">
-<title>MPSoC_GPIO&#45;&gt;PU_MSP430</title>
+<title>MPSoC-GPIO&#45;&gt;PU-MSP430</title>
 <path fill="none" stroke="black" d="M139.83,-474.62C146.23,-471.55 152.44,-468.03 158,-464 189.79,-440.96 216.95,-405 234.47,-378.27"/>
 <polygon fill="black" stroke="black" points="237.58,-379.9 240.03,-369.59 231.69,-376.12 237.58,-379.9"/>
 </g>
-<!-- MPSoC_MPI -->
+<!-- MPSoC-MPI -->
 <g id="node4" class="node">
-<title>MPSoC_MPI</title>
+<title>MPSoC-MPI</title>
 <polygon fill="none" stroke="black" points="30.5,-416 30.5,-454 135.5,-454 135.5,-416 30.5,-416"/>
-<text text-anchor="middle" x="83" y="-438.8" font-family="Times,serif" font-size="14.00">MPSoC_MPI</text>
+<text text-anchor="middle" x="83" y="-438.8" font-family="Times,serif" font-size="14.00">MPSoC-MPI</text>
 <text text-anchor="middle" x="83" y="-423.8" font-family="Times,serif" font-size="14.00">Peripheral</text>
 </g>
-<!-- MPSoC_MPI&#45;&gt;MPSoC_MSP430 -->
+<!-- MPSoC-MPI&#45;&gt;MPSoC-MSP430 -->
 <g id="edge4" class="edge">
-<title>MPSoC_MPI&#45;&gt;MPSoC_MSP430</title>
+<title>MPSoC-MPI&#45;&gt;MPSoC-MSP430</title>
 <path fill="none" stroke="black" d="M135.82,-423.79C144.34,-419.79 152.26,-414.37 158,-407 205.33,-346.32 132.92,-297.37 178,-235 178.78,-233.92 179.61,-232.87 180.46,-231.85"/>
 <polygon fill="black" stroke="black" points="183.11,-234.16 187.72,-224.62 178.17,-229.2 183.11,-234.16"/>
 </g>
-<!-- MPSoC_MPI&#45;&gt;SoC_MSP430 -->
+<!-- MPSoC-MPI&#45;&gt;SoC-MSP430 -->
 <g id="edge13" class="edge">
-<title>MPSoC_MPI&#45;&gt;SoC_MSP430</title>
+<title>MPSoC-MPI&#45;&gt;SoC-MSP430</title>
 <path fill="none" stroke="black" d="M135.72,-423.23C144.14,-419.28 152.05,-414.02 158,-407 187.31,-372.43 149.97,-342.62 178,-307 181.7,-302.29 186.16,-298.18 191.05,-294.58"/>
 <polygon fill="black" stroke="black" points="193.15,-297.39 199.63,-289.01 189.33,-291.52 193.15,-297.39"/>
 </g>
-<!-- MPSoC_MPI&#45;&gt;PU_MSP430 -->
+<!-- MPSoC-MPI&#45;&gt;PU-MSP430 -->
 <g id="edge22" class="edge">
-<title>MPSoC_MPI&#45;&gt;PU_MSP430</title>
+<title>MPSoC-MPI&#45;&gt;PU-MSP430</title>
 <path fill="none" stroke="black" d="M135.59,-417.15C143.22,-414.03 150.9,-410.62 158,-407 175.81,-397.92 194.38,-386.33 210.48,-375.51"/>
 <polygon fill="black" stroke="black" points="212.86,-378.13 219.15,-369.6 208.92,-372.34 212.86,-378.13"/>
 </g>
-<!-- MPSoC_MPRAM -->
+<!-- MPSoC-MPRAM -->
 <g id="node5" class="node">
-<title>MPSoC_MPRAM</title>
+<title>MPSoC-MPRAM</title>
 <polygon fill="none" stroke="black" points="16,-359 16,-397 150,-397 150,-359 16,-359"/>
-<text text-anchor="middle" x="83" y="-381.8" font-family="Times,serif" font-size="14.00">MPSoC_MPRAM</text>
+<text text-anchor="middle" x="83" y="-381.8" font-family="Times,serif" font-size="14.00">MPSoC-MPRAM</text>
 <text text-anchor="middle" x="83" y="-366.8" font-family="Times,serif" font-size="14.00">Peripheral</text>
 </g>
-<!-- MPSoC_MPRAM&#45;&gt;MPSoC_MSP430 -->
+<!-- MPSoC-MPRAM&#45;&gt;MPSoC-MSP430 -->
 <g id="edge5" class="edge">
-<title>MPSoC_MPRAM&#45;&gt;MPSoC_MSP430</title>
+<title>MPSoC-MPRAM&#45;&gt;MPSoC-MSP430</title>
 <path fill="none" stroke="black" d="M148.39,-358.99C151.94,-356.37 155.2,-353.39 158,-350 191.05,-310.01 146.44,-276.17 178,-235 178.81,-233.94 179.66,-232.91 180.55,-231.91"/>
 <polygon fill="black" stroke="black" points="183.17,-234.25 187.96,-224.8 178.32,-229.19 183.17,-234.25"/>
 </g>
-<!-- MPSoC_MPRAM&#45;&gt;SoC_MSP430 -->
+<!-- MPSoC-MPRAM&#45;&gt;SoC-MSP430 -->
 <g id="edge14" class="edge">
-<title>MPSoC_MPRAM&#45;&gt;SoC_MSP430</title>
+<title>MPSoC-MPRAM&#45;&gt;SoC-MSP430</title>
 <path fill="none" stroke="black" d="M145.99,-358.96C150.31,-356.34 154.38,-353.37 158,-350 173.44,-335.65 163.09,-321.9 178,-307 181.93,-303.07 186.38,-299.51 191.1,-296.31"/>
 <polygon fill="black" stroke="black" points="193.17,-299.15 199.85,-290.93 189.5,-293.19 193.17,-299.15"/>
 </g>
-<!-- MPSoC_MPRAM&#45;&gt;PU_MSP430 -->
+<!-- MPSoC-MPRAM&#45;&gt;PU-MSP430 -->
 <g id="edge23" class="edge">
-<title>MPSoC_MPRAM&#45;&gt;PU_MSP430</title>
+<title>MPSoC-MPRAM&#45;&gt;PU-MSP430</title>
 <path fill="none" stroke="black" d="M150.31,-364.47C164.49,-361.57 179.42,-358.53 193.44,-355.67"/>
 <polygon fill="black" stroke="black" points="194.36,-359.05 203.46,-353.62 192.96,-352.19 194.36,-359.05"/>
 </g>
-<!-- MPSoC_MSI -->
+<!-- MPSoC-MSI -->
 <g id="node6" class="node">
-<title>MPSoC_MSI</title>
+<title>MPSoC-MSI</title>
 <polygon fill="none" stroke="black" points="30.5,-302 30.5,-340 135.5,-340 135.5,-302 30.5,-302"/>
-<text text-anchor="middle" x="83" y="-324.8" font-family="Times,serif" font-size="14.00">MPSoC_MSI</text>
+<text text-anchor="middle" x="83" y="-324.8" font-family="Times,serif" font-size="14.00">MPSoC-MSI</text>
 <text text-anchor="middle" x="83" y="-309.8" font-family="Times,serif" font-size="14.00">Peripheral</text>
 </g>
-<!-- MPSoC_MSI&#45;&gt;MPSoC_MSP430 -->
+<!-- MPSoC-MSI&#45;&gt;MPSoC-MSP430 -->
 <g id="edge6" class="edge">
-<title>MPSoC_MSI&#45;&gt;MPSoC_MSP430</title>
+<title>MPSoC-MSI&#45;&gt;MPSoC-MSP430</title>
 <path fill="none" stroke="black" d="M135.73,-308.2C143.95,-304.36 151.78,-299.41 158,-293 176.99,-273.44 159.74,-255.25 178,-235 178.87,-234.04 179.76,-233.1 180.69,-232.19"/>
 <polygon fill="black" stroke="black" points="183,-234.82 188.27,-225.63 178.42,-229.52 183,-234.82"/>
 </g>
-<!-- MPSoC_MSI&#45;&gt;SoC_MSP430 -->
+<!-- MPSoC-MSI&#45;&gt;SoC-MSP430 -->
 <g id="edge15" class="edge">
-<title>MPSoC_MSI&#45;&gt;SoC_MSP430</title>
+<title>MPSoC-MSI&#45;&gt;SoC-MSP430</title>
 <path fill="none" stroke="black" d="M135.92,-305.86C152.97,-300.89 172.15,-295.3 190.07,-290.07"/>
 <polygon fill="black" stroke="black" points="191.26,-293.38 199.88,-287.22 189.3,-286.65 191.26,-293.38"/>
 </g>
-<!-- MPSoC_MSI&#45;&gt;PU_MSP430 -->
+<!-- MPSoC-MSI&#45;&gt;PU-MSP430 -->
 <g id="edge24" class="edge">
-<title>MPSoC_MSI&#45;&gt;PU_MSP430</title>
+<title>MPSoC-MSI&#45;&gt;PU-MSP430</title>
 <path fill="none" stroke="black" d="M135.92,-327.66C154.06,-329.99 174.59,-332.62 193.47,-335.04"/>
 <polygon fill="black" stroke="black" points="193.1,-338.52 203.46,-336.32 193.99,-331.58 193.1,-338.52"/>
 </g>
-<!-- MPSoC_NoC -->
+<!-- MPSoC-NoC -->
 <g id="node7" class="node">
-<title>MPSoC_NoC</title>
+<title>MPSoC-NoC</title>
 <polygon fill="none" stroke="black" points="29.5,-17 29.5,-55 136.5,-55 136.5,-17 29.5,-17"/>
-<text text-anchor="middle" x="83" y="-39.8" font-family="Times,serif" font-size="14.00">MPSoC_NoC</text>
+<text text-anchor="middle" x="83" y="-39.8" font-family="Times,serif" font-size="14.00">MPSoC-NoC</text>
 <text text-anchor="middle" x="83" y="-24.8" font-family="Times,serif" font-size="14.00">Peripheral</text>
 </g>
-<!-- MPSoC_NoC&#45;&gt;MPSoC_MSP430 -->
+<!-- MPSoC-NoC&#45;&gt;MPSoC-MSP430 -->
 <g id="edge7" class="edge">
-<title>MPSoC_NoC&#45;&gt;MPSoC_MSP430</title>
+<title>MPSoC-NoC&#45;&gt;MPSoC-MSP430</title>
 <path fill="none" stroke="black" d="M136.59,-51.47C144.17,-54.93 151.57,-59.07 158,-64 192.84,-90.68 220.65,-133.19 237.51,-163.37"/>
 <polygon fill="black" stroke="black" points="234.52,-165.21 242.38,-172.31 240.67,-161.85 234.52,-165.21"/>
 </g>
-<!-- MPSoC_NoC&#45;&gt;SoC_MSP430 -->
+<!-- MPSoC-NoC&#45;&gt;SoC-MSP430 -->
 <g id="edge16" class="edge">
-<title>MPSoC_NoC&#45;&gt;SoC_MSP430</title>
+<title>MPSoC-NoC&#45;&gt;SoC-MSP430</title>
 <path fill="none" stroke="black" d="M136.56,-47.57C144.8,-51.53 152.42,-56.85 158,-64 205.08,-124.32 133.16,-173 178,-235 181.71,-240.13 186.33,-244.55 191.47,-248.35"/>
 <polygon fill="black" stroke="black" points="189.6,-251.31 199.89,-253.83 193.42,-245.44 189.6,-251.31"/>
 </g>
-<!-- MPSoC_SPRAM -->
+<!-- MPSoC-SPRAM -->
 <g id="node8" class="node">
-<title>MPSoC_SPRAM</title>
+<title>MPSoC-SPRAM</title>
 <polygon fill="none" stroke="black" points="18,-245 18,-283 148,-283 148,-245 18,-245"/>
-<text text-anchor="middle" x="83" y="-267.8" font-family="Times,serif" font-size="14.00">MPSoC_SPRAM</text>
+<text text-anchor="middle" x="83" y="-267.8" font-family="Times,serif" font-size="14.00">MPSoC-SPRAM</text>
 <text text-anchor="middle" x="83" y="-252.8" font-family="Times,serif" font-size="14.00">Peripheral</text>
 </g>
-<!-- MPSoC_SPRAM&#45;&gt;MPSoC_MSP430 -->
+<!-- MPSoC-SPRAM&#45;&gt;MPSoC-MSP430 -->
 <g id="edge8" class="edge">
-<title>MPSoC_SPRAM&#45;&gt;MPSoC_MSP430</title>
+<title>MPSoC-SPRAM&#45;&gt;MPSoC-MSP430</title>
 <path fill="none" stroke="black" d="M134.56,-244.88C142.41,-241.91 150.42,-238.87 158,-236 164.63,-233.49 171.52,-230.87 178.43,-228.25"/>
 <polygon fill="black" stroke="black" points="179.73,-231.5 187.84,-224.68 177.25,-224.96 179.73,-231.5"/>
 </g>
-<!-- MPSoC_SPRAM&#45;&gt;SoC_MSP430 -->
+<!-- MPSoC-SPRAM&#45;&gt;SoC-MSP430 -->
 <g id="edge17" class="edge">
-<title>MPSoC_SPRAM&#45;&gt;SoC_MSP430</title>
+<title>MPSoC-SPRAM&#45;&gt;SoC-MSP430</title>
 <path fill="none" stroke="black" d="M148.35,-266.63C161.83,-267.18 176.07,-267.76 189.6,-268.31"/>
 <polygon fill="black" stroke="black" points="189.66,-271.82 199.79,-268.73 189.95,-264.82 189.66,-271.82"/>
 </g>
-<!-- MPSoC_SPRAM&#45;&gt;PU_MSP430 -->
+<!-- MPSoC-SPRAM&#45;&gt;PU-MSP430 -->
 <g id="edge25" class="edge">
-<title>MPSoC_SPRAM&#45;&gt;PU_MSP430</title>
+<title>MPSoC-SPRAM&#45;&gt;PU-MSP430</title>
 <path fill="none" stroke="black" d="M137.24,-283.1C144.34,-286.15 151.43,-289.48 158,-293 167.56,-298.13 168.6,-301.58 178,-307 183.11,-309.94 188.49,-312.84 193.95,-315.63"/>
 <polygon fill="black" stroke="black" points="192.65,-318.9 203.17,-320.22 195.78,-312.63 192.65,-318.9"/>
 </g>
-<!-- MPSoC_UART -->
+<!-- MPSoC-UART -->
 <g id="node9" class="node">
-<title>MPSoC_UART</title>
+<title>MPSoC-UART</title>
 <polygon fill="none" stroke="black" points="25,-188 25,-226 141,-226 141,-188 25,-188"/>
-<text text-anchor="middle" x="83" y="-210.8" font-family="Times,serif" font-size="14.00">MPSoC_UART</text>
+<text text-anchor="middle" x="83" y="-210.8" font-family="Times,serif" font-size="14.00">MPSoC-UART</text>
 <text text-anchor="middle" x="83" y="-195.8" font-family="Times,serif" font-size="14.00">Peripheral</text>
 </g>
-<!-- MPSoC_UART&#45;&gt;MPSoC_MSP430 -->
+<!-- MPSoC-UART&#45;&gt;MPSoC-MSP430 -->
 <g id="edge9" class="edge">
-<title>MPSoC_UART&#45;&gt;MPSoC_MSP430</title>
+<title>MPSoC-UART&#45;&gt;MPSoC-MSP430</title>
 <path fill="none" stroke="black" d="M141.11,-204.34C152.83,-203.79 165.36,-203.2 177.67,-202.63"/>
 <polygon fill="black" stroke="black" points="178.11,-206.11 187.94,-202.15 177.79,-199.12 178.11,-206.11"/>
 </g>
-<!-- MPSoC_UART&#45;&gt;SoC_MSP430 -->
+<!-- MPSoC-UART&#45;&gt;SoC-MSP430 -->
 <g id="edge18" class="edge">
-<title>MPSoC_UART&#45;&gt;SoC_MSP430</title>
+<title>MPSoC-UART&#45;&gt;SoC-MSP430</title>
 <path fill="none" stroke="black" d="M134.99,-226.03C152.4,-232.52 172.1,-239.88 190.46,-246.73"/>
 <polygon fill="black" stroke="black" points="189.32,-250.04 199.92,-250.26 191.77,-243.48 189.32,-250.04"/>
 </g>
-<!-- MPSoC_UART&#45;&gt;PU_MSP430 -->
+<!-- MPSoC-UART&#45;&gt;PU-MSP430 -->
 <g id="edge26" class="edge">
-<title>MPSoC_UART&#45;&gt;PU_MSP430</title>
+<title>MPSoC-UART&#45;&gt;PU-MSP430</title>
 <path fill="none" stroke="black" d="M141.27,-222.97C147.5,-226.5 153.28,-230.78 158,-236 180.01,-260.3 156.75,-282.04 178,-307 182.69,-312.51 188.42,-317.23 194.6,-321.26"/>
 <polygon fill="black" stroke="black" points="192.88,-324.31 203.27,-326.34 196.41,-318.27 192.88,-324.31"/>
 </g>
-<!-- MPSoC_DV -->
+<!-- MPSoC-DV -->
 <g id="node13" class="node">
-<title>MPSoC_DV</title>
+<title>MPSoC-DV</title>
 <polygon fill="none" stroke="black" points="380,-172.5 380,-225.5 490,-225.5 490,-172.5 380,-172.5"/>
-<text text-anchor="middle" x="435" y="-210.3" font-family="Times,serif" font-size="14.00">MPSoC_DV</text>
+<text text-anchor="middle" x="435" y="-210.3" font-family="Times,serif" font-size="14.00">MPSoC-DV</text>
 <text text-anchor="middle" x="435" y="-195.3" font-family="Times,serif" font-size="14.00">Environment</text>
 <text text-anchor="middle" x="435" y="-180.3" font-family="Times,serif" font-size="14.00">msp430&#45;pvt</text>
 </g>
-<!-- MPSoC_MSP430&#45;&gt;MPSoC_DV -->
+<!-- MPSoC-MSP430&#45;&gt;MPSoC-DV -->
 <g id="edge29" class="edge">
-<title>MPSoC_MSP430&#45;&gt;MPSoC_DV</title>
+<title>MPSoC-MSP430&#45;&gt;MPSoC-DV</title>
 <path fill="none" stroke="black" d="M325.23,-199C339.79,-199 355.12,-199 369.54,-199"/>
 <polygon fill="black" stroke="black" points="369.86,-202.5 379.86,-199 369.86,-195.5 369.86,-202.5"/>
 </g>
-<!-- SoC_DV -->
+<!-- SoC-DV -->
 <g id="node14" class="node">
-<title>SoC_DV</title>
+<title>SoC-DV</title>
 <polygon fill="none" stroke="black" points="380,-244.5 380,-297.5 490,-297.5 490,-244.5 380,-244.5"/>
-<text text-anchor="middle" x="435" y="-282.3" font-family="Times,serif" font-size="14.00">SoC_DV</text>
+<text text-anchor="middle" x="435" y="-282.3" font-family="Times,serif" font-size="14.00">SoC-DV</text>
 <text text-anchor="middle" x="435" y="-267.3" font-family="Times,serif" font-size="14.00">Environment</text>
 <text text-anchor="middle" x="435" y="-252.3" font-family="Times,serif" font-size="14.00">msp430&#45;pv</text>
 </g>
-<!-- SoC_MSP430&#45;&gt;SoC_DV -->
+<!-- SoC-MSP430&#45;&gt;SoC-DV -->
 <g id="edge28" class="edge">
-<title>SoC_MSP430&#45;&gt;SoC_DV</title>
+<title>SoC-MSP430&#45;&gt;SoC-DV</title>
 <path fill="none" stroke="black" d="M313.35,-271C331.24,-271 351.2,-271 369.65,-271"/>
 <polygon fill="black" stroke="black" points="369.72,-274.5 379.72,-271 369.72,-267.5 369.72,-274.5"/>
 </g>
-<!-- PU_DV -->
+<!-- PU-DV -->
 <g id="node15" class="node">
-<title>PU_DV</title>
+<title>PU-DV</title>
 <polygon fill="none" stroke="black" points="380,-316.5 380,-369.5 490,-369.5 490,-316.5 380,-316.5"/>
-<text text-anchor="middle" x="435" y="-354.3" font-family="Times,serif" font-size="14.00">PU_DV</text>
+<text text-anchor="middle" x="435" y="-354.3" font-family="Times,serif" font-size="14.00">PU-DV</text>
 <text text-anchor="middle" x="435" y="-339.3" font-family="Times,serif" font-size="14.00">Environment</text>
 <text text-anchor="middle" x="435" y="-324.3" font-family="Times,serif" font-size="14.00">msp430&#45;p</text>
 </g>
-<!-- PU_MSP430&#45;&gt;PU_DV -->
+<!-- PU-MSP430&#45;&gt;PU-DV -->
 <g id="edge27" class="edge">
-<title>PU_MSP430&#45;&gt;PU_DV</title>
+<title>PU-MSP430&#45;&gt;PU-DV</title>
 <path fill="none" stroke="black" d="M309.5,-343C328.38,-343 349.93,-343 369.74,-343"/>
 <polygon fill="black" stroke="black" points="369.92,-346.5 379.92,-343 369.92,-339.5 369.92,-346.5"/>
 </g>

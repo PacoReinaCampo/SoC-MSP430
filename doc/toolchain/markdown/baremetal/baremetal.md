@@ -11,4 +11,5 @@
 | `msp430-elf-objdump` |
 | `msp430-elf-ranlib`  |
 | `msp430-elf-strip`   |
+
 : Baremetal Tools 16-Bit

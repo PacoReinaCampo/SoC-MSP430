@@ -25,6 +25,7 @@
 | `IRQ_16`| `IRQ_NR 16` |
 | `IRQ_32`| `IRQ_NR 32` |
 | `IRQ_64`| `IRQ_NR 64` |
+
 : Number of available IRQs
 
 ## MEMORY
@@ -47,6 +48,7 @@
 | `PMEM_SIZE_4_KB`  | `11`          | `4096`      |
 | `PMEM_SIZE_2_KB`  | `10`          | `2048`      |
 | `PMEM_SIZE_1_KB`  | `9`           | `1024`      |
+
 : Program Memory Size
 
 | `PMEM`             | `DMEM_AWIDTH` | `DMEM_SIZE` |
@@ -64,6 +66,7 @@
 | `DMEM_SIZE_512_B`  |  `8`          | `512`       |
 | `DMEM_SIZE_256_B`  |  `7`          | `256`       |
 | `DMEM_SIZE_128_B`  |  `6`          | `128`       |
+
 : Data Memory Size
 
 ## CONTROL
@@ -85,6 +88,7 @@
 | `PER_SIZE_2_KB`  |  `10`        | `2048`     |
 | `PER_SIZE_1_KB`  |  `9`         | `1024`     |
 | `PER_SIZE_512_B` |  `8`         | `512`      |
+
 : Peripheral Memory Size
 
 ### PU MSP430 TEMPLATE-08

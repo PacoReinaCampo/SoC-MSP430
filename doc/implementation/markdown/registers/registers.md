@@ -33,6 +33,7 @@
 | `ALU_STAT_F`  | `9`     |
 | `ALU_SHIFT`   | `10`    |
 | `EXEC_NO_WR`  | `11`    |
+
 : ALU control signals
 
 ### PU MSP430 MULTIPLIER
@@ -52,6 +53,7 @@
 | `DBG_UART_WR`         | `18`    |
 | `DBG_UART_BW`         | `17`    |
 | `DBG_UART_ADDR`       | `16:11` |
+
 : Debug interface
 
 | `Name`       | `Value` |
@@ -63,6 +65,7 @@
 | `FRZ_BRK_EN` | `4`     |
 | `RST_BRK_EN` | `5`     |
 | `CPU_RST`    | `6`     |
+
 : Debug interface CPU_CTL register
 
 | `Name`       | `Value` |
@@ -72,6 +75,7 @@
 | `SWBRK_PND`  | `3`     |
 | `HWBRK0_PND` | `4`     |
 | `HWBRK1_PND` | `5`     |
+
 : Debug interface CPU_STAT register
 
 | `Name`          | `Value` |
@@ -82,6 +86,7 @@
 | `BRK_EN`        | `2`     |
 | `BRK_I_EN`      | `3`     |
 | `BRK_RANGE`     | `4`     |
+
 : Debug interface BRKx_CTL register
 
 ### PU MSP430 DBG HWBRK
@@ -97,6 +102,7 @@
 | `Name`  | `Value` |
 | :------ | :------ |
 | `DIVAx` | `5:4`   |
+
 : Basic clock module: BCSCTL1 Control Register
 
 | `Name`  | `Value` |
@@ -105,6 +111,7 @@
 | `DIVMx` | `5:4`   |
 | `SELS`  | `3`     |
 | `DIVSx` | `2:1`   |
+
 : Basic clock module: BCSCTL2 Control Register
 
 ### PU MSP430 DAC

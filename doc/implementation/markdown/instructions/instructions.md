@@ -21,6 +21,7 @@
 | `INST_SO`    | `0`     |
 | `INST_JMP`   | `1`     |
 | `INST_TO`    | `2`     |
+
 : Instructions type
 
 | `Name` | `Value` |
@@ -33,6 +34,7 @@
 | `JGE`  | `5`     |
 | `JL`   | `6`     |
 | `JMP`  | `7`     |
+
 : Conditional jump
 
 | `Name`    | `Value` |
@@ -45,6 +47,7 @@
 | `IMM`     | `5`     |
 | `ABS`     | `6`     |
 | `CONST`   | `7`     |
+
 : Addressing modes
 
 | `Name`             | `Value` |
@@ -55,6 +58,7 @@
 | `I_EXT1`           | `3'h3`  |
 | `I_EXT2`           | `3'h4`  |
 | `I_IDLE`           | `3'h5`  |
+
 : Instruction state machine
 
 | `Name`     | `Value` |
@@ -73,6 +77,7 @@
 | `E_EXEC`   | `4'hB`  |
 | `E_JUMP`   | `4'hC`  |
 | `E_IDLE`   | `4'hD`  |
+
 : Execution state machine
 
 (swapped E_IRQ_0 and E_IRQ_2 values to suppress glitch generation warning from lint tool)
@@ -89,6 +94,7 @@
 | `CALL` | `5`     |
 | `RETI` | `6`     |
 | `IRQ`  | `7`     |
+
 : Single-operand arithmetic
 
 | `Name` | `Value` |
@@ -105,6 +111,7 @@
 | `BIS`  | `9`     |
 | `XORX` | `10`    |
 | `ANDX` | `11`    |
+
 : Two-operand arithmetic
 
 ### PU MSP430 MULTIPLIER
@@ -140,6 +147,7 @@
 | `TACLR`   | `2`     |
 | `TAIE`    | `1`     |
 | `TAIFG`   | `0`     |
+
 : Timer A: TACTL Control Register
 
 | `Name`      | `Value` |
@@ -155,6 +163,7 @@
 | `TAOUTI`    | `2`     |
 | `TACOVI`    | `1`     |
 | `TACCIFGI`  | `0`     |
+
 : Timer A: TACCTLx Capture/Compare Control Register
 
 ### PU MSP430 UART

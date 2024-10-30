@@ -48,6 +48,7 @@ Format of a line in the table:
 | `and`            | `Set rd to the bitwise and of rs1 and rs2`                                                                                       |
 | `fence`          | `Order device I/O and memory accesses viewed by other threads and devices`                                                       |
 | `fence.i`        | `Synchronize the instruction and data streams`                                                                                   |
+
 : RV32I - "RV32I Base Integer Instruction Set"
 
 | instruction name | instruction description                                                                                                          |
@@ -63,6 +64,7 @@ Format of a line in the table:
 | `sllw`           | `Shift 32-bit value in rs1 left by the by the lower 5 bits in rs2 and place the 32-bit result into rd`                           |
 | `srlw`           | `Shift 32-bit value in rs1 right by the by the lower 5 bits in rs2 and place the 32-bit result into rd`                          |
 | `sraw`           | `Shift 32-bit value in rs1 right by the by the lower 5 bits in rs2 and place the 32-bit result into rd while retaining the sign` |
+
 : RV64I - "RV64I Base Integer Instruction Set (+ RV32I)"
 
 | instruction name | instruction description                                                                                                          |
@@ -75,6 +77,7 @@ Format of a line in the table:
 | `divu`           | `Divide rs1 (dividend) by rs2 (divisor) and place the quotient in rd (unsigned)`                                                 |
 | `rem`            | `Divide rs1 (dividend) by rs2 (divisor) and place the remainder in rd (signed)`                                                  |
 | `remu`           | `Divide rs1 (dividend) by rs2 (divisor) and place the remainder in rd (unsigned)`                                                |
+
 : RV32M - "RV32M Standard Extension for Integer Multiply and Divide"
 
 | instruction name | instruction description                                                                                                          |
@@ -84,6 +87,7 @@ Format of a line in the table:
 | `divuw`          | `Divide lower 32-bits of rs1 (dividend) by lower 32-bits of rs2 (divisor) and place the quotient in rd (unsigned)`               |
 | `remw`           | `Divide lower 32-bits of rs1 (dividend) by lower 32-bits of rs2 (divisor) and place the remainder in rd (signed)`                |
 | `remuw`          | `Divide lower 32-bits of rs1 (dividend) by lower 32-bits of rs2 (divisor) and place the remainder in rd (unsigned)`              |
+
 : RV64M - "RV64M Standard Extension for Integer Multiply and Divide (+ RV32M)"
 
 | instruction name | instruction description                                                                                                          |
@@ -99,6 +103,7 @@ Format of a line in the table:
 | `amomax.w`       | `Load word from address in rs1 into rd, find maximum of rd and rs2, write the result to the address in rs1 (signed)`             |
 | `amominu.w`      | `Load word from address in rs1 into rd, find minimum of rd and rs2, write the result to the address in rs1 (unsigned)`           |
 | `amomaxu.w`      | `Load word from address in rs1 into rd, find maximum of rd and rs2, write the result to the address in rs1 (unsigned)`           |
+
 : RV32A - "RV32A Standard Extension for Atomic Instructions"
 
 | instruction name | instruction description                                                                                                          |
@@ -114,6 +119,7 @@ Format of a line in the table:
 | `amomax.d`       | `Load double word from address in rs1 into rd, find maximum of rd and rs2, write the result to the address in rs1 (signed)`      |
 | `amominu.d`      | `Load double word from address in rs1 into rd, find minimum of rd and rs2, write the result to the address in rs1 (unsigned)`    |
 | `amomaxu.d`      | `Load double word from address in rs1 into rd, find maximum of rd and rs2, write the result to the address in rs1 (unsigned)`    |
+
 : RV64A - "RV64A Standard Extension for Atomic Instructions (+ RV32A)"
 
 | instruction name | instruction description                                                                                                          |
@@ -135,6 +141,7 @@ Format of a line in the table:
 | `csrrwi`         | `CSR Atomic Read Write Immediate writes the immediate value to the CSR, and writes previous value to rd`                         |
 | `csrrsi`         | `CSR Atomic Set Bit Immediate reads the CSR, sets CSR bits set in the immediate, and writes previous value to rd`                |
 | `csrrci`         | `CSR Atomic Clear Bit Immediate reads the CSR, clears CSR bits set in the immediate, and writes previous value to rd`            |
+
 : RV32S - "RV32S Standard Extension for Supervisor-level Instructions"
 
 | instruction name | instruction description                                                                                                          |
@@ -163,6 +170,7 @@ Format of a line in the table:
 | `fcvt.s.w`       | `Convert the 32-bit signed integer in rs1 to a single-precision value, then write the result to frd`                             |
 | `fcvt.s.wu`      | `Convert the 32-bit unsigned integer in rs1 to a single-precision value, then write the result to frd`                           |
 | `fclass.s`       | `Set rd to a 10-bit mask indicating the class of the single-precision value in frs1`                                             |
+
 : RV32F - "RV32F Standard Extension for Single-Precision Floating-Point"
 
 | instruction name | instruction description                                                                                                          |
@@ -173,6 +181,7 @@ Format of a line in the table:
 | `fcvt.s.l`       | `Convert the 64-bit signed integer in rs1 to a single-precision value, then write the result to frd`                             |
 | `fcvt.s.lu`      | `Convert the 64-bit unsigned integer in rs1 to a single-precision value, then write the result to frd`                           |
 | `fmv.s.x`        | `Write the lower 32-bits of the integer register rs1 into the single-precision register frd`                                     |
+
 : RV64F - "RV64F Standard Extension for Single-Precision Floating-Point (+ RV32F)"
 
 | instruction name | instruction description                                                                                                          |
@@ -205,6 +214,7 @@ Format of a line in the table:
 | `fmv.x.d`        | `Write the sign extended double-precision value in frs1 into integer register rd`                                                |
 | `fclass.d`       | `Set rd to a 10-bit mask indicating the class of the double-precision value in frs1`                                             |
 | `fmv.d.x`        | `Write the 64-bit integer register rs1 into the double-precision register frd`                                                   |
+
 : RV32D - "RV32D Standard Extension for Double-Precision Floating-Point"
 
 | instruction name | instruction description                                                                                                          |
@@ -213,6 +223,7 @@ Format of a line in the table:
 | `fcvt.lu.d`      | `Convert the double-precision value in frs1 to a 64-bit unsigned integer, then write the result to rd`                           |
 | `fcvt.d.l`       | `Convert the 64-bit signed integer in rs1 to a double-precision value, then write the result to frd`                             |
 | `fcvt.d.lu`      | `Convert the 64-bit unsigned integer in rs1 to a double-precision value, then write the result to frd`                           |
+
 : RV64D - "RV64D Standard Extension for Double-Precision Floating-Point (+ RV32D)"
 
 | instruction name | instruction description                                                                                                          |
@@ -225,6 +236,7 @@ Format of a line in the table:
 | `fsflags`        | `Set FP Accrued Exception Flags (Bits 4:0 of fcsr Control and Status Register)`                                                  |
 | `fsrmi`          | `Set FP Rounding Mode Immediate (Bits 7:5 of fcsr Control and Status Register)`                                                  |
 | `fsflagsi`       | `Set FP Accrued Exception Flags Immediate (Bits 4:0 of fcsr Control and Status Register)`                                        |
+
 : RV32FD - "RV32F and RV32D Common Floating-Point Instructions"
 
 | instruction name | instruction description                                                                                                          |
@@ -257,6 +269,7 @@ Format of a line in the table:
 | `fcvt.q.w`       | `Convert the 64-bit signed integer in rs1 to a quadruple-precision value, then write the result to frd`                          |
 | `fcvt.q.wu`      | `Convert the 64-bit unsigned integer in rs1 to a quadruple-precision value, then write the result to frd`                        |
 | `fclass.q`       | `Set rd to a 10-bit mask indicating the class of the quadruple-precision value in frs1`                                          |
+
 : RV32Q - "RV32Q Standard Extension for Quadruple-Precision Floating-Point"
 
 | instruction name | instruction description                                                                                                          |
@@ -265,12 +278,14 @@ Format of a line in the table:
 | `fcvt.lu.q`      | `Convert the quadruple-precision value in frs1 to a 64-bit unsigned integer, then write the result to rd`                        |
 | `fcvt.q.l`       | `Convert the 64-bit signed integer in rs1 to a quadruple-precision value, then write the result to frd`                          |
 | `fcvt.q.lu`      | `Convert the 64-bit unsigned integer in rs1 to a quadruple-precision value, then write the result to frd`                        |
+
 : RV64Q - "RV64Q Standard Extension for Quadruple-Precision Floating-Point (+ RV32Q)"
 
 | instruction name | instruction description                                                                                                          |
 |------------------|:---------------------------------------------------------------------------------------------------------------------------------|
 | `fmv.x.q`        | `Write the sign extended quadruple-precision value in frs1 into integer register rd`                                             |
 | `fmv.q.x`        | `Write the 64-bit integer register rs1 into the quadruple-precision register frd`                                                |
+
 : RV128Q - "RV128Q Standard Extension for Quadruple-Precision Floating-Point (+ RV64Q)"
 
 | instruction name | instruction description                                                                                                          |
@@ -304,4 +319,5 @@ Format of a line in the table:
 | `j`              | `Jump`                                                                                                                           |
 | `jr`             | `Jump register`                                                                                                                  |
 | `ret`            | `Return from subroutine`                                                                                                         |
+
 : Pseudo Instructions
