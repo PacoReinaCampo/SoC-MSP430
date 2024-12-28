@@ -6,7 +6,7 @@
 | :---------------- |
 | `pu_msp430_core`  |
 
-: Implementation - Main
+:Implementation - Main
 
 | `Component`             |
 | :---------------------- |
@@ -18,7 +18,7 @@
 | `pu_msp430_sync_reset`  |
 | `pu_msp430_wakeup_cell` |
 
-: Implementation - Fuse
+:Implementation - Fuse
 
 ### PU MSP430 CORE
 
@@ -28,7 +28,7 @@ This 5 bit field can be freely used in order to allowcustom identification of th
 | :------------- | :--------- |
 | `USER_VERSION` | `5'b00000` |
 
-: Custom user version number
+:Custom user version number
 
 | `Clock` | `Divisions`  | `Constant`      |
 | :------ | :----------- | :-------------- |
@@ -36,7 +36,7 @@ This 5 bit field can be freely used in order to allowcustom identification of th
 | `SMCLK` | `(/1/2/4/8)` | `SMCLK_DIVIDER` |
 | `ACLK`  | `(/1/2/4/8)` | `ACLK_DIVIDER`  |
 
-: Clock Dividers
+:Clock Dividers
 
 | `Status` | `Low Power Mode`               | `Constant`  |
 | :------- | :----------------------------- | :---------- |
@@ -45,7 +45,7 @@ This 5 bit field can be freely used in order to allowcustom identification of th
 | `SCG1`   | `LPM2, LPM3, LPM4`             | `SCG1_EN`   |
 | `OSCOFF` | `LPM4`                         | `OSCOFF_EN` |
 
-: Low Power Modes
+:Low Power Modes
 
 ## FETCH
 
@@ -53,7 +53,7 @@ This 5 bit field can be freely used in order to allowcustom identification of th
 | :------------------- |
 | `pu_msp430_frontend` |
 
-: Implementation - Fetch
+:Implementation - Fetch
 
 ### PU MSP430 FRONTEND
 
@@ -63,7 +63,7 @@ This 5 bit field can be freely used in order to allowcustom identification of th
 | :------------------- |
 | `pu_msp430_frontend` |
 
-: Implementation - Decode
+:Implementation - Decode
 
 ### PU MSP430 FRONTEND
 
@@ -77,7 +77,7 @@ This 5 bit field can be freely used in order to allowcustom identification of th
 | `pu_msp430_register_file` |
 | `pu_msp430_sfr`           |
 
-: Implementation - Execute
+:Implementation - Execute
 
 ### PU MSP430 EXECUTION
 ### PU MSP430 ALU
@@ -91,7 +91,7 @@ This 5 bit field can be freely used in order to allowcustom identification of th
 | :----------------- |
 | `pu_msp430_memory` |
 
-: Implementation - Memory
+:Implementation - Memory
 
 ### PU MSP430 MEMORY
 
@@ -114,13 +114,13 @@ The sum of program, data and peripheral memory spaces must not exceed 64 kB
 | `PMEM_SIZE_2_KB`   |
 | `PMEM_SIZE_1_KB`   |
 
-: Program Memory Size
+:Program Memory Size
 
 | `PMEM_CUSTOM_AWIDTH` | `PMEM_CUSTOM_SIZE` |
 | :------------------- | :----------------- |
 | `13`                 | `10240`            |
 
-: Custom Program memory (enabled with `PMEM_SIZE_CUSTOM`)
+:Custom Program memory (enabled with `PMEM_SIZE_CUSTOM`)
 
 | `DMEM_SIZE_CUSTOM` |
 | :----------------- |
@@ -138,13 +138,13 @@ The sum of program, data and peripheral memory spaces must not exceed 64 kB
 | `DMEM_SIZE_256_B`  |
 | `DMEM_SIZE_128_B`  |
 
-: Data Memory Size
+:Data Memory Size
 
 | `DMEM_CUSTOM_AWIDTH` | `DMEM_CUSTOM_SIZE` |
 | :------------------- | :----------------- |
 | `13`                 | `10240`            |
 
-: Custom Data memory (enabled with `DMEM_SIZE_CUSTOM`)
+:Custom Data memory (enabled with `DMEM_SIZE_CUSTOM`)
 
 ## CONTROL
 
@@ -157,7 +157,7 @@ The sum of program, data and peripheral memory spaces must not exceed 64 kB
 | `pu_msp430_dbg_i2c`   |
 | `pu_msp430_dbg_uart`  |
 
-: Implementation - Debugger
+:Implementation - Debugger
 
 ### PU MSP430 DBG HWBRK
 ### PU MSP430 DBG I2C
@@ -176,7 +176,7 @@ The sum of program, data and peripheral memory spaces must not exceed 64 kB
 | `pu_msp430_uart`       |
 | `pu_msp430_watchdog`   |
 
-: Implementation - Peripherals
+:Implementation - Peripherals
 
 The original MSP430 architecture map the peripherals from 0x0000 to 0x01FF (i.e. 512B of the memory space). The following defines allow you to expand this space up to 32 kB (i.e. from 0x0000 to 0x7fff). As a consequence, the data memory mapping will be shifted up and a custom linker script will therefore be required by the GCC compiler.
 
@@ -190,13 +190,13 @@ The original MSP430 architecture map the peripherals from 0x0000 to 0x01FF (i.e.
 | `PER_SIZE_1_KB`   |
 | `PER_SIZE_512_B`  |
 
-: Peripheral Memory Size
+:Peripheral Memory Size
 
 | `PER_CUSTOM_AWIDTH` | `PER_CUSTOM_SIZE` |
 | :------------------ | :---------------- |
 | `8`                 | `512`             |
 
-: Custom Peripheral memory (enabled with `PER_SIZE_CUSTOM`)
+:Custom Peripheral memory (enabled with `PER_SIZE_CUSTOM`)
 
 ### PU MSP430 TEMPLATE-08
 ### PU MSP430 TEMPLATE-16

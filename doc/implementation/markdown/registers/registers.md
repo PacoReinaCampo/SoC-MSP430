@@ -34,7 +34,7 @@
 | `ALU_SHIFT`   | `10`    |
 | `EXEC_NO_WR`  | `11`    |
 
-: ALU control signals
+:ALU control signals
 
 ### PU MSP430 MULTIPLIER
 ### PU MSP430 REGISTER-FILE
@@ -54,7 +54,7 @@
 | `DBG_UART_BW`         | `17`    |
 | `DBG_UART_ADDR`       | `16:11` |
 
-: Debug interface
+:Debug interface
 
 | `Name`       | `Value` |
 | :----------- | :------ |
@@ -66,7 +66,7 @@
 | `RST_BRK_EN` | `5`     |
 | `CPU_RST`    | `6`     |
 
-: Debug interface CPU_CTL register
+:Debug interface CPU_CTL register
 
 | `Name`       | `Value` |
 | :----------- | :------ |
@@ -76,7 +76,7 @@
 | `HWBRK0_PND` | `4`     |
 | `HWBRK1_PND` | `5`     |
 
-: Debug interface CPU_STAT register
+:Debug interface CPU_STAT register
 
 | `Name`          | `Value` |
 | :-------------- | :------ |
@@ -87,7 +87,7 @@
 | `BRK_I_EN`      | `3`     |
 | `BRK_RANGE`     | `4`     |
 
-: Debug interface BRKx_CTL register
+:Debug interface BRKx_CTL register
 
 ### PU MSP430 DBG HWBRK
 ### PU MSP430 DBG I2C
@@ -103,7 +103,7 @@
 | :------ | :------ |
 | `DIVAx` | `5:4`   |
 
-: Basic clock module: BCSCTL1 Control Register
+:Basic clock module: BCSCTL1 Control Register
 
 | `Name`  | `Value` |
 | :------ | :------ |
@@ -112,7 +112,7 @@
 | `SELS`  | `3`     |
 | `DIVSx` | `2:1`   |
 
-: Basic clock module: BCSCTL2 Control Register
+:Basic clock module: BCSCTL2 Control Register
 
 ### PU MSP430 DAC
 ### PU MSP430 GPIO
