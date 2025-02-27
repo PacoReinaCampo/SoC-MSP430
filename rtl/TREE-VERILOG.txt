@@ -1,42 +1,46 @@
 verilog
 ├── pkg
-│   ├── arbiter
-│   │   └── soc_arbiter_rr.sv
-│   ├── configuration
-│   │   └── soc_optimsoc_configuration.sv
-│   ├── constants
-│   │   └── soc_optimsoc_constants.sv
-│   ├── functions
-│   │   └── soc_optimsoc_functions.sv
-│   └── main
+│   ├── optimsoc
+│   │   ├── arbiter
+│   │   │   └── soc_arbiter_rr.sv
+│   │   ├── configuration
+│   │   │   └── soc_optimsoc_configuration.sv
+│   │   ├── constants
+│   │   │   └── soc_optimsoc_constants.sv
+│   │   └── functions
+│   │       └── soc_optimsoc_functions.sv
+│   └── standard
 │       ├── pu_msp430_defines.sv
 │       ├── pu_msp430_undefines.sv
 │       └── timescale.sv
-├── pu
-│   ├── soc_msp430_pu0.sv
-│   └── soc_msp430_pu1.sv
 └── soc
-    ├── adapter
-    │   ├── soc_network_adapter_configuration.sv
-    │   └── soc_network_adapter_ct.sv
-    ├── bootrom
-    │   ├── soc_bootrom_code.sv
-    │   └── soc_bootrom.sv
-    ├── interconnection
-    │   ├── bus
-    │   │   └── soc_b3_bb.sv
-    │   ├── decode
-    │   │   └── soc_decode_bb.sv
-    │   └── mux
-    │       └── soc_mux_bb.sv
-    ├── main
-    │   ├── soc_msp430_io_cell.sv
-    │   ├── soc_msp430.sv
-    │   └── soc_msp430_tile.sv
-    └── spram
-        ├── soc_bb2sram.sv
-        ├── soc_sram_sp_bb.sv
-        ├── soc_sram_sp_impl_plain.sv
-        └── soc_sram_sp.sv
+    ├── optimsoc
+    │   ├── adapter
+    │   │   ├── soc_network_adapter_configuration.sv
+    │   │   └── soc_network_adapter_ct.sv
+    │   ├── bootrom
+    │   │   ├── soc_bootrom_code.sv
+    │   │   └── soc_bootrom.sv
+    │   ├── interconnection
+    │   │   ├── bus
+    │   │   │   └── soc_b3_bb.sv
+    │   │   ├── decode
+    │   │   │   └── soc_decode_bb.sv
+    │   │   └── mux
+    │   │       └── soc_mux_bb.sv
+    │   ├── main
+    │   │   └── soc_msp430_tile.sv
+    │   └── spram
+    │       ├── soc_bb2sram.sv
+    │       ├── soc_sram_sp_bb.sv
+    │       ├── soc_sram_sp_impl_plain.sv
+    │       └── soc_sram_sp.sv
+    └── standard
+        ├── pu
+        │   ├── soc_msp430_pu0.sv
+        │   └── soc_msp430_pu1.sv
+        └── top
+            ├── soc_msp430_io_cell.sv
+            └── soc_msp430.sv
 
-16 directories, 23 files
+20 directories, 23 files
