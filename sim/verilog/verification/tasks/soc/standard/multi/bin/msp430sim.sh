@@ -67,9 +67,9 @@ fi
 ###############################################################################
 #                     Check if the required files exist                       #
 ###############################################################################
-softdir=../../../../../../../software/procedures/$1;
-elffile=../../../../../../../software/procedures/$1/$1.elf;
-verfile=../../../../../../../bench/verilog/cases/$1.sv;
+softdir=../../../../../../../../software/baremetal/standard/$1;
+elffile=../../../../../../../../software/baremetal/standard/$1/$1.elf;
+verfile=../../../../../../../../bench/verilog/cases/$1.sv;
 if [ $OMSP_SIMULATOR == "iverilog" ]; then
     submit=../src/submit.f;
 fi
@@ -79,7 +79,7 @@ fi
 if [ $OMSP_SIMULATOR == "xsim" ]; then
     submit=../src/submit.prj;
 fi
-incfile=../../../../../../../rtl/verilog/pkg/main/pu_msp430_defines.sv;
+incfile=../../../../../../../../rtl/verilog/pkg/main/pu_msp430_defines.sv;
 
 if [ ! -e $softdir ]; then
     echo "Software directory doesn't exist: $softdir"
@@ -118,7 +118,7 @@ echo " ======================================================="
 cd $softdir
 make clean
 make
-cd ../../../sim/verilog/verification/procedures/soc/multi/run/
+cd ../../../sim/verilog/verification/tasks/soc/standard/multi/run/
 
 # Create links
 if [ `uname -o` = "Cygwin" ]
