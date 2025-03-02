@@ -53,7 +53,7 @@ sv work ../../../../../../peripheral/dbg/rtl/soc/verilog/code/peripheral/interfa
 sv work ../../../../../../peripheral/dbg/rtl/soc/verilog/code/peripheral/interfaces/common/peripheral_dbg_soc_dii_channel.sv
 sv work ../../../../../../peripheral/dbg/rtl/soc/verilog/code/peripheral/interfaces/msp430/peripheral_dbg_soc_mmsp430_trace_exec.sv
 
-sv work ../../../../../../bench/verilog/glip/soc_glip_channel.sv
+sv work ../../../../../../verification/tasks/library/verilog/glip/soc_glip_channel.sv
 
 sv work ../../../../../../peripheral/dbg/rtl/soc/verilog/code/peripheral/blocks/buffer/peripheral_dbg_soc_dii_buffer.sv
 sv work ../../../../../../peripheral/dbg/rtl/soc/verilog/code/peripheral/blocks/buffer/peripheral_dbg_soc_osd_fifo.sv

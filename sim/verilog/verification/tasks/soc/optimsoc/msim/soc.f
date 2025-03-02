@@ -43,9 +43,9 @@
 ###################################################################################
 
 +incdir+../../../../../../../pu/rtl/verilog/pkg
-+incdir+../../../../../../../rtl/verilog/soc/bootrom
-+incdir+../../../../../../../bench/cpp/verilator/inc
-+incdir+../../../../../../../bench/cpp/glip
++incdir+../../../../../../../rtl/verilog/soc/optimsoc/bootrom
++incdir+../../../../../../../verification/tasks/library/cpp/verilator/inc
++incdir+../../../../../../../verification/tasks/library/cpp/glip
 
 ../../../../../../../peripheral/dma/rtl/verilog/code/pkg/core/peripheral_dma_pkg.sv
 
@@ -162,4 +162,4 @@
 ../../../../../../../rtl/verilog/soc/spram/soc_sram_sp_bb.sv
 ../../../../../../../rtl/verilog/soc/spram/soc_bb2sram.sv
 
-../../../../../../../bench/verilog/main/soc_msp430_soc_testbench.sv
+../../../../../../../verification/tasks/library/verilog/standard/soc_msp430_soc_testbench.sv
