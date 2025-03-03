@@ -45,14 +45,14 @@
 // Testbench related
 //=============================================================================
 
-../../../../../../../../bench/verilog/main/soc_ram_d1.sv
-../../../../../../../../bench/verilog/main/soc_ram_d2.sv
-../../../../../../../../bench/verilog/main/soc_ram_dp.sv
-../../../../../../../../bench/verilog/main/soc_ram_p2.sv
-../../../../../../../../bench/verilog/main/soc_ram_sp.sv
-../../../../../../../../bench/verilog/main/soc_msp430_glbl.sv
-../../../../../../../../bench/verilog/main/soc_msp430_debug.sv
-../../../../../../../../bench/verilog/main/soc_msp430_testbench.sv
+../../../../../../../../verification/tasks/library/verilog/standard/soc_ram_d1.sv
+../../../../../../../../verification/tasks/library/verilog/standard/soc_ram_d2.sv
+../../../../../../../../verification/tasks/library/verilog/standard/soc_ram_dp.sv
+../../../../../../../../verification/tasks/library/verilog/standard/soc_ram_p2.sv
+../../../../../../../../verification/tasks/library/verilog/standard/soc_ram_sp.sv
+../../../../../../../../verification/tasks/library/verilog/standard/soc_msp430_glbl.sv
+../../../../../../../../verification/tasks/library/verilog/standard/soc_msp430_debug.sv
+../../../../../../../../verification/tasks/library/verilog/standard/soc_msp430_testbench.sv
 
 
 //=============================================================================

@@ -42,14 +42,14 @@
 //                                                                               //
 ///////////////////////////////////////////////////////////////////////////////////
 
-verilog work ../../../../../../../../bench/verilog/main/soc_ram_d1.sv
-verilog work ../../../../../../../../bench/verilog/main/soc_ram_d2.sv
-verilog work ../../../../../../../../bench/verilog/main/soc_ram_dp.sv
-verilog work ../../../../../../../../bench/verilog/main/soc_ram_p2.sv
-verilog work ../../../../../../../../bench/verilog/main/soc_ram_sp.sv
-verilog work ../../../../../../../../bench/verilog/main/soc_msp430_glbl.sv
-verilog work ../../../../../../../../bench/verilog/main/soc_msp430_debug.sv
-verilog work ../../../../../../../../bench/verilog/main/soc_msp430_testbench.sv
+verilog work ../../../../../../../../verification/tasks/library/verilog/standard/soc_ram_d1.sv
+verilog work ../../../../../../../../verification/tasks/library/verilog/standard/soc_ram_d2.sv
+verilog work ../../../../../../../../verification/tasks/library/verilog/standard/soc_ram_dp.sv
+verilog work ../../../../../../../../verification/tasks/library/verilog/standard/soc_ram_p2.sv
+verilog work ../../../../../../../../verification/tasks/library/verilog/standard/soc_ram_sp.sv
+verilog work ../../../../../../../../verification/tasks/library/verilog/standard/soc_msp430_glbl.sv
+verilog work ../../../../../../../../verification/tasks/library/verilog/standard/soc_msp430_debug.sv
+verilog work ../../../../../../../../verification/tasks/library/verilog/standard/soc_msp430_testbench.sv
 
 verilog work ../../../../../../../../rtl/verilog/pu/soc_msp430_pu0.sv
 verilog work ../../../../../../../../rtl/verilog/pu/soc_msp430_pu1.sv
