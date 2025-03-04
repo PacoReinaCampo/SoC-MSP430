@@ -44,7 +44,7 @@
 
 export PATH=/opt/msp430-elf-gcc/bin:${PATH}
 
-source ../../../tool/build.sh
+source ../../../../tool/optimsoc/build.sh
 
 make clean
 make
