@@ -1,8 +1,10 @@
 vhdl
 ├── pkg
+│   ├── optimsoc
 │   └── standard
 │       └── pu_msp430_pkg.vhd
 └── soc
+    ├── optimsoc
     └── standard
         ├── pu
         │   ├── soc_msp430_pu0.vhd
@@ -11,4 +13,4 @@ vhdl
             ├── soc_msp430_io_cell.vhd
             └── soc_msp430.vhd
 
-6 directories, 5 files
+8 directories, 5 files
