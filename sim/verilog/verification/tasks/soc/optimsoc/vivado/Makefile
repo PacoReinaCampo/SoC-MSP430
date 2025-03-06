@@ -50,8 +50,8 @@ build:
 	-i ../../../../../../../rtl/verilog/soc/bootrom
 
 simulate:
-	xelab soc_msp430_soc_testbench
-	xsim -R soc_msp430_soc_testbench
+	xelab soc_msp430_testbench
+	xsim -R soc_msp430_testbench
 
 clean:
 	rm -rf *.vcd .Xil *.dir *.jou *.log *.pb

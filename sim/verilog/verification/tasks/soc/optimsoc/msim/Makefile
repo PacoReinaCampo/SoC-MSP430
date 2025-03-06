@@ -49,7 +49,7 @@ build:
 	vlog -sv -svinputport=relaxed -f soc.f
 
 simulate:
-	vsim -c -do run.do work.soc_msp430_soc_testbench
+	vsim -c -do run.do work.soc_msp430_testbench
 
 clean:
 	rm -rf work transcript

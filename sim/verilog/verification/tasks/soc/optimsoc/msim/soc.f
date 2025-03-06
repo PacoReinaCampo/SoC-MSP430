@@ -162,4 +162,4 @@
 ../../../../../../../rtl/verilog/soc/spram/soc_sram_sp_bb.sv
 ../../../../../../../rtl/verilog/soc/spram/soc_bb2sram.sv
 
-../../../../../../../verification/tasks/library/verilog/standard/soc_msp430_soc_testbench.sv
+../../../../../../../verification/tasks/library/verilog/optimsoc/main/soc_msp430_testbench.sv

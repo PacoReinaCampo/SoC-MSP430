@@ -39,18 +39,17 @@
  *   Paco Reina Campo <pacoreinacampo@queenfield.tech>
  */
 
-../../../../../../../../rtl/vhdl/pkg/main/pu_msp430_pkg.vhd
+../../../../../../../../rtl/vhdl/pkg/standard/pu_msp430_pkg.vhd
 
 //=============================================================================
 // SoC-MSP430
 //=============================================================================
 
-../../../../../../../../rtl/vhdl/pu/soc_msp430_pu0.vhd
-../../../../../../../../rtl/vhdl/pu/soc_msp430_pu1.vhd
+../../../../../../../../rtl/vhdl/soc/standard/pu/soc_msp430_pu0.vhd
+../../../../../../../../rtl/vhdl/soc/standard/pu/soc_msp430_pu1.vhd
 
-../../../../../../../../rtl/vhdl/soc/main/soc_msp430.vhd
-../../../../../../../../rtl/vhdl/soc/main/soc_msp430_io_cell.vhd
-
+../../../../../../../../rtl/vhdl/soc/standard/top/soc_msp430.vhd
+../../../../../../../../rtl/vhdl/soc/standard/top/soc_msp430_io_cell.vhd
 
 //=============================================================================
 // PU-MSP430
@@ -86,4 +85,4 @@
 ../../../../../../../../pu/rtl/vhdl/core/main/pu_msp430_template16.vhd
 ../../../../../../../../pu/rtl/vhdl/core/main/pu_msp430_uart.vhd
 
-../../../../../../../../pu/rtl/vhdl/pu/pu_msp430_core.vhd
+../../../../../../../../pu/rtl/vhdl/module/pu_msp430_core.vhd

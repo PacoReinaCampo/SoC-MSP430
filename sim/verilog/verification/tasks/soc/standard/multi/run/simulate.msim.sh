@@ -43,7 +43,7 @@
 ###################################################################################
 
 #!/bin/bash
-export PATH=$PATH:/opt/intelFPGA_pro/20.2/modelsim_ase/linuxaloem/
+source ../../../../../../../../settings64_msim.sh
 
 # Enable/Disable waveform dumping
 OMSP_NODUMP=0
@@ -56,4 +56,4 @@ export OMSP_NODUMP
 OMSP_SIMULATOR=msim
 export OMSP_SIMULATOR
 
-../bin/msp430sim.sh leds
+../bin/msp430sim.sh pu_msp430_leds

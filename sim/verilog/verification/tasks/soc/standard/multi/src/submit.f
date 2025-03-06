@@ -39,33 +39,33 @@
  *   Paco Reina Campo <pacoreinacampo@queenfield.tech>
  */
 
-+incdir+../../../../../../../../rtl/verilog/pkg/main
++incdir+../../../../../../../../rtl/verilog/pkg/standard
 
 //=============================================================================
 // Testbench related
 //=============================================================================
 
-+incdir+../../../../../../../../verification/tasks/library/verilog/standard/
++incdir+../../../../../../../../verification/tasks/library/verilog/standard/main
 
-../../../../../../../../verification/tasks/library/verilog/standard/soc_ram_d1.sv
-../../../../../../../../verification/tasks/library/verilog/standard/soc_ram_d2.sv
-../../../../../../../../verification/tasks/library/verilog/standard/soc_ram_dp.sv
-../../../../../../../../verification/tasks/library/verilog/standard/soc_ram_p2.sv
-../../../../../../../../verification/tasks/library/verilog/standard/soc_ram_sp.sv
-../../../../../../../../verification/tasks/library/verilog/standard/soc_msp430_glbl.sv
-../../../../../../../../verification/tasks/library/verilog/standard/soc_msp430_debug.sv
-../../../../../../../../verification/tasks/library/verilog/standard/soc_msp430_testbench.sv
+../../../../../../../../verification/tasks/library/verilog/standard/main/soc_msp430_ram_d1.sv
+../../../../../../../../verification/tasks/library/verilog/standard/main/soc_msp430_ram_d2.sv
+../../../../../../../../verification/tasks/library/verilog/standard/main/soc_msp430_ram_dp.sv
+../../../../../../../../verification/tasks/library/verilog/standard/main/soc_msp430_ram_p2.sv
+../../../../../../../../verification/tasks/library/verilog/standard/main/soc_msp430_ram_sp.sv
+../../../../../../../../verification/tasks/library/verilog/standard/main/soc_msp430_glbl.sv
+../../../../../../../../verification/tasks/library/verilog/standard/main/soc_msp430_debug.sv
+../../../../../../../../verification/tasks/library/verilog/standard/main/soc_msp430_testbench.sv
 
 
 //=============================================================================
 // SoC-MSP430
 //=============================================================================
 
-../../../../../../../../rtl/verilog/pu/soc_msp430_pu0.sv
-../../../../../../../../rtl/verilog/pu/soc_msp430_pu1.sv
+../../../../../../../../rtl/verilog/soc/standard/pu/soc_msp430_pu0.sv
+../../../../../../../../rtl/verilog/soc/standard/pu/soc_msp430_pu1.sv
 
-../../../../../../../../rtl/verilog/soc/main/soc_msp430.sv
-../../../../../../../../rtl/verilog/soc/main/soc_msp430_io_cell.sv
+../../../../../../../../rtl/verilog/soc/standard/top/soc_msp430.sv
+../../../../../../../../rtl/verilog/soc/standard/top/soc_msp430_io_cell.sv
 
 //=============================================================================
 // PU-MSP430
@@ -99,4 +99,4 @@
 ../../../../../../../../pu/rtl/verilog/core/main/pu_msp430_template16.sv
 ../../../../../../../../pu/rtl/verilog/core/main/pu_msp430_uart.sv
 
-../../../../../../../../pu/rtl/verilog/pu/pu_msp430_core.sv
+../../../../../../../../pu/rtl/verilog/module/pu_msp430_core.sv

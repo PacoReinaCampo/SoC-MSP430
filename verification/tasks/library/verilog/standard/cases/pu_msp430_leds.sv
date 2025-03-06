@@ -37,46 +37,32 @@
 // Author(s):
 //   Paco Reina Campo <pacoreinacampo@queenfield.tech>
 
-`include "pu_msp430_defines.sv"
+////////////////////////////////////////////////////////////////////////////////
+//                                 DIGITAL I/O                              
+////////////////////////////////////////////////////////////////////////////////
+// Test the Digital I/O interface.                                          
+////////////////////////////////////////////////////////////////////////////////
 
-module soc_ram_d2 (
-  input                  clka,
-  input                  ena,
-  input  [          1:0] wea,
-  input  [`DMEM_MSB-1:0] addra,
-  input  [         15:0] dina,
-  output [         15:0] douta,
+initial begin
+  $display(" ===============================================");
+  $display("|                 START SIMULATION              |");
+  $display(" ===============================================");
+  repeat (5) @(posedge CLK_40MHz);
+  stimulus_done = 0;
 
-  input                  clkb,
-  input                  enb,
-  input  [          1:0] web,
-  input  [`DMEM_MSB-1:0] addrb,
-  input  [         15:0] dinb,
-  output [         15:0] doutb
-);
+  repeat (100) @(posedge CLK_40MHz);
+  //     PMOD1_P8 = 1;
+  repeat (500) @(posedge CLK_40MHz);
+  //     PMOD1_P8 = 0;
+  repeat (100) @(posedge CLK_40MHz);
+  //     PMOD1_P8 = 1;
 
-  //============
-  // RAM
-  //============
+  repeat (500) @(posedge CLK_40MHz);
+  PMOD1_P4 = 0;
+  repeat (100) @(posedge CLK_40MHz);
+  PMOD1_P4 = 1;
 
-  soc_ram_dp #(
-    .ADDR_MSB(`DMEM_MSB - 1),
-    .MEM_SIZE(`DMEM_SIZE)
-  ) dp (
-    // OUTPUTs
-    .ram_douta(douta),  // RAM data output (Port A)
-    .ram_doutb(doutb),  // RAM data output (Port B)
+  repeat (500) @(posedge CLK_40MHz);
 
-    // INPUTs
-    .ram_addra(addra),  // RAM address (Port A)
-    .ram_cena (~ena),   // RAM chip enable (low active) (Port A)
-    .ram_clka (clka),   // RAM clock (Port A)
-    .ram_dina (dina),   // RAM data input (Port A)
-    .ram_wena (~wea),   // RAM write enable (low active) (Port A)
-    .ram_addrb(addrb),  // RAM address (Port B)
-    .ram_cenb (~enb),   // RAM chip enable (low active) (Port B)
-    .ram_clkb (clkb),   // RAM clock (Port B)
-    .ram_dinb (dinb),   // RAM data input (Port B)
-    .ram_wenb (~web)    // RAM write enable (low active) (Port B)
-  );
-endmodule  // soc_ram_d2
+  stimulus_done = 1;
+end

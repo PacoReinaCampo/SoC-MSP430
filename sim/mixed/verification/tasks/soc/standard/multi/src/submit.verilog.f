@@ -39,20 +39,22 @@
  *   Paco Reina Campo <pacoreinacampo@queenfield.tech>
  */
 
-+incdir+../../../../../../../../rtl/verilog/pkg/main
++incdir+../../../../../../../../rtl/verilog/pkg/standard
 
 //=============================================================================
 // Testbench related
 //=============================================================================
 
-../../../../../../../../verification/tasks/library/verilog/standard/soc_ram_d1.sv
-../../../../../../../../verification/tasks/library/verilog/standard/soc_ram_d2.sv
-../../../../../../../../verification/tasks/library/verilog/standard/soc_ram_dp.sv
-../../../../../../../../verification/tasks/library/verilog/standard/soc_ram_p2.sv
-../../../../../../../../verification/tasks/library/verilog/standard/soc_ram_sp.sv
-../../../../../../../../verification/tasks/library/verilog/standard/soc_msp430_glbl.sv
-../../../../../../../../verification/tasks/library/verilog/standard/soc_msp430_debug.sv
-../../../../../../../../verification/tasks/library/verilog/standard/soc_msp430_testbench.sv
++incdir+../../../../../../../../verification/tasks/library/verilog/standard/main
+
+../../../../../../../../verification/tasks/library/verilog/standard/main/soc_msp430_ram_d1.sv
+../../../../../../../../verification/tasks/library/verilog/standard/main/soc_msp430_ram_d2.sv
+../../../../../../../../verification/tasks/library/verilog/standard/main/soc_msp430_ram_dp.sv
+../../../../../../../../verification/tasks/library/verilog/standard/main/soc_msp430_ram_p2.sv
+../../../../../../../../verification/tasks/library/verilog/standard/main/soc_msp430_ram_sp.sv
+../../../../../../../../verification/tasks/library/verilog/standard/main/soc_msp430_glbl.sv
+../../../../../../../../verification/tasks/library/verilog/standard/main/soc_msp430_debug.sv
+../../../../../../../../verification/tasks/library/verilog/standard/main/soc_msp430_testbench.sv
 
 
 //=============================================================================

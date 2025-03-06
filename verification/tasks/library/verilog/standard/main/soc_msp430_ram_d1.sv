@@ -39,7 +39,7 @@
 
 `include "pu_msp430_defines.sv"
 
-module soc_ram_d1 (
+module soc_msp430_ram_d1 (
   input                  clka,
   input                  ena,
   input  [          1:0] wea,
@@ -52,7 +52,7 @@ module soc_ram_d1 (
   // RAM
   //============
 
-  soc_ram_sp #(
+  soc_msp430_ram_sp #(
     .ADDR_MSB(`DMEM_MSB - 1),
     .MEM_SIZE(`DMEM_SIZE)
   ) sp (
@@ -66,4 +66,4 @@ module soc_ram_d1 (
     .ram_din (dina),   // RAM data input
     .ram_wen (~wea)    // RAM write enable (low active)
   );
-endmodule  // soc_ram_d1
+endmodule  // soc_msp430_ram_d1

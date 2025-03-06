@@ -43,7 +43,7 @@
 ###################################################################################
 
 #!/bin/bash
-export PATH=$PATH:/opt/Xilinx/Vivado/2020.2/bin/
+source ../../../../../../../../settings64_vivado.sh
 
 # Enable/Disable waveform dumping
 OMSP_NODUMP=0
@@ -56,4 +56,4 @@ export OMSP_NODUMP
 OMSP_SIMULATOR=xsim
 export OMSP_SIMULATOR
 
-../bin/msp430sim.sh leds
+../bin/msp430sim.sh pu_msp430_leds

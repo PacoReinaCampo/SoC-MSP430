@@ -1,5 +1,5 @@
 # makfile configuration
-NAME            = leds
+NAME            = pu_msp430_leds
 OBJECTS         = main.o 7seg.o
 
 CFLAGS          = -O2 -Wall -g -mcpu=430 -mivcnt=16 -mmpy=16     # Uniarch flags

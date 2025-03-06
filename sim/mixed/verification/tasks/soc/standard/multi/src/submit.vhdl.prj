@@ -42,4 +42,4 @@
 //                                                                               //
 ///////////////////////////////////////////////////////////////////////////////////
 
-vhdl work ../../../../../../../../rtl/vhdl/soc/main/soc_msp430_io_cell.vhd
+vhdl work ../../../../../../../../rtl/vhdl/soc/standard/top/soc_msp430_io_cell.vhd

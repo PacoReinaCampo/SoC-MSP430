@@ -47,5 +47,5 @@ call ../../../../../../../settings64_msim.bat
 
 vlib work
 vlog -sv -svinputport=relaxed -f soc.f
-vsim -c -do run.do work.soc_msp430_soc_testbench
+vsim -c -do run.do work.soc_msp430_testbench
 pause
