@@ -98,7 +98,7 @@ begin
   -- Module Body
   ------------------------------------------------------------------------------
 
-  -- DUT AHB3
+  -- DUT AHB4
   ram : soc_msp430_ram
     generic map (
       AW       => AW,

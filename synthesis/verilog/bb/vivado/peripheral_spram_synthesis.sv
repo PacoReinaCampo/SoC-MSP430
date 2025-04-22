@@ -62,7 +62,7 @@ module peripheral_spram_synthesis #(
   // Body
   //////////////////////////////////////////////////////////////////////////////
 
-  // DUT AHB3
+  // DUT AHB4
   soc_msp430_ram #(
     .AW      (AW),
     .DW      (DW),
