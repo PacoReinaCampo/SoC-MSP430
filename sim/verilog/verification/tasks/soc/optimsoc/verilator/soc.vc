@@ -164,7 +164,7 @@
 ../../../../../../../rtl/verilog/soc/interconnection/decode/soc_decode_bb.sv
 ../../../../../../../rtl/verilog/soc/interconnection/mux/soc_mux_bb.sv
 ../../../../../../../rtl/verilog/soc/main/soc_msp430_tile.sv
-../../../../../../../rtl/verilog/soc/spram/soc_sram_sp_impl_plain.sv
+../../../../../../../rtl/verilog/soc/spram/soc_sram_sp_implemented_plain.sv
 ../../../../../../../rtl/verilog/soc/spram/soc_sram_sp.sv
 ../../../../../../../rtl/verilog/soc/spram/soc_sram_sp_bb.sv
 ../../../../../../../rtl/verilog/soc/spram/soc_bb2sram.sv

@@ -46,7 +46,7 @@ verilog
     │   └── spram
     │       ├── soc_bb2sram.sv
     │       ├── soc_sram_sp_bb.sv
-    │       ├── soc_sram_sp_impl_plain.sv
+    │       ├── soc_sram_sp_implemented_plain.sv
     │       └── soc_sram_sp.sv
     └── standard
         ├── pu

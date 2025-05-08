@@ -105,13 +105,13 @@ module soc_sram_sp #(
   `endif
 
   generate
-    if (MEM_IMPL_TYPE == "PLAIN") begin : gen_soc_sram_spimpl
-      soc_sram_sp_impl_plain #(
-        .AW                     (AW),
-        .WORD_AW                (WORD_AW),
-        .DW                     (DW),
-        .MEM_SIZE_BYTE          (MEM_SIZE_BYTE),
-        .MEM_FILE               (MEM_FILE)
+    if (MEM_IMPL_TYPE == "PLAIN") begin : gen_soc_sram_sp_implemented
+      soc_sram_sp_implemented_plain #(
+        .AW                       (AW),
+        .WORD_AW                  (WORD_AW),
+        .DW                       (DW),
+        .MEM_SIZE_BYTE            (MEM_SIZE_BYTE),
+        .MEM_FILE                 (MEM_FILE)
       )
       u_impl (
         // Outputs
@@ -126,8 +126,7 @@ module soc_sram_sp #(
         .din                 (din[DW-1:0]),
         .sel                 (sel[SW-1:0])
       );
-    end
-    else begin
+    end else begin
       // $display("Unsupported memory type: ", MEM_IMPL_TYPE);
       // $stop;
     end
