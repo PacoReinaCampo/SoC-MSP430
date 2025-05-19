@@ -44,9 +44,9 @@ use ieee.numeric_std.all;
 
 use std.env.all;
 
-library types;
-use types.RandomPkg.all;
-use types.CoveragePkg.all;
+library osvvm;
+use osvvm.RandomPkg.all;
+use osvvm.CoveragePkg.all;
 
 entity peripheral_types_testbench is
 end entity peripheral_types_testbench;
