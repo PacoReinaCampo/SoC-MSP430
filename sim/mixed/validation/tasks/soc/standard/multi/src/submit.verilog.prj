@@ -1,0 +1,88 @@
+///////////////////////////////////////////////////////////////////////////////////
+//                                            __ _      _     _                  //
+//                                           / _(_)    | |   | |                 //
+//                __ _ _   _  ___  ___ _ __ | |_ _  ___| | __| |                 //
+//               / _` | | | |/ _ \/ _ \ '_ \|  _| |/ _ \ |/ _` |                 //
+//              | (_| | |_| |  __/  __/ | | | | | |  __/ | (_| |                 //
+//               \__, |\__,_|\___|\___|_| |_|_| |_|\___|_|\__,_|                 //
+//                  | |                                                          //
+//                  |_|                                                          //
+//                                                                               //
+//                                                                               //
+//              Peripheral for MPSoC                                             //
+//              Multi-Processor System on Chip                                   //
+//                                                                               //
+///////////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////////
+//                                                                               //
+// Copyright (c) 2015-2016 by the author(s)                                      //
+//                                                                               //
+// Permission is hereby granted, free of charge, to any person obtaining a copy  //
+// of this software and associated documentation files (the "Software"), to deal //
+// in the Software without restriction, including without limitation the rights  //
+// to use, copy, modify, merge, publish, distribute, sublicense, and/or sell     //
+// copies of the Software, and to permit persons to whom the Software is         //
+// furnished to do so, subject to the following conditions:                      //
+//                                                                               //
+// The above copyright notice and this permission notice shall be included in    //
+// all copies or substantial portions of the Software.                           //
+//                                                                               //
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR    //
+// IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,      //
+// FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE   //
+// AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER        //
+// LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, //
+// OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN     //
+// THE SOFTWARE.                                                                 //
+//                                                                               //
+// ============================================================================= //
+// Author(s):                                                                    //
+//   Paco Reina Campo <pacoreinacampo@queenfield.tech>                           //
+//                                                                               //
+///////////////////////////////////////////////////////////////////////////////////
+
+verilog work ../../../../../../../../validation/tasks/library/verilog/standard/main/soc_msp430_ram_d1.sv
+verilog work ../../../../../../../../validation/tasks/library/verilog/standard/main/soc_msp430_ram_d2.sv
+verilog work ../../../../../../../../validation/tasks/library/verilog/standard/main/soc_msp430_ram_dp.sv
+verilog work ../../../../../../../../validation/tasks/library/verilog/standard/main/soc_msp430_ram_p2.sv
+verilog work ../../../../../../../../validation/tasks/library/verilog/standard/main/soc_msp430_ram_sp.sv
+verilog work ../../../../../../../../validation/tasks/library/verilog/standard/main/soc_msp430_glbl.sv
+verilog work ../../../../../../../../validation/tasks/library/verilog/standard/main/soc_msp430_debug.sv
+verilog work ../../../../../../../../validation/tasks/library/verilog/standard/main/soc_msp430_testbench.sv
+
+verilog work ../../../../../../../../rtl/verilog/soc/standard/pu/soc_msp430_pu0.sv
+verilog work ../../../../../../../../rtl/verilog/soc/standard/pu/soc_msp430_pu1.sv
+
+verilog work ../../../../../../../../rtl/verilog/soc/standard/top/soc_msp430.sv
+
+verilog work ../../../../../../../../pu/rtl/verilog/core/fuse/pu_msp430_and_gate.sv
+verilog work ../../../../../../../../pu/rtl/verilog/core/fuse/pu_msp430_clock_gate.sv
+verilog work ../../../../../../../../pu/rtl/verilog/core/fuse/pu_msp430_clock_mux.sv
+verilog work ../../../../../../../../pu/rtl/verilog/core/fuse/pu_msp430_scan_mux.sv
+verilog work ../../../../../../../../pu/rtl/verilog/core/fuse/pu_msp430_sync_cell.sv
+verilog work ../../../../../../../../pu/rtl/verilog/core/fuse/pu_msp430_sync_reset.sv
+verilog work ../../../../../../../../pu/rtl/verilog/core/fuse/pu_msp430_wakeup_cell.sv
+
+verilog work ../../../../../../../../pu/rtl/verilog/core/omsp/pu_msp430_alu.sv
+verilog work ../../../../../../../../pu/rtl/verilog/core/omsp/pu_msp430_dbg_hwbrk.sv
+verilog work ../../../../../../../../pu/rtl/verilog/core/omsp/pu_msp430_dbg_i2c.sv
+verilog work ../../../../../../../../pu/rtl/verilog/core/omsp/pu_msp430_dbg_uart.sv
+verilog work ../../../../../../../../pu/rtl/verilog/core/omsp/pu_msp430_register_file.sv
+
+verilog work ../../../../../../../../pu/rtl/verilog/core/main/pu_msp430_bcm.sv
+verilog work ../../../../../../../../pu/rtl/verilog/core/main/pu_msp430_dbg.sv
+verilog work ../../../../../../../../pu/rtl/verilog/core/main/pu_msp430_execution.sv
+verilog work ../../../../../../../../pu/rtl/verilog/core/main/pu_msp430_gpio.sv
+verilog work ../../../../../../../../pu/rtl/verilog/core/main/pu_msp430_memory.sv
+verilog work ../../../../../../../../pu/rtl/verilog/core/main/pu_msp430_multiplier.sv
+verilog work ../../../../../../../../pu/rtl/verilog/core/main/pu_msp430_template08.sv
+verilog work ../../../../../../../../pu/rtl/verilog/core/main/pu_msp430_template16.sv
+verilog work ../../../../../../../../pu/rtl/verilog/core/main/pu_msp430_uart.sv
+
+verilog work ../../../../../../../../pu/rtl/verilog/core/main/pu_msp430_frontend.sv
+verilog work ../../../../../../../../pu/rtl/verilog/core/main/pu_msp430_sfr.sv
+verilog work ../../../../../../../../pu/rtl/verilog/core/main/pu_msp430_ta.sv
+verilog work ../../../../../../../../pu/rtl/verilog/core/main/pu_msp430_watchdog.sv
+
+verilog work ../../../../../../../../pu/rtl/verilog/module/pu_msp430_core.sv
