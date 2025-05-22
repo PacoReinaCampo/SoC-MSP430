@@ -63,26 +63,26 @@
 ../../../../../../../../pu/rtl/vhdl/core/fuse/pu_msp430_sync_reset.vhd
 ../../../../../../../../pu/rtl/vhdl/core/fuse/pu_msp430_wakeup_cell.vhd
 
-../../../../../../../../pu/rtl/vhdl/core/omsp/pu_msp430_alu.vhd
-../../../../../../../../pu/rtl/vhdl/core/omsp/pu_msp430_dbg_hwbrk.vhd
-../../../../../../../../pu/rtl/vhdl/core/omsp/pu_msp430_dbg_i2c.vhd
-../../../../../../../../pu/rtl/vhdl/core/omsp/pu_msp430_dbg_uart.vhd
-../../../../../../../../pu/rtl/vhdl/core/omsp/pu_msp430_register_file.vhd
-../../../../../../../../pu/rtl/vhdl/core/omsp/msp430_interrupt.vhd
-../../../../../../../../pu/rtl/vhdl/core/omsp/msp430_state_machine.vhd
+../../../../../../../../pu/rtl/vhdl/core/execute/pu_msp430_alu.vhd
+../../../../../../../../pu/rtl/vhdl/core/debug/pu_msp430_dbg_hwbrk.vhd
+../../../../../../../../pu/rtl/vhdl/core/debug/pu_msp430_dbg_i2c.vhd
+../../../../../../../../pu/rtl/vhdl/core/debug/pu_msp430_dbg_uart.vhd
+../../../../../../../../pu/rtl/vhdl/core/execute/pu_msp430_register_file.vhd
+../../../../../../../../pu/rtl/vhdl/core/decode/msp430_interrupt.vhd
+../../../../../../../../pu/rtl/vhdl/core/decode/msp430_state_machine.vhd
 
 ../../../../../../../../pu/rtl/vhdl/core/main/pu_msp430_bcm.vhd
-../../../../../../../../pu/rtl/vhdl/core/main/pu_msp430_dbg.vhd
-../../../../../../../../pu/rtl/vhdl/core/main/pu_msp430_execution.vhd
-../../../../../../../../pu/rtl/vhdl/core/main/pu_msp430_frontend.vhd
-../../../../../../../../pu/rtl/vhdl/core/main/pu_msp430_gpio.vhd
-../../../../../../../../pu/rtl/vhdl/core/main/pu_msp430_memory.vhd
-../../../../../../../../pu/rtl/vhdl/core/main/pu_msp430_multiplier.vhd
+../../../../../../../../pu/rtl/vhdl/core/debug/pu_msp430_dbg.vhd
+../../../../../../../../pu/rtl/vhdl/core/execute/pu_msp430_execution.vhd
+../../../../../../../../pu/rtl/vhdl/core/decode/pu_msp430_frontend.vhd
+../../../../../../../../pu/rtl/vhdl/core/peripheral/pu_msp430_gpio.vhd
+../../../../../../../../pu/rtl/vhdl/core/memory/pu_msp430_memory.vhd
+../../../../../../../../pu/rtl/vhdl/core/execute/pu_msp430_multiplier.vhd
 ../../../../../../../../pu/rtl/vhdl/core/main/pu_msp430_sfr.vhd
-../../../../../../../../pu/rtl/vhdl/core/main/pu_msp430_ta.vhd
-../../../../../../../../pu/rtl/vhdl/core/main/pu_msp430_watchdog.vhd
-../../../../../../../../pu/rtl/vhdl/core/main/pu_msp430_template08.vhd
-../../../../../../../../pu/rtl/vhdl/core/main/pu_msp430_template16.vhd
-../../../../../../../../pu/rtl/vhdl/core/main/pu_msp430_uart.vhd
+../../../../../../../../pu/rtl/vhdl/core/peripheral/pu_msp430_ta.vhd
+../../../../../../../../pu/rtl/vhdl/core/peripheral/pu_msp430_watchdog.vhd
+../../../../../../../../pu/rtl/vhdl/core/peripheral/pu_msp430_template08.vhd
+../../../../../../../../pu/rtl/vhdl/core/peripheral/pu_msp430_template16.vhd
+../../../../../../../../pu/rtl/vhdl/core/peripheral/pu_msp430_uart.vhd
 
 ../../../../../../../../pu/rtl/vhdl/module/pu_msp430_core.vhd
