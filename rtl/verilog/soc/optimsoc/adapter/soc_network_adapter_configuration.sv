@@ -11,7 +11,7 @@
 //                                                                            //
 //              MPSoC-MSP430 CPU                                              //
 //              Multi Processor System on Chip                                //
-//              Blackbone Bus Interface                                       //
+//              BackBone Bus Interface                                       //
 //                                                                            //
 ////////////////////////////////////////////////////////////////////////////////
 // Copyright (c) 2019-2020 by the author(s)
