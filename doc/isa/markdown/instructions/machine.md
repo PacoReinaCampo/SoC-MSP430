@@ -1,5 +1,7 @@
 ## OPCODE ENCODING MACHINE INFORMATION
 
+Machine-level information specifies how opcodes and their associated fields are encoded into binary machine code. This information dictates the exact bit patterns used for instructions, ensuring uniformity and predictability in instruction decoding and execution across various RISC-V processor implementations. It forms the foundation for assembler and compiler toolchains to generate executable code targeting RISC-V architectures.
+
 Format of a line in the table:
 
 | `RV32I`             | `31:25`    | `24:20`  | `19:15`  | `14:12` | `11:7`   | `6:0`     |
@@ -48,6 +50,8 @@ Format of a line in the table:
 
 :RV32I - Base Integer Instruction Set (32 bit)
 
+The RV32I table details the base integer instruction set for the 32-bit RISC-V architecture, encompassing essential operations and functionalities supported at the machine level.
+
 | `RV64I`             | `31:25`    | `24:20`  | `19:15`  | `14:12` | `11:7`   | `6:0`     |
 |  -------------------|  :------:  |  :----:  |  :----:  |  :---:  |  :----:  |  :------: |
 | `LWU   RD, RS1`     | `IIIIIII`  | `IIIII`  | `RS14:0` | `110`   | `RD4:0`  | `0000011` |
@@ -68,6 +72,8 @@ Format of a line in the table:
 
 :RV64I - Base Integer Instruction Set (64 bit)
 
+Building upon RV32I, RV64I extends the base integer instruction set to 64-bit, maintaining compatibility with RV32I while adding support for larger data and addressing spaces.
+
 | `RV32M`             | `31:25`    | `24:20`  | `19:15`  | `14:12` | `11:7`   | `6:0`     |
 |  -------------------|  :------:  |  :----:  |  :----:  |  :---:  |  :----:  |  :------: |
 | `MUL    RD,RS1,RS2` | `0000001`  | `RS24:0` | `RS14:0` | `000`   | `RD4:0`  | `0110011` |
@@ -81,6 +87,8 @@ Format of a line in the table:
 
 :RV32M - Standard Extension for Integer Multiply and Divide (32 bit)
 
+This table outlines the standard extension for integer multiplication and division operations in the 32-bit RISC-V architecture, enhancing computational capabilities with dedicated instructions.
+
 | `RV64M`              | `31:25`    | `24:20`  | `19:15`  | `14:12` | `11:7`   | `6:0`     |
 |  --------------------|  :------:  |  :----:  |  :----:  |  :---:  |  :----:  |  :------: |
 | `MULW  RD,RS1,RS2`   | `0000001`  | `RS24:0` | `RS14:0` | `000`   | `RD4:0`  | `0111011` |
@@ -90,6 +98,8 @@ Format of a line in the table:
 | `REMUW RD,RS1,RS2`   | `0000001`  | `RS24:0` | `RS14:0` | `111`   | `RD4:0`  | `0111011` |
 
 :RV64M - Standard Extension for Integer Multiply and Divide (64 bit)
+
+Extending RV32M to 64-bit, RV64M introduces support for integer multiplication and division operations, catering to applications requiring larger data processing capabilities.
 
 | `RV32A`                     | `31:25`     | `24:20`  | `19:15`  | `14:12` | `11:7`   | `6:0`     |
 |  ---------------------------|  :-------:  |  :----:  |  :----:  |  :---:  |  :----:  |  :------: |
@@ -107,6 +117,8 @@ Format of a line in the table:
 
 :RV32A - Standard Extension for Atomic Instructions (32 bit)
 
+Detailed here are the atomic instruction set extensions for the 32-bit RISC-V architecture, providing concurrency control primitives essential for synchronization in multi-threaded environments.
+
 | `RV64A`                     | `31:25`     | `24:20`  | `19:15`  | `14:12` | `11:7`   | `6:0`     |
 |  ---------------------------|  :-------:  |  :----:  |  :----:  |  :---:  |  :----:  |  :------: |
 | `LR.D AQRL,RD,RS1`          | `00010AQRL` | `00000`  | `RS14:0` | `011`   | `RD4:0`  | `0101111` |
@@ -122,6 +134,8 @@ Format of a line in the table:
 | `AMOMAXU.D AQRL,RD,RS2,RS1` | `11100AQRL` | `RS24:0` | `RS14:0` | `011`   | `RD4:0`  | `0101111` |
 
 :RV64A - Standard Extension for Atomic Instructions (64 bit)
+
+Extending atomic operations to 64-bit, RV64A builds upon RV32A by offering atomic instructions for manipulating memory in a thread-safe manner across larger data sets.
 
 | `RV32F`                          | `31:25`     | `24:20`  | `19:15`  | `14:12` | `11:7`   | `6:0`     |
 |  --------------------------------|  :-------:  |  :----:  |  :----:  |  :---:  |  :----:  |  :------: |
@@ -162,6 +176,8 @@ Format of a line in the table:
 
 :RV32F - Standard Extension for Single-Precision Floating-Point (32 bit)
 
+The RV32F table details the single-precision floating-point extension for the 32-bit RISC-V architecture, supporting operations on 32-bit floating-point numbers according to IEEE 754 standards.
+
 | `RV64F`                          | `31:25`     | `24:20`  | `19:15`  | `14:12` | `11:7`   | `6:0`     |
 |  --------------------------------|  :-------:  |  :----:  |  :----:  |  :---:  |  :----:  |  :------: |
 | `FCVT.L.S RM,RD,FRS1`            | `1100000`   | `00010`  | `FRS1`   | `RM`    | `FRD`    | `1010011` |
@@ -171,6 +187,8 @@ Format of a line in the table:
 
 :RV64F - Standard Extension for Single-Precision Floating-Point (64 bit)
 
+ Expanding on RV32F, RV64F introduces support for single-precision floating-point operations in the 64-bit RISC-V architecture, maintaining compatibility with RV32F for seamless transition.
+ 
 | `RV32D`                          | `31:25`     | `24:20`  | `19:15`  | `14:12` | `11:7`   | `6:0`     |
 |  --------------------------------|  :-------:  |  :----:  |  :----:  |  :---:  |  :----:  |  :------: |
 | `FLW FRD,RS1`                    | `IIIIIII`   | `IIIII`  | `FRS1`   | `011`   | `FRD`    | `0000111` |
@@ -204,6 +222,8 @@ Format of a line in the table:
 
 :RV32D - Standard Extension for Double-Precision Floating-Point (32 bit)
 
+ This table describes the double-precision floating-point extension for the 32-bit RISC-V architecture, enabling operations on 64-bit floating-point numbers conforming to IEEE 754 standards.
+
 | `RV64D`                          | `31:25`     | `24:20`  | `19:15`  | `14:12` | `11:7`   | `6:0`     |
 |  --------------------------------|  :-------:  |  :----:  |  :----:  |  :---:  |  :----:  |  :------: |
 | `FCVT.L.D RM,RD,FRS1`            | `1100001`   | `00010`  | `FRS1`   | `RM`    | `FRD`    | `1010011` |
@@ -214,3 +234,5 @@ Format of a line in the table:
 | `FMV.D.X RD,FRS1`                | `1111001`   | `00000`  | `RS1`    | `000`   | `FRD`    | `1010011` |
 
 :RV64D - Standard Extension for Double-Precision Floating-Point (64 bit)
+
+ Building upon RV32D, RV64D extends support for double-precision floating-point operations to the 64-bit RISC-V architecture, facilitating higher precision computations.
