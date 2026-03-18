@@ -320,4 +320,4 @@ Format of a line in the table:
 | `jr`             | `Jump register`                                                                                                                  |
 | `ret`            | `Return from subroutine`                                                                                                         |
 
-:Pseudo Instructions
+:Pseudo-Instructions
