@@ -131,7 +131,7 @@
 ## PU MSP430 REGISTER-FILE
 ## PU MSP430 SFR
 
-| `IRQ`    | `IRQ_NR`    |
+| **Irq**  | **Irq_Nr**  |
 |:---------|:------------|
 | `IRQ_16` | `IRQ_NR 16` |
 | `IRQ_32` | `IRQ_NR 32` |

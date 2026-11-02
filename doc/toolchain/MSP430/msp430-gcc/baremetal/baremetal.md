@@ -1,7 +1,7 @@
 # BAREMETAL APPLICATIONS
 
 | **Tool 16-Bit**      |
-|----------------------|
+|:---------------------|
 | `msp430-elf-ar`      |
 | `msp430-elf-as`      |
 | `msp430-elf-ld`      |

@@ -28,19 +28,19 @@ This 5 bit field can be freely used in order to allowcustom identification of th
 
 :Custom user version number
 
-| `Clock` | `Divisions`  | `Constant`      |
-|:--------|:-------------|:----------------|
-| `MCLK`  | `(/1/2/4/8)` | `MCLK_DIVIDER`  |
-| `SMCLK` | `(/1/2/4/8)` | `SMCLK_DIVIDER` |
-| `ACLK`  | `(/1/2/4/8)` | `ACLK_DIVIDER`  |
+| **Clock** | **Divisions** | **Constant**    |
+|:----------|:--------------|:----------------|
+| `MCLK`    | `(/1/2/4/8)`  | `MCLK_DIVIDER`  |
+| `SMCLK`   | `(/1/2/4/8)`  | `SMCLK_DIVIDER` |
+| `ACLK`    | `(/1/2/4/8)`  | `ACLK_DIVIDER`  |
 
 :Clock Dividers
 
-| `Status` | `Low Power Mode`               | `Constant`  |
-|:---------|:-------------------------------|:------------|
-| `CPUOFF` | `LPM0, LPM1, LPM2, LPM3, LPM4` | `CPUOFF_EN` |
-| `SCG0`   | `LPM1, LPM3, LPM4`             | `SCG0_EN`   |
-| `SCG1`   | `LPM2, LPM3, LPM4`             | `SCG1_EN`   |
-| `OSCOFF` | `LPM4`                         | `OSCOFF_EN` |
+| **Status** | **Low Power Mode**             | **Constant** |
+|:-----------|:-------------------------------|:-------------|
+| `CPUOFF`   | `LPM0, LPM1, LPM2, LPM3, LPM4` | `CPUOFF_EN`  |
+| `SCG0`     | `LPM1, LPM3, LPM4`             | `SCG0_EN`    |
+| `SCG1`     | `LPM2, LPM3, LPM4`             | `SCG1_EN`    |
+| `OSCOFF`   | `LPM4`                         | `OSCOFF_EN`  |
 
 :Low Power Modes

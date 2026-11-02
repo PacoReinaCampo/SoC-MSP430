@@ -15,33 +15,33 @@
 
 The original MSP430 architecture map the peripherals from 0x0000 to 0x01FF (i.e. 512B of the memory space). The following defines allow you to expand this space up to 32 kB (i.e. from 0x0000 to 0x7fff). As a consequence, the data memory mapping will be shifted up and a custom linker script will therefore be required by the GCC compiler.
 
-| `PER_SIZE_CUSTOM` |
-|:------------------|
-| `PER_SIZE_32_KB`  |
-| `PER_SIZE_16_KB`  |
-| `PER_SIZE_8_KB`   |
-| `PER_SIZE_4_KB`   |
-| `PER_SIZE_2_KB`   |
-| `PER_SIZE_1_KB`   |
-| `PER_SIZE_512_B`  |
+| **Per_Size_Custom** |
+|:--------------------|
+| `PER_SIZE_32_KB`    |
+| `PER_SIZE_16_KB`    |
+| `PER_SIZE_8_KB`     |
+| `PER_SIZE_4_KB`     |
+| `PER_SIZE_2_KB`     |
+| `PER_SIZE_1_KB`     |
+| `PER_SIZE_512_B`    |
 
 :Peripheral Memory Size
 
-| `PER_CUSTOM_AWIDTH` | `PER_CUSTOM_SIZE` |
-|:--------------------|:------------------|
-| `8`                 | `512`             |
+| **Per_Custom_Awidth** | **Per_Custom_Size** |
+|:----------------------|:--------------------|
+| `8`                   | `512`               |
 
 :Custom Peripheral memory (enabled with `PER_SIZE_CUSTOM`)
 
-| `PER`            | `PER_AWIDTH` | `PER_SIZE` |
-|:-----------------|:-------------|:-----------|
-| `PER_SIZE_32_KB` | `14`         | `32768`    |
-| `PER_SIZE_16_KB` | `13`         | `16384`    |
-| `PER_SIZE_8_KB`  | `12`         | `8192`     |
-| `PER_SIZE_4_KB`  | `11`         | `4096`     |
-| `PER_SIZE_2_KB`  | `10`         | `2048`     |
-| `PER_SIZE_1_KB`  | `9`          | `1024`     |
-| `PER_SIZE_512_B` | `8`          | `512`      |
+| **Per**          | **Per_Awidth** | **Per_Size** |
+|:-----------------|:---------------|:-------------|
+| `PER_SIZE_32_KB` | `14`           | `32768`      |
+| `PER_SIZE_16_KB` | `13`           | `16384`      |
+| `PER_SIZE_8_KB`  | `12`           | `8192`       |
+| `PER_SIZE_4_KB`  | `11`           | `4096`       |
+| `PER_SIZE_2_KB`  | `10`           | `2048`       |
+| `PER_SIZE_1_KB`  | `9`            | `1024`       |
+| `PER_SIZE_512_B` | `8`            | `512`        |
 
 :Peripheral Memory Size
 
@@ -80,7 +80,7 @@ The original MSP430 architecture map the peripherals from 0x0000 to 0x01FF (i.e.
 
 | **Name**    | **Value** |
 |:------------|:----------|
-| ` TACMx`    | `15:14`   |
+| `TACMx`     | `15:14`   |
 | `TACCISx`   | `13:12`   |
 | `TASCS`     | `11`      |
 | `TASCCI`    | `10`      |
